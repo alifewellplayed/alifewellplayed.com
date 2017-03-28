@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Blips | {% endblock %}
+{% block page %}blippy{% endblock %}
+
+{% block content %}
+<div id="blips" class="layout-single-column">
+{% if adding %}
+  <h2 class="heading">New Event</h2>
+{% else %}
+  <h2 class="heading">Editing</h2>
+{% endif %}
+
+<form method="POST" action="" id="add_timeline_form" class="blip-form">{% csrf_token %}
+    <div class="form-group">
+	{{form.name}}
+    </div>
+
+    <div class="pull-right">
+        <label class="checkbox">
+        {{form.is_public}} Allow timeline visible to public?
+        </label>
+
+        <label class="checkbox">
+        {{form.rev_order}} Reverse order of events (Newest on top).
+        </label>
+    </div>
+
+    <p class="submit"><input type="submit" class="btn btn-default" value="Save"></p>
+</form>
+
+</div>
+{% endblock %}

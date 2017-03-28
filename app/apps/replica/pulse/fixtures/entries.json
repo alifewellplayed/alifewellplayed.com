@@ -1,0 +1,46 @@
+[
+{
+  "model": "pulse.entry",
+  "pk": "0e837107-4899-4c2e-9ec0-e78b7ef695c1",
+  "fields": {
+    "title": "Hello World",
+    "slug": "hello-world",
+    "url": "",
+    "user": 1,
+    "date_created": "2017-02-23T18:24:35.855",
+    "date_updated": "2017-02-23T18:24:35.855",
+    "pub_date": "2017-02-24T18:24:01",
+    "is_active": false,
+    "channel": "927586a4-3258-4aff-a22f-0136c6e9e503",
+    "content_format": "markdown",
+    "deck": "",
+    "deck_html": "",
+    "body": "This is an example of a blog post.",
+    "body_html": "<p>This is an example of a blog post.</p>",
+    "featured_image": null,
+    "topic": []
+  }
+},
+{
+  "model": "pulse.entry",
+  "pk": "2f9c0b20-74ad-49c2-9e47-b211f2ed3e3e",
+  "fields": {
+    "title": "Page Example",
+    "slug": "page-example",
+    "url": "/page/test/",
+    "user": 1,
+    "date_created": "2017-01-30T18:25:59.500",
+    "date_updated": "2017-03-08T21:03:44.961",
+    "pub_date": "2017-01-30T18:24:29",
+    "is_active": false,
+    "channel": "363532ac-85ce-4ee4-8adf-e1b89531c678",
+    "content_format": "markdown",
+    "deck": "This is an example of a page.",
+    "deck_html": "<p>This is an example of a page.</p>",
+    "body": "This is an example of a page.",
+    "body_html": "<p>This is an example of a page.</p>",
+    "featured_image": null,
+    "topic": []
+  }
+}
+]

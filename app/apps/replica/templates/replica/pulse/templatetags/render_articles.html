@@ -1,0 +1,13 @@
+<div class="articles-archived">
+{% for object in objects %}
+
+	{% ifchanged object.pub_date.month %}
+	<div class="datetime">{{ object.pub_date|date:"F Y" }}</div>
+	{% endifchanged %}
+
+	<p class="{{ object.post_type.slug }} archived">
+		<a href="{{ object.get_absolute_url }}">{{ object.title|safe }}</a>
+		<small>{{ object.pub_date|date:"F jS, Y" }}</small>
+	</p>
+{% endfor %}
+</div>

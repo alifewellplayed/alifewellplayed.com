@@ -1,0 +1,51 @@
+.blue {
+    color: $blue;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $blue; color: $blue-light; }
+}
+
+.green {
+    color: $green;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $green; color: $green-light; }
+}
+
+.red {
+    color: $red;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $red; color: $red-light; }
+}
+
+.yellow {
+    color: $yellow;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $yellow; color: $yellow-light; }
+}
+
+.orange {
+    color: $orange;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $orange; color: $orange-light; }
+}
+
+.purple {
+    color: $purple;
+    transition: text-shadow .3s, color .3s;
+    &:hover, &:active {text-shadow: 0 0 4px $purple; color: $purple-light; }
+}
+
+.site-content {
+    backface-visibility: visible;
+	position: relative;
+	z-index: 10;
+	padding-top: 80px;
+	margin-left: 28%;
+
+    .datetime {
+        margin-left: 40px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 75%;
+    }
+}

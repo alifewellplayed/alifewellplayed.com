@@ -1,0 +1,30 @@
+{% extends 'base.html' %}{% load core_tags %}{% load pulser %}
+
+{% block title %}Topics | {% endblock %}
+{% block page %}news topics pages{% endblock %}
+
+{% block content %}
+
+	<h2 class="sr-only">Topics</h2>
+
+	<ul class="media-list topic-list layout-single-column">
+		{% for object in object_list %}
+		<li class="media topic">
+			{% if object.image %}
+			<a class="pull-left" href="{% url 'ReplicaPulse:EntriesByTopic' object.slug %}">
+				<img class="media-object" width="64" height="auto" src="{{object.image.url}}" alt="{{object.title}}">
+			</a>
+			{% endif %}
+	    	<div class="media-body">
+	      		<h4 class="media-heading"><a href="{% url 'ReplicaPulse:EntriesByTopic' object.slug %}">{{ object.title|safe }}</a></h4>
+				<section class="topic-body">
+	      			<p>{{ object.description|safe }}</p>
+	      		</section>
+	      		<div class="entry-meta">
+	      			<span>{{ object.entry_count }} Posts</span>
+	      		</div>
+	    	</div>
+	 	 </li>
+		{% endfor %}
+	</ul>
+{% endblock %}

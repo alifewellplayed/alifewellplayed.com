@@ -1,0 +1,24 @@
+[
+    {
+      "model": "pulse.channel",
+      "pk": "363532ac-85ce-4ee4-8adf-e1b89531c678",
+      "fields": {
+        "title": "Page",
+        "slug": "page",
+        "user": 1,
+        "date_created": "2017-01-27T22:50:33.878",
+        "date_updated": "2017-01-27T22:50:33.878"
+      }
+    },
+    {
+      "model": "pulse.channel",
+      "pk": "927586a4-3258-4aff-a22f-0136c6e9e503",
+      "fields": {
+        "title": "Post",
+        "slug": "post",
+        "user": 1,
+        "date_created": "2017-01-27T22:50:16.885",
+        "date_updated": "2017-01-27T22:50:16.885"
+      }
+    }
+]

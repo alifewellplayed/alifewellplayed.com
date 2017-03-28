@@ -1,0 +1,21 @@
+$orange:           #f04911;
+$orange-light:     #ff6a00;
+$green:            #84a90e;
+$green-light:      #c7ff15;
+$blue:             #0086bf;
+$blue-light:       #00b3ff;
+$red:              #c41e1e;
+$red-light:        #f00;
+$yellow:           #f0d700;
+$yellow-light:     #ffe929;
+$purple:           #763096;
+$purple-light:     #a41be3;
+
+$brand-primary: #ff0052;
+$body-bg:  #e7e7e2;
+$text-color:       #333;
+$link-color:            $brand-primary !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+
+$grid-gutter-width: 0;

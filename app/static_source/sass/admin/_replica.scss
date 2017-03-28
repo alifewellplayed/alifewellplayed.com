@@ -1,0 +1,33 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.padding-sm-form {
+    padding: 20px 0;
+}
+
+.replica-panel {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-bottom: 12px;
+    transition: all 1s ease-in-out;
+    .panel-header {
+        padding: 0 10px;
+        .panel-title {
+            font-size: 14px;
+        }
+    }
+}
+
+.replica-clickable {
+    cursor: pointer;
+}
+
+.pace-done {
+    .replica-panel {
+        height: inherit;
+        overflow: visible;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Blips | {% endblock %}
+{% block page %}page blippy{% endblock %}
+
+{% block content %}{% load humanize %}{% load micro_tags %}
+<section id="blips" class="page layout-single-column">
+<h2 class="heading">{{ timeline.name }}</h2>
+
+{% for object in object_list %}
+{% ifchanged object.pub_date.day %}<p class="last-posted">{% if forloop.first %}Last posted {% endif %}{{ object.pub_date|date:"l, F j, Y" }}.</p>{% endifchanged %}
+<div class="blip" id="blip-{{ object.id }}">
+	<div class="blip-body">{{ object.body_html|safe }}</div>
+	{% if user.is_authenticated %}
+	<div class="manage-blips pull-right">
+		<a href="{% url 'Micro:Edit' object.id %}">Edit</a> | <a href="{% url 'Micro:Delete' object.id %}">Delete</a>
+	</div>
+	{% endif %}
+	<span class="date"><i class="fa fa-clock-o"></i> <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
+</div>
+{% endfor %}
+
+{% if is_paginated %}
+  <div class="pagination site-pagination">
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">&larr; Older entries</a>
+    {% endif %}
+    {% if page_obj.has_previous and page_obj.has_next %}|{% endif %}
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">Newer entries &rarr;</a>
+    {% endif %}
+  </div>
+{% endif %}
+
+</section>
+
+{% endblock %}

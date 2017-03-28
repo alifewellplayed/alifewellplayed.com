@@ -1,0 +1,13 @@
+a:link { transition: text-shadow .3s, color .3s; }
+a:link, a:visited { text-decoration:none; }
+a:hover { text-shadow: 0 0 4px #FFF;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+}
+
+.layout-single-column {
+    max-width: 600px;
+    margin: 0 40px 75px;
+    position: relative;
+}

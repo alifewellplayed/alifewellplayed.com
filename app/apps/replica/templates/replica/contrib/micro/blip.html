@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Blips | {% endblock %}
+{% block page %}blippy{% endblock %}
+
+{% block content %}
+<section id="blip" class="layout-single-column">
+	{% if user.is_authenticated %}<a href="{% url 'Micro:Add' %}" class="btn btn-info" id="quickpost"><i class="icon-edit icon-white"></i></a>{% endif %}
+	<h3 class="header">{{ entry.user }} wrote...</h3>
+
+	<div class="blip">
+		<div class="blip-body" id="blip-{{ entry.id }}">{{ entry.body_html|safe }}</div>
+		<p class="date"><i class="icon-time"></i> <a href="{{ entry.get_absolute_url }}">{{ entry.pub_date|naturaltime }}</a>{% if entry.timeline %} in <a href="{% url 'blip:Timeline' entry.timeline.slug %}">{{entry.timeline }}</a>{% endif %}.</p>
+	</div>
+</section
+{% endblock %}

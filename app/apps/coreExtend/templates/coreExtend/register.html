@@ -1,0 +1,30 @@
+{% extends "coreExtend/base.html" %}{% load i18n %}
+
+{% block title %}{% trans 'Register' %}{% endblock %}
+{% block page %}core register{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    <p>Your username or password didn't match. Please try again.</p>
+</div>
+{% endif %}
+
+<h2 class="heading text-center">Register.</h2>
+
+<form class="form-signin" method="post" action="">
+    {% csrf_token %}
+    <label for="id_username" class="sr-only">{% trans 'Username' %}</label>
+    <input id="id_username" class="form-control" placeholder="Username" type="text" name="username" maxlength="255" />
+
+    <label for="id_email" class="sr-only">{% trans 'Email Address' %}</label>
+    <input id="id_email" class="form-control" placeholder="Email address" type="email" name="email" maxlength="255" />
+
+    <label for="id_password1" class="sr-only">{% trans 'Password' %}</label>
+    <input id="id_password1" class="form-control" placeholder="Password" type="password" name="password" />
+
+    <input class="btn btn-primary" type="submit" value="Register" />
+</form>
+
+{% endblock %}

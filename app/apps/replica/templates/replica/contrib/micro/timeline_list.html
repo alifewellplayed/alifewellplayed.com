@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Blips | {% endblock %}
+{% block page %}page blippy{% endblock %}
+
+{% block content %}
+<div id="blips" class="page layout-single-column">
+	<h2 class="heading">Notes</h2>
+
+	<div class="timelines">
+	{% for object in object_list %}
+		{% ifchanged object.pub_date.month %}
+		<div class="datetime">{{ object.pub_date|date:"F Y" }}</div>
+		{% endifchanged %}
+
+		<p id="{{ object.slug }}" class="timeline">
+			<a class="timeline-url" href="{% url 'Micro:Timeline' object.slug %}">{{ object.name|safe }}</a>
+			<small>{{ object.pub_date|date:"l, F j, Y" }}</small>
+			{% if user.is_authenticated %}<a class="add-more" href="{% url 'Micro:Add' object.slug %}">&raquo;</a>{% endif %}
+		</p>
+	{% endfor %}
+	</div>
+
+	{% if user.is_authenticated %}
+	<div id="new-timeline"><a href="{% url 'Micro:NewTimeline' %}">Add a new Event?</a></div>
+	{% endif %}
+</div>
+{% endblock %}

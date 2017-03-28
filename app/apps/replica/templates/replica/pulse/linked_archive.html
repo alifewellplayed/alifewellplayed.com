@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% load core_tags %}
+
+{% block title %}{% endblock %}
+{% block page %}news linklog{% endblock %}
+
+{% block content %}
+    <div class="linkedlog"><!-- Render linked log -->
+    {% for object in latest %}
+        {% ifchanged object.pub_date.day %}
+        {% include "replica/_includes/_datetime.html" %}
+        {% endifchanged %}
+        {% include "replica/_includes/_entry.html" %}
+    {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+      {% include "replica/_includes/_pagination.html" %}
+    {% endif %}
+{% endblock %}

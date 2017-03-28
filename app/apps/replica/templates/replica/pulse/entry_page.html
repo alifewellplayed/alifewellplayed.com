@@ -1,0 +1,25 @@
+{% extends 'base.html' %}{% load core_tags %}
+
+{% block title %}{{ flatpage.title }} | {% endblock %}
+{% block page %}news pages{% endblock %}
+
+{% block content %}
+<div class="page layout-single-column">
+    <div class="page-inner">
+        <header class="entry-head">
+            <div class="entry-meta">
+    			<time datetime="{{ object.pub_date|date:"Y-m-d" }}" class="entry-time sr-only">{{ object.pub_date|date:"l, F jS Y" }}</time>
+    		</div>
+            <h2 class="heading">{{ object.title }}</h2>
+        </header>
+        <section class="entry-body {{ object.post_type.slug }}">
+            {% if object.image %}
+        		<div class="imgWrap">
+        			<figure><img src="{{object.image.image.url}}" class="img-responsive" alt="{{object.image.title}}" /></figure>
+        		</div>
+        	{% endif %}
+            {{ object.body_html|safe }}
+        </section>
+    </div>
+</div>
+{% endblock %}

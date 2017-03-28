@@ -1,0 +1,33 @@
+{% extends 'base.html' %}{% load pulser %}
+
+{% block title %}{{ topic.title }} | {% endblock %}
+{% block page %}news entries topics {{ topic.slug }}{% endblock %}
+
+{% block content %}
+<div id="topic-head">
+    <div class="media topic layout-single-column">
+        {% if topic.image %}
+        <a class="pull-left" href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">
+            <img class="media-object" width="64" height="auto" src="{{topic.image.url}}" alt="{{topic.title}}">
+        </a>
+        {% endif %}
+        <div class="media-body">
+            <h4 class="media-heading"><a href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">{{topic.title}}</a></h4>
+            <p>{{ topic.description|safe }}</p>
+        </div>
+    </div>
+</div>
+
+    {% for object in object_list %}
+        {% ifchanged object.pub_date.day %}
+        {% include "replica/_includes/_datetime.html" %}
+        {% endifchanged %}
+        {% include "replica/_includes/_entry.html" %}
+    {% empty %}
+        <p class="lead layout-single-column">No Entries to display.</p>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% include "replica/_includes/_pagination.html" %}
+    {% endif %}
+{% endblock %}

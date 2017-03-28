@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% load pulser %}
+
+{% block title %}Archive | {% endblock %}
+{% block page %}news archive pages{% endblock %}
+
+{% block content %}
+<div class="page layout-single-column">
+	<header class="entry-head">
+		<h2 class="heading">Previously, on {{site_name}}</h2>
+	</header>
+	{% render_latest_articles %}
+	<h4 class="heading">Browse By Month:</h4>
+	{% render_month_links %}
+</div>
+{% endblock %}

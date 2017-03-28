@@ -1,0 +1,68 @@
+
+.entry {
+    a {transition: all .3s, color .3s;}
+    a:hover {text-shadow: 0 0 4px $link-hover-color;}
+
+    .entry-head {
+        h2 {
+            font-size: 19px;
+            letter-spacing: 1px;
+            font-weight: 300;
+            //a {border-bottom: 1px dotted; }
+            a:hover {color: darken($link-color, 25%); text-shadow: 0 0 4px lighten($link-color, 5%) }
+        }
+        h3 {
+            font: 15px/27px $font-family-sans-serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            a {padding-bottom: 4px; border-bottom: 1px dotted $link-hover-color;}
+            a:hover {border-color: $link-hover-color;}
+        }
+
+        .glyph {
+            color: darken($link-color, 30%);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-width: 0;
+        }
+        .glyph:hover {color: #f2f2f2;}
+    }
+
+    .entry-body {
+        margin-bottom: 20px;
+
+        .deck p:first-child {}
+        h3 {font-weight: 100; color: lighten($text-color, 40%);}
+        p.lead {font-family: $font-family-sans-serif;}
+        a {color: lighten($text-color, 20%);}
+        a:hover {color: lighten($text-color, 40%);}
+        blockquote {
+            font-weight: 100;
+            border-color: darken($text-color, 45%);
+            padding: 0 0 0 15px;
+            font-size: $font-size-base;
+            color: darken($text-color, 15%);
+        }
+    }
+
+    .entry-footer {
+        .entry-topics {
+            position: relative;
+            //border-top: 1px solid darken($text-color, 40%);
+            padding-top: 5px;
+            color: darken($text-color, 20%);
+            font-size: 90%;
+            text-transform: uppercase;
+            a {color: darken($text-color, 20%);}
+            a:hover {color: darken($text-color, 5%); text-shadow: none;}
+
+            &:before {
+                content: ' ';
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: $link-color;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

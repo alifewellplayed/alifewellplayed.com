@@ -1,0 +1,16 @@
+from django.contrib import admin
+from django.db import models
+from .models import Promoted, Collection
+
+
+class PromotedAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date_updated', 'user', 'entry')
+    prepopulated_fields = {"slug": ("title",)}
+
+class CollectionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'deck', 'pub_date', 'user')
+    prepopulated_fields = {"slug": ("title",)}
+
+
+admin.site.register(Promoted, PromotedAdmin)
+admin.site.register(Collection, CollectionAdmin)

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% load core_tags %}
+
+{% block title %}{% endblock %}
+{% block page %}home default archive{% endblock %}
+
+{% block content %}
+	<!-- Render Posts -->
+	{% for object in latest %}
+		{% ifchanged object.pub_date.day %}
+		{% include "replica/_includes/_datetime.html" %}
+		{% endifchanged %}
+	{% include "replica/_includes/_entry.html" %}
+	{% endfor %}
+
+	{% if is_paginated %}
+  	{% include "replica/_includes/_pagination.html" %}
+	{% endif %}
+{% endblock %}

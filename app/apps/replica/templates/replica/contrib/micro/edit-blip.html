@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Blips | {% endblock %}
+{% block page %}blippy{% endblock %}
+
+{% block content %}
+<section id="blips" class="layout-single-column">
+{% if adding %}
+  <h2 class="heading">Posting to {{ timeline }}</h2>
+{% else %}
+  <h2 class="heading">Edit</h2>
+{% endif %}
+
+<form method="POST" action="" id="add_blip_form" class="wide">
+  {% csrf_token %}
+
+	{{form.body}}
+
+	<label class="checkbox pull-right">
+	{{form.is_private}} Hide Blip from public?
+	</label>
+
+  {% if adding %}
+    <p class="submit"><input type="submit" class="btn btn-default" value="Post"></p>
+  {% else %}
+   <p class="submit"><input type="submit" class="btn btn-default" value="Save"></p>
+  {% endif %}
+</form>
+{% if adding %}
+{% render_latest_blips timeline.id %}
+{% endif %}
+</section>
+{% endblock %}

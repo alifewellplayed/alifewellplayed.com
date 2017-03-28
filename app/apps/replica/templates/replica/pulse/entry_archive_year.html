@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% load pulser %}
+
+{% block title %}{% endblock %}
+{% block page %}default archive year{% endblock %}
+
+{% block content %}
+<div class="inner">
+	<h3 class="archive">Published in {{ year|date:"Y" }}</h3>
+
+	<ul class="linklist list-unstyled">
+		{% for date in date_list %}
+		<li><a href="{{ date|date:"m"|lower }}/">{{ date|date:"F Y" }}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

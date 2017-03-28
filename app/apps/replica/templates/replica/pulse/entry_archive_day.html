@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% load pulser %}
+
+{% block title %}{% endblock %}
+{% block page %}default archive day{% endblock %}
+
+{% block content %}
+	{% for object in object_list %}
+		{% ifchanged object.pub_date.day %}
+		{% include "replica/_includes/_datetime.html" %}
+		{% endifchanged %}
+		{% include "replica/_includes/_entry.html" %}
+	{% endfor %}
+
+	{% if is_paginated %}
+	{% include "replica/_includes/_pagination.html" %}
+	{% endif %}
+{% endblock %}

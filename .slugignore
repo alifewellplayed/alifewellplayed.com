@@ -1,0 +1,8 @@
+bower_components
+node_modules
+wellplayed/static_source
+dist
+package.json
+bower.json
+gulpfile.js
+webpack.config.js
