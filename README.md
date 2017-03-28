@@ -1,3 +1,7 @@
+[![Dependencies](https://david-dm.org/jadedgamer/alifewellplayed.com.svg)](https://david-dm.org/jadedgamer/alifewellplayed.com)
+[![Dependency Status](https://gemnasium.com/badges/github.com/jadedgamer/alifewellplayed.com.svg)](https://gemnasium.com/github.com/jadedgamer/alifewellplayed.com)
+
+
 # A Life Well Played
 =======
 
