@@ -3,7 +3,6 @@
 
 
 # A Life Well Played
-=======
 
 A Life Well Played is a CMS/Blog project written in Python/Django.
 
@@ -12,7 +11,6 @@ Interested on cloning the site for your own blog, similar or otherwise? Go for i
 ---
 
 ## Replica (Version 2.0.0)
-=======
 
 Replica is a Django content management system I originally wrote for clients who wanted a simple and straight forward solution for posting updates. Since then, I've been slowly expanding and rebuilding it. Specifically, it's a a series of apps bundled tightly together.
 
