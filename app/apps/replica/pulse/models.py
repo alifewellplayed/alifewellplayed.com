@@ -6,10 +6,7 @@ from time import strftime
 from hashlib import md5
 import uuid
 
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import StringIO, BytesIO
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -34,27 +31,27 @@ def upload_media(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (instance.id, ext)
     date = instance.date_created
-    datepath_path = today.strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (today_path, instance.app.id, filename)
-    overwrite_existing(path)
+    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
+    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
+    #overwrite_existing(path)
     return path
 
 def upload_media_md(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s_md.%s" % (instance.id, ext)
     date = instance.date_created
-    datepath_path = today.strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (today_path, instance.app.id, filename)
-    overwrite_existing(path)
+    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
+    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
+    #overwrite_existing(path)
     return path
 
 def upload_media_sm(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s_sm.%s" % (instance.id, ext)
     date = instance.date_created
-    datepath_path = today.strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (today_path, instance.app.id, filename)
-    overwrite_existing(path)
+    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
+    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
+    #overwrite_existing(path)
     return path
 
 class Media(models.Model):
@@ -79,6 +76,9 @@ class Media(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         if self.content_type == 2:
             return self.url
@@ -87,7 +87,7 @@ class Media(models.Model):
         else:
             return self.content
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if self.image:
             image_name = self.image.name
             try:
@@ -100,10 +100,10 @@ class Media(models.Model):
                     content_type = 'image/png'
                 elif self.image.name.endswith(".gif"):
                     content_type = 'image/gif'
-            with Image.open(StringIO(self.image.read())) as img:
-                sm_filename, sm_image = create_thumbnail(image_name, img, content_type, r_settings.thumbnail_small, r_settings.thumbnail_small)
+            with Image.open(BytesIO(self.image.read())) as img:
+                sm_filename, sm_image = create_thumbnail(image_name, img, content_type, r_settings.THUMBNAIL_SMALL, r_settings.THUMBNAIL_SMALL)
                 self.thumbnail_small.save(sm_filename, sm_image, save=False)
-                md_filename, md_image = create_thumbnail(image_name, img, content_type, r_settings.thumbnail_large, r_settings.thumbnail_large)
+                md_filename, md_image = create_thumbnail(image_name, img, content_type, r_settings.THUMBNAIL_LARGE, r_settings.THUMBNAIL_LARGE)
                 self.thumbnail_medium.save(md_filename, md_image, save=False)
         super(Media, self).save(*args, **kwargs)
 
@@ -201,6 +201,9 @@ class Entry(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
     def Create_Draft(self):
         DraftInstance = Draft(
             entry=self,
@@ -271,6 +274,12 @@ class Draft(models.Model):
         else:
             return self.id
 
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return self.id
+
     def save(self, *args, **kwargs):
         if self.content_format == u'markdown':
             self.deck_html = markdown.markdown(self.deck)
@@ -300,6 +309,9 @@ class EntryLink(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
     def save(self, *args, **kwargs):
         super(EntryLink, self).save(*args, **kwargs)
 
@@ -319,6 +331,9 @@ class MenuPosition(models.Model):
         ordering = ('-title',)
 
     def __unicode__(self):
+        return "%s" % (self.title,)
+
+    def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
@@ -340,6 +355,9 @@ class MenuItem(models.Model):
         ordering = ('-weight',)
 
     def __unicode__(self):
+        return "%s" % (self.title,)
+
+    def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):

@@ -2878,7 +2878,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -3036,7 +3036,7 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
@@ -6474,7 +6474,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6556,7 +6556,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -9434,7 +9434,10 @@ h1, h2, h3, h4, h5, h6 {
   background: #ff0052;
   text-align: center;
   display: table;
-  color: #fff; }
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
   .site-header .site-header-inner {
     display: table-cell;
     vertical-align: middle;
@@ -9614,7 +9617,7 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 4px #ff1a63; }
 
 .entry .entry-head h3 {
-  font: 15px/27px "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 15px/27px "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase; }
   .entry .entry-head h3 a {
@@ -9637,7 +9640,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
     color: #999999; }
   .entry .entry-body p.lead {
-    font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
   .entry .entry-body a {
     color: #666666; }
   .entry .entry-body a:hover {

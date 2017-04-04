@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% load replica_blog_tags %}{% load replica_publisher_tags %}
 <html lang="en">
   <head>
 		<title>{% block title %}{% endblock %}{{site_name}}</title>
@@ -43,7 +43,7 @@
 
 <body class="{% block page %}{% endblock %}">
 <div id="wrap">
-	<header role="masthead" class="site-header">
+	<header role="masthead" class="site-header" style="background-image: url({% promoted_image %});">
         <div class="site-header-inner fadeRight">
             <div id="PulseMarker">
                 <a href="{% url 'ReplicaPulse:Index' %}">
@@ -55,11 +55,7 @@
             <p class="site-author">By Tyler Rilling</p>
 
             <nav class="site-nav">
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'ReplicaPulse:Archive'%}">Archive</a></li>
-                    <li><a href="{% url 'ReplicaPulse:Micro:Timelines'%}">Notes</a></li>
-                    <li><a href="{% url 'ReplicaPulse:KitchenSink-RSS' %}">RSS Feed</a></li>
-                </ul>
+                {% render_menu 'primary' %}
             </nav>
         </div><!-- header-wrap -->
 	</header>

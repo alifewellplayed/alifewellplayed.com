@@ -5,7 +5,6 @@ from .models import Promoted, Collection
 
 class PromotedAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_updated', 'user', 'entry')
-    prepopulated_fields = {"slug": ("title",)}
 
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'deck', 'pub_date', 'user')

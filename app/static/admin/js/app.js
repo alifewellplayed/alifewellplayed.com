@@ -11038,7 +11038,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/app.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/app.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] app.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11049,9 +11049,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-5860b2da", Component.options)
+	    hotAPI.createRecord("data-v-5fb2c44b", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-5860b2da", Component.options)
+	    hotAPI.reload("data-v-5fb2c44b", Component.options)
 	  }
 	})()}
 
@@ -11244,7 +11244,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/components/_sidebar.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/components/_sidebar.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] _sidebar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11255,9 +11255,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-a699e5a2", Component.options)
+	    hotAPI.createRecord("data-v-9a83c6c0", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-a699e5a2", Component.options)
+	    hotAPI.reload("data-v-9a83c6c0", Component.options)
 	  }
 	})()}
 
@@ -11596,7 +11596,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-a699e5a2", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-9a83c6c0", module.exports)
 	  }
 	}
 
@@ -11614,7 +11614,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/components/_footer.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/components/_footer.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] _footer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11625,9 +11625,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-31adb218", Component.options)
+	    hotAPI.createRecord("data-v-c58b1ef2", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-31adb218", Component.options)
+	    hotAPI.reload("data-v-c58b1ef2", Component.options)
 	  }
 	})()}
 
@@ -11665,7 +11665,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-31adb218", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-c58b1ef2", module.exports)
 	  }
 	}
 
@@ -11825,7 +11825,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5860b2da", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5fb2c44b", module.exports)
 	  }
 	}
 
@@ -11843,7 +11843,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/settings.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/settings.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] settings.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -11854,9 +11854,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-3041b98c", Component.options)
+	    hotAPI.createRecord("data-v-67035069", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-3041b98c", Component.options)
+	    hotAPI.reload("data-v-67035069", Component.options)
 	  }
 	})()}
 
@@ -11984,7 +11984,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3041b98c", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-67035069", module.exports)
 	  }
 	}
 
@@ -12002,7 +12002,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/dashboard.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/dashboard.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] dashboard.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -12013,9 +12013,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-10fb750d", Component.options)
+	    hotAPI.createRecord("data-v-765cedbe", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-10fb750d", Component.options)
+	    hotAPI.reload("data-v-765cedbe", Component.options)
 	  }
 	})()}
 
@@ -12216,7 +12216,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/components/DashDoughnutEntries.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/components/DashDoughnutEntries.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	/* hot reload */
@@ -12226,9 +12226,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-7ca0157a", Component.options)
+	    hotAPI.createRecord("data-v-c060b52e", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-7ca0157a", Component.options)
+	    hotAPI.reload("data-v-c060b52e", Component.options)
 	  }
 	})()}
 
@@ -56235,7 +56235,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-10fb750d", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-765cedbe", module.exports)
 	  }
 	}
 
@@ -56253,7 +56253,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/pages.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/pages.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] pages.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -56264,9 +56264,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-436f0a86", Component.options)
+	    hotAPI.createRecord("data-v-595bf3ee", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-436f0a86", Component.options)
+	    hotAPI.reload("data-v-595bf3ee", Component.options)
 	  }
 	})()}
 
@@ -56384,7 +56384,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-436f0a86", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-595bf3ee", module.exports)
 	  }
 	}
 
@@ -56402,7 +56402,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/media.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/media.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -56422,7 +56422,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/entries.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/entries.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] entries.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -56433,9 +56433,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-eb12956e", Component.options)
+	    hotAPI.createRecord("data-v-e2deb38c", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-eb12956e", Component.options)
+	    hotAPI.reload("data-v-e2deb38c", Component.options)
 	  }
 	})()}
 
@@ -56581,7 +56581,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-eb12956e", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e2deb38c", module.exports)
 	  }
 	}
 
@@ -56599,7 +56599,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/notfound.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/notfound.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] notfound.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -56610,9 +56610,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-634909a6", Component.options)
+	    hotAPI.createRecord("data-v-3b259256", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-634909a6", Component.options)
+	    hotAPI.reload("data-v-3b259256", Component.options)
 	  }
 	})()}
 
@@ -56632,7 +56632,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-634909a6", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-3b259256", module.exports)
 	  }
 	}
 
@@ -56650,7 +56650,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/editor.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/editor.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] editor.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -56661,9 +56661,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-0e764744", Component.options)
+	    hotAPI.createRecord("data-v-145c179a", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-0e764744", Component.options)
+	    hotAPI.reload("data-v-145c179a", Component.options)
 	  }
 	})()}
 
@@ -75232,7 +75232,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-0e764744", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-145c179a", module.exports)
 	  }
 	}
 
@@ -75250,7 +75250,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/topics.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/topics.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -75270,7 +75270,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/topic-detail.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/topic-detail.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -75290,7 +75290,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/channels.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/channels.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -75310,7 +75310,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/channel-detail.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/channel-detail.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -75330,7 +75330,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/contrib/micro/home.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/contrib/micro/home.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports
@@ -75350,7 +75350,7 @@
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.herokuapp.com/app/static_source/vue/contrib/micro/note.vue"
+	Component.options.__file = "/Volumes/USB64GB/Sites/alifewellplayed.com/alifewellplayed.com/app/static_source/vue/contrib/micro/note.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 
 	module.exports = Component.exports

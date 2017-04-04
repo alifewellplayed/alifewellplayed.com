@@ -117,14 +117,16 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
-if DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/static/media/'
-else:
+if ENABLE_S3:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = os.environ.get('LIVE_STATIC_URL', 'https://static.example.com/')
     MEDIA_URL = os.environ.get('LIVE_MEDIA_URL', 'https://static.example.com/media/')
+else:    
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/static/media/'
+
+
 
 #Site Settings
 SITE_NAME = os.environ.get('SITE_NAME', 'A Life Well Played')
@@ -138,7 +140,10 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '123')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '123')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME', 'static.example.com')
 AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_BUCKET_DOMAIN', 'static.example.com')
-AWS_S3_SECURE_URLS = True
+AWS_S3_SECURE_URLS = False
+
+from boto.s3.connection import OrdinaryCallingFormat
+AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
 REST_FRAMEWORK = {
     'PAGINATE_BY': 25, # Default to 25

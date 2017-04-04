@@ -41,4 +41,5 @@ venv
 tests
 test
 bower_components
+staticfiles
 __pycache__

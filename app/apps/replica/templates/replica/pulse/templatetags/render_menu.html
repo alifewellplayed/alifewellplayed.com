@@ -1,0 +1,5 @@
+<ul class="list-unstyled list-menu {{ menu.slug }}">
+    {% for obj in objects %}
+    <li><a href="{{ obj.url }}">{{obj.title}}</a></li>
+    {% endfor %}
+</ul>

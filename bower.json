@@ -43,6 +43,8 @@
     "jquery.scrollbar": "^0.2.11",
     "switchery": "^0.8.2",
     "jquery-ui": "^1.12.1",
-    "bootstrap": "v4.0.0-alpha.6"
+    "bootstrap": "v4.0.0-alpha.6",
+    "fullpage.js": "^2.9.2",
+    "jquery.scrollbar": "^0.2.11"
   }
 }

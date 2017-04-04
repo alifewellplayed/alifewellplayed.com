@@ -7,10 +7,7 @@ from hashlib import md5
 import uuid
 from random import choice
 
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import StringIO, BytesIO
 
 from django.utils.translation import ugettext_lazy as _
 from django.core.files import File
@@ -27,7 +24,7 @@ def create_thumbnail(name, image, content_type, thumb_size_x=250, thumb_size_y=2
         PIL_TYPE = 'png'
         FILE_EXTENSION = 'png'
     copy = image.copy()
-    temp_handle = StringIO()
+    temp_handle = BytesIO()
     copy.thumbnail(THUMBNAIL_SIZE, Image.ANTIALIAS)
     copy.save(temp_handle, PIL_TYPE)
     temp_handle.seek(0)
