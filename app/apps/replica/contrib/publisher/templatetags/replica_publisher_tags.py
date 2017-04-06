@@ -18,3 +18,14 @@ def promoted_image(format_string=None):
         return promoted.image.image.url
     except ObjectDoesNotExist:
         return ''
+
+@register.inclusion_tag('replica/contrib/publisher/templatetags/render_promoted_block.html')
+def render_promoted_heading(format_string=None):
+    try:
+        if format_string:
+            promoted = Promoted.objects.get(slug=format_string)
+        else:
+            promoted = Promoted.objects.latest('pub_date')
+        return { 'obj': promoted }
+    except ObjectDoesNotExist:
+        return ''

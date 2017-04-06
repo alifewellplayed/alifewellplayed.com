@@ -3,13 +3,14 @@
     width: 28%;
     height: 100%;
     z-index: 5;
-    background: #ff0052;
+    background: $brand-primary;
     text-align: center;
     display: table;
     color: #fff;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-right: 1px solid darken($brand-primary, 25%);
 
     .site-header-inner {
         display: table-cell;
@@ -18,11 +19,18 @@
         z-index: 10;
     }
 
-    h1 { display: none; }
+    h1.site-title { display: none; }
+    h6.site-author {
+        letter-spacing: 1px;
+        font-weight: 400;
+        text-shadow: 1px 1px 1px $brand-secondary;
+        span { text-transform: uppercase; }
+    }
 
     .site-nav {
         margin-top: 20px;
         text-align: center;
+        text-shadow: 1px 1px 1px $brand-secondary;
 
         p {
             font-weight: 500;
@@ -35,7 +43,8 @@
         a {
             text-transform: uppercase;
             font-size: 15px;
-            font-weight: 700;
+            //font-weight: 700;
+            letter-spacing: 1px;
             color: #fff;
             &:hover { color: #fff; }
         }
@@ -45,10 +54,10 @@
     &:after {
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=65);
         opacity: 0.65;
-        background-image: -webkit-linear-gradient(bottom left,#8e2b88,#ff0052);
-        background-image: -ms-linear-gradient(bottom left,#8e2b88,#ff0052);
-        background-image: linear-gradient(to top to right,#8e2b88,#ff0052);
-        background-color: #ff0052;
+        background-image: -webkit-linear-gradient(bottom left,$brand-secondary,$brand-primary);
+        background-image: -ms-linear-gradient(bottom left,$brand-secondary,$brand-primary);
+        background-image: linear-gradient(to top to right,$brand-secondary,$brand-primary);
+        background-color: $brand-primary;
         content: '';
         display: block;
         height: 100%;

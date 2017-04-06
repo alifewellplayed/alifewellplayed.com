@@ -1,0 +1,6 @@
+{% if obj %}
+<div class="r-featured-story">
+    <h6><a href="{{obj.entry.get_absolute_url}}">{{obj.title}}</a></h6>
+    {{obj.deck_html|safe}}
+</div>
+{% endif %}

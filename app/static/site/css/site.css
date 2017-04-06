@@ -9437,17 +9437,25 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  border-right: 1px solid #800029; }
   .site-header .site-header-inner {
     display: table-cell;
     vertical-align: middle;
     position: relative;
     z-index: 10; }
-  .site-header h1 {
+  .site-header h1.site-title {
     display: none; }
+  .site-header h6.site-author {
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px #8e2b88; }
+    .site-header h6.site-author span {
+      text-transform: uppercase; }
   .site-header .site-nav {
     margin-top: 20px;
-    text-align: center; }
+    text-align: center;
+    text-shadow: 1px 1px 1px #8e2b88; }
     .site-header .site-nav p {
       font-weight: 500;
       font-size: 16px;
@@ -9457,7 +9465,7 @@ h1, h2, h3, h4, h5, h6 {
     .site-header .site-nav a {
       text-transform: uppercase;
       font-size: 15px;
-      font-weight: 700;
+      letter-spacing: 1px;
       color: #fff; }
       .site-header .site-nav a:hover {
         color: #fff; }
@@ -9475,7 +9483,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     z-index: 1; }
 
-#PulseMarker {
+.PulseMarker {
   text-align: center;
   display: block;
   margin: 0 auto;
@@ -9488,9 +9496,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   opacity: 10; }
-  #PulseMarker a {
+  .PulseMarker a {
     display: block; }
-  #PulseMarker .DotPulse {
+  .PulseMarker .DotPulse {
     content: ' ';
     margin: 0 auto;
     width: 70px;
@@ -9514,7 +9522,7 @@ h1, h2, h3, h4, h5, h6 {
     -moz-animation-timing-function: linear;
     opacity: 0.2;
     border-radius: 100px; }
-  #PulseMarker .DotDot {
+  .PulseMarker .DotDot {
     content: ' ';
     margin: 0 auto;
     width: 20px;
@@ -9527,6 +9535,12 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fff;
     z-index: 50;
     -webkit-transform: translateZ(0); }
+    .PulseMarker .DotDot i {
+      font-size: 11px;
+      position: relative;
+      top: -2px;
+      left: 1px;
+      color: #bfbfbf; }
 
 @keyframes dotPulse {
   0% {
@@ -9677,3 +9691,38 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0; }
   .site-footer a {
     color: #666666; }
+
+.r-featured-story {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  background-color: #ff0052; }
+  .r-featured-story:before {
+    display: block;
+    content: ' ';
+    height: 20px;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    /* For Safari 5.1 to 6.0 */
+    /* For Opera 11.1 to 12.0 */
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(255, 0, 0, 0), #ff0052);
+    /* Standard syntax (must be last) */ }
+  .r-featured-story a {
+    color: #fff; }
+  .r-featured-story h6 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 1px; }
+  .r-featured-story p {
+    margin: 0 0;
+    letter-spacing: 1px;
+    font-size: 14px; }

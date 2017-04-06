@@ -33,7 +33,7 @@ if '/apps' not in ' '.join(sys.path):
 
 DEBUG = True
 ENABLE_CACHE = False
-ENABLE_S3 = True
+ENABLE_S3 = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -121,12 +121,10 @@ if ENABLE_S3:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = os.environ.get('LIVE_STATIC_URL', 'https://static.example.com/')
     MEDIA_URL = os.environ.get('LIVE_MEDIA_URL', 'https://static.example.com/media/')
-else:    
+else:
     STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
     STATIC_URL = '/static/'
     MEDIA_URL = '/static/media/'
-
-
 
 #Site Settings
 SITE_NAME = os.environ.get('SITE_NAME', 'A Life Well Played')

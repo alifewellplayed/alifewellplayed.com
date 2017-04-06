@@ -45,18 +45,17 @@
 <div id="wrap">
 	<header role="masthead" class="site-header" style="background-image: url({% promoted_image %});">
         <div class="site-header-inner fadeRight">
-            <div id="PulseMarker">
-                <a href="{% url 'ReplicaPulse:Index' %}">
-                    <div class="DotPulse"></div>
-                    <div class="DotDot"></div>
-                </a>
-            </div>
+
+            {% include "replica/_includes/_pulsemarker.html" %}
+
 			<h1 id="blog_name" class="site-title" title="{{site_name}}"><a href="{% url 'ReplicaPulse:Index' %}">{{site_name}}</a></h1>
-            <p class="site-author">By Tyler Rilling</p>
+            <h6 class="site-author">By <span>{{site_author}}</span></h6>
 
             <nav class="site-nav">
                 {% render_menu 'primary' %}
             </nav>
+
+            {% render_promoted_heading %}
         </div><!-- header-wrap -->
 	</header>
 
@@ -74,7 +73,7 @@
             </ul>
 
             <p>{{site_name}}, copyright &copy; 2017<Br />
-                Written and produced by <a href="http://underlost.net/">{{SITE_AUTHOR}}</a>.</p>
+                Written and produced by <a href="http://underlost.net/">{{ site_author }}</a>.</p>
         </div>
     </footer>
 </div>

@@ -135,10 +135,11 @@ gulp.task('admin-build-css', function() {
 // Concat All JS into unminified single file
 gulp.task('concat-js', function() {
     return gulp.src([
+        'bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
         'bower_components/jquery.easing/js/jquery.easing.js',
-        'bower_components/PACE/pace.js',
         'app/static_source/js/lib/jquery.appear.js',
+        'bower_components/PACE/pace.js',
         'app/static_source/js/site/site.js',
         'app/static_source/js/coffee/*.*',
     ])

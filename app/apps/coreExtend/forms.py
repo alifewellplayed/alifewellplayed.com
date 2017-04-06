@@ -72,7 +72,7 @@ class UserCreationForm(forms.ModelForm):
     	widget=forms.TextInput(attrs={'type':'text', 'class':'form-control', 'placeholder':'Username',}),
     	max_length=30,
     	regex=r'^[\w-]+$',
-    	error_message = _("Usernames must contain only letters, numbers and underscores.")
+    	help_text = _("Usernames must contain only letters, numbers and underscores.")
     )
     password = forms.CharField(
     	label=_("Password"),
