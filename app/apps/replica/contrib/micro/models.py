@@ -22,6 +22,8 @@ class Timeline(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
+    deck = models.TextField(_('deck'), blank=True)
+    deck_html = models.TextField(blank=True)
     is_public = models.BooleanField(help_text=_("Should be checked you want anyone to see"), default=True)
     rev_order = models.BooleanField(help_text=_("Reverse order of list displayed? (Newest on top)"), default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='timelines')
@@ -49,8 +51,8 @@ class Timeline(models.Model):
         return item_counts
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        self.slug = slugify(self.name)
+        self.deck_html = markdown.markdown(self.deck)
         super(Timeline, self).save(*args, **kwargs)
 
 class Note(models.Model):

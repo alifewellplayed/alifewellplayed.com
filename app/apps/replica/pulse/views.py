@@ -34,7 +34,7 @@ def EntryDetail(request, year, month, slug):
     else:
         template = ['replica/error.html', '404.html',]
     variables = {'object': entry, 'detailed': True,}
-    return render(template, variables)
+    return render(request, template, variables)
 
 #Entries for topic
 class EntriesForTopic(ListView):
@@ -71,7 +71,6 @@ def TopicEntry(request, topic_slug, guid):
 
 @cache_page(60 * 15)
 def EntryPage(request, url):
-    queryset = Entry.objects.pages()
     if not url.startswith('/'):
         url = '/' + url
     try:
@@ -88,4 +87,4 @@ def EntryPage(request, url):
             raise
     template = 'replica/pulse/entry_page.html'
     variables = {'object': page, 'detailed': True,}
-    return render(template, variables)
+    return render(request, template, variables)

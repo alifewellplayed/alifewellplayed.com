@@ -1,0 +1,62 @@
+.replicaMicro {
+
+    .timelines {
+        .datetime {
+            margin: 20px 0;
+        }
+        .timeline {
+            padding-bottom: 10px;
+            border-bottom: 1px solid darken($body-bg, 15%);
+            margin-bottom: 10px;
+            h4 {
+                margin-bottom: 0;
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+            p {
+                margin: 0;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .last-posted {
+        font: 14px/19px $font-family-sans-serif;
+        font-weight: 500;
+        color: $blue;
+        background-color: #202020;
+        padding: 8px $grid-gutter-width;
+        display: inline-block;
+    }
+
+    .note {
+        transition: all .3s, color .3s;
+        padding: 10px $grid-gutter-width;
+        .note-body p:last-child {margin-bottom: 0;}
+        .date, .manage-notes {color: #525252; font-size: 13px; line-height: 15px;}
+        .manage-notes a {color: #525252;}
+    }
+
+
+    .note + .last-posted {margin-top: $grid-gutter-width;}
+
+
+    #add_blip_form {
+        padding: 10px $grid-gutter-width;
+    }
+
+    textarea.form-control {
+        border-color: darken($text-color, 40%);
+        color: lighten($text-color, 20%);
+        margin-bottom: 10px;
+    }
+
+    .blip-form {
+        margin-left: $grid-gutter-width;
+    }
+
+    input[type="text"] {
+        border-color: darken($text-color, 40%);
+        color: lighten($text-color, 20%);
+    }
+}

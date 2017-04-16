@@ -17,6 +17,7 @@
         vertical-align: middle;
         position: relative;
         z-index: 10;
+        padding-bottom: 150px;
     }
 
     h1.site-title { display: none; }
@@ -31,11 +32,11 @@
         margin-top: 20px;
         text-align: center;
         text-shadow: 1px 1px 1px $brand-secondary;
+        font-family: $font-family-sans-serif-header;
 
         p {
             font-weight: 500;
             font-size: 16px;
-            font-family: $font-family-serif;
             margin-bottom: 20px;
             color: #f2f2f2;
         }

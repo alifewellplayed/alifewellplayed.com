@@ -1,0 +1,52 @@
+.site-content-header {
+    svg text {
+        font-size: 19px;
+        fill: #3c3c3c;
+        font-family: $font-family-sans-serif-header;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 100;
+    }
+    .text:nth-child(5n+2) {
+        stroke: #fff;
+        animation-delay: -3.2s;
+    }
+    .text:nth-child(5n+3) {
+        stroke: $brand-primary;
+        animation-delay: -4.8s;
+    }
+    .text:nth-child(5n+4) {
+        stroke: $green;
+        animation-delay: -6.4s;
+    }
+    .text:nth-child(5n+5) {
+        stroke: #fff;
+        animation-delay: -8s;
+    }
+    .text:nth-child(5n+1) {
+        stroke: $brand-secondary;
+        animation-delay: -1.6s;
+    }
+
+    .text {
+        fill: none;
+        font-size: 30px;
+        stroke-width: 1;
+        stroke-linejoin: round;
+        stroke-dasharray: 70 340;
+        stroke-dashoffset: 0;
+        animation: stroke 8s infinite linear;
+    }
+
+    @keyframes stroke {
+        to{ stroke-dashoffset:-410 }
+    }
+
+    .site-author {
+        letter-spacing: 1px;
+        font-weight: normal;
+        font-size: 13px;
+        color: darken($body-bg, 50%);
+        span { text-transform: uppercase; }
+    }
+}

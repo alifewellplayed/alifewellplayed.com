@@ -43,35 +43,46 @@
 
 <body class="{% block page %}{% endblock %}">
 <div id="wrap">
+    <div class="pulse-header">
+        {% include "replica/_includes/_pulsemarker.html" %}
+    </div>
 	<header role="masthead" class="site-header" style="background-image: url({% promoted_image %});">
         <div class="site-header-inner fadeRight">
 
-            {% include "replica/_includes/_pulsemarker.html" %}
-
-			<h1 id="blog_name" class="site-title" title="{{site_name}}"><a href="{% url 'ReplicaPulse:Index' %}">{{site_name}}</a></h1>
-            <h6 class="site-author">By <span>{{site_author}}</span></h6>
+            <h1 id="blog_name" class="site-title sr-only" title="{{site_name}}"><a href="{% url 'ReplicaPulse:Index' %}">{{site_name}}</a></h1>
+            <h6 class="site-author sr-only">By {{site_author}}</h6>
 
             <nav class="site-nav">
                 {% render_menu 'primary' %}
             </nav>
-
             {% render_promoted_heading %}
         </div><!-- header-wrap -->
 	</header>
 
     <section id="river" class="site-content">
         <div id="content" class="fadeIn">
+            <header class="site-content-header layout-single-column">
+                <svg viewBox="0 0 500 20">
+                    <symbol id="s-text">
+                    <text text-anchor="left" x="0" y="50%" dy=".35em">{{site_name}}</text>
+                    </symbol>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+                </svg>
+                <h6 class="site-author">By <span>{{site_author}}</span></h6>
+            </header>
             {% block content %}{% endblock %}
         </div>
     </section>
 
-    <footer id="bottom" class="layout-single-column site-footer" role="footer">
+    <footer id="bottom" class="site-footer" role="footer">
         <div class="layout-single-column">
-            <ul class="list-inline sr-only">
-                <li><a href="{% url 'ReplicaPulse:Index' %}">Home</a></li>
-                <li><a href="{% url 'ReplicaPulse:KitchenSink-RSS' %}">RSS Feed</a></li>
-            </ul>
-
+            <nav class="footer-links sr-only">
+                {% render_menu 'footer' %}
+            </nav>
             <p>{{site_name}}, copyright &copy; 2017<Br />
                 Written and produced by <a href="http://underlost.net/">{{ site_author }}</a>.</p>
         </div>

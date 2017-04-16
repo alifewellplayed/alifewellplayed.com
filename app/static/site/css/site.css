@@ -2878,7 +2878,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -3036,7 +3036,7 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "futura-pt", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
@@ -4194,9 +4194,6 @@ pre {
     border-color: #ff80a9;
     outline: none; }
   .form-control::-webkit-input-placeholder {
-    color: #636c72;
-    opacity: 1; }
-  .form-control::-moz-placeholder {
     color: #636c72;
     opacity: 1; }
   .form-control:-ms-input-placeholder {
@@ -6474,7 +6471,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6556,7 +6553,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -9398,7 +9395,7 @@ ordered & tabbed in a way that represents the nesting of the generated HTML.
   -ms-user-select: none;
   user-select: none; }
   .pace .pace-progress {
-    background: #84a90e;
+    background: #ff0052;
     position: fixed;
     z-index: 2000;
     top: 0;
@@ -9426,6 +9423,55 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 40px 75px;
   position: relative; }
 
+.site-content-header svg text {
+  font-size: 19px;
+  fill: #3c3c3c;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 100; }
+
+.site-content-header .text:nth-child(5n+2) {
+  stroke: #fff;
+  animation-delay: -3.2s; }
+
+.site-content-header .text:nth-child(5n+3) {
+  stroke: #ff0052;
+  animation-delay: -4.8s; }
+
+.site-content-header .text:nth-child(5n+4) {
+  stroke: #84a90e;
+  animation-delay: -6.4s; }
+
+.site-content-header .text:nth-child(5n+5) {
+  stroke: #fff;
+  animation-delay: -8s; }
+
+.site-content-header .text:nth-child(5n+1) {
+  stroke: #8e2b88;
+  animation-delay: -1.6s; }
+
+.site-content-header .text {
+  fill: none;
+  font-size: 30px;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 340;
+  stroke-dashoffset: 0;
+  animation: stroke 8s infinite linear; }
+
+@keyframes stroke {
+  to {
+    stroke-dashoffset: -410; } }
+
+.site-content-header .site-author {
+  letter-spacing: 1px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #6f6f5b; }
+  .site-content-header .site-author span {
+    text-transform: uppercase; }
+
 .site-header {
   position: fixed;
   width: 28%;
@@ -9443,7 +9489,8 @@ h1, h2, h3, h4, h5, h6 {
     display: table-cell;
     vertical-align: middle;
     position: relative;
-    z-index: 10; }
+    z-index: 10;
+    padding-bottom: 150px; }
   .site-header h1.site-title {
     display: none; }
   .site-header h6.site-author {
@@ -9455,11 +9502,11 @@ h1, h2, h3, h4, h5, h6 {
   .site-header .site-nav {
     margin-top: 20px;
     text-align: center;
-    text-shadow: 1px 1px 1px #8e2b88; }
+    text-shadow: 1px 1px 1px #8e2b88;
+    font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     .site-header .site-nav p {
       font-weight: 500;
       font-size: 16px;
-      font-family: Georgia, "Times New Roman", Times, serif;
       margin-bottom: 20px;
       color: #f2f2f2; }
     .site-header .site-nav a {
@@ -9536,11 +9583,11 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 50;
     -webkit-transform: translateZ(0); }
     .PulseMarker .DotDot i {
-      font-size: 11px;
+      font-size: 10px;
       position: relative;
-      top: -2px;
-      left: 1px;
-      color: #bfbfbf; }
+      top: -3px;
+      left: 0px;
+      color: #e7e7e2; }
 
 @keyframes dotPulse {
   0% {
@@ -9559,6 +9606,13 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     border: 10px solid #ffffff;
     -webkit-transform: scale(1); } }
+
+.pulse-header {
+  position: fixed;
+  right: 20px;
+  top: 35px; }
+  .pulse-header .DotPulse, .pulse-header .DotDot {
+    background-color: #3c3c3c; }
 
 .blue {
   color: #0086bf;
@@ -9607,10 +9661,9 @@ h1, h2, h3, h4, h5, h6 {
   backface-visibility: visible;
   position: relative;
   z-index: 10;
-  padding-top: 80px;
+  padding-top: 60px;
   margin-left: 28%; }
   .site-content .datetime {
-    margin-left: 40px;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -9620,62 +9673,63 @@ h1, h2, h3, h4, h5, h6 {
   transition: all .3s, color .3s; }
 
 .entry a:hover {
-  text-shadow: 0 0 4px #b30039; }
+  text-shadow: 0 0 1px #b30039; }
 
 .entry .entry-head h2 {
-  font-size: 19px;
+  font: 21px/31px "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1px;
-  font-weight: 300; }
+  font-weight: 100; }
   .entry .entry-head h2 a:hover {
     color: #800029;
-    text-shadow: 0 0 4px #ff1a63; }
+    text-shadow: 0 0 1px #ff1a63; }
 
 .entry .entry-head h3 {
-  font: 15px/27px "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 13px/27px "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase; }
   .entry .entry-head h3 a {
     padding-bottom: 4px;
     border-bottom: 1px dotted #b30039; }
   .entry .entry-head h3 a:hover {
-    border-color: #b30039; }
+    border-color: #b30039;
+    text-shadow: none; }
 
 .entry .entry-head .glyph {
   color: #660021;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-width: 0; }
-
-.entry .entry-head .glyph:hover {
-  color: #f2f2f2; }
+  .entry .entry-head .glyph:hover {
+    color: #b30039;
+    text-shadow: none; }
 
 .entry .entry-body {
   margin-bottom: 20px; }
   .entry .entry-body h3 {
     font-weight: 100;
-    color: #999999; }
+    color: #a2a2a2; }
   .entry .entry-body p.lead {
-    font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
   .entry .entry-body a {
-    color: #666666; }
+    color: #6f6f6f; }
   .entry .entry-body a:hover {
-    color: #999999; }
+    color: #a2a2a2; }
   .entry .entry-body blockquote {
     font-weight: 100;
     border-color: black;
     padding: 0 0 0 15px;
     font-size: 1rem;
-    color: #0d0d0d; }
+    color: #161616; }
 
 .entry .entry-footer .entry-topics {
   position: relative;
   padding-top: 5px;
-  color: black;
+  color: #090909;
   font-size: 90%;
   text-transform: uppercase; }
   .entry .entry-footer .entry-topics a {
-    color: black; }
+    color: #090909; }
   .entry .entry-footer .entry-topics a:hover {
-    color: #262626;
+    color: #2f2f2f;
     text-shadow: none; }
   .entry .entry-footer .entry-topics:before {
     content: ' ';
@@ -9685,19 +9739,25 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #ff0052;
     margin-bottom: 5px; }
 
+.entries-archived {
+  margin: 0 0 40px; }
+  .entries-archived .datetime {
+    padding-top: 20px; }
+
 .site-footer {
+  position: relative;
   margin-left: 28%;
   font-size: 85%;
   padding: 0 0; }
   .site-footer a {
-    color: #666666; }
+    color: #6f6f6f; }
 
 .r-featured-story {
   position: absolute;
   bottom: 0px;
   left: 0px;
   width: 100%;
-  padding: 20px;
+  padding: 30px 20px;
   text-align: left;
   background-color: #ff0052; }
   .r-featured-story:before {
@@ -9721,8 +9781,63 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     margin: 0;
     font-size: 14px;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    font-weight: bold; }
   .r-featured-story p {
     margin: 0 0;
     letter-spacing: 1px;
-    font-size: 14px; }
+    font-size: 14px;
+    font-weight: lighter; }
+
+.replicaMicro .timelines .datetime {
+  margin: 20px 0; }
+
+.replicaMicro .timelines .timeline {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c4c4b8;
+  margin-bottom: 10px; }
+  .replicaMicro .timelines .timeline h4 {
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 1px; }
+  .replicaMicro .timelines .timeline p {
+    margin: 0;
+    letter-spacing: 1px; }
+
+.replicaMicro .last-posted {
+  font: 14px/19px "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  color: #0086bf;
+  background-color: #202020;
+  padding: 8px 0;
+  display: inline-block; }
+
+.replicaMicro .note {
+  transition: all .3s, color .3s;
+  padding: 10px 0; }
+  .replicaMicro .note .note-body p:last-child {
+    margin-bottom: 0; }
+  .replicaMicro .note .date, .replicaMicro .note .manage-notes {
+    color: #525252;
+    font-size: 13px;
+    line-height: 15px; }
+  .replicaMicro .note .manage-notes a {
+    color: #525252; }
+
+.replicaMicro .note + .last-posted {
+  margin-top: 0; }
+
+.replicaMicro #add_blip_form {
+  padding: 10px 0; }
+
+.replicaMicro textarea.form-control {
+  border-color: black;
+  color: #6f6f6f;
+  margin-bottom: 10px; }
+
+.replicaMicro .blip-form {
+  margin-left: 0; }
+
+.replicaMicro input[type="text"] {
+  border-color: black;
+  color: #6f6f6f; }

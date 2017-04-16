@@ -48,11 +48,11 @@
         z-index: 50;
         -webkit-transform: translateZ(0);
         i {
-            font-size: 11px;
+            font-size: 10px;
             position: relative;
-            top: -2px;
-            left: 1px;
-            color: darken(#fff, 25%);
+            top: -3px;
+            left: 0px;
+            color: $body-bg;
         }
     }
 }
@@ -119,5 +119,15 @@
     0% {
         -moz-transform: scale(0);
         opacity: 0;
+    }
+}
+
+.pulse-header {
+    position: fixed;
+    right: 20px;
+    top: 35px;
+
+    .DotPulse, .DotDot {
+        background-color: $text-color;
     }
 }

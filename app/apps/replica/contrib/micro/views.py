@@ -14,10 +14,10 @@ from .forms import TimelineModelForm, NoteModelForm
 
 class TimelinesListView(ListView):
 	paginate_by = 25
-	template_name = 'replica/contrib/note/timeline_list.html'
+	template_name = 'replica/contrib/micro/timeline_list.html'
 
 	def get_queryset(self):
-		return Timeline.objects.order_by('-pub_date')
+		return Timeline.objects.order_by('-date_updated')
 
 	def get_context_data(self, **kwargs):
 		context = super(TimelinesListView, self).get_context_data(**kwargs)
@@ -26,7 +26,7 @@ class TimelinesListView(ListView):
 
 class NoteListView(ListView):
 	paginate_by = 100
-	template_name = 'replica/contrib/note/note_list.html'
+	template_name = 'replica/contrib/micro/note_list.html'
 
 	def get_queryset(self):
 		self.timeline = get_object_or_404(Timeline, slug=self.kwargs.pop('timeline_slug'))
@@ -35,9 +35,9 @@ class NoteListView(ListView):
 		else:
 			b = Note.objects.filter(timeline=self.timeline, is_private=False)
 		if self.timeline.rev_order == True:
-			return b.order_by('-pub_date')
+			return b.order_by('-date_updated')
 		else:
-			return b.order_by('pub_date')
+			return b.order_by('date_updated')
 
 	def get_context_data(self, **kwargs):
 		context = super(NoteListView, self).get_context_data(**kwargs)
@@ -46,7 +46,7 @@ class NoteListView(ListView):
 
 class LatestNoteListView(ListView):
 	paginate_by = 100
-	template_name = 'replica/contrib/note/note_list.html'
+	template_name = 'replica/contrib/micro/note_list.html'
 
 	def get_queryset(self):
 		if self.request.user.is_staff:
@@ -62,7 +62,7 @@ def SingleNote(request, note_id):
 	#Shows a single note.
 	note = get_object_or_404(Note, pk=note_id)
 	ctx = {'note': note}
-	return render(request, 'replica/contrib/note/note.html', ctx)
+	return render(request, 'replica/contrib/micro/note.html', ctx)
 
 
 @login_required
@@ -75,10 +75,10 @@ def AddNote(request, timeline_slug):
 		f.save()
 		messages.add_message(
 			request, messages.INFO, 'Note Added.')
-		return redirect('Notes:Add', timeline_slug=timeline_slug)
+		return redirect('ReplicaMicro:Add', timeline_slug=timeline_slug)
 
 	ctx = {'form': f, 'timeline': ft, 'adding': True}
-	return render(request, 'replica/contrib/note/edit-note.html', ctx)
+	return render(request, 'replica/contrib/micro/edit-note.html', ctx)
 
 @login_required
 def AddTimeline(request):
@@ -89,10 +89,10 @@ def AddTimeline(request):
 		f.save()
 		messages.add_message(
 			request, messages.INFO, 'New list created.')
-		return redirect('Notes:Timelines')
+		return redirect('ReplicaMicro:Timelines')
 
 	ctx = {'form': f, 'adding': True}
-	return render(request, 'replica/contrib/note/edit-timeline.html', ctx)
+	return render(request, 'replica/contrib/micro/edit-timeline.html', ctx)
 
 @login_required
 def EditTimeline(request, timeline_slug):
@@ -101,9 +101,9 @@ def EditTimeline(request, timeline_slug):
 	f = TimelineModelForm(request.POST or None, instance=timeline)
 	if f.is_valid():
 		f.save()
-		return redirect('Notes:Timeline', timeline_slug=timeline_slug)
+		return redirect('ReplicaMicro:Timeline', timeline_slug=timeline_slug)
 	ctx = {'form': f, 'timeline': timeline, 'adding': False}
-	return render(request, 'replica/contrib/note/edit-timeline.html', ctx)
+	return render(request, 'replica/contrib/micro/edit-timeline.html', ctx)
 
 @login_required
 def EditNote(request, note_id):
@@ -112,10 +112,10 @@ def EditNote(request, note_id):
 	f = NoteModelForm(request.POST or None, instance=note)
 	if f.is_valid():
 		f.save()
-		return redirect('Notes:Timeline', timeline_slug=timeline_slug)
+		return redirect('ReplicaMicro:Timeline', timeline_slug=timeline_slug)
 
 	ctx = {'form': f, 'note': note, 'adding': False}
-	return render(request, 'replica/contrib/note/edit-note.html', ctx)
+	return render(request, 'replica/contrib/micro/edit-note.html', ctx)
 
 @login_required
 def DeleteNote(request, note_id):
@@ -124,5 +124,5 @@ def DeleteNote(request, note_id):
 	note = get_object_or_404(Note, pk=note_id, user=request.user)
 	if request.method == 'POST':
 		note.delete()
-		return redirect('Notes:Timelines')
-	return render(request, 'replica/contrib/note/delete-confirm.html', {'note': note})
+		return redirect('ReplicaMicro:Timelines')
+	return render(request, 'replica/contrib/micro/delete-confirm.html', {'note': note})

@@ -5,7 +5,6 @@
 
 {% block content %}
 <section id="blip" class="layout-single-column">
-	{% if user.is_authenticated %}<a href="{% url 'Micro:Add' %}" class="btn btn-info" id="quickpost"><i class="icon-edit icon-white"></i></a>{% endif %}
 	<h3 class="header">{{ entry.user }} wrote...</h3>
 
 	<div class="blip">

@@ -27,10 +27,7 @@ urlpatterns = [
     url(r'^topics/(?P<topic_slug>[\w-]+)/$', views.EntriesForTopic.as_view(), name = "EntriesByTopic"),
     url(r'^topics/(?P<topic_slug>[\w-]+)/(?P<guid>[\w-]+)/$', views.TopicEntry, name = "TopicEntry"),
 
-    #Micro
-    url(r'^notes/', include('replica.contrib.micro.urls', namespace='Micro')),
-
     #Pages
-    #url(r'^(?P<url>.*)$', views.EntryPage, name='Page'),
+    url(r'^(?P<url>.*/)$', views.EntryPage, name='Page'),
 
 ]

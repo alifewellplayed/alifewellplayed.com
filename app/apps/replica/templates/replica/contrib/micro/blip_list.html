@@ -13,7 +13,7 @@
 	<div class="blip-body">{{ object.body_html|safe }}</div>
 	{% if user.is_authenticated %}
 	<div class="manage-blips pull-right">
-		<a href="{% url 'Micro:Edit' object.id %}">Edit</a> | <a href="{% url 'Micro:Delete' object.id %}">Delete</a>
+		<a href="{% url 'ReplicaMicro:Edit' object.id %}">Edit</a> | <a href="{% url 'ReplicaMicro:Delete' object.id %}">Delete</a>
 	</div>
 	{% endif %}
 	<span class="date"><i class="fa fa-clock-o"></i> <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>

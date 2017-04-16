@@ -27,7 +27,7 @@ def register(request):
     else:
         form = UserCreationForm()
 
-    return render('coreExtend/register.html', {'form': form})
+    return render(request, 'coreExtend/register.html', {'form': form})
 
 @login_required
 def logout_user(request):

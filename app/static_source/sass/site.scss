@@ -7,15 +7,19 @@
 // Site
 @import 'site/colorbox';
 @import 'site/pace';
+
 @import 'site/layout';
+@import 'site/logo';
 @import 'site/header';
 @import 'site/pulse';
 @import 'site/content';
 @import 'site/entry';
+@import 'site/archive';
 @import 'site/footer';
 
 // Contrib
 @import 'site/contrib/publisher';
+@import 'site/contrib/micro';
 //@import 'site/zine';
 
 @import 'site/mobile';

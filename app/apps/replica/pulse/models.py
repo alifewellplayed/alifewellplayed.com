@@ -222,7 +222,7 @@ class Entry(models.Model):
 
     def get_absolute_url(self):
         if self.channel.slug == 'page':
-            return iri_to_uri(get_script_prefix().rstrip('/') + self.channel.slug)
+            return iri_to_uri(get_script_prefix().rstrip('/') + self.url)
         else:
             return "/%s/%s/" % (self.pub_date.strftime("%Y/%m").lower(), self.slug)
 
@@ -358,21 +358,21 @@ class MenuItem(models.Model):
         db_table = 'r_MenuItem'
         verbose_name = "Menu Item"
         verbose_name_plural = 'Menu Items'
-        ordering = ('-weight',)
+        ordering = ('weight',)
+
+    def menu_url(self):
+        if self.page:
+            return self.page.get_absolute_url()
+        elif self.url:
+            return self.url
+        else:
+            return '#'
 
     def __unicode__(self):
         return "%s" % (self.title,)
 
     def __str__(self):
         return self.title
-
-    def menu_url(self):
-        if self.page:
-            return self.page.get_absolute_url
-        elif self.url:
-            return self.url
-        else:
-            return '#'
 
     def save(self, *args, **kwargs):
         super(MenuItem, self).save(*args, **kwargs)

@@ -175,6 +175,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
+                'django.template.context_processors.request',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             	'coreExtend.context_processors.template_settings',
@@ -237,7 +238,7 @@ INSTALLED_APPS = (
     'replica.pulse',
     'replica.api',
     'replica.contrib.micro',
-    'replica.contrib.shorturl',
+    'replica.contrib.redirection',
     'replica.contrib.publisher',
 )
 

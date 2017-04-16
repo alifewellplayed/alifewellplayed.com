@@ -31,6 +31,8 @@ urlpatterns = [
 
     # Apps
     url(r'^replica/', include('replica.cms.urls', namespace='ReplicaAdmin')),
+    url(r'^r/', include('replica.contrib.redirection.urls', namespace='ReplicaRedirection')),
+    url(r'^notes/', include('replica.contrib.micro.urls', namespace='ReplicaMicro')),
     url(r'^', include('coreExtend.urls', namespace='CoreExtend')),
     url(r'^', include('replica.pulse.urls', namespace='ReplicaPulse')),
 

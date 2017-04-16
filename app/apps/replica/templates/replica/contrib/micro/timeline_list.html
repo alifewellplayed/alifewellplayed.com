@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load humanize %}{% load micro_tags %}
 
-{% block title %}Blips | {% endblock %}
-{% block page %}page blippy{% endblock %}
+{% block title %}Notes | {% endblock %}
+{% block page %}page replicaMicro{% endblock %}
 
 {% block content %}
 <div id="blips" class="page layout-single-column">
@@ -9,20 +9,16 @@
 
 	<div class="timelines">
 	{% for object in object_list %}
-		{% ifchanged object.pub_date.month %}
-		<div class="datetime">{{ object.pub_date|date:"F Y" }}</div>
+		{% ifchanged object.date_updated.month %}
+		<div class="datetime">{{ object.date_updated|date:"F Y" }}</div>
 		{% endifchanged %}
 
-		<p id="{{ object.slug }}" class="timeline">
-			<a class="timeline-url" href="{% url 'Micro:Timeline' object.slug %}">{{ object.name|safe }}</a>
-			<small>{{ object.pub_date|date:"l, F j, Y" }}</small>
-			{% if user.is_authenticated %}<a class="add-more" href="{% url 'Micro:Add' object.slug %}">&raquo;</a>{% endif %}
-		</p>
+		<div id="{{ object.slug }}" class="timeline">
+			<h4><a class="timeline-url" href="{% url 'ReplicaMicro:Timeline' object.slug %}">{{ object.name|safe }}</a></h4>
+            {{object.deck_html|safe }}
+			<small class="sr-only">{{ object.date_updated|date:"l, F j, Y" }}</small>
+		</div>
 	{% endfor %}
 	</div>
-
-	{% if user.is_authenticated %}
-	<div id="new-timeline"><a href="{% url 'Micro:NewTimeline' %}">Add a new Event?</a></div>
-	{% endif %}
 </div>
 {% endblock %}

@@ -1,30 +1,36 @@
 
 .entry {
     a {transition: all .3s, color .3s;}
-    a:hover {text-shadow: 0 0 4px $link-hover-color;}
+    a:hover {text-shadow: 0 0 1px $link-hover-color;}
 
     .entry-head {
         h2 {
-            font-size: 19px;
+            font: 21px/31px $font-family-sans-serif-header;
             letter-spacing: 1px;
-            font-weight: 300;
+            font-weight: 100;
             //a {border-bottom: 1px dotted; }
-            a:hover {color: darken($link-color, 25%); text-shadow: 0 0 4px lighten($link-color, 5%) }
+            a:hover {color: darken($link-color, 25%); text-shadow: 0 0 1px lighten($link-color, 5%) }
         }
         h3 {
-            font: 15px/27px $font-family-sans-serif;
+            font: 13px/27px $font-family-sans-serif;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             a {padding-bottom: 4px; border-bottom: 1px dotted $link-hover-color;}
-            a:hover {border-color: $link-hover-color;}
+            a:hover {
+                border-color: $link-hover-color;
+                text-shadow: none;
+            }
         }
 
         .glyph {
             color: darken($link-color, 30%);
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
             border-width: 0;
+            &:hover {
+                color: $link-hover-color;
+                text-shadow: none;
+            }
         }
-        .glyph:hover {color: #f2f2f2;}
     }
 
     .entry-body {

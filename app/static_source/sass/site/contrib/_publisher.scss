@@ -3,7 +3,7 @@
     bottom: 0px;
     left: 0px;
     width: 100%;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: left;
     background-color: $brand-primary;
 
@@ -29,10 +29,12 @@
         margin: 0;
         font-size: 14px;
         letter-spacing: 1px;
+        font-weight: bold;
     }
     p {
         margin: 0 0;
         letter-spacing: 1px;
         font-size: 14px;
+        font-weight: lighter;
     }
 }

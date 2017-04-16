@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% load core_tags %}
 
-{% block title %}{{ object.title|escape }} | {% endblock %}
-{% block page %}news {{ object.post_type|safe }} {{ object.slug|safe }} detail{% endblock %}
+{% block title %}{{ object.title|escape }} {% endblock %}
+{% block page %}replica {{ object.post_type|safe }} {{ object.slug|safe }} detail{% endblock %}
 
 {% block content %}
 	{% include "replica/_includes/_datetime.html" %}

@@ -53,7 +53,7 @@ class MenuPositionAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'date_updated')
 
 class MenuItemAdmin(admin.ModelAdmin):
-    list_display = ('title', 'url', 'position', 'weight')
+    list_display = ('title', 'menu_url', 'position', 'weight')
     list_filter = ('position',)
 
 admin.site.register(EntryLink, EntryLinkAdmin)
