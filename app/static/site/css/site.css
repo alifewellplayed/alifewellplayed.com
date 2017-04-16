@@ -9805,16 +9805,15 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px; }
 
 .replicaMicro .last-posted {
-  font: 14px/19px "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
-  color: #0086bf;
-  background-color: #202020;
-  padding: 8px 0;
-  display: inline-block; }
+  padding: 8px 0; }
 
 .replicaMicro .note {
   transition: all .3s, color .3s;
-  padding: 10px 0; }
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c4c4b8;
+  margin-bottom: 20px; }
+  .replicaMicro .note h4 {
+    font-size: 19px; }
   .replicaMicro .note .note-body p:last-child {
     margin-bottom: 0; }
   .replicaMicro .note .date, .replicaMicro .note .manage-notes {

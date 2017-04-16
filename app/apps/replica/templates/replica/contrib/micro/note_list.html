@@ -1,22 +1,17 @@
 {% extends "base.html" %}{% load humanize %}{% load micro_tags %}
 
-{% block title %}Blips | {% endblock %}
-{% block page %}page blippy{% endblock %}
+{% block title %}Notes | {% endblock %}
+{% block page %}page replicaMicro{% endblock %}
 
 {% block content %}{% load humanize %}{% load micro_tags %}
 <section id="blips" class="page layout-single-column">
 <h2 class="heading">{{ timeline.name }}</h2>
 
 {% for object in object_list %}
-{% ifchanged object.pub_date.day %}<p class="last-posted">{% if forloop.first %}Last posted {% endif %}{{ object.pub_date|date:"l, F j, Y" }}.</p>{% endifchanged %}
-<div class="blip" id="blip-{{ object.id }}">
+{% ifchanged object.pub_date.day %}<p class="datetime last-posted">{% if forloop.first %}Last updated {% endif %}{{ object.pub_date|date:"l, F j, Y" }}.</p><hr />{% endifchanged %}
+<div class="note" id="note-{{ object.id }}">
 	<div class="blip-body">{{ object.body_html|safe }}</div>
-	{% if user.is_authenticated %}
-	<div class="manage-blips pull-right">
-		<a href="{% url 'ReplicaMicro:Edit' object.id %}">Edit</a> | <a href="{% url 'ReplicaMicro:Delete' object.id %}">Delete</a>
-	</div>
-	{% endif %}
-	<span class="date"><i class="fa fa-clock-o"></i> <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
+	<span class="date"><i class="fa fa-clock-o"></i> Posted: <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
 </div>
 {% endfor %}
 
