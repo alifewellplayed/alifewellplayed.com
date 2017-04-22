@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Timeline, Note
 
 class NoteAdmin(admin.ModelAdmin):
-    list_display = ("timeline", "pub_date", "is_private")
+    list_display = ("id", "timeline", "pub_date", "is_private")
     list_filter = ('timeline', 'user',)
     exclude = ('body_html',)
     list_per_page = 500
