@@ -82,7 +82,7 @@ def AddNote(request, timeline_slug):
 
 @login_required
 def AddTimeline(request):
-	#add a timeline.
+	#New a timeline.
 	instance = Timeline(user=request.user)
 	f = TimelineModelForm(request.POST or None, instance=instance)
 	if f.is_valid():

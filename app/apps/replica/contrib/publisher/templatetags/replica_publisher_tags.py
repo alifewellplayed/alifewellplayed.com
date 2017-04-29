@@ -29,3 +29,9 @@ def render_promoted_heading(format_string=None):
         return { 'obj': promoted }
     except ObjectDoesNotExist:
         return ''
+
+@register.inclusion_tag('replica/contrib/publisher/templatetags/render_collections.html')
+def render_collections(num=255):
+    request = context['request']
+    collections = Collection.objects.order_by('-pub_date')[:num]
+    return { 'object_list': collections, }

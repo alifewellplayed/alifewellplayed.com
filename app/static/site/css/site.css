@@ -9438,11 +9438,11 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: -4.8s; }
 
 .site-content-header .text:nth-child(5n+4) {
-  stroke: #d167cb;
+  stroke: #531950;
   animation-delay: -6.4s; }
 
 .site-content-header .text:nth-child(5n+5) {
-  stroke: #ff80a9;
+  stroke: #b30039;
   animation-delay: -8s; }
 
 .site-content-header .text:nth-child(5n+1) {
