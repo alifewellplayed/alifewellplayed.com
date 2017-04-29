@@ -171,7 +171,6 @@ gulp.task('admin-concat-js', function() {
         //'bower_components/jquery.actual/jquery.actual.min.js',
         //'app/static_source/js/admin/jquery-easy.js',
         //'bower_components/switchery/dist/switchery.js',
-        //'bower_components/classie/classie.js',
         //'bower_components/metrojs/release/MetroJs.Full/MetroJs.min.js',
         'app/static_source/js/admin/jquery.appear.js',
         //'app/static_source/js/admin/pages.js',
