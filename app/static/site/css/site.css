@@ -5878,9 +5878,7 @@ tbody.collapse.show {
 
 @media (min-width: 576px) {
   .card-columns {
-    -moz-column-count: 3;
     column-count: 3;
-    -moz-column-gap: 1.25rem;
     column-gap: 1.25rem; }
     .card-columns .card {
       display: inline-block;
@@ -9440,11 +9438,11 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: -4.8s; }
 
 .site-content-header .text:nth-child(5n+4) {
-  stroke: #84a90e;
+  stroke: #d167cb;
   animation-delay: -6.4s; }
 
 .site-content-header .text:nth-child(5n+5) {
-  stroke: #fff;
+  stroke: #ff80a9;
   animation-delay: -8s; }
 
 .site-content-header .text:nth-child(5n+1) {

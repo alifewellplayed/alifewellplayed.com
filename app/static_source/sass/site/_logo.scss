@@ -16,11 +16,11 @@
         animation-delay: -4.8s;
     }
     .text:nth-child(5n+4) {
-        stroke: $green;
+        stroke: lighten($brand-secondary, 25%);
         animation-delay: -6.4s;
     }
     .text:nth-child(5n+5) {
-        stroke: #fff;
+        stroke: lighten($brand-primary, 25%);
         animation-delay: -8s;
     }
     .text:nth-child(5n+1) {

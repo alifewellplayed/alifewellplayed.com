@@ -28,14 +28,13 @@ pulse_api = [
 ]
 
 micro_api = [
-    url(r'^timelines/(?P<slug>[0-9a-zA-Z_-]+)/$', micro.TimelineDetail.as_view(), name='timeline-detail'),
-    url(r'^timelines/(?P<slug>[0-9a-zA-Z_-]+)/list/$', micro.TimelineNoteList.as_view(), name='timeline-note-list'),
-    url(r'^timelines/$', micro.TimelineList.as_view(), name='timeline-list'),
-    url(r'^new/status$', micro.NoteCreate.as_view(), name='note-new'),
-    url(r'^new/timeline$', micro.TimelineCreate.as_view(), name='timeline-new'),
-    url(r'^status/(?P<id>[0-9a-zA-Z_-]+)/$', micro.NoteDetail.as_view(), name='note-detail'),
-    url(r'^all/$', micro.NoteList.as_view(), name='note-list'),
-
+    url(r'^timelines/(?P<slug>[0-9a-zA-Z_-]+)/$', micro.TimelineDetail.as_view(), name='micro-timeline-detail'),
+    url(r'^timelines/(?P<slug>[0-9a-zA-Z_-]+)/list/$', micro.TimelineNoteList.as_view(), name='micro-timeline-note-list'),
+    url(r'^timelines/$', micro.TimelineList.as_view(), name='micro-timeline-list'),
+    url(r'^create/note/$', micro.NoteCreate.as_view(), name='micro-note-new'),
+    url(r'^create/timeline/$', micro.TimelineCreate.as_view(), name='micro-timeline-new'),
+    url(r'^status/(?P<id>[0-9a-zA-Z_-]+)/$', micro.NoteDetail.as_view(), name='micro-note-detail'),
+    url(r'^$', micro.NoteList.as_view(), name='micro-note-list'),
 ]
 
 user_api = [
