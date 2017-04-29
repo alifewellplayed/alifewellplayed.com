@@ -5,7 +5,6 @@ import datetime
 from time import strftime
 from hashlib import md5
 import uuid
-
 from io import StringIO, BytesIO
 
 from django.db import models
