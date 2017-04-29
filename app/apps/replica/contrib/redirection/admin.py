@@ -4,7 +4,7 @@ from django.db import models
 from .models import SiteLink, ClickLink, BlockedIp
 
 class SiteLinkAdmin(admin.ModelAdmin):
-    list_display = ('user', 'link', 'date_created' )
+    list_display = ('user', 'link', 'slug', 'date_created' )
     list_filter = ('user',)
     exclude = ('note_html',)
 

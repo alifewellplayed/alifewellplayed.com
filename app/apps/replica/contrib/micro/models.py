@@ -68,10 +68,10 @@ class Note(models.Model):
     objects = NoteManager()
 
     def __unicode__(self):
-        return self.id
+        return str(self.id)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     class Meta:
         db_table = 'r_Note'

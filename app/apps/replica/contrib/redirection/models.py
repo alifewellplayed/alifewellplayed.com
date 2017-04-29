@@ -15,14 +15,14 @@ from .managers import BlockedManager
 BLOCKED_IPS_LIST = 'Pithy:blocked-ips'
 
 class SiteLink(models.Model):
-    id = models.UUIDField(primary_key=True, default=guid_generator(length=12), editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     link = models.URLField(max_length=512)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=512, blank=True, unique=True)
     note = models.TextField(_('body'), blank=True)
-    note_html = models.TextField(blank=True)
+    note_html = models.TextField(blank=True, editable=False)
 
     class Meta:
         db_table = 'redirect_Link'
@@ -31,10 +31,7 @@ class SiteLink(models.Model):
         verbose_name_plural = 'Links'
 
     def get_absolute_url(self):
-        if self.slug:
-            return self.slug
-        else:
-            return self.id
+        return "%s/%s/" % (settings.SITE_URL, self.slug)
 
     def __unicode__(self):
         return self.link
@@ -43,6 +40,8 @@ class SiteLink(models.Model):
         return self.link
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = str(self.id).replace("-","")[:12]
         if self.note:
             self.note_html = bleach.clean(markdown.markdown(smart_text(self.note)))
         super(SiteLink, self).save(*args, **kwargs)

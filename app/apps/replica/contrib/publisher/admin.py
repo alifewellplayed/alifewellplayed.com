@@ -8,7 +8,7 @@ class PromotedAdmin(admin.ModelAdmin):
 
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'deck', 'pub_date', 'user')
-    prepopulated_fields = {"slug": ("title",)}
+    filter_horizontal = ('entries',)
 
 
 admin.site.register(Promoted, PromotedAdmin)
