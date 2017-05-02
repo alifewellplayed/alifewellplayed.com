@@ -172,6 +172,34 @@ def DefaultChannel():
     channel = Channel.objects.filter(slug='post').first()
     return channel.id
 
+class EntryTemplate(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=MAX_LENGTH, blank=True)
+    description = models.TextField(_('description'), blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates')
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    template_html = models.TextField(blank=True)
+
+    class Meta:
+        db_table = 'r_EntryTemplate'
+        verbose_name = _('HTML Template')
+        verbose_name_plural = 'HTML Templates'
+        ordering = ('-date_updated',)
+        get_latest_by = 'date_updated'
+
+    def __unicode__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)
+
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)
+
 class Entry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=MAX_LENGTH, blank=True)
@@ -190,6 +218,8 @@ class Entry(models.Model):
     body = models.TextField(_('body'), blank=True)
     body_html = models.TextField(blank=True)
     featured_image = models.ForeignKey(Media, blank=True, null=True)
+    template = models.ForeignKey(EntryTemplate, blank=True, null=True)
+
     objects = EntryManager()
 
     class Meta:
@@ -257,6 +287,7 @@ class Draft(models.Model):
     entry = models.ForeignKey(Entry)
     title = models.CharField(max_length=MAX_LENGTH, blank=True)
     slug = models.SlugField(max_length=MAX_LENGTH, unique_for_date='pub_date')
+    channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
     content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('summary'), blank=True)
     deck_html = models.TextField(blank=True, editable=False)

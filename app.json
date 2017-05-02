@@ -2,7 +2,7 @@
   "name": "ALifeWellPlayed.com",
   "description": "CMS/Blog setup for A Life Well Played",
   "image": "heroku/python",
-  "repository": "https://github.com/underlost/alifewellplayed.com",
+  "repository": "https://github.com/jadedgamer/alifewellplayed.com",
   "keywords": ["python", "django" ],
   "addons": [ "heroku-postgresql" ]
 }
