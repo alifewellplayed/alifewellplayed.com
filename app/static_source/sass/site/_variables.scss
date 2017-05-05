@@ -11,9 +11,11 @@ $yellow-light:     #ffe929;
 $purple:           #763096;
 $purple-light:     #a41be3;
 
-$brand-primary: #ff0052;
-$brand-secondary: #8e2b88;
-$body-bg:  #e7e7e2;
+$brand-primary: #8e2b88;
+//$brand-primary: #66a470;
+
+$brand-secondary: #ff0052;
+$body-bg:  #ececec;
 $text-color:       #3c3c3c;
 $link-color:            $brand-primary !default;
 $link-hover-color:      darken($link-color, 15%) !default;

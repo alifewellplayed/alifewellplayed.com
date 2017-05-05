@@ -24,14 +24,14 @@
     h6.site-author {
         letter-spacing: 1px;
         font-weight: 400;
-        text-shadow: 1px 1px 1px $brand-secondary;
+        text-shadow: 1px 1px 1px $brand-primary;
         span { text-transform: uppercase; }
     }
 
     .site-nav {
         margin-top: 20px;
         text-align: center;
-        text-shadow: 1px 1px 1px $brand-secondary;
+        text-shadow: 1px 1px 1px $brand-primary;
         font-family: $font-family-sans-serif-header;
 
         p {

@@ -5,11 +5,14 @@
 
     .entry-head {
         h2 {
-            font: 21px/31px $font-family-sans-serif-header;
+            font: 25px/31px $font-family-sans-serif-header;
             letter-spacing: 1px;
             font-weight: 100;
             //a {border-bottom: 1px dotted; }
-            a:hover {color: darken($link-color, 25%); text-shadow: 0 0 1px lighten($link-color, 5%) }
+            a:hover {
+                color: darken($link-color, 25%);
+                text-shadow: 0 0 1px lighten($link-color, 5%)
+            }
         }
         h3 {
             font: 13px/27px $font-family-sans-serif;
@@ -17,17 +20,18 @@
             text-transform: uppercase;
             a {padding-bottom: 4px; border-bottom: 1px dotted $link-hover-color;}
             a:hover {
-                border-color: $link-hover-color;
-                text-shadow: none;
+                color: $brand-secondary;
+                text-shadow: 0 0 1px lighten($link-color, 5%);
+                border-color: $brand-secondary;
             }
         }
 
         .glyph {
-            color: darken($link-color, 30%);
+            color: darken($brand-secondary, 30%);
             font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
             border-width: 0;
             &:hover {
-                color: $link-hover-color;
+                color: $brand-secondary;
                 text-shadow: none;
             }
         }
@@ -39,6 +43,7 @@
         .deck p:first-child {}
         h3 {font-weight: 100; color: lighten($text-color, 40%);}
         p.lead {font-family: $font-family-sans-serif;}
+        p { font-size: 1.25rem; font-weight: 100;}
         a {color: lighten($text-color, 20%);}
         a:hover {color: lighten($text-color, 40%);}
         blockquote {
