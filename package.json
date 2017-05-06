@@ -11,13 +11,14 @@
     "shipit": "Gulp deploy"
   },
   "dependencies": {
-    "babel-core": ">=6.14.0",
-    "babel-loader": ">=6.2.5",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-latest": "^6.0.0",
     "babel-plugin-transform-runtime": ">=6.15.0",
-    "babel-preset-es2015": ">=6.14.0",
     "babel-runtime": ">=6.11.6",
     "bower": ">=1.8.0",
     "browser-sync": "^2.18.8",
+    "chart.js": "^2.5.0",
     "css-loader": ">=0.28.1",
     "del": ">=1.2.1",
     "ecstatic": "2.1.0",
@@ -48,7 +49,7 @@
     "marked": ">=0.3.6",
     "run-sequence": ">=1.1.2",
     "vue": ">=2.3.2",
-    "vue-chartjs": ">=2.3.5",
+    "vue-chartjs": "^2.6.2",
     "vue-html-loader": ">=1.2.3",
     "vue-loader": ">=12.0.3",
     "vue-localstorage": ">=0.1.3",
@@ -56,8 +57,8 @@
     "vue-resource": ">=1.0.3",
     "vue-router": ">=2.5.3",
     "vue-template-compiler": ">=2.3.2",
-    "webpack": ">=2.5.0",
-    "webpack-dev-server": ">=1.16.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0",
     "webpack-stream": ">=3.2.0"
   },
   "repository": {

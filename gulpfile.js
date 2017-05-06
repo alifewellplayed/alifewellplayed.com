@@ -6,6 +6,7 @@
 
 // grab our packages
 var gulp   = require('gulp'),
+    webpack = require('webpack');
     child = require('child_process');
     jshint = require('gulp-jshint');
     sass = require('gulp-sass');
@@ -24,9 +25,7 @@ var gulp   = require('gulp'),
     imagemin = require('gulp-imagemin');
     git = require('gulp-deploy-git');
     browserSync = require('browser-sync');
-    $ = require('gulp-load-plugins')();
-    babel = require('gulp-babel');
-    webpack = require('webpack-stream');
+    gulpWebpack = require('webpack-stream');
 
 // Cleans the web dist folder
 gulp.task('clean', function () {
@@ -151,7 +150,7 @@ gulp.task('concat-js', function() {
 
 gulp.task('admin-webpack-vue', function(){
     return gulp.src('app/static_source/js/admin/app.js')
-        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulpWebpack(require('./webpack.config.js'), webpack))
         .pipe(gulp.dest('dist/admin/js'));
 });
 
