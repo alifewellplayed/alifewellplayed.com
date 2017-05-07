@@ -1,7 +1,9 @@
 .site-footer {
     position: relative;
     margin-left: 28%;
-    font-size: 85%;
+    font-size: 90%;
+    letter-spacing: 1px;
+    font-weight: 100;
     padding: $grid-gutter-width 0;
     a {color: lighten($text-color, 20%);}
 }

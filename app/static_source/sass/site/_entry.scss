@@ -1,17 +1,23 @@
 
 .entry {
     a {transition: all .3s, color .3s;}
-    a:hover {text-shadow: 0 0 1px $link-hover-color;}
+    a:hover {
+        text-shadow: 0 0 1px $link-hover-color;
+    }
 
     .entry-head {
         h2 {
             font: 25px/31px $font-family-sans-serif-header;
             letter-spacing: 1px;
             font-weight: 100;
-            //a {border-bottom: 1px dotted; }
+            margin-bottom: 1rem;
+            a {
+                color: darken($link-color, 15%);
+
+            }
             a:hover {
-                color: darken($link-color, 25%);
-                text-shadow: 0 0 1px lighten($link-color, 5%)
+                color: $link-hover-color;
+                text-shadow: 0 0 1px lighten($link-color, 5%);
             }
         }
         h3 {
@@ -41,17 +47,22 @@
         margin-bottom: 20px;
 
         .deck p:first-child {}
-        h3 {font-weight: 100; color: lighten($text-color, 40%);}
+        h3 {font-weight: 100;}
         p.lead {font-family: $font-family-sans-serif;}
         p { font-size: 1.25rem; font-weight: 100;}
-        a {color: lighten($text-color, 20%);}
-        a:hover {color: lighten($text-color, 40%);}
+        a {
+            color: $link-color;
+            &:hover { color: $link-hover-color; }
+        }
         blockquote {
             font-weight: 100;
-            border-color: darken($text-color, 45%);
+            border-left: 3px solid $brand-primary;
             padding: 0 0 0 15px;
-            font-size: $font-size-base;
             color: darken($text-color, 15%);
+            p {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
         }
     }
 

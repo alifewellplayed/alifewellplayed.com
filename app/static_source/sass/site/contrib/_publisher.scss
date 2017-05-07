@@ -26,14 +26,15 @@
     a { color: #fff; }
     h6 {
         text-transform: uppercase;
-        margin: 0;
         font-size: 14px;
         letter-spacing: 1px;
         font-weight: bold;
+        text-shadow: 1px 1px 1px darken($brand-primary, 15%);
     }
     p {
         margin: 0 0;
         letter-spacing: 1px;
         font-weight: lighter;
+        font-size: 95%;
     }
 }

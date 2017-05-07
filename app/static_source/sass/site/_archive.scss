@@ -4,4 +4,14 @@
     .datetime {
         padding-top: 20px;
     }
+
+    p.archived {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+}
+
+.linklist.archived {
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
