@@ -2,33 +2,37 @@
 .entry {
     a {transition: all .3s, color .3s;}
     a:hover {
-        text-shadow: 0 0 1px $link-hover-color;
+        //text-shadow: 0 0 1px $link-hover-color;
     }
 
     .entry-head {
         h2 {
-            font: 25px/31px $font-family-sans-serif-header;
+            font-size: 2rem;
+            font-family: $font-family-sans-serif-header;
             letter-spacing: 1px;
             font-weight: 100;
             margin-bottom: 1rem;
             a {
-                color: darken($link-color, 15%);
-
-            }
-            a:hover {
-                color: $link-hover-color;
-                text-shadow: 0 0 1px lighten($link-color, 5%);
+                color: #111;
+                &:hover {
+                    color: #fff;
+                    text-shadow: none;
+                    background-color:  $brand-primary;
+                }
             }
         }
         h3 {
             font: 13px/27px $font-family-sans-serif;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            a {padding-bottom: 4px; border-bottom: 1px dotted $link-hover-color;}
-            a:hover {
-                color: $brand-secondary;
-                text-shadow: 0 0 1px lighten($link-color, 5%);
-                border-color: $brand-secondary;
+            a {
+                padding-bottom: 4px;
+                border-bottom: 1px dotted $link-hover-color;
+                &:hover {
+                    border-color: $brand-primary;
+                    color: $brand-secondary;
+                    text-shadow: 0 0 1px lighten($link-color, 5%);
+                }
             }
         }
 
@@ -36,8 +40,9 @@
             color: darken($brand-secondary, 30%);
             font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
             border-width: 0;
+            padding: 0 4px;
             &:hover {
-                color: $brand-secondary;
+                color: $brand-primary;
                 text-shadow: none;
             }
         }
@@ -45,23 +50,26 @@
 
     .entry-body {
         margin-bottom: 20px;
-
-        .deck p:first-child {}
         h3 {font-weight: 100;}
-        p.lead {font-family: $font-family-sans-serif;}
-        p { font-size: 1.25rem; font-weight: 100;}
+        p {
+            font-size: 1rem;
+            font-weight: 100;
+            letter-spacing: 1px;
+            &.lead {font-family: $font-family-sans-serif;}
+        }
         a {
             color: $link-color;
-            &:hover { color: $link-hover-color; }
+            text-decoration: underline;
+            &:hover {
+                background-color:  darken($body-bg, 8%);
+            }
         }
         blockquote {
             font-weight: 100;
-            border-left: 3px solid $brand-primary;
-            padding: 0 0 0 15px;
-            color: darken($text-color, 15%);
+            color: $brand-primary;
             p {
-                font-size: 1.5rem;
-                letter-spacing: 1px;
+                font-size: 2rem;
+                letter-spacing: 1.5px;
             }
         }
     }

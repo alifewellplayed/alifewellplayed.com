@@ -8,10 +8,22 @@
     p.archived {
         font-size: 1.25rem;
         letter-spacing: 1px;
+        font-weight: 100;
+        a {
+            background-color:  darken($body-bg, 8%);
+            padding: 2px 6px;
+        }
+        small { font-weight: 100;}
     }
 }
 
 .linklist.archived {
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 100;
+    &>li {margin: 4px 0;}
+    a {
+        background-color:  darken($body-bg, 8%);
+        padding: 2px 6px;
+    }
 }

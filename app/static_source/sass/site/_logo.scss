@@ -1,9 +1,9 @@
 .site-content-header {
     svg text {
-        font-size: 19px;
-        fill: #3c3c3c;
+        font-size: 21px;
+        fill: $body-color;
         font-family: $font-family-sans-serif-header;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
         font-weight: 100;
     }
@@ -16,7 +16,7 @@
         animation-delay: -4.8s;
     }
     .text:nth-child(5n+4) {
-        stroke: darken($brand-secondary, 15%);
+        stroke: darken($body-bg, 50%);
         animation-delay: -6.4s;
     }
     .text:nth-child(5n+5) {
@@ -48,5 +48,8 @@
         font-size: 13px;
         color: darken($body-bg, 50%);
         span { text-transform: uppercase; }
+    }
+    a:hover {
+        text-shadow: 0 0 4px $body-bg;
     }
 }

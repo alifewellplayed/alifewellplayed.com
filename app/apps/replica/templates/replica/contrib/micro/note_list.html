@@ -10,8 +10,8 @@
 {% for object in object_list %}
 {% ifchanged object.pub_date.day %}<p class="datetime last-posted">{% if forloop.first %}Last updated {% endif %}{{ object.pub_date|date:"l, F j, Y" }}.</p><hr />{% endifchanged %}
 <div class="note" id="note-{{ object.id }}">
-	<div class="blip-body">{{ object.body_html|safe }}</div>
-	<span class="date"><i class="fa fa-clock-o"></i> Posted: <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
+	<div class="note-body">{{ object.body_html|safe }}</div>
+	<span class="date datetime"><i class="fa fa-clock-o"></i> Posted: <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
 </div>
 {% endfor %}
 

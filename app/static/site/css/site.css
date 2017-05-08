@@ -2878,7 +2878,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -3036,7 +3036,7 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
@@ -6469,7 +6469,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6551,7 +6551,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -9422,10 +9422,10 @@ h1, h2, h3, h4, h5, h6 {
   position: relative; }
 
 .site-content-header svg text {
-  font-size: 19px;
-  fill: #3c3c3c;
-  font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  letter-spacing: 1px;
+  font-size: 21px;
+  fill: #35495e;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 100; }
 
@@ -9438,7 +9438,7 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: -4.8s; }
 
 .site-content-header .text:nth-child(5n+4) {
-  stroke: black;
+  stroke: #6d6d6d;
   animation-delay: -6.4s; }
 
 .site-content-header .text:nth-child(5n+5) {
@@ -9469,6 +9469,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #6d6d6d; }
   .site-content-header .site-author span {
     text-transform: uppercase; }
+
+.site-content-header a:hover {
+  text-shadow: 0 0 4px #ececec; }
 
 .site-header {
   position: fixed;
@@ -9501,7 +9504,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 20px;
     text-align: center;
     text-shadow: 1px 1px 1px #205b40;
-    font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
     .site-header .site-nav p {
       font-weight: 500;
       font-size: 16px;
@@ -9602,15 +9605,16 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.2; }
   100% {
     opacity: 0;
-    border: 10px solid #ffffff;
+    border: 10px solid #35495e;
     -webkit-transform: scale(1); } }
 
 .pulse-header {
   position: fixed;
-  right: 20px;
-  top: 35px; }
+  left: 20px;
+  top: 35px;
+  z-index: 100; }
   .pulse-header .DotPulse, .pulse-header .DotDot {
-    background-color: #35495e; }
+    background-color: rgba(53, 73, 94, 0.5); }
 
 .blue {
   color: #0086bf;
@@ -9671,61 +9675,61 @@ h1, h2, h3, h4, h5, h6 {
 .entry a {
   transition: all .3s, color .3s; }
 
-.entry a:hover {
-  text-shadow: 0 0 1px #2e815b; }
-
 .entry .entry-head h2 {
-  font: 25px/31px "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2rem;
+  font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1px;
   font-weight: 100;
   margin-bottom: 1rem; }
   .entry .entry-head h2 a {
-    color: #2e815b; }
-  .entry .entry-head h2 a:hover {
-    color: #2e815b;
-    text-shadow: 0 0 1px #53c28f; }
+    color: #111; }
+    .entry .entry-head h2 a:hover {
+      color: #fff;
+      text-shadow: none;
+      background-color: #42b983; }
 
 .entry .entry-head h3 {
-  font: 13px/27px "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 13px/27px "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase; }
   .entry .entry-head h3 a {
     padding-bottom: 4px;
     border-bottom: 1px dotted #2e815b; }
-  .entry .entry-head h3 a:hover {
-    color: #133526;
-    text-shadow: 0 0 1px #53c28f;
-    border-color: #133526; }
+    .entry .entry-head h3 a:hover {
+      border-color: #42b983;
+      color: #133526;
+      text-shadow: 0 0 1px #53c28f; }
 
 .entry .entry-head .glyph {
   color: black;
   font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-width: 0; }
+  border-width: 0;
+  padding: 0 4px; }
   .entry .entry-head .glyph:hover {
-    color: #133526;
+    color: #42b983;
     text-shadow: none; }
 
 .entry .entry-body {
   margin-bottom: 20px; }
   .entry .entry-body h3 {
     font-weight: 100; }
-  .entry .entry-body p.lead {
-    font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
   .entry .entry-body p {
-    font-size: 1.25rem;
-    font-weight: 100; }
+    font-size: 1rem;
+    font-weight: 100;
+    letter-spacing: 1px; }
+    .entry .entry-body p.lead {
+      font-family: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
   .entry .entry-body a {
-    color: #42b983; }
+    color: #42b983;
+    text-decoration: underline; }
     .entry .entry-body a:hover {
-      color: #2e815b; }
+      background-color: #d8d8d8; }
   .entry .entry-body blockquote {
     font-weight: 100;
-    border-left: 3px solid #42b983;
-    padding: 0 0 0 15px;
-    color: #19232d; }
+    color: #42b983; }
     .entry .entry-body blockquote p {
-      font-size: 1.5rem;
-      letter-spacing: 1px; }
+      font-size: 2rem;
+      letter-spacing: 1.5px; }
 
 .entry .entry-footer .entry-topics {
   position: relative;
@@ -9747,8 +9751,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 5px; }
 
 .page .page-inner .entry-body p {
-  font-size: 1.25rem;
-  font-weight: 100; }
+  font-size: 1.15rem;
+  font-weight: 100;
+  letter-spacing: 1px; }
 
 .entries-archived {
   margin: 0 0 40px; }
@@ -9756,11 +9761,23 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 20px; }
   .entries-archived p.archived {
     font-size: 1.25rem;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    font-weight: 100; }
+    .entries-archived p.archived a {
+      background-color: #d8d8d8;
+      padding: 2px 6px; }
+    .entries-archived p.archived small {
+      font-weight: 100; }
 
 .linklist.archived {
   text-transform: uppercase;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  font-weight: 100; }
+  .linklist.archived > li {
+    margin: 4px 0; }
+  .linklist.archived a {
+    background-color: #d8d8d8;
+    padding: 2px 6px; }
 
 .site-footer {
   position: relative;
@@ -9797,6 +9814,9 @@ h1, h2, h3, h4, h5, h6 {
     /* Standard syntax (must be last) */ }
   .r-featured-story a {
     color: #fff; }
+    .r-featured-story a:hover {
+      text-shadow: none;
+      background-color: #379b6e; }
   .r-featured-story h6 {
     text-transform: uppercase;
     font-size: 14px;
@@ -9807,7 +9827,8 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
     letter-spacing: 1px;
     font-weight: lighter;
-    font-size: 95%; }
+    font-size: 95%;
+    text-shadow: 1px 1px 1px #359368; }
 
 .replicaMicro .timelines .datetime {
   margin: 20px 0; }
@@ -9819,7 +9840,8 @@ h1, h2, h3, h4, h5, h6 {
   .replicaMicro .timelines .timeline h4 {
     margin-bottom: 0;
     font-size: 1.25rem;
-    letter-spacing: 1px; }
+    letter-spacing: 1px;
+    font-weight: 500; }
   .replicaMicro .timelines .timeline p {
     margin: 0;
     letter-spacing: 1px;
@@ -9835,29 +9857,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px; }
   .replicaMicro .note h4 {
     font-size: 19px; }
-  .replicaMicro .note .note-body p:last-child {
-    margin-bottom: 0; }
+  .replicaMicro .note .note-body {
+    letter-spacing: 1px;
+    font-weight: 100; }
+    .replicaMicro .note .note-body p:last-child {
+      margin-bottom: 0; }
   .replicaMicro .note .date, .replicaMicro .note .manage-notes {
     color: #525252;
-    font-size: 13px;
-    line-height: 15px; }
+    font-size: 11px;
+    line-height: 15px;
+    font-weight: 100;
+    letter-spacing: 0; }
   .replicaMicro .note .manage-notes a {
     color: #525252; }
 
 .replicaMicro .note + .last-posted {
   margin-top: 0; }
-
-.replicaMicro #add_blip_form {
-  padding: 10px 0; }
-
-.replicaMicro textarea.form-control {
-  border-color: black;
-  color: #5a7c9f;
-  margin-bottom: 10px; }
-
-.replicaMicro .blip-form {
-  margin-left: 0; }
-
-.replicaMicro input[type="text"] {
-  border-color: black;
-  color: #5a7c9f; }

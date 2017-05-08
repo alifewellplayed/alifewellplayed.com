@@ -1,3 +1,8 @@
+#2,1,1 (05/07/2017)
+* Finalized color scheme (mostly)
+* Updated webpack and Vue versions
+* Cleaned up css.
+
 #2.1.0 (03/27/2017)
 * Update app structure.
 

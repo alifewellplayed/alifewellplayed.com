@@ -1,7 +1,7 @@
 {
   "name": "alifewellplayed.com",
   "slug": "alifewellplayed",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "CMS/Blog setup for A Life Well Played",
   "main": "Gulpfile.js",
   "private": true,

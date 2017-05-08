@@ -12,6 +12,7 @@
                 margin-bottom: 0;
                 font-size: 1.25rem;
                 letter-spacing: 1px;
+                font-weight: 500;
             }
             p {
                 margin: 0;
@@ -30,34 +31,21 @@
         padding-bottom: 10px;
         border-bottom: 1px solid darken($body-bg, 15%);
         margin-bottom: 20px;
-
         h4 {font-size: 19px;}
+        .note-body {
+            letter-spacing: 1px;
+            font-weight: 100;
 
-        .note-body p:last-child {margin-bottom: 0;}
-        .date, .manage-notes {color: #525252; font-size: 13px; line-height: 15px;}
+            p:last-child {margin-bottom: 0;}
+        }
+        .date, .manage-notes {
+            color: #525252;
+            font-size: 11px;
+            line-height: 15px;
+            font-weight: 100;
+            letter-spacing: 0;
+        }
         .manage-notes a {color: #525252;}
     }
-
-
     .note + .last-posted {margin-top: $grid-gutter-width;}
-
-
-    #add_blip_form {
-        padding: 10px $grid-gutter-width;
-    }
-
-    textarea.form-control {
-        border-color: darken($text-color, 40%);
-        color: lighten($text-color, 20%);
-        margin-bottom: 10px;
-    }
-
-    .blip-form {
-        margin-left: $grid-gutter-width;
-    }
-
-    input[type="text"] {
-        border-color: darken($text-color, 40%);
-        color: lighten($text-color, 20%);
-    }
 }

@@ -8,8 +8,8 @@
 	<h3 class="header">{{ entry.user }} wrote...</h3>
 
 	<div class="blip">
-		<div class="blip-body" id="blip-{{ entry.id }}">{{ entry.body_html|safe }}</div>
-		<p class="date"><i class="icon-time"></i> <a href="{{ entry.get_absolute_url }}">{{ entry.pub_date|naturaltime }}</a>{% if entry.timeline %} in <a href="{% url 'blip:Timeline' entry.timeline.slug %}">{{entry.timeline }}</a>{% endif %}.</p>
+		<div class="note-body" id="blip-{{ entry.id }}">{{ entry.body_html|safe }}</div>
+		<p class="date datetime"><i class="icon-time"></i> <a href="{{ entry.get_absolute_url }}">{{ entry.pub_date|naturaltime }}</a>{% if entry.timeline %} in <a href="{% url 'blip:Timeline' entry.timeline.slug %}">{{entry.timeline }}</a>{% endif %}.</p>
 	</div>
 </section
 {% endblock %}

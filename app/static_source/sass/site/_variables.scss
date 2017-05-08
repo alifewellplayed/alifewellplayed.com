@@ -25,3 +25,11 @@ $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
 
 $grid-gutter-width: 0;
+
+
+$font-family-sans-serif: "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !default;
+
+$font-family-sans-serif-header: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !default;
+
+$headings-font-family:   $font-family-sans-serif-header !default;
+$headings-font-weight:   500 !default;
