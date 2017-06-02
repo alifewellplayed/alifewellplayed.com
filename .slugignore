@@ -1,6 +1,6 @@
-bower_components
 node_modules
 wellplayed/static_source
+staticfiles
 dist
 package.json
 bower.json

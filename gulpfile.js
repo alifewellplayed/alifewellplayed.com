@@ -7,7 +7,6 @@
 // grab our packages
 var gulp   = require('gulp'),
     webpack = require('webpack');
-    child = require('child_process');
     jshint = require('gulp-jshint');
     sass = require('gulp-sass');
     sourcemaps = require('gulp-sourcemaps');
@@ -21,7 +20,6 @@ var gulp   = require('gulp'),
     runSequence = require('run-sequence');
     coffee = require('gulp-coffee');
     gutil = require('gulp-util');
-    bower = require('gulp-bower');
     imagemin = require('gulp-imagemin');
     git = require('gulp-deploy-git');
     browserSync = require('browser-sync');
@@ -51,13 +49,13 @@ gulp.task('copy-dist', function() {
 gulp.task('copy-fonts', function() {
     gulp.src('app/static_source/fonts/site/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
     .pipe(gulp.dest('dist/site/fonts'));
-    gulp.src('bower_components/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
+    gulp.src('node_modules/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
     .pipe(gulp.dest('dist/site/fonts'));
 });
 gulp.task('admin-fonts', function() {
     gulp.src('app/static_source/fonts/admin/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
     .pipe(gulp.dest('dist/admin/fonts'));
-    gulp.src('bower_components/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
+    gulp.src('node_modules/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
     .pipe(gulp.dest('dist/admin/fonts'));
 });
 
@@ -73,25 +71,13 @@ gulp.task('admin-imagemin', function() {
 	.pipe(gulp.dest('dist/admin/img'))
 });
 
-// Copy Bower components
-gulp.task('copy-bower', function() {
-    gulp.src('bower_components/components-font-awesome/scss/**/*.*')
+// Copy component assets
+gulp.task('copy-assets', function() {
+    gulp.src('node_modules/components-font-awesome/scss/**/*.*')
     .pipe(gulp.dest('app/static_source/sass/font-awesome'));
 
-    gulp.src('bower_components/bootstrap-sass/assets/stylesheets/**/*.*')
+    gulp.src('node_modules/bootstrap-sass/assets/stylesheets/**/*.*')
     .pipe(gulp.dest('app/static_source/sass/bootstrap'));
-});
-
-// Runs Bower update
-gulp.task('bower-update', function() {
-    return bower({ cmd: 'update'});
-});
-
-// Bower tasks
-gulp.task('bower', function(callback) {
-    runSequence(
-        'bower-update', 'copy-bower', callback
-    );
 });
 
 // Compile coffeescript to JS
@@ -134,11 +120,11 @@ gulp.task('admin-build-css', function() {
 // Concat All JS into unminified single file
 gulp.task('concat-js', function() {
     return gulp.src([
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-        'bower_components/jquery.easing/js/jquery.easing.js',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
+        'node_modules/jquery.easing/js/jquery.easing.js',
         'app/static_source/js/lib/jquery.appear.js',
-        'bower_components/PACE/pace.js',
+        'node_modules/PACE/pace.js',
         'app/static_source/js/site/site.js',
         'app/static_source/js/coffee/*.*',
     ])
@@ -158,19 +144,19 @@ gulp.task('admin-webpack-vue', function(){
 gulp.task('admin-concat-js', function() {
     return gulp.src([
         'app/static_source/js/admin/modernizr.custom.js',
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/tether/dist/js/tether.js',
-        'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-        'bower_components/PACE/pace.js',
-        //'bower_components/jquery-ui/jquery-ui.min.js',
-        //'bower_components/jquery-bez/jquery.bez.min.js',
-        //'bower_components/select2/dist/js/select2.js',
-        //'bower_components/jquery.scrollbar/jquery.scrollbar.js',
-        //'bower_components/jquery-unveil/jquery.unveil.js',
-        //'bower_components/jquery.actual/jquery.actual.min.js',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/tether/dist/js/tether.js',
+        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+        'node_modules/PACE/pace.js',
+        //'node_modules/jquery-ui/jquery-ui.min.js',
+        //'node_modules/jquery-bez/jquery.bez.min.js',
+        //'node_modules/select2/dist/js/select2.js',
+        //'node_modules/jquery.scrollbar/jquery.scrollbar.js',
+        //'node_modules/jquery-unveil/jquery.unveil.js',
+        //'node_modules/jquery.actual/jquery.actual.min.js',
         //'app/static_source/js/admin/jquery-easy.js',
-        //'bower_components/switchery/dist/switchery.js',
-        //'bower_components/metrojs/release/MetroJs.Full/MetroJs.min.js',
+        //'node_modules/switchery/dist/switchery.js',
+        //'node_modules/metrojs/release/MetroJs.Full/MetroJs.min.js',
         'app/static_source/js/admin/jquery.appear.js',
         //'app/static_source/js/admin/pages.js',
         'app/static_source/js/admin/site.js',
