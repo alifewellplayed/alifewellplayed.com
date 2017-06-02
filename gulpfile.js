@@ -121,7 +121,7 @@ gulp.task('admin-build-css', function() {
 gulp.task('concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
-        'node_modules/bootstrap/dist/js/bootstrap.min.js'
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
         'app/static_source/js/lib/jquery.appear.js',
         'node_modules/PACE/pace.js',
