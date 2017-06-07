@@ -215,7 +215,7 @@ class Entry(models.Model):
     content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('deck'), blank=True)
     deck_html = models.TextField(blank=True)
-    body = models.TextField(_('body'), blank=True)
+    body = models.TextField(_('body'), blank=True, null=True)
     body_html = models.TextField(blank=True)
     featured_image = models.ForeignKey(Media, blank=True, null=True)
     template = models.ForeignKey(EntryTemplate, blank=True, null=True)

@@ -22,7 +22,7 @@
         top: 0; bottom: 0;
         z-index: 10;
         background-color: transparent;
-        border: 10px solid #f2f2f2;
+        border: 10px solid $brand-secondary;
         -webkit-animation-name: dotPulse;
         -moz-animation-name: dotPulse;
         -webkit-animation-duration: 2s;
@@ -44,7 +44,7 @@
         position: absolute;
         left: 0; right: 0;
         top: 25px;
-        background-color: #fff;
+        background-color: $brand-secondary;
         z-index: 50;
         -webkit-transform: translateZ(0);
         i {
@@ -52,7 +52,7 @@
             position: relative;
             top: -3px;
             left: 0px;
-            color: $body-bg;
+            color: $white;
         }
     }
 }
@@ -80,7 +80,7 @@
 
     100% {
         opacity: 0;
-        border: 10px solid $text-color;
+        border: 10px solid $brand-secondary;
         -webkit-transform: scale(1);
     }
 
@@ -88,11 +88,7 @@
 
 .pulse-header {
     position: fixed;
-    left: 20px;
-    top: 35px;
+    right: 20px;
+    bottom: 35px;
     z-index: 100;
-
-    .DotPulse, .DotDot {
-        background-color: rgba($text-color, 0.5);
-    }
 }

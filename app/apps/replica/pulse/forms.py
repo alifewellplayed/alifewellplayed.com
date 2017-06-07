@@ -13,7 +13,7 @@ from replica.pulse.models import Entry, Media, Draft, Topic, Channel
 
 class AdminEntryForm(forms.ModelForm):
     deck = forms.CharField(widget=AdminPagedownWidget())
-    body = forms.CharField(widget=AdminPagedownWidget())
+    body = forms.CharField(widget=AdminPagedownWidget(), required=False)
 
     class Meta:
         model = Entry

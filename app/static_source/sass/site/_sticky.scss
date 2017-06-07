@@ -1,0 +1,19 @@
+.replica-media-list {
+    .media {
+        padding-bottom: 8px;
+        border-bottom: 1px solid darken($body-bg, 8%);
+        margin-bottom: 8px;
+        .media-body {
+            h5 {
+                font: 13px/27px $font-family-sans-serif;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+            }
+            p {
+                margin-bottom: 0;
+                font-weight: 100;
+            }
+        }
+
+    }
+}

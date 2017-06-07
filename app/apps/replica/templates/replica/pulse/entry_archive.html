@@ -1,9 +1,13 @@
-{% extends 'base.html' %}{% load core_tags %}
+{% extends 'base.html' %}
+{% load core_tags %}{% load replica_publisher_tags %}
 
 {% block title %}{% endblock %}
 {% block page %}home default archive{% endblock %}
 
 {% block content %}
+
+    {% render_sticky %}
+
 	<!-- Render Posts -->
 	{% for object in latest %}
 		{% ifchanged object.pub_date.day %}

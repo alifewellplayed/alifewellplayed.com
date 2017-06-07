@@ -13,7 +13,7 @@
         {% endif %}
         <div class="media-body">
             <h4 class="media-heading"><a href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">{{topic.title}}</a></h4>
-            <p>{{ topic.description|safe }}</p>
+            <p class="datetime">{{ topic.description|safe }}</p>
         </div>
     </div>
 </div>

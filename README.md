@@ -1,5 +1,6 @@
 [![Dependencies](https://david-dm.org/jadedgamer/alifewellplayed.com.svg)](https://david-dm.org/jadedgamer/alifewellplayed.com)
 [![Dependency Status](https://gemnasium.com/badges/github.com/jadedgamer/alifewellplayed.com.svg)](https://gemnasium.com/github.com/jadedgamer/alifewellplayed.com)
+[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/jadedgamer/alifewellplayed/blob/master/LICENSE)
 
 
 # A Life Well Played
@@ -10,8 +11,7 @@ Interested on cloning the site for your own blog, similar or otherwise? Go for i
 
 ---
 
-## Replica (Version 2.0.0)
-
+## Replica (v2.0.0 in progress)
 Replica is a Django content management system I originally wrote for clients who wanted a simple and straight forward solution for posting updates. Since then, I've been slowly expanding and rebuilding it. Specifically, it's a a series of apps bundled tightly together.
 
 ### Status

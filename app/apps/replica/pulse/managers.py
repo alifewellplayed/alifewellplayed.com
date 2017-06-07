@@ -10,7 +10,7 @@ class TopicManager(models.Manager):
 
 class EntryManager(models.Manager):
     def posts(self):
-        return super(EntryManager, self).get_queryset().exclude(channel__slug='page')
+        return super(EntryManager, self).get_queryset().exclude(channel__slug='page').exclude(channel__slug='sticky')
 
     def ideas(self):
         return self.posts().filter(is_active=False)
@@ -32,6 +32,9 @@ class EntryManager(models.Manager):
 
     def pages_draft(self):
         return self.pages().filter(pub_date__lte=datetime.datetime.now()).filter(is_active=False)
+
+    def sticky(self):
+        return super(EntryManager, self).get_queryset().filter(channel__slug='sticky')
 
 class MediaManager(models.Manager):
 

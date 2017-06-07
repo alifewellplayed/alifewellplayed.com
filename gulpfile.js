@@ -121,6 +121,8 @@ gulp.task('admin-build-css', function() {
 gulp.task('concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
+        'node_modules/fullpage.js/dist/jquery.fullpage.js',
+        'node_modules/tether/dist/js/tether.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
         'app/static_source/js/lib/jquery.appear.js',
@@ -143,22 +145,12 @@ gulp.task('admin-webpack-vue', function(){
 // Concat admin JS into unminified single file
 gulp.task('admin-concat-js', function() {
     return gulp.src([
-        'app/static_source/js/admin/modernizr.custom.js',
+        //'app/static_source/js/admin/modernizr.custom.js',
         'node_modules/jquery/dist/jquery.js',
         'node_modules/tether/dist/js/tether.js',
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-        'node_modules/PACE/pace.js',
-        //'node_modules/jquery-ui/jquery-ui.min.js',
-        //'node_modules/jquery-bez/jquery.bez.min.js',
-        //'node_modules/select2/dist/js/select2.js',
-        //'node_modules/jquery.scrollbar/jquery.scrollbar.js',
-        //'node_modules/jquery-unveil/jquery.unveil.js',
-        //'node_modules/jquery.actual/jquery.actual.min.js',
-        //'app/static_source/js/admin/jquery-easy.js',
-        //'node_modules/switchery/dist/switchery.js',
-        //'node_modules/metrojs/release/MetroJs.Full/MetroJs.min.js',
+        'node_modules/pace-progress/pace.js',
         'app/static_source/js/admin/jquery.appear.js',
-        //'app/static_source/js/admin/pages.js',
         'app/static_source/js/admin/site.js',
     ])
     .pipe(sourcemaps.init())
@@ -216,28 +208,21 @@ gulp.task('watch', function() {
     gulp.watch('app/static_source/sass/**/*.scss', ['build-css', 'admin-build-css', 'copy-dist' ] );
 });
 
-// Default build task
-gulp.task('build-admin', function(callback) {
+// Build task for admin
+gulp.task('admin', function(callback) {
     runSequence(
         ['admin-build-css', 'admin-build-js'],
         'admin-imagemin', 'copy-dist', callback
     );
 });
 
-// Default build task
-gulp.task('build-site', function(callback) {
+// Build task for theme/frontend
+gulp.task('build', function(callback) {
     runSequence(
         ['build-css', 'build-js'],
         'imagemin', 'copy-dist', callback
     );
 });
 
-// Build All
-gulp.task('build', function(callback) {
-    runSequence(
-        ['build-admin'], ['build-site'], callback
-    );
-});
-
-// Default task will build the assets then watch for any updates to files.
-gulp.task('default', ['build', 'watch']);
+// Default task will build both assets.
+gulp.task('default', ['build', 'admin']);

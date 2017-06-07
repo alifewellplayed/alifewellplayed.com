@@ -20,5 +20,27 @@
         "date_created": "2017-01-27T22:50:16.885",
         "date_updated": "2017-01-27T22:50:16.885"
       }
+  },
+  {
+    "model": "pulse.channel",
+    "pk": "1950633f-8d36-4713-ab2f-608d9fd70094",
+    "fields": {
+      "title": "Sticky",
+      "slug": "sticky",
+      "user": 1,
+      "date_created": "2017-01-27T22:50:16.885",
+      "date_updated": "2017-01-27T22:50:16.885"
     }
+  }
+  {
+    "model": "pulse.channel",
+    "pk": "95460e2e-1f6f-45b3-a0ed-af13cb04d72f",
+    "fields": {
+      "title": "Aside",
+      "slug": "aside",
+      "user": 1,
+      "date_created": "2017-01-27T22:50:16.885",
+      "date_updated": "2017-01-27T22:50:16.885"
+    }
+  }
 ]

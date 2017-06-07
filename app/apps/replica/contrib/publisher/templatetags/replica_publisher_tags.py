@@ -5,6 +5,7 @@ from django import template
 
 from coreExtend.models import Account
 from replica.contrib.publisher.models import Promoted, Collection
+from replica.pulse.models import Entry
 
 register = template.Library()
 
@@ -35,3 +36,9 @@ def render_collections(num=255):
     request = context['request']
     collections = Collection.objects.order_by('-pub_date')[:num]
     return { 'object_list': collections, }
+
+
+@register.inclusion_tag('replica/contrib/publisher/templatetags/render_sticky.html')
+def render_sticky(num=5):
+    entries = Entry.objects.sticky()[:num]
+    return { 'object_list': entries, }

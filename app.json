@@ -1,6 +1,6 @@
 {
   "name": "ALifeWellPlayed.com",
-  "description": "CMS/Blog setup for A Life Well Played",
+  "description": "CMS/Blog setup for the website A Life Well Played",
   "image": "heroku/python",
   "repository": "https://github.com/jadedgamer/alifewellplayed.com",
   "keywords": ["python", "django" ],
