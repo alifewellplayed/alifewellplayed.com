@@ -38,7 +38,7 @@ def EntryDetail(request, year, month, slug):
 
 #Entries for topic
 class EntriesForTopic(ListView):
-    paginate_by = r_settings.PAGINATE #20
+    paginate_by = r_settings.PAGINATE
     template_name = 'replica/pulse/topic_entry_list.html'
 
     def get_queryset(self):
@@ -52,7 +52,7 @@ class EntriesForTopic(ListView):
 
 #List of public topics
 class TopicsList(ListView):
-    paginate_by = r_settings.PAGINATE_TOPICS #25
+    paginate_by = r_settings.PAGINATE_TOPICS
     template_name = 'replica/pulse/topic_list.html'
 
     def get_queryset(self):

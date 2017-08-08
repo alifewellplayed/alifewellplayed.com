@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% load core_tags %}
 
-{% block title %}{{ object.title|escape }} {% endblock %}
+{% block title %}{{ object.title|escape }} | {% endblock %}
 {% block page %}replica {{ object.post_type|safe }} {{ object.slug|safe }} detail{% endblock %}
 
 {% block content %}

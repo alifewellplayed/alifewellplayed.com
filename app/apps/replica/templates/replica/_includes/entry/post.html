@@ -4,7 +4,7 @@
 			<time datetime="{{ object.pub_date|date:"Y-m-d" }}" class="entry-time sr-only">{{ object.pub_date|date:"l, F jS Y" }}</time>
 		</div>
 	{% if object.url %}
-		<h3><a href="{{ object.url|safe }}" title="{{ object.title|safe }}">{{ object.title|safe }}</a>
+		<h3><a href="{{ object.url|safe }}" title="{{ object.title|safe }}"><span>{{ object.title|safe }}</span></a>
 		<span class="linked-list-permalink"><a href="{{ object.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span></h3>
 	{% else %}
 		<h2><a href="{{ object.get_absolute_url }}" title="{{ object.title|safe }}" rel="bookmark">{{ object.title|safe }}</a></h2>

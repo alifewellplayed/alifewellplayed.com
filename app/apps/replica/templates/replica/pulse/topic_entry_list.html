@@ -4,20 +4,22 @@
 {% block page %}news entries topics {{ topic.slug }}{% endblock %}
 
 {% block content %}
-<div id="topic-head">
-    <div class="media topic layout-single-column">
-        {% if topic.image %}
-        <a class="pull-left" href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">
-            <img class="media-object" width="64" height="auto" src="{{topic.image.url}}" alt="{{topic.title}}">
-        </a>
-        {% endif %}
-        <div class="media-body">
-            <h4 class="media-heading"><a href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">{{topic.title}}</a></h4>
-            <p class="datetime">{{ topic.description|safe }}</p>
+    <div id="topic-head">
+        <div class="media topic layout-single-column">
+            {% if topic.image %}
+            <img class="d-flex {{topic.slug}}" src="{{topic.image.thumbnail_small}}" alt="{{topic.title}}" />
+            {% endif %}
+            <div class="media-body">
+                <h4 class="mt-0 mb-1">
+                    <a href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">{{topic.title}}</a>
+                    <small>{{ topic.entry_count }} posts</small>
+                </h4>
+                <div class="topic-description">
+                    {{ topic.description|safe }}
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
     {% for object in object_list %}
         {% ifchanged object.pub_date.day %}
         {% include "replica/_includes/_datetime.html" %}

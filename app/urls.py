@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^500/$', TemplateView.as_view(template_name="500.html"), name="500_page"),
     url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
     url(r'^humans\.txt$', TemplateView.as_view(template_name="humans.txt", content_type='text/plain')),
+    url(r'^manifest\.json$', TemplateView.as_view(template_name="manifest.json", content_type='application/json')),
 
     # Apps
     url(r'^replica/', include('replica.cms.urls', namespace='ReplicaAdmin')),

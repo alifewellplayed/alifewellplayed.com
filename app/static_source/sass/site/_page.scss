@@ -3,9 +3,14 @@
         .entry-head {}
         .entry-body {
             p {
-                font-size: 1.15rem;
-                font-weight: 100;
+                font-size: 1rem;
+                font-weight: 300;
                 letter-spacing: 1px;
+            }
+            a {
+                padding-bottom: 4px;
+                border-bottom: 1px solid $yellow;
+                &:hover {border-bottom-color: $yellow-light;}
             }
         }
     }

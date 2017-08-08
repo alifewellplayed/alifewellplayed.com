@@ -4,22 +4,19 @@
 {% block page %}news topics pages{% endblock %}
 
 {% block content %}
-
 	<h2 class="sr-only">Topics</h2>
-
-    <ul class="list-unstyled replica-media-list layout-single-column">
+    <ul class="list-unstyled replica-topic-list layout-single-column">
         {% for obj in object_list %}
-        <li class="media">
+        <li class="media topic">
             {% if obj.image %}
             <img class="d-flex {{obj.slug}}" src="{{obj.image.thumbnail_small}}" alt="{{obj.title}}" />
             {% endif %}
             <div class="media-body">
-                <h5 class="mt-0 mb-1">
+                <h4 class="mt-0 mb-1">
                     <a href="{% url 'ReplicaPulse:EntriesByTopic' obj.slug %}">{{obj.title}}</a>
-                    <small class="datetime">{{ obj.entry_count }} posts</small>
-
-                </h5>
-                <div class="datetime">
+                    <small>{{ obj.entry_count }} posts</small>
+                </h4>
+                <div class="topic-description">
                     {{ obj.description|safe }}
                 </div>
             </div>

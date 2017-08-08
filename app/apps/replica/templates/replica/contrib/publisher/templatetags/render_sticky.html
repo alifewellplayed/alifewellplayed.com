@@ -11,9 +11,9 @@
 
             </datetime>
             <h5 class="mt-0 mb-1">
-                <a href="{{obj.url}}">{{obj.title}}</a>
+                <a href="{{obj.url}}"><span>{{obj.title}}</span></a>
                 <small class="datetime">{{ obj.pub_date|naturaltime }}</small>
-                <span class="linked-list-permalink"><a href="{{ object.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
+                <span class="linked-list-permalink"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
             </h5>
             {{obj.deck_html|safe}}
         </div>

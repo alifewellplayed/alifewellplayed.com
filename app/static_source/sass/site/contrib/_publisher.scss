@@ -1,11 +1,13 @@
+$r-featured-background: #050505;
+
 .r-featured-story {
     position: absolute;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    padding: 30px 20px;
+    padding: 40px 20px;
     text-align: left;
-    background-color: $brand-primary;
+    background-color: $r-featured-background;
 
     &:before {
         display: block;
@@ -18,16 +20,18 @@
         left: 0;
         right: 0;
 
-        background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba($brand-primary, 1)); /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(right, rgba(255,0,0,0), rgba($brand-primary, 1)); /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba($brand-primary, 1)); /* For Firefox 3.6 to 15 */
-        background: linear-gradient(to right, rgba(255,0,0,0), rgba($brand-primary, 1)); /* Standard syntax (must be last) */
+        background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba($r-featured-background, 1)); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(right, rgba(255,0,0,0), rgba($r-featured-background, 1)); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba($r-featured-background, 1)); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to right, rgba(255,0,0,0), rgba($r-featured-background, 1)); /* Standard syntax (must be last) */
     }
     a {
-        color: #fff;
+        color: $white;
+        text-shadow: none;
+        border-bottom: 1px dotted;
+        transition: all .3s ease;
         &:hover {
-            text-shadow: none;
-            background-color:  darken($brand-primary, 8%);
+            border-bottom: 1px solid $yellow-light;
         }
     }
     h6 {
@@ -35,13 +39,13 @@
         font-size: 14px;
         letter-spacing: 1px;
         font-weight: bold;
-        text-shadow: 1px 1px 1px darken($brand-primary, 15%);
+        text-shadow: 1px 1px 1px darken($r-featured-background, 15%);
     }
     p {
         margin: 0 0;
         letter-spacing: 1px;
         font-weight: lighter;
         font-size: 95%;
-        text-shadow: 1px 1px 1px darken($brand-primary, 10%);
+        text-shadow: 1px 1px 1px darken($r-featured-background, 10%);
     }
 }
