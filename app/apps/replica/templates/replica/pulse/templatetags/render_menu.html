@@ -1,4 +1,5 @@
 <ul class="list-unstyled list-menu {{ menu.slug }}">
+    <span class="selection"></span>
     {% for obj in objects %}
     <li><a href="{{ obj.menu_url }}" data-content="{{obj.title}}">{{obj.title}}</a></li>
     {% endfor %}

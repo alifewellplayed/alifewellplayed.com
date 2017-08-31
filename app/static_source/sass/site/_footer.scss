@@ -1,10 +1,22 @@
 .site-footer {
     position: relative;
-    margin-left: 28%;
+    margin-left: $sidebar-width;
     font-size: .95rem;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     font-weight: 100;
     font-family: $font-family-sans-serif-header;
     text-transform: uppercase;
     padding: $grid-gutter-width 0;
+
+    &:before {
+        content: ' ';
+        display: block;
+        margin-left: 40px;
+        width: 25px;
+        height: 3px;
+        background-color: lighten($body-bg, 15%);
+        margin-bottom: 10px;
+    }
+
+
 }

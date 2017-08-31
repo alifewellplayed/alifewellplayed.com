@@ -1,7 +1,7 @@
 #Heroku
 Django>=1.11
 gunicorn>=19.7.0
-psycopg2==2.7.1
+psycopg2==2.7.2
 dj-database-url==0.4.2
 celery>=4.0.2
 gevent>=1.2.1

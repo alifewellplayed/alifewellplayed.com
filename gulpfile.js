@@ -125,8 +125,9 @@ gulp.task('concat-js', function() {
         'node_modules/tether/dist/js/tether.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
-        'app/static_source/js/lib/jquery.appear.js',
+        //'app/static_source/js/lib/jquery.appear.js',
         'node_modules/PACE/pace.js',
+        'app/static_source/js/site/vline.jquery.js',
         'app/static_source/js/site/site.js',
         'app/static_source/js/coffee/*.*',
     ])

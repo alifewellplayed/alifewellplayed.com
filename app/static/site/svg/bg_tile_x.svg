@@ -1,0 +1,16 @@
+<svg id="bg_tile_x_dev.svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #8787ff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <rect id="empty" class="cls-1" width="20" height="20"/>
+  <path id="dev" class="cls-2" d="M6.6,2L5,3.6,3.4,2,2,3.4,3.592,5,2,6.6,3.4,8,5,6.4,6.6,8,8,6.6,6.4,5,8,3.4Z"/>
+</svg>

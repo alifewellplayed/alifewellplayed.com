@@ -23,7 +23,7 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             a {
-                color: $link-color;
+                color: $white;
                 position: relative;
                 text-shadow: $body-bg 0 0 1px;
                 span {position: relative; z-index: 10;}
@@ -46,7 +46,7 @@
         }
 
         .glyph {
-            color: darken($link-color, 30%);
+            color: $link-color;
             font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
             border-width: 0;
             padding: 0 4px;
@@ -174,6 +174,23 @@
                     letter-spacing: 2px;
                 }
             }
+        }
+    }
+    &.post {
+        &:after {
+            content: "";
+            clear: both;
+            display: block;
+            height: 10px;
+            width: 50px;
+            position: relative;
+            left: 0;
+            top: 20px;
+            background-position: -2px 0;
+            background: url(../svg/bg_tile_x.svg) top left repeat;
+            background-size: 20px;
+            opacity: .25;
+            margin: 40px 0 80px;
         }
     }
 }

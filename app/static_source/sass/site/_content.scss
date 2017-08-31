@@ -46,12 +46,18 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
+#wrap {
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+}
+
 .site-content {
     backface-visibility: visible;
 	position: relative;
 	z-index: 10;
 	padding-top: 60px;
-	margin-left: 28%;
+	margin-left: 150px;
 
     .datetime {
         margin-bottom: 10px;

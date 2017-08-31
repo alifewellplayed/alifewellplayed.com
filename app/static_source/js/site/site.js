@@ -31,10 +31,11 @@
             bigSectionsDestination: 'top',
             responsiveWidth: 992,
             scrollBar: true,
-            fixedElements: '#header-nav',
+            fixedElements: '.site-header',
         });
 
         fullscreener($('.' + $classes.FsrImage));
+        $('.primary').vLine();
     });
 
     function fullscreener(_container) {

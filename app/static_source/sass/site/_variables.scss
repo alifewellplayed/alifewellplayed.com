@@ -15,10 +15,10 @@ $white: #fff;
 $brand-primary: $blue;
 $brand-secondary: $green;
 
-$body-bg:  #141414;
-$body-color: #999;
-$text-color:       #999;
-$link-color:            #d2d2d8 !default;
+$body-bg:  #181820;
+$body-color: #6f6f7e;
+$text-color:       #6f6f7e;
+$link-color:            #8787ff !default;
 $link-hover-color:      $white !default;
 $link-hover-decoration: underline !default;
 $grid-gutter-width: 0;
@@ -28,3 +28,7 @@ $font-family-sans-serif-header: "futura-pt", "effra", -apple-system, system-ui, 
 
 $headings-font-family:   $font-family-sans-serif-header !default;
 $headings-font-weight:   500 !default;
+
+// Site specific variables
+$featured-background: lighten($body-bg, 5%);
+$sidebar-width: 150px;
