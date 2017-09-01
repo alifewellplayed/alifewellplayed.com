@@ -42,10 +42,7 @@
         </div>
     </div>
     <header role="masthead" class="site-header">
-        <div class="site-promoted">
-            <div class="site-background sr-only" style="background-image: url({% promoted_image %});"></div>
-            {% render_promoted_heading %}
-        </div>
+        {% render_promoted_heading %}
 
         <div class="site-header-inner">
             <a href="{{ site_url }}">

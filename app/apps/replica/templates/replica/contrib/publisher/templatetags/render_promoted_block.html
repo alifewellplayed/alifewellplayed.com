@@ -1,5 +1,8 @@
 {% if obj %}
-<div class="r-featured-story">
+<div class="site-promoted-story">
+    <div class="site-promoted-image">
+        <img src="{{obj.image.image.url}}" class="sr-only image-full" alt="{{obj.title}}"/>
+    </div>
     <h6><a href="{{obj.entry.get_absolute_url}}">{{obj.title}}</a></h6>
     {{obj.deck_html|safe}}
 </div>

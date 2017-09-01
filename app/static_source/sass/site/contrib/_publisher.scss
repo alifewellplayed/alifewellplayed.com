@@ -1,6 +1,4 @@
-
-
-.r-featured-story {
+.site-promoted-story {
     position: relative;
     width: 100%;
     padding: 20px 40px;
@@ -33,14 +31,27 @@
             border-bottom: 1px solid $link-color;
         }
     }
+    .site-promoted-image {
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 0; right: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: .1;
+    }
     h6 {
+        position: relative;
         text-transform: uppercase;
         font-size: 14px;
         letter-spacing: 1px;
         font-weight: bold;
         text-shadow: 1px 1px 1px darken($featured-background, 10%);
+        z-index: 10;
     }
     p {
+        position: relative;
+        z-index: 10;
         margin: 0 0;
         letter-spacing: 1px;
         font-weight: lighter;

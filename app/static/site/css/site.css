@@ -10100,7 +10100,7 @@ h1, h2, h3, h4, h5, h6 {
   .site-sidebar .vLine {
     background: #8787ff;
     width: 5px;
-    height: 24px;
+    height: 28px;
     right: 0;
     top: -600px; }
   .site-sidebar:before {
@@ -10130,23 +10130,26 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     position: relative;
     z-index: 15; }
-    .site-sidebar .site-nav .list-menu.primary {
-      padding-right: 20px; }
-      .site-sidebar .site-nav .list-menu.primary > li {
-        padding: 7px auto; }
-        .site-sidebar .site-nav .list-menu.primary > li a {
-          text-transform: uppercase;
-          font-size: 15px;
-          letter-spacing: 1px;
-          color: #d2d2d8;
-          font-weight: 500;
-          position: relative;
-          opacity: .95;
-          -webkit-transition: text-shadow .3s, color .3s;
-          transition: text-shadow .3s, color .3s; }
-          .site-sidebar .site-nav .list-menu.primary > li a:hover {
-            color: #fff;
-            opacity: 1; }
+    .site-sidebar .site-nav .list-menu.primary > li {
+      padding-right: 15px;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      border-right: 5px solid transparent; }
+      .site-sidebar .site-nav .list-menu.primary > li.active {
+        border-right-color: #2e2e3d; }
+      .site-sidebar .site-nav .list-menu.primary > li a {
+        text-transform: uppercase;
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: #d2d2d8;
+        font-weight: 500;
+        position: relative;
+        opacity: .95;
+        -webkit-transition: text-shadow .3s, color .3s;
+        transition: text-shadow .3s, color .3s; }
+        .site-sidebar .site-nav .list-menu.primary > li a:hover {
+          color: #fff;
+          opacity: 1; }
     .site-sidebar .site-nav p {
       font-weight: 500;
       font-size: 16px;
@@ -10562,9 +10565,9 @@ h1, h2, h3, h4, h5, h6 {
       font-weight: 100; }
     .entries-archived p.archived a {
       padding-bottom: 4px;
-      border-bottom: 1px dotted #84a90e; }
+      border-bottom: 1px dotted #23232f; }
       .entries-archived p.archived a:hover {
-        border-bottom: 1px solid #84a90e; }
+        border-bottom: 1px solid #23232f; }
 
 .linklist.archived {
   text-transform: uppercase;
@@ -10574,9 +10577,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 8px 0; }
   .linklist.archived a {
     padding-bottom: 4px;
-    border-bottom: 1px dotted #84a90e; }
+    border-bottom: 1px dotted #23232f; }
     .linklist.archived a:hover {
-      border-bottom: 1px solid #84a90e; }
+      border-bottom: 1px solid #23232f; }
 
 .site-footer {
   position: relative;
@@ -10596,13 +10599,13 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #39394c;
     margin-bottom: 10px; }
 
-.r-featured-story {
+.site-promoted-story {
   position: relative;
   width: 100%;
   padding: 20px 40px;
   text-align: left;
   background-color: #23232f; }
-  .r-featured-story:after {
+  .site-promoted-story:after {
     display: block;
     content: ' ';
     height: 20px;
@@ -10618,22 +10621,36 @@ h1, h2, h3, h4, h5, h6 {
     background: -webkit-gradient(linear, right top, left top, from(rgba(255, 0, 0, 0)), to(#23232f));
     background: linear-gradient(to left, rgba(255, 0, 0, 0), #23232f);
     /* Standard syntax (must be last) */ }
-  .r-featured-story a {
+  .site-promoted-story a {
     color: #fff;
     text-shadow: none;
     border-bottom: 1px dotted;
     -webkit-transition: all .3s ease;
     transition: all .3s ease; }
-    .r-featured-story a:hover {
+    .site-promoted-story a:hover {
       color: #8787ff;
       border-bottom: 1px solid #8787ff; }
-  .r-featured-story h6 {
+  .site-promoted-story .site-promoted-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .1; }
+  .site-promoted-story h6 {
+    position: relative;
     text-transform: uppercase;
     font-size: 14px;
     letter-spacing: 1px;
     font-weight: bold;
-    text-shadow: 1px 1px 1px #0d0d11; }
-  .r-featured-story p {
+    text-shadow: 1px 1px 1px #0d0d11;
+    z-index: 10; }
+  .site-promoted-story p {
+    position: relative;
+    z-index: 10;
     margin: 0 0;
     letter-spacing: 1px;
     font-weight: lighter;

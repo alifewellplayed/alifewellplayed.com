@@ -14,7 +14,7 @@ $r-featured-background: lighten($body-bg, 5%);
     .vLine {
         background: $link-color;
         width: 5px;
-        height: 24px;
+        height: 28px;
         right: 0;
         top: -600px;
     }
@@ -50,9 +50,14 @@ $r-featured-background: lighten($body-bg, 5%);
         position: relative;
         z-index: 15;
         .list-menu.primary {
-            padding-right: 20px;
             &>li {
-                padding: 7px auto;
+                padding-right: 15px;
+                margin-top: 3px;
+                margin-bottom: 3px;
+                border-right: 5px solid transparent;
+                &.active {
+                    border-right-color: lighten($body-bg, 10%);
+                }
                 a {
                     text-transform: uppercase;
                     font-size: 15px;
