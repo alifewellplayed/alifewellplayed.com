@@ -1,7 +1,7 @@
 #Heroku
 Django>=1.11
 gunicorn>=19.7.0
-psycopg2==2.7.2
+psycopg2==2.7.3
 dj-database-url==0.4.2
 celery>=4.0.2
 gevent>=1.2.1
@@ -14,7 +14,7 @@ djangorestframework>=3.6.2
 django-rest-swagger>=0.2.9
 bleach>=2.0.0
 django-redis-cache>=1.5.0
-python-dotenv==0.6.4
+python-dotenv==0.6.5
 click==6.7
 boto>=2.46.1
 django-queued-storage>=0.8.0

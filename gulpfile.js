@@ -121,11 +121,10 @@ gulp.task('admin-build-css', function() {
 gulp.task('concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
+        'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/fullpage.js/dist/jquery.fullpage.js',
-        'node_modules/tether/dist/js/tether.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
-        //'app/static_source/js/lib/jquery.appear.js',
         'node_modules/PACE/pace.js',
         'app/static_source/js/site/vline.jquery.js',
         'app/static_source/js/site/site.js',
@@ -146,11 +145,11 @@ gulp.task('admin-webpack-vue', function(){
 // Concat admin JS into unminified single file
 gulp.task('admin-concat-js', function() {
     return gulp.src([
-        //'app/static_source/js/admin/modernizr.custom.js',
+
         'node_modules/jquery/dist/jquery.js',
-        'node_modules/tether/dist/js/tether.js',
-        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-        'node_modules/pace-progress/pace.js',
+        'node_modules/popper.js/dist/umd/popper.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
+        'node_modules/PACE/pace.js',
         'app/static_source/js/admin/jquery.appear.js',
         'app/static_source/js/admin/site.js',
     ])
