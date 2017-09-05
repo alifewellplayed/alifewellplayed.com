@@ -74,10 +74,10 @@ gulp.task('admin-imagemin', function() {
 // Copy component assets
 gulp.task('copy-assets', function() {
     gulp.src('node_modules/components-font-awesome/scss/**/*.*')
-    .pipe(gulp.dest('app/static_source/sass/font-awesome'));
+    .pipe(gulp.dest('app/static_source/sass/_shared/font-awesome'));
 
-    gulp.src('node_modules/bootstrap-sass/assets/stylesheets/**/*.*')
-    .pipe(gulp.dest('app/static_source/sass/bootstrap'));
+    gulp.src('node_modules/bootstrap/scss/**/*.*')
+    .pipe(gulp.dest('app/static_source/sass/_shared/bootstrap'));
 });
 
 // Compile coffeescript to JS

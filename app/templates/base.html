@@ -1,13 +1,13 @@
 <!DOCTYPE html>{% load replica_blog_tags %}{% load replica_publisher_tags %}
 <html lang="en">
-  <head>
+	<head>
 		<title>{% block title %}{% endblock %}{{site_name}}</title>
-        <meta charset="utf-8">
+				<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="author" content="{{site_author}}" />
 		<meta name="description" content="{{site_desc}}" />
 		<meta name="keywords" content="{{site_keywords}}" />
-        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+				<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 		<meta http-equiv="cleartype" content="on">
 		<meta http-equiv="x-dns-prefetch-control" content="off">
 
@@ -15,70 +15,67 @@
 		<link rel="canonical" href="{{site_url}}" />
 		<link rel="alternate" type="application/atom+xml" href="{% url 'ReplicaPulse:KitchenSink-RSS' %}" />
 		<link type="text/plain" rel="author" href="/humans.txt" />
-        <link rel="stylesheet" href="{{STATIC_URL}}site/css/site.min.css">
-        {% block css %}{% endblock %}
+		<link rel="stylesheet" href="{{STATIC_URL}}site/css/site.min.css">
+		{% block css %}{% endblock %}
 		{% include "_includes/icons.html" %}
-
 		<!-- Typekit -->
 		<script type="text/javascript" src="//use.typekit.net/ict0izq.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-
 		{% block extra %}{% endblock %}
 	</head>
 
 <body class="{% block page %}{% endblock %}">
 <div id="wrap">
-    <div class="pulse-header">
-        {% if request.user.is_authenticated %}
-        {% include "replica/_includes/_pulsemarker.html" %}
-        {% endif %}
-    </div>
-    <div class="site-sidebar">
-        <div class="site-sidebar-inner">
-            <nav class="site-nav text-right">
-                {% render_menu 'primary' %}
-            </nav>
-        </div>
-    </div>
-    <header role="masthead" class="site-header">
-        {% render_promoted_heading %}
+		<div class="pulse-header">
+				{% if request.user.is_authenticated %}
+				{% include "replica/_includes/_pulsemarker.html" %}
+				{% endif %}
+		</div>
+		<div class="site-sidebar">
+				<div class="site-sidebar-inner">
+						<nav class="site-nav text-right">
+								{% render_menu 'primary' %}
+						</nav>
+				</div>
+		</div>
+		<header role="masthead" class="site-header">
+				{% render_promoted_heading %}
 
-        <div class="site-header-inner">
-            <a href="{{ site_url }}">
-            <svg viewBox="0 0 500 20">
-                <symbol id="s-text">
-                    <text text-anchor="left" x="0" y="50%" dy=".35em">{{site_name}}</text>
-                </symbol>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-            </svg>
-            </a>
-            <h6 class="site-author">By <span>{{site_author}}</span></h6>
-        </div>
+				<div class="site-header-inner">
+						<a href="{{ site_url }}">
+						<svg viewBox="0 0 500 20">
+								<symbol id="s-text">
+										<text text-anchor="left" x="0" y="50%" dy=".35em">{{site_name}}</text>
+								</symbol>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
+						</svg>
+						</a>
+						<h6 class="site-author">By <span>{{site_author}}</span></h6>
+				</div>
 
 
-    </header>
-    <div id="river" class="site-content">
-        <div id="content" class="fadeIn">
-            {% block content %}{% endblock %}
-        </div>
-    </div>
+		</header>
+		<div id="river" class="site-content">
+				<div id="content" class="fadeIn">
+						{% block content %}{% endblock %}
+				</div>
+		</div>
 
-    <footer id="bottom" class="site-footer" role="footer">
-        <div class="layout-single-column">
-            <nav class="footer-links sr-only">
-                {% render_menu 'footer' %}
-            </nav>
-            <p>{{site_name}}, copyright &copy; 2017<Br />
-                Written and produced by <a href="http://underlost.net/">{{ site_author }}</a>.</p>
-        </div>
-    </footer>
+		<footer id="bottom" class="site-footer" role="footer">
+				<div class="layout-single-column">
+						<nav class="footer-links sr-only">
+								{% render_menu 'footer' %}
+						</nav>
+						<p>{{site_name}}, copyright &copy; 2017<Br />
+								Written and produced by <a href="http://underlost.net/">{{ site_author }}</a>.</p>
+				</div>
+		</footer>
 </div>
-{% block javascript %}{% endblock %}
 <script type="text/javascript" src="{{STATIC_URL}}site/js/global.js"></script>
+{% block javascript %}{% endblock %}
 </body>
 </html>

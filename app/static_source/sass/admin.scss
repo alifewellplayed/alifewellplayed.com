@@ -1,7 +1,9 @@
-@import '_shared/font-awesome/font-awesome';
-@import '_shared/animations';
+@import 'admin/variables';
 
-@import 'admin/bootstrap/bootstrap';
+@import '_shared/animations';
+@import '_shared/font-awesome/font-awesome';
+@import '_shared/bootstrap/bootstrap';
+
 @import "admin/color";
 @import "admin/var";
 @import "admin/mixins";
