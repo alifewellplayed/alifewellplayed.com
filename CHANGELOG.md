@@ -1,3 +1,11 @@
+### 2.2.1 (09/04/2017)
+* Updated Packages
+* Started moving CMS to render HTML in django instead of vue.js for prototyping purposes
+
+### 2.2.0 (08/21/2017)
+* Updated layout and colors
+* Updated to most recent version of Bootstrap V4 Beta.
+
 ### 2.1.3 (05/21/2017)
 * Finally added favicon.
 * Updated Topics page to display correct
