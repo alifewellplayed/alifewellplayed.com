@@ -16,7 +16,7 @@ from replica.pulse.models import Entry, Draft, Media, Topic, Channel, MenuPositi
 from replica.contrib.micro.models import Timeline, Note
 from replica.api.serializers import *
 from replica.api.permissions import IsOwner, IsOwnerOrReadOnly
-from replica import settings as r_settings
+from replica import settings as replicaSettings
 
 
 class TopicDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -180,7 +180,7 @@ class CurrentSite(APIView):
         a = hashlib.md5(u.email.encode('utf-8')).hexdigest()
         avatar = "https://secure.gravatar.com/avatar/%s.jpg" % a
 
-        user_settings = {
+        usereplicaSettings = {
             "current_user": u.username,
             "current_user_hash": a,
             "current_avatar": avatar,
@@ -189,12 +189,12 @@ class CurrentSite(APIView):
             'logout': reverse('CoreExtend:Logout'),
         }
         site_settings = {
-            "site_name": r_settings.SITE_NAME,
-            "site_url": r_settings.SITE_URL,
+            "site_name": replicaSettings.SITE_NAME,
+            "site_url": replicaSettings.SITE_URL,
         }
         settings = {
             'site_settings': site_settings,
-            'user_settings': user_settings,
+            'usereplicaSettings': usereplicaSettings,
         }
 
         return Response(settings)

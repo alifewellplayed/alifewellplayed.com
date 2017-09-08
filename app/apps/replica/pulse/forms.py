@@ -8,7 +8,7 @@ from django.db.models import Q
 from pagedown.widgets import AdminPagedownWidget
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Media, Draft, Topic, Channel
+from replica.pulse.models import Entry, Media, Draft, Topic, Channel, SiteSettings
 
 
 class AdminEntryForm(forms.ModelForm):
@@ -18,3 +18,11 @@ class AdminEntryForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = ['title', 'deck', 'body', 'slug', 'url', 'user', 'topic', 'pub_date', 'is_active', 'channel', 'content_format', 'featured_image', ]
+
+
+class AdminSiteSettingsForm(forms.ModelForm):
+    summary = forms.CharField(widget=AdminPagedownWidget())
+
+    class Meta:
+        model = SiteSettings
+        fields = ['name', 'domain', 'author', 'description', 'summary', 'is_enabled', 'password', 'secret_token', 'view_settings', ]

@@ -14,7 +14,7 @@ from django.conf import settings
 from django.core.urlresolvers import get_script_prefix
 from django.contrib.sites.models import Site
 
-from replica import settings as r_settings
+from replica import settings as replicaSettings
 from replica.pulse.models import Entry, Media
 from replica.pulse.managers import TopicManager, EntryManager, MediaManager
 

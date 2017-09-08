@@ -9,7 +9,11 @@
     top: 0; bottom: 0;
     left: 0; right: 0;
     opacity: 10;
-    a {display: block;}
+    a {
+      display: block;
+      color: lighten($body-bg, 20%);
+      &:hover {text-shadow:none; color: $brand-primary; }
+    }
 
     .DotPulse {
         content: ' ';
@@ -22,7 +26,7 @@
         top: 0; bottom: 0;
         z-index: 10;
         background-color: transparent;
-        border: 10px solid $brand-secondary;
+        border: 1px solid $brand-primary;
         -webkit-animation-name: dotPulse;
         -moz-animation-name: dotPulse;
         -webkit-animation-duration: 2s;
@@ -44,15 +48,16 @@
         position: absolute;
         left: 0; right: 0;
         top: 25px;
-        background-color: $brand-secondary;
+        border: 1px solid lighten($body-bg, 20%);
+        background-color: transparent;
         z-index: 50;
         -webkit-transform: translateZ(0);
         i {
             font-size: 10px;
             position: relative;
-            top: -3px;
+            top: -5px;
             left: 0px;
-            color: $white;
+            &:hover {color: $link-color;}
         }
     }
 }
@@ -80,14 +85,14 @@
 
     100% {
         opacity: 0;
-        border: 10px solid $brand-secondary;
+        border: 10px solid $brand-primary;
         -webkit-transform: scale(1);
     }
 
 }
 
 .pulse-header {
-    position: fixed;
+    position: absolute;
     right: 20px;
     bottom: 35px;
     z-index: 100;

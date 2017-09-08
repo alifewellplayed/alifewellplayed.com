@@ -15,7 +15,7 @@ from django.core.urlresolvers import get_script_prefix
 from django.utils.encoding import iri_to_uri
 from django.contrib.sites.models import Site
 
-from replica import settings as r_settings
+from replica import settings as replicaSettings
 from replica.pulse.managers import TopicManager, EntryManager, MediaManager
 from replica.pulse.utils import create_thumbnail
 
@@ -29,7 +29,7 @@ MAX_LENGTH = 510
 
 def upload_media(instance, filename):
     ext = filename.split('.')[-1]
-    filename = "%s.%s" % (instance.id, ext)
+    filename = "%s.%s" % (instance.slug, ext)
     date = instance.date_created
     datepath_path = datetime.date.today().strftime("%Y/%m/%d")
     path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
@@ -38,7 +38,7 @@ def upload_media(instance, filename):
 
 def upload_media_md(instance, filename):
     ext = filename.split('.')[-1]
-    filename = "%s_md.%s" % (instance.id, ext)
+    filename = "%s_md.%s" % (instance.slug, ext)
     date = instance.date_created
     datepath_path = datetime.date.today().strftime("%Y/%m/%d")
     path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
@@ -47,7 +47,7 @@ def upload_media_md(instance, filename):
 
 def upload_media_sm(instance, filename):
     ext = filename.split('.')[-1]
-    filename = "%s_sm.%s" % (instance.id, ext)
+    filename = "%s_sm.%s" % (instance.slug, ext)
     date = instance.date_created
     datepath_path = datetime.date.today().strftime("%Y/%m/%d")
     path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
@@ -60,6 +60,7 @@ class Media(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=MAX_LENGTH)
+    slug = models.SlugField(max_length=MAX_LENGTH, blank=True, editable=False)
     caption = models.CharField(max_length=MAX_LENGTH, blank=True)
     content = models.TextField(blank=True)
     url = models.URLField(blank=True)
@@ -88,6 +89,8 @@ class Media(models.Model):
             return self.content
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
         if self.image:
             image_name = self.image.name
             try:
@@ -101,9 +104,9 @@ class Media(models.Model):
                 elif self.image.name.endswith(".gif"):
                     content_type = 'image/gif'
             with Image.open(BytesIO(self.image.read())) as img:
-                sm_filename, sm_image = create_thumbnail(image_name, img, content_type, r_settings.THUMBNAIL_SMALL, r_settings.THUMBNAIL_SMALL)
+                sm_filename, sm_image = create_thumbnail(image_name, img, content_type, replicaSettings.THUMBNAIL_SMALL, replicaSettings.THUMBNAIL_SMALL)
                 self.thumbnail_small.save(sm_filename, sm_image, save=False)
-                md_filename, md_image = create_thumbnail(image_name, img, content_type, r_settings.THUMBNAIL_LARGE, r_settings.THUMBNAIL_LARGE)
+                md_filename, md_image = create_thumbnail(image_name, img, content_type, replicaSettings.THUMBNAIL_LARGE, replicaSettings.THUMBNAIL_LARGE)
                 self.thumbnail_medium.save(md_filename, md_image, save=False)
         super(Media, self).save(*args, **kwargs)
 
@@ -414,6 +417,8 @@ class SiteSettings(Site):
     view_settings = models.TextField(default="{}")
     author = models.CharField(max_length=510, blank=True)
     description = models.TextField(help_text="Site Description", blank=True, null=True)
+    summary = models.TextField(help_text="Summary", blank=True)
+    summary_html = models.TextField(blank=True, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -421,3 +426,7 @@ class SiteSettings(Site):
         db_table = 'r_SiteSettings'
         verbose_name = "Site Settings"
         verbose_name_plural = 'Site Settings'
+
+    def save(self, *args, **kwargs):
+        self.summary_html = markdown.markdown(self.summary)
+        super(SiteSettings, self).save(*args, **kwargs)

@@ -10,7 +10,6 @@
 @import 'site/content';
 @import 'site/sidebar';
 @import 'site/header';
-@import 'site/pulse';
 @import 'site/sticky';
 @import 'site/entry';
 @import 'site/page';
@@ -18,9 +17,13 @@
 @import 'site/archive';
 @import 'site/footer';
 
+// Components
+@import 'site/pulse';
+@import 'site/modals';
+
 // Contrib
 @import 'site/contrib/publisher';
 @import 'site/contrib/micro';
-//@import 'site/zine';
+//@import 'site/contrib/zine';
 
 @import 'site/mobile';

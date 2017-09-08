@@ -1,0 +1,15 @@
+.modal.modalDark {
+  .modal-header {
+    border-bottom-width: 0;
+  }
+  .modal-title {
+    color: $link-color;
+  }
+  .modal-content {
+    background-color: $body-bg;
+  }
+  .close {
+    color: $link-color;
+    text-shadow: none;
+  }
+}

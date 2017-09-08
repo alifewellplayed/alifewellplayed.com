@@ -3,11 +3,11 @@ import datetime
 
 def template_settings(request):
     return {
-        'site_name': settings.SITE_NAME,
-        'site_desc': settings.SITE_DESC,
-        'site_author': settings.SITE_AUTHOR,
-        'site_url': settings.SITE_URL,
-        'site_register': settings.ALLOW_NEW_REGISTRATIONS,
+        'network_name': settings.SITE_NAME,
+        'network_desc': settings.SITE_DESC,
+        'network_author': settings.SITE_AUTHOR,
+        'network_url': settings.SITE_URL,
+        'network_register': settings.ALLOW_NEW_REGISTRATIONS,
         'BASE_URL': 'http://' + request.get_host(),
         'BASE_HOST': request.get_host().split(':')[0],
     }

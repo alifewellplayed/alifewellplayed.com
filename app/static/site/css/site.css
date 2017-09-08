@@ -9849,107 +9849,6 @@ h1, h2, h3, h4, h5, h6 {
     .site-header .site-header-inner a:hover {
       text-shadow: 0 0 4px #181820; }
 
-.PulseMarker {
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  z-index: 5;
-  width: 70px;
-  height: 70px;
-  position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 10; }
-  .PulseMarker a {
-    display: block; }
-  .PulseMarker .DotPulse {
-    content: ' ';
-    margin: 0 auto;
-    width: 70px;
-    height: 70px;
-    border-radius: 100px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 10;
-    background-color: transparent;
-    border: 10px solid #84a90e;
-    -webkit-animation-name: dotPulse;
-    -moz-animation-name: dotPulse;
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-    opacity: 0.2;
-    border-radius: 100px; }
-  .PulseMarker .DotDot {
-    content: ' ';
-    margin: 0 auto;
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 25px;
-    background-color: #84a90e;
-    z-index: 50;
-    -webkit-transform: translateZ(0); }
-    .PulseMarker .DotDot i {
-      font-size: 10px;
-      position: relative;
-      top: -3px;
-      left: 0px;
-      color: #fff; }
-
-@-webkit-keyframes dotPulse {
-  0% {
-    -webkit-transform: scale(0);
-    opacity: 0; }
-  8% {
-    -webkit-transform: scale(0);
-    opacity: 0; }
-  15% {
-    -webkit-transform: scale(0.1);
-    opacity: 0.8; }
-  30% {
-    -webkit-transform: scale(0.5);
-    opacity: 0.2; }
-  100% {
-    opacity: 0;
-    border: 10px solid #84a90e;
-    -webkit-transform: scale(1); } }
-
-@keyframes dotPulse {
-  0% {
-    -webkit-transform: scale(0);
-    opacity: 0; }
-  8% {
-    -webkit-transform: scale(0);
-    opacity: 0; }
-  15% {
-    -webkit-transform: scale(0.1);
-    opacity: 0.8; }
-  30% {
-    -webkit-transform: scale(0.5);
-    opacity: 0.2; }
-  100% {
-    opacity: 0;
-    border: 10px solid #84a90e;
-    -webkit-transform: scale(1); } }
-
-.pulse-header {
-  position: fixed;
-  right: 20px;
-  bottom: 35px;
-  z-index: 100; }
-
 .replica-media-list .media {
   padding-bottom: 8px;
   border-bottom: 1px solid #292937;
@@ -10254,6 +10153,126 @@ h1, h2, h3, h4, h5, h6 {
     height: 3px;
     background-color: #39394c;
     margin-bottom: 10px; }
+
+.PulseMarker {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  z-index: 5;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 10; }
+  .PulseMarker a {
+    display: block;
+    color: #44445a; }
+    .PulseMarker a:hover {
+      text-shadow: none;
+      color: #8787ff; }
+  .PulseMarker .DotPulse {
+    content: ' ';
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: transparent;
+    border: 1px solid #8787ff;
+    -webkit-animation-name: dotPulse;
+    -moz-animation-name: dotPulse;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    opacity: 0.2;
+    border-radius: 100px; }
+  .PulseMarker .DotDot {
+    content: ' ';
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    border: 1px solid #44445a;
+    background-color: transparent;
+    z-index: 50;
+    -webkit-transform: translateZ(0); }
+    .PulseMarker .DotDot i {
+      font-size: 10px;
+      position: relative;
+      top: -5px;
+      left: 0px; }
+      .PulseMarker .DotDot i:hover {
+        color: #8787ff; }
+
+@-webkit-keyframes dotPulse {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0; }
+  8% {
+    -webkit-transform: scale(0);
+    opacity: 0; }
+  15% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.8; }
+  30% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.2; }
+  100% {
+    opacity: 0;
+    border: 10px solid #8787ff;
+    -webkit-transform: scale(1); } }
+
+@keyframes dotPulse {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0; }
+  8% {
+    -webkit-transform: scale(0);
+    opacity: 0; }
+  15% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.8; }
+  30% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.2; }
+  100% {
+    opacity: 0;
+    border: 10px solid #8787ff;
+    -webkit-transform: scale(1); } }
+
+.pulse-header {
+  position: absolute;
+  right: 20px;
+  bottom: 35px;
+  z-index: 100; }
+
+.modal.modalDark .modal-header {
+  border-bottom-width: 0; }
+
+.modal.modalDark .modal-title {
+  color: #8787ff; }
+
+.modal.modalDark .modal-content {
+  background-color: #181820; }
+
+.modal.modalDark .close {
+  color: #8787ff;
+  text-shadow: none; }
 
 .site-promoted-story {
   position: relative;

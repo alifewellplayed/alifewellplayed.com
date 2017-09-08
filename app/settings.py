@@ -180,6 +180,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             	'coreExtend.context_processors.template_settings',
                 'coreExtend.context_processors.template_times',
+                'replica.pulse.context_processors.currentSite',
             ],
             'debug': DEBUG,
         },

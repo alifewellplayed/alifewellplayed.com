@@ -4,7 +4,7 @@ from django.db.models import Q
 
 from coreExtend.models import Account as User
 from replica.api.permissions import IsOwner, IsOwnerOrReadOnly
-from replica import settings as r_settings
+from replica import settings as replicaSettings
 
 from .models import Timeline, Note
 from .serializers import *

@@ -7,11 +7,11 @@ from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, Month
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
 
 from coreExtend.models import Account
-from replica import settings as r_settings
+from replica import settings as replicaSettings
 from replica.pulse.models import Topic, Entry
 from replica.pulse.mixins import PulseViewMixin
 
-THEME = r_settings.SITE_THEME
+THEME = replicaSettings.SITE_THEME
 
 #Default views
 class ArchiveIndexView(PulseViewMixin, ArchiveIndexView):
@@ -38,7 +38,7 @@ def EntryDetail(request, year, month, slug):
 
 #Entries for topic
 class EntriesForTopic(ListView):
-    paginate_by = r_settings.PAGINATE
+    paginate_by = replicaSettings.PAGINATE
     template_name = 'replica/pulse/topic_entry_list.html'
 
     def get_queryset(self):
@@ -52,7 +52,7 @@ class EntriesForTopic(ListView):
 
 #List of public topics
 class TopicsList(ListView):
-    paginate_by = r_settings.PAGINATE_TOPICS
+    paginate_by = replicaSettings.PAGINATE_TOPICS
     template_name = 'replica/pulse/topic_list.html'
 
     def get_queryset(self):

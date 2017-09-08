@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from django.contrib import admin
 from django.db import models
 
-from .forms import AdminEntryForm
+from .forms import AdminEntryForm, AdminSiteSettingsForm
 from .models import Topic, Media, Channel, Entry, Draft, SiteSettings, EntryLink, MenuPosition, MenuItem
 
 def force_save(modeladmin, request, queryset):
@@ -44,6 +44,7 @@ class DraftAdmin(admin.ModelAdmin):
     list_filter = ('user',)
 
 class SiteSettingsAdmin(admin.ModelAdmin):
+    form = AdminSiteSettingsForm
     list_display = ('name', 'domain', 'id')
 
 class EntryLinkAdmin(admin.ModelAdmin):
