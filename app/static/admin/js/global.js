@@ -10424,7 +10424,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     var sideBarWidthCondensed = 250 - 70;
 
     $(document).ready(function() {
-        $('.page-sidebar').bind('mouseenter mouseleave', sidebarMouseEnter);
+      //  $('.page-sidebar').bind('mouseenter mouseleave', sidebarMouseEnter);
         $('.site-content').bind('mouseover', sidebarMouseLeave);
         $('[data-toggle-pin="sidebar"]').click(function(){
             $body.toggleClass('menu-pin')

@@ -10,8 +10,8 @@ from .views import channel as channelView
 from .views import topic as topicView
 
 APP_URLS = [
-	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/base.html"))), name="App" ),
-	url(r'^app/(?P<path>.*)/$', login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/base.html"))), name="App" ),
+	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
+	url(r'^app/(?P<path>.*)/$', login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
 ]
 
 SITE_URLS = [

@@ -1,11 +1,16 @@
 
+header.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+}
+
 @media only screen and (min-width: 980px) {
-    header.header {
+    header.site-header {
         padding-left: 70px;
     }
 
     body.menu-pin .page-container {
-        header.header {
+        header.site-header {
             padding-left: 250px;
         }
     }

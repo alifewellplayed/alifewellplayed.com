@@ -145,7 +145,6 @@ gulp.task('admin-webpack-vue', function(){
 // Concat admin JS into unminified single file
 gulp.task('admin-concat-js', function() {
     return gulp.src([
-
         'node_modules/jquery/dist/jquery.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',

@@ -13,9 +13,16 @@
 </head>
 
 <body class="replica fixed-header dashboard">
-{% block content %}{% endblock %}
+{% include "replica/cms/components/_header.html" %}
+{% include "replica/cms/components/_sidebar.html" %}
 
-<script src="{{STATIC_URL}}admin/js/global.js" type="text/javascript"></script>
+<div class="page-container">
+  {% block content %}{% endblock %}
+</div>
+
+
+
 {% block javascript %}{% endblock %}
+<script src="{{STATIC_URL}}admin/js/global.js" type="text/javascript"></script>
 </body>
 </html>
