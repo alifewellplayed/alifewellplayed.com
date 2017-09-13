@@ -1,0 +1,17 @@
+.replica-card {
+    transition: all 1s ease-in-out;
+    .card-header {
+      background-color: $white;
+      border-bottom-width: 0;
+      .card-title {
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+      .pull-right {font-size: .75rem;}
+    }
+    .card-footer {
+      background-color: $white;
+      border-top-width: 0;
+    }
+}

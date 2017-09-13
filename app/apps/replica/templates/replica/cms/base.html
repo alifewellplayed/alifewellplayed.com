@@ -13,11 +13,13 @@
 </head>
 
 <body class="replica fixed-header dashboard">
-{% include "replica/cms/components/_header.html" %}
 {% include "replica/cms/components/_sidebar.html" %}
 
 <div class="page-container">
-  {% block content %}{% endblock %}
+  {% include "replica/cms/components/_header.html" %}
+  <div class="page-container-inner">
+    {% block content %}{% endblock %}
+  </div>
 </div>
 
 

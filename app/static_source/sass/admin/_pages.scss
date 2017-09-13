@@ -1,14 +1,18 @@
 .page-container {
   position: relative;
-  margin-left: 80px;
-  margin-right: 10px;
   transition: margin .3s ease-in-out;
   transition: transform .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out;
   -webkit-transition: margin .3s ease-in-out;
+  .page-container-inner {
+    margin-left: 80px;
+    margin-right: 10px;
+    transition: margin .3s ease-in-out;
+    -webkit-transition: margin .3s ease-in-out;
+  }
 
 }
 
-#sidebar-checkbox:checked ~ .page-container {
+#sidebar-checkbox:checked ~ .page-container .page-container-inner {
   margin-left: 260px;
 }

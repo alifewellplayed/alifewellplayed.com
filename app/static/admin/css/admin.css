@@ -9319,18 +9319,6 @@ h1, h2, h3, h4, h5, h6 {
 .padding-sm-form {
   padding: 20px 0; }
 
-.replica-panel {
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-  margin-bottom: 12px;
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out; }
-  .replica-panel .panel-header {
-    padding: 0 10px; }
-    .replica-panel .panel-header .panel-title {
-      font-size: 14px; }
-
 .replica-clickable {
   cursor: pointer; }
 
@@ -9479,14 +9467,33 @@ header.site-header {
 
 .page-container {
   position: relative;
-  margin-left: 80px;
-  margin-right: 10px;
   transition: margin .3s ease-in-out;
   transition: -webkit-transform .3s ease-in-out;
   transition: transform .3s ease-in-out;
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out;
   -webkit-transition: margin .3s ease-in-out; }
+  .page-container .page-container-inner {
+    margin-left: 80px;
+    margin-right: 10px;
+    transition: margin .3s ease-in-out;
+    -webkit-transition: margin .3s ease-in-out; }
 
-#sidebar-checkbox:checked ~ .page-container {
+#sidebar-checkbox:checked ~ .page-container .page-container-inner {
   margin-left: 260px; }
+
+.replica-card {
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }
+  .replica-card .card-header {
+    background-color: #fff;
+    border-bottom-width: 0; }
+    .replica-card .card-header .card-title {
+      text-transform: uppercase;
+      margin-bottom: 0;
+      font-size: 1rem; }
+    .replica-card .card-header .pull-right {
+      font-size: .75rem; }
+  .replica-card .card-footer {
+    background-color: #fff;
+    border-top-width: 0; }
