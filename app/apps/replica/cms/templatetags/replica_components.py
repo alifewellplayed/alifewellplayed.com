@@ -6,13 +6,8 @@ from replica import settings as ReplicaSettings
 
 register = template.Library()
 
-@register.inclusion_tag('replica/cms/templatetags/_header.html', takes_context=True)
-def partialHeader():
+@register.inclusion_tag('replica/cms/components/_header.html', takes_context=True)
+def componentHeader(context, user=None):
 	request = context['request']
 	u = request.user
-
-	return {
-		'user_obj':u,
-		'SITE_NAME': ReplicaSettings.SITE_NAME,
-		'SITE_URL': ReplicaSettings.SITE_URL,
-	}
+	return {'user_obj':u, 'request':request }

@@ -1,4 +1,4 @@
-<header class="site-header navbar navbar-toggleable-md mb-3">
+<header class="site-header navbar navbar-expand-lg mb-3">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -6,41 +6,32 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <router-link class="nav-link dropdown-toggle" to="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dashboard</router-link>
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{site_name}}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <router-link class="dropdown-item" to="/">Home</router-link>
-                    <a class="dropdown-item" v-bind:href="site_settings.site_url">View Site</a>
-                    <router-link class="dropdown-item" to="/entries">Posts</router-link>
-                    <router-link class="dropdown-item" to="/pages">Pages</router-link>
-                    <router-link class="dropdown-item" to="/notes">Notes</router-link>
-                    <router-link class="dropdown-item" to="/topics">Topics</router-link>
-                    <router-link class="dropdown-item" to="/channels">Channels</router-link>
-                    <router-link class="dropdown-item" to="/media">Media</router-link>
+                    <a class="dropdown-item" href="{% url 'ReplicaAdmin:Home' %}">Home</a>
+                    <a class="dropdown-item" href="{{site_domain}}">View Site</a>
+                    <a class="dropdown-item" href="{% url 'ReplicaAdmin:SiteSettings' %}">Site Settings</a>
                 </div>
             </li>
-
-            <li class="nav-item">
-                <router-link class="nav-link" to="/entries">Posts</router-link>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img width="16" height="16" src="https://secure.gravatar.com/avatar/{{ user.hash }}?s=32&amp;d={{STATIC_URL}}img/gravatar.png">
+                  {{ user.username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'CoreExtend:AccountSettings' %}">Account Settings</a>
+                    <a class="dropdown-item" href="{% url 'CoreExtend:password_change' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'CoreExtend:Logout' %}">Logout</a>
+                </div>
             </li>
-
             <li class="nav-item">
-                <router-link class="nav-link" to="/pages">Pages</router-link>
+                <a class="nav-link" href="{% url 'ReplicaAdmin:Editor' %}"><i class="fa fa-plus"></i> New</a>
             </li>
-
-            <li class="nav-item">
-                <router-link class="nav-link" to="/editor"><i class="fa fa-plus"></i> New</router-link>
-            </li>
-
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user_settings.current_user}}</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" v-bind:href="user_settings.AccountSettings">Account Settings</a>
-                    <a class="dropdown-item" v-bind:href="user_settings.password_change">Change Password</a>
-                    <a class="dropdown-item" v-bind:href="user_settings.logout">Logout</a>
-                </div>
-            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'CoreExtend:Logout' %}">Logout</a>
+          </li>
         </ul>
     </div>
 </header>

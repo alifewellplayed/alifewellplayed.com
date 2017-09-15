@@ -1,17 +1,24 @@
 
-header.site-header {
+.site-header {
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
+  transition: margin .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  -webkit-transition: margin .3s ease-in-out;
 }
 
-@media only screen and (min-width: 980px) {
-    header.site-header {
-        padding-left: 70px;
-    }
+#sidebar-checkbox:checked ~ .page-container .site-header {
+  margin-left: 250px;
+}
 
-    body.menu-pin .page-container {
-        header.site-header {
-            padding-left: 250px;
+
+@media only screen and (min-width: 980px) {
+    .site-header {
+        margin-left: 70px;
+        .navbar-expand-lg .navbar-nav .nav-link {
+            padding-right: 1rem;
+            padding-left: 1rem;
         }
     }
 }
