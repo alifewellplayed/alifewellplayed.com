@@ -125,7 +125,7 @@ gulp.task('concat-js', function() {
         'node_modules/fullpage.js/dist/jquery.fullpage.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
-        'node_modules/PACE/pace.js',
+        'node_modules/pace-progress/pace.js',
         'app/static_source/js/site/vline.jquery.js',
         'app/static_source/js/site/site.js',
         'app/static_source/js/coffee/*.*',
@@ -146,9 +146,16 @@ gulp.task('admin-webpack-vue', function(){
 gulp.task('admin-concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
+        'node_modules/codemirror/lib/codemirror.js',
+        'node_modules/codemirror/mode/markdown/markdown.js',
+        'node_modules/codemirror/addon/edit/continuelist.js',
+        'node_modules/marked/lib/marked.js',
+        'app/static_source/js/lib/markdownify/lib/jquery.markdownify.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        'node_modules/PACE/pace.js',
+        'node_modules/autosize/dist/autosize.js',
+        'node_modules/pace-progress/pace.js',
+        'app/static_source/js/admin/jquery.markdownify.js',
         'app/static_source/js/admin/jquery.appear.js',
         'app/static_source/js/admin/site.js',
     ])

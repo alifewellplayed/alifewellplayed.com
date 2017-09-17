@@ -7,9 +7,9 @@
     {% for object in object_list %}
     <li class="list-group-item" id="{{ object.slug }}">
       <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:TopicEdit' object.id %}">
-          {{ object.title }} (<small>{{ object.entry_count }} entries</small>)
+          {{ object.title }} <small class="text-muted">({{ object.entry_count }} entries)</small>
       </a></h6>
-      {% if show_desc %}<span class="entry-meta">{{ object.description }}</span>{% endif %}
+      {% if show_desc %}<small class="text-muted">{{ object.description }}</small>{% endif %}
     </li>
     {% empty %}
     <li class="list-group-item">{{object_empty}}</li>

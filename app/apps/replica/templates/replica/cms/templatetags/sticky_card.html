@@ -1,22 +1,23 @@
 <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">{% load humanize %}
   <div class="card-header">
-    <span class="pull-right"><a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i> New</a></span>
+    <span class="pull-right">
+      <a class="card-header-btn" href="#"><i class="fa fa-plus-square" aria-hidden="true"></i> New</a>
+    </span>
     <h4 class="card-title">{{object_title}} <small>({{object_count}})</small></h4>
   </div>
   <ul class="list-group list-group-flush">
     {% for object in object_list %}
     <li class="list-group-item" id="{{ object.slug }}">
-      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:ChannelEdit' object.id %}">
-          {{ object.title }} (<small>{{ object.entry_count }} entries</small>)
-      </a></h6>
-      {% if show_desc %}<span class="entry-meta">{{ object.description }}</span>{% endif %}
+      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:EditEntry' object.id %}">{{ object.title }}</a></h6>
+      <small class="text-muted">Last updated {{ object.pub_date|naturaltime}}</small>
     </li>
     {% empty %}
     <li class="list-group-item">{{object_empty}}</li>
     {% endfor %}
   </ul>
-
+  {% if object_slug == 'published' %}
   <div class="card-footer text-muted">
-    <a href="">View All Channels</a>
+    View all published entries
   </div>
+  {% endif %}
 </div>

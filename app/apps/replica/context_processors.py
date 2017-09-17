@@ -19,4 +19,5 @@ def currentSite(request):
         'site_author': current_site.author,
         'site_created': current_site.date_created,
         'site_updated': current_site.date_updated,
+        'site_logo': current_site.logo.image.url,
     }

@@ -11,6 +11,7 @@
     "shipit": "Gulp deploy"
   },
   "dependencies": {
+    "autosize": "^4.0.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": ">=6.15.0",
@@ -19,6 +20,7 @@
     "bootstrap": "4.0.0-beta",
     "browser-sync": "^2.18.13",
     "chart.js": "^2.6.0",
+    "codemirror": "^5.29.0",
     "components-font-awesome": "*",
     "del": "^3.0.0",
     "fullpage.js": "^2.9.2",
@@ -53,6 +55,7 @@
     "marked": ">=0.3.6",
     "pace-progress": "^1.0.2",
     "packery": "~2.1.1",
+    "popper.js": "^1.11.0",
     "run-sequence": ">=2.1.0",
     "select2": "^4.0.3",
     "vue": "^2.4.2",

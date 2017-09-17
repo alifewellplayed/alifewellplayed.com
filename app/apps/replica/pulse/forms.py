@@ -25,4 +25,4 @@ class AdminSiteSettingsForm(forms.ModelForm):
 
     class Meta:
         model = SiteSettings
-        fields = ['name', 'domain', 'author', 'description', 'summary', 'is_enabled', 'password', 'secret_token', 'view_settings', ]
+        fields = ['name', 'domain', 'author', 'description', 'logo', 'summary', 'is_enabled', 'password', 'secret_token', 'view_settings', ]

@@ -36,7 +36,7 @@ def render_ideas_card(num=9999, username=None):
     return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/lists_card.html')
-def render_published_card(num=9999, username=None):
+def render_published_card(num=9999, username=None, title=None):
     if not username:
         entries = Entry.objects.published()[:num]
     else:
@@ -45,14 +45,14 @@ def render_published_card(num=9999, username=None):
     ctx = {
         'object_list': entries,
         'object_count': count,
-        'object_title': 'Published Posts',
+        'object_title': 'Recently Published',
         'object_slug': 'published',
         'object_empty': 'No entries published yet!'
     }
     return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/topics_card.html')
-def render_topics_card(num=25, username=None, show_desc=True):
+def render_topics_card(num=25, username=None, title=None, show_desc=True):
     if not username:
         topics = Topic.objects.all().order_by('title')[:num]
     else:
@@ -82,5 +82,21 @@ def render_channel_card(num=100, username=None, show_desc=True):
         'object_slug': 'channel',
         'show_desc': show_desc,
         'object_empty': 'No channels created yet!'
+    }
+    return ctx
+
+@register.inclusion_tag('replica/cms/templatetags/sticky_card.html')
+def render_sticky_card(num=9999, username=None, title=None):
+    if not username:
+        entries = Entry.objects.sticky()[:num]
+    else:
+        entries = Entry.objects.sticky().filter(user=username)[:num]
+    count = entries.count()
+    ctx = {
+        'object_list': entries,
+        'object_count': count,
+        'object_title': 'Stickied links',
+        'object_slug': 'stickied',
+        'object_empty': 'No stickied posts.'
     }
     return ctx

@@ -12,7 +12,7 @@
 {% block extra %}{% endblock %}
 </head>
 
-<body class="replica fixed-header dashboard">
+<body class="replica fixed-header dashboard {% block bodyClass %}{% endblock %}">
 {% include "replica/cms/components/_sidebar.html" %}
 
 <div class="page-container">

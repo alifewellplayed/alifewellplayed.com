@@ -6,9 +6,13 @@
 @import '_shared/bootstrap/bootstrap';
 
 @import "admin/pace";
+@import "admin/codemirror";
+
 @import "admin/coreExtend";
 @import "admin/replica";
 @import "admin/header";
 @import "admin/sidebar";
 @import "admin/pages";
 @import "admin/card";
+
+@import "admin/editor";

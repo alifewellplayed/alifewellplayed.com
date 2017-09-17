@@ -1,5 +1,8 @@
 .replica-card {
     transition: all 1s ease-in-out;
+    position: relative;
+    small.text-muted {font-weight: 100;}
+
     .card-header {
       background-color: $white;
       border-bottom-width: 0;
@@ -9,11 +12,29 @@
         font-size: 1rem;
         opacity: .5;
         letter-spacing: 1px;
+        small {font-weight: 100;}
       }
-      .pull-right {font-size: .75rem;}
+      .pull-right {font-size: .75rem; position: relative; z-index: 5;}
+      .card-header-btn {
+        color: $green;
+        text-transform: uppercase;
+      }
+    }
+    .entry-title {
+      font-weight: 400;
     }
     .card-footer {
       background-color: $white;
       border-top-width: 0;
+    }
+    // Promoted Card
+    &.replica-card-promoted {
+      .fsr-holder {
+        height: 125px;
+        width: 100%;
+      }
+      .card-body {
+        background-color: rgba($white, .25);
+      }
     }
 }
