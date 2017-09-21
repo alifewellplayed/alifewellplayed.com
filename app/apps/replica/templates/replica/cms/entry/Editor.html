@@ -30,7 +30,6 @@
               <hr />
             </div>
             <div class="card-body">
-              {% include "replica/cms/components/_toolbar.html" %}
               {{form.body}}
             </div>
         </div>
@@ -108,11 +107,11 @@
     </div><!-- .card -->
 
     {% if edit %}
-    <input type="submit" class="btn" value="Edit">
-    <a class="btn" href="#" class="">Drafts</a>
-    <a class="btn" href="{{ obj.get_absolute_url }}">Live Version</a>
+    <input type="submit" class="btn btn-primary" value="Edit">
+    <a class="btn btn-primary" href="#" class="">Drafts</a>
+    <a class="btn btn-primary" href="{{ obj.get_absolute_url }}">Live Version</a>
 		{% else %}
-		<input type="submit" class="btn" value="Save">
+		<input type="submit" class="btn btn-primary" value="Save">
 		{% endif %}
 
   </div><!-- .col-md-4 -->

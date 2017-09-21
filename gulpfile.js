@@ -146,17 +146,21 @@ gulp.task('admin-webpack-vue', function(){
 gulp.task('admin-concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
-        'node_modules/codemirror/lib/codemirror.js',
-        'node_modules/codemirror/mode/markdown/markdown.js',
-        'node_modules/codemirror/addon/edit/continuelist.js',
-        'node_modules/marked/lib/marked.js',
-        'app/static_source/js/lib/markdownify/lib/jquery.markdownify.js',
+        //'node_modules/codemirror/lib/codemirror.js',
+        //'node_modules/codemirror/mode/markdown/markdown.js',
+        //'node_modules/codemirror/addon/edit/continuelist.js',
+        //'node_modules/marked/lib/marked.js',
+        //'app/static_source/js/lib/markdownify/lib/jquery.markdownify.js',
+        //'app/static_source/js/admin/jquery.markdownify.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
+        //'app/static_source/js/admin/affix.js',
+        'node_modules/simplemde/dist/simplemde.min.js',
         'node_modules/autosize/dist/autosize.js',
         'node_modules/pace-progress/pace.js',
-        'app/static_source/js/admin/jquery.markdownify.js',
         'app/static_source/js/admin/jquery.appear.js',
+        'app/static_source/js/admin/bootstrap-datepicker.js',
+        'app/static_source/js/admin/jquery.timepicker.js',
         'app/static_source/js/admin/site.js',
     ])
     .pipe(sourcemaps.init())

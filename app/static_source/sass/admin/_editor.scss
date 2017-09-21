@@ -33,11 +33,9 @@
     font-size: 1.75rem;
     letter-spacing: 1.5px;
   }
+}
 
-  .CodeMirror.CodeMirror-wrap {
-    height: auto !important;
-    font-weight: 300;
-    font-family: $font-family-sans-serif;
-    .CodeMirror-vscrollbar { display: none !important; }
-  }
+#editorTabContent {
+  .card-header { padding-bottom: 0; }
+  .card-body {padding-top: 0;}
 }

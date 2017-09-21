@@ -6,7 +6,9 @@
 @import '_shared/bootstrap/bootstrap';
 
 @import "admin/pace";
-@import "admin/codemirror";
+@import "admin/simplemde";
+@import "admin/datepicker";
+@import "admin/timepicker";
 
 @import "admin/coreExtend";
 @import "admin/replica";
