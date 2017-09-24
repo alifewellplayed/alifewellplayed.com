@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SiteLink',
             fields=[
-                ('id', models.UUIDField(default='85185389e39f', editable=False, primary_key=True, serialize=False)),
+                ('id', models.UUIDField(editable=False, primary_key=True, serialize=False)),
                 ('link', models.URLField(max_length=512)),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
                 ('date_updated', models.DateTimeField(auto_now=True)),

@@ -241,6 +241,7 @@ INSTALLED_APPS = (
     'replica.contrib.micro',
     'replica.contrib.redirection',
     'replica.contrib.publisher',
+    'replica.contrib.insta',
 )
 
 LOGGING = {

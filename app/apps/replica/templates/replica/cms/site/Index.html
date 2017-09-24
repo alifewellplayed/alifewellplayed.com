@@ -13,8 +13,27 @@
     {% render_sticky_card %}
     {% render_topics_card 50 %}
     {% render_channel_card 50 %}
+
   </div>
 </div>
 {% endblock %}
 
 {% block javascript %}{% endblock %}
+
+
+
+
+{% load instagram_client %}
+
+{% instagram_user_recent_media intel %}
+
+<div id="django_recent_media_wall">
+  {% for media in recent_media %}
+    <div class="django_instagram_media_wall_item">
+      <a href="{{ media.display_src }}" target="_blank" title="{{ media.caption }}">
+        <img src="{{ media.thumbnail_src }}"/>
+        <span>{{ media.caption }}</span>
+      </a>
+    </div>
+  {% endfor %}
+</div>

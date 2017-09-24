@@ -18,3 +18,5 @@ PLUGIN_PUBLISHER = getattr(settings, 'REPLICA_ENABLE_PUBLISHER', True)
 
 #THEME SETTINGS
 SITE_THEME = getattr(settings, 'THEME_NAME', 'Exiled')
+
+MAX_LENGTH = 510

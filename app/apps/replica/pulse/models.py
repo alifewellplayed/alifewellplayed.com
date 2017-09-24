@@ -23,7 +23,7 @@ CONTENT_FORMAT_CHOICES = ((u'markdown', u'Markdown'), (u'html', u'Raw HTML'),)
 IS_ACTIVE_CHOICES = ((True, 'Published'), (False, 'Draft'))
 CAN_SUBMIT_CHOICES = ((True, 'Everyone'), (False, 'Only users I allow.'))
 IS_PUBLIC_CHOICES = ((True, 'Everyone'), (False, 'No one'))
-MEDIA_TYPE_CHOICES = ((0, 'embed'), (1, 'image'), (2, 'url'))
+MEDIA_TYPE_CHOICES = ((0, 'embed'), (1, 'image'), (2, 'url'), (3, 'Instagram'))
 IS_SITE_CHOICES = ((True, 'Enabled'), (False, 'Disabled'))
 MAX_LENGTH = 510
 
@@ -59,14 +59,14 @@ class Media(models.Model):
     content_type = models.PositiveSmallIntegerField(choices=MEDIA_TYPE_CHOICES, default=1)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=MAX_LENGTH)
-    slug = models.SlugField(max_length=MAX_LENGTH, blank=True, editable=False)
-    caption = models.CharField(max_length=MAX_LENGTH, blank=True)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, blank=True, editable=False)
+    caption = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     content = models.TextField(blank=True)
     url = models.URLField(blank=True)
-    image = models.ImageField(help_text="Support for PNG, JPG, GIF only", upload_to=upload_media, blank=True)
-    thumbnail_small = models.ImageField(upload_to=upload_media_sm, blank=True)
-    thumbnail_medium = models.ImageField(upload_to=upload_media_md, blank=True)
+    image = models.ImageField(help_text="Support for PNG, JPG, GIF only", upload_to=upload_media, blank=True, max_length=replicaSettings.MAX_LENGTH)
+    thumbnail_small = models.ImageField(upload_to=upload_media_sm, blank=True, max_length=replicaSettings.MAX_LENGTH)
+    thumbnail_medium = models.ImageField(upload_to=upload_media_md, blank=True, max_length=replicaSettings.MAX_LENGTH)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='media')
     objects = MediaManager()
 
@@ -91,7 +91,7 @@ class Media(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        if self.image:
+        if self.image and self.content_type==1:
             image_name = self.image.name
             try:
                 content_type = self.image.file.content_type
@@ -112,8 +112,8 @@ class Media(models.Model):
 
 class Topic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH)
-    slug = models.SlugField(max_length=MAX_LENGTH)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH)
     description = models.TextField(max_length=1020, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -145,8 +145,8 @@ class Topic(models.Model):
 
 class Channel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH)
-    slug = models.SlugField(max_length=MAX_LENGTH, unique=True)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='channels')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -177,7 +177,7 @@ def DefaultChannel():
 
 class EntryTemplate(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH, blank=True)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     description = models.TextField(_('description'), blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates')
     date_created = models.DateTimeField(auto_now_add=True)
@@ -205,9 +205,9 @@ class EntryTemplate(models.Model):
 
 class Entry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH, blank=True)
-    slug = models.SlugField(max_length=MAX_LENGTH, unique_for_date='pub_date')
-    url = models.CharField(max_length=MAX_LENGTH, blank=True)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique_for_date='pub_date')
+    url = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='entries')
     topic = models.ManyToManyField(Topic, db_table='r_Entry_Topics', blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -288,8 +288,8 @@ def DefaultEntry():
 class Draft(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     entry = models.ForeignKey(Entry)
-    title = models.CharField(max_length=MAX_LENGTH, blank=True)
-    slug = models.SlugField(max_length=MAX_LENGTH, unique_for_date='pub_date')
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique_for_date='pub_date')
     channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
     content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('summary'), blank=True)
@@ -334,8 +334,8 @@ class EntryLink(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    url = models.URLField(max_length=MAX_LENGTH)
-    title = models.CharField(max_length=MAX_LENGTH, default='Untitled')
+    url = models.URLField(max_length=replicaSettings.MAX_LENGTH)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, default='Untitled')
     deck = models.TextField(_('summary'), blank=True)
 
     class Meta:
@@ -357,8 +357,8 @@ class EntryLink(models.Model):
 # Example: Footer Menu, Primary Menu, etc.
 class MenuPosition(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH, default='Untitled')
-    slug = models.SlugField(max_length=MAX_LENGTH)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, default='Untitled')
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -379,9 +379,9 @@ class MenuPosition(models.Model):
 
 class MenuItem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=MAX_LENGTH, default='Untitled')
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, default='Untitled')
     page = models.ForeignKey(Entry, blank=True, null=True, default=DefaultEntry)
-    url = models.CharField(max_length=MAX_LENGTH, blank=True)
+    url = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     position = models.ForeignKey(MenuPosition)
     weight = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)
