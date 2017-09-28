@@ -10861,6 +10861,37 @@ h1, h2, h3, h4, h5, h6 {
   .replica-card.replica-card-promoted .card-body {
     background-color: rgba(255, 255, 255, 0.25); }
 
+.replica-thumbnail {
+  position: relative;
+  display: block;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s; }
+  .replica-thumbnail .img-thumbnail {
+    opacity: 0; }
+  .replica-thumbnail .media-title {
+    opacity: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #333;
+    -webkit-transition: text-shadow .3s;
+    transition: text-shadow .3s; }
+    .replica-thumbnail .media-title > h4 {
+      font-size: .95rem; }
+  .replica-thumbnail:hover:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .replica-thumbnail:hover .media-title {
+    opacity: 1; }
+
 .rEditor .form-control {
   font-weight: 300; }
 

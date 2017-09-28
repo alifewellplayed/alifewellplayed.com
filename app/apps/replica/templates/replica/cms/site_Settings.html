@@ -1,0 +1,57 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Site Settings{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-6">
+    <form method="post" id="siteSettings" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:SiteSettings' %}">{% csrf_token %}
+    <div class="card replica-card replica-card-settings mb-3">
+      <div class="card-header">
+        <h4 class="card-title">Site Settings</small></h4>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          {{form.logo}}
+        </div>
+        <div class="form-group">
+          {{form.name}}
+        </div>
+        <div class="form-group">
+          {{form.domain}}
+        </div>
+        <div class="form-group">
+          {{form.author}}
+        </div>
+        <div class="form-group">
+          {{form.password}}
+        </div>
+        <div class="form-group">
+          {{form.description}}
+        </div>
+        <div class="form-group">
+          {{form.summary}}
+        </div>
+
+        <div class="form-group">
+          <h4 class="header-subtitle"><label for="id_content_format">Enable Site?</label></h4>
+          {% for radio in form.is_enabled %}
+          <label class="radio-inline" for="{{ radio.id_for_label }}">{{ radio }}</label>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Save">
+    
+    </form>
+  </div>
+  <div class="col-md-6">
+    {% render_menu_card %}
+  </div>
+</div>
+
+{% include "replica/cms/components/_pagination.html" %}
+{% endblock %}
+
+{% block javascript %}{% endblock %}

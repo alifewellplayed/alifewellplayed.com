@@ -8,7 +8,7 @@ from django.db.models import Q
 from pagedown.widgets import AdminPagedownWidget
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, SiteSettings
 from replica.widgets import CustomSplitDateTimeWidget
 
 class EntryModelForm(forms.ModelForm):
@@ -22,7 +22,6 @@ class EntryModelForm(forms.ModelForm):
             time_attrs={'placeholder': 'Event Time', 'class': 'form-control timepicker' }
         )
     )
-
     class Meta:
         model = Entry
         fields = [
@@ -54,12 +53,40 @@ class EntryModelForm(forms.ModelForm):
             'template': forms.Select(attrs={'class':'form-control',}),
         }
 
+
 class ChannelModelForm(forms.ModelForm):
-    class meta:
+    class Meta:
         model = Channel
         exclude = ('id', 'user', 'date_created', 'date_updated', 'slug')
 
 class TopicModelForm(forms.ModelForm):
-    class meta:
-        model = Channel
+    class Meta:
+        model = Topic
         exclude = ('id', 'user', 'date_created', 'date_updated', 'slug')
+        widgets = {
+            'image': forms.Select(attrs={'class':'form-control',}),
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Site Name', 'value':''}),
+            'description': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Description', 'rows':'2'}),
+            'is_public': forms.RadioSelect(attrs={'class':'form-check-input'}),
+        }
+
+class MediaModelForm(forms.ModelForm):
+    class Meta:
+        model = Media
+        fields = ['user', 'title', 'caption']
+
+class SiteModelForm(forms.ModelForm):
+    class Meta:
+        model = SiteSettings
+        exclude = ('id', 'date_created', 'date_updated',)
+
+        widgets = {
+            'logo': forms.Select(attrs={'class':'form-control',}),
+            'name': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Site Name', 'value':''}),
+            'domain': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site description', 'value':''}),
+            'password': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Password', 'value':''}),
+            'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site description', 'value':''}),
+            'author': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site author', 'value':''}),
+            'is_enabled': forms.RadioSelect,
+            'summary': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
+        }

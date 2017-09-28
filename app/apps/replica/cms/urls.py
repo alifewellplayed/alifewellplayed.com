@@ -8,6 +8,7 @@ from .views import site as siteView
 from .views import entry as entryView
 from .views import channel as channelView
 from .views import topic as topicView
+from .views import media as mediaView
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -16,7 +17,7 @@ APP_URLS = [
 
 SITE_URLS = [
 	url(r'^$', login_required(siteView.Index), name = "Home"),
-	url(r'^site/$', login_required(siteView.SiteSettings), name = "SiteSettings"),
+	url(r'^site/$', login_required(siteView.Settings), name = "SiteSettings"),
 	url(r'^site/users/$', login_required(siteView.UserList.as_view()), name = "UserList"),
 	url(r'^site/users/(?P<slug>[\w-]+)/$', login_required(siteView.UserDetail), name = "UserDetail"),
 	url(r'^site/users/(?P<slug>[\w-]+)/entries/$', login_required(siteView.UserEntriesList.as_view()), name = "UserEntriesList"),
@@ -34,26 +35,30 @@ ENTRY_URLS = [
 
 CHANNEL_URLS = [
 	url(r'^channels/$', login_required(channelView.ChannelList.as_view()), name = "ChannelList"),
+	url(r'^edit/channels/$', login_required(channelView.ChannelEdit), name = "ChannelNew"),
 	url(r'^edit/channels/(?P<channelID>[\w-]+)/$', login_required(channelView.ChannelEdit), name = "ChannelEdit"),
 	url(r'^edit/channels/(?P<channelID>[\w-]+)/delete/$', login_required(channelView.ChannelDelete), name = "ChannelDelete"),
-	url(r'^edit/channels/$', login_required(channelView.ChannelEdit), name = "ChannelNew"),
+
 ]
 
 TOPIC_URLS = [
-	url(r'^topics/$', login_required(topicView.TopicList.as_view()), name = "TopicList"),
-	url(r'^edit/topics/(?P<topicID>[\w-]+)/$', login_required(topicView.TopicEdit), name = "TopicEdit"),
-	url(r'^edit/topics/(?P<topicID>[\w-]+)/delete/$', login_required(topicView.TopicDelete), name="TopicDelete"),
-	url(r'^edit/topics/$', login_required(topicView.TopicEdit), name="TopicNew"),
+	url(r'^topics/$', login_required(topicView.TopicEdit), name = "TopicList"),
+	url(r'^topics/edit/(?P<topicID>[\w-]+)/$', login_required(topicView.TopicEdit), name = "TopicEdit"),
+	url(r'^topics/edit/(?P<topicID>[\w-]+)/delete/$', login_required(topicView.TopicDelete), name="TopicDelete"),
 ]
 
 MEDIA_URLS = [
-
+	url(r'^media/$', login_required(mediaView.MediaList.as_view()), name = "MediaList"),
+	url(r'^edit/media/$', login_required(mediaView.MediaEdit), name = "MediaNew"),
+	url(r'^edit/media/(?P<mediaID>[\w-]+)/$', login_required(mediaView.MediaEdit), name = "MediaEdit"),
+	url(r'^edit/media/(?P<mediaID>[\w-]+)/delete/$', login_required(mediaView.MediaDelete), name="MediaDelete"),
 ]
 
 urlpatterns = [
 	url(r'^beta/', include(APP_URLS)),
 	url(r'', include(SITE_URLS)),
-	url(r'', include(ENTRY_URLS)),
 	url(r'', include(CHANNEL_URLS)),
 	url(r'', include(TOPIC_URLS)),
+	url(r'', include(MEDIA_URLS)),
+	url(r'', include(ENTRY_URLS)),
 ]

@@ -13,28 +13,20 @@ from replica.pulse.mixins import PulseViewMixin
 
 from replica.cms.forms import TopicModelForm
 
-#Get list of all entries
-class TopicList(ListView):
-	paginate_by = ReplicaSettings.PAGINATE
-	template_name = 'replica/cms/topic/TopicList.html'
-	def get_queryset(self):
-		return Topic.objects.all()
-	def get_context_data(self, **kwargs):
-		context = super(TopicList, self).get_context_data(**kwargs)
-		context.update({'title':'Topics', 'is_list':True,})
-		return context
-
-def TopicEdit(request, TopicID=None):
+def TopicEdit(request, topicID=None):
+	topics = Topic.objects.all()
 	if topicID:
 		topic = get_object_or_404(Topic, pk=topicID)
 		instance = topic
 		edit = True
-		msg = 'Topic Updated'
+		msg = 'Topic updated.'
+		obj_title = 'Editing topic'
 	else:
 		topic = ''
 		instance = Topic(user=request.user)
 		edit = False
-		msg = 'New Topic Created'
+		msg = 'New topic created.'
+		obj_title = 'New Topic'
 	if request.method == 'POST':
 		f = TopicModelForm(request.POST or None, request.FILES, instance=instance)
 		if f.is_valid():
@@ -43,8 +35,15 @@ def TopicEdit(request, TopicID=None):
 			return redirect('Replica:EditTopic', TopicID=instance.id)
 	else:
 		f = TopicModelForm(instance=instance)
-	variables = {'form': f, 'obj': topic, 'content_type': 'Topic', 'editing':edit }
-	template = 'replica/cms/topic/Edit.html'
+	variables = {
+		'form': f,
+		'obj': topic,
+		'object_list': topics,
+		'content_type': 'Topic',
+		'edit':edit,
+		'obj_title':obj_title,
+	}
+	template = 'replica/cms/topic_List.html'
 	return render(request, template, variables)
 
 def TopicDelete(request, topicID):

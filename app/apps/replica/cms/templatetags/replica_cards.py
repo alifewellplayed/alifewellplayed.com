@@ -3,7 +3,7 @@ from django.contrib.sites.models import Site
 from django.shortcuts import redirect, render, get_object_or_404
 from django import template
 
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition
 from replica.contrib.publisher.models import Promoted, Collection
 
 register = template.Library()
@@ -98,5 +98,19 @@ def render_sticky_card(num=9999, username=None, title=None):
         'object_title': 'Stickied links',
         'object_slug': 'stickied',
         'object_empty': 'No stickied posts.'
+    }
+    return ctx
+
+
+@register.inclusion_tag('replica/cms/templatetags/menu_card.html')
+def render_menu_card(num=9999):
+    menu = MenuPosition.objects.all()[:num]
+    count = menu.count()
+    ctx = {
+        'object_list': menu,
+        'object_count': count,
+        'object_title': 'Menus',
+        'object_slug': 'menu',
+        'object_empty': 'No menus.'
     }
     return ctx

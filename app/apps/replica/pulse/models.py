@@ -83,7 +83,7 @@ class Media(models.Model):
     def get_absolute_url(self):
         if self.content_type == 2:
             return self.url
-        elif self.content_type == 1:
+        elif self.content_type in (1,3):
             return self.image.url
         else:
             return self.content
@@ -373,6 +373,10 @@ class MenuPosition(models.Model):
 
     def __str__(self):
         return self.title
+
+    def menu_count(self):
+        total = MenuItem.objects.filter(position=self).count()
+        return total
 
     def save(self, *args, **kwargs):
         super(MenuPosition, self).save(*args, **kwargs)

@@ -45,14 +45,14 @@ def Editor(request, entryID=None):
                 f = EntryModelForm(initial=initial, instance=instance)
             else:
                 f = EntryModelForm(instance=instance)
-    template = 'replica/cms/entry/Editor.html'
+    template = 'replica/cms/entry_Editor.html'
     variables = {'is_list':False, 'obj':obj, 'edit':edit, 'form': f, }
     return render(request, template, variables)
 
 #Get list of all entries
 class EntryList(ListView):
     paginate_by = ReplicaSettings.PAGINATE
-    template_name = 'replica/cms/entry/EntryList.html'
+    template_name = 'replica/cms/entry_EntryList.html'
     def get_queryset(self):
         return Entry.objects.posts()
     def get_context_data(self, **kwargs):
@@ -63,7 +63,7 @@ class EntryList(ListView):
 #Get list of all pages
 class PageList(ListView):
     paginate_by = ReplicaSettings.PAGINATE
-    template_name = 'replica/cms/entry/PageList.html'
+    template_name = 'replica/cms/entry_PageList.html'
     def get_queryset(self):
         return Entry.objects.pages()
     def get_context_data(self, **kwargs):
@@ -74,7 +74,7 @@ class PageList(ListView):
 #Entry Detailed page
 class EntryDetail(ListView):
     paginate_by = ReplicaSettings.PAGINATE
-    template_name = 'replica/cms/entry/EntryDetail.html'
+    template_name = 'replica/cms/entry_EntryDetail.html'
     def get_queryset(self):
         self.entry = get_object_or_404(Entry, pk=self.kwargs.pop('entryID'))
         return Entry.objects.pages()
@@ -88,13 +88,13 @@ def EntryDelete(request, entryID):
     if request.method == 'POST':
         entry.delete()
         return redirect('Replica:Index')
-    template = 'replica/cms/shared/delete-confirm.html'
+    template = 'replica/cms/delete_confirm.html'
     variables = {'obj': entry, 'content_type': 'Entry'}
     return render(request, template, variables)
 
 def EntryDraft(request, entryID, draftID):
     entry = get_object_or_404(Entry, pk=entryID)
     draft = get_object_or_404(Draft, pk=draftID)
-    template = 'replica/cms/entry/EntryDraft.html'
+    template = 'replica/cms/entry_EntryDraft.html'
     variables = {'obj_e': entry, obj_d:'draft', 'content_type': 'Entry'}
     return render(request, template, variables)
