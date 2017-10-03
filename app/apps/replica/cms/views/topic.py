@@ -20,7 +20,7 @@ def TopicEdit(request, topicID=None):
 		instance = topic
 		edit = True
 		msg = 'Topic updated.'
-		obj_title = 'Editing topic'
+		obj_title = "Editing topic: {}".format(topic.title)
 	else:
 		topic = ''
 		instance = Topic(user=request.user)
@@ -43,7 +43,7 @@ def TopicEdit(request, topicID=None):
 		'edit':edit,
 		'obj_title':obj_title,
 	}
-	template = 'replica/cms/topic_List.html'
+	template = 'replica/cms/topic_Edit.html'
 	return render(request, template, variables)
 
 def TopicDelete(request, topicID):

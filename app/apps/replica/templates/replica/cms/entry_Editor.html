@@ -41,33 +41,28 @@
                     {{form.slug}}
                   </div>
                 </div>
-
                 <hr />
-
                 <div class="form-group">
                   <label for="id_url">Optional external URL</label>
                   {{form.url}}
                 </div>
-
                 <div class="form-group">
                   <label for="id_channel">Type of Post</label>
                   {{form.channel}}
                 </div>
-
                 <div class="form-group">
                   <label for="id_image">Template</label>
                   {{form.template}}
                 </div>
-
                 <hr />
-
                 <div class="form-group">
                   <h4 class="header-subtitle"><label for="id_content_format">Rendering Mode</label></h4>
                   {% for radio in form.content_format %}
-                  <label class="radio-inline" for="{{ radio.id_for_label }}">{{ radio }}</label>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio }}</label>
+                  </div>
                   {% endfor %}
                 </div>
-
               </div><!-- .card-body -->
         </div><!-- .tab -->
       </div><!-- .tab-content -->

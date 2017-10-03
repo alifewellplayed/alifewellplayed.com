@@ -8,7 +8,7 @@ from django.db.models import Q
 from pagedown.widgets import AdminPagedownWidget
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel, SiteSettings
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, SiteSettings, MenuPosition, MenuItem
 from replica.widgets import CustomSplitDateTimeWidget
 
 class EntryModelForm(forms.ModelForm):
@@ -46,8 +46,8 @@ class EntryModelForm(forms.ModelForm):
             'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
             'url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'http://', 'value':''}),
             'topic': forms.CheckboxSelectMultiple(),
-            'is_active': forms.RadioSelect,
-            'content_format': forms.RadioSelect,
+            'is_active': forms.RadioSelect(attrs={'class':'form-check-input'}),
+            'content_format': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'channel': forms.Select(attrs={'class':'form-control',}),
             'featured_image': forms.Select(attrs={'class':'form-control',}),
             'template': forms.Select(attrs={'class':'form-control',}),
@@ -57,7 +57,11 @@ class EntryModelForm(forms.ModelForm):
 class ChannelModelForm(forms.ModelForm):
     class Meta:
         model = Channel
-        exclude = ('id', 'user', 'date_created', 'date_updated', 'slug')
+        exclude = ('id', 'user', 'date_created', 'date_updated')
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Title', 'value':''}),
+            'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
+        }
 
 class TopicModelForm(forms.ModelForm):
     class Meta:
@@ -79,7 +83,6 @@ class SiteModelForm(forms.ModelForm):
     class Meta:
         model = SiteSettings
         exclude = ('id', 'date_created', 'date_updated',)
-
         widgets = {
             'logo': forms.Select(attrs={'class':'form-control',}),
             'name': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Site Name', 'value':''}),
@@ -87,6 +90,29 @@ class SiteModelForm(forms.ModelForm):
             'password': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Password', 'value':''}),
             'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site description', 'value':''}),
             'author': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site author', 'value':''}),
-            'is_enabled': forms.RadioSelect,
+            'is_enabled': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'summary': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
+        }
+
+class MenuPositionModelForm(forms.ModelForm):
+    class Meta:
+        model = MenuPosition
+        exclude = ('id', 'date_created', 'date_updated')
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Title', 'value':''}),
+            'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
+        }
+
+class MenuItemModelForm(forms.ModelForm):
+    class Meta:
+        model = MenuItem
+        exclude = ('id', 'date_created', 'date_updated')
+        widgets = {
+            'icon': forms.Select(attrs={'class':'form-control',}),
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Menu name', 'value':''}),
+            'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Description', 'value':''}),
+            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'slug', 'value':''}),
+            'url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'http://', 'value':''}),
+            'page': forms.Select(attrs={'class':'form-control',}),
+            'weight': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Order position', 'value':''}),
         }

@@ -1,17 +1,16 @@
 from django.conf import settings
 from django.template import RequestContext
-from django.shortcuts import render_to_response, render, get_object_or_404
+from django.shortcuts import render_to_response, render, get_object_or_404, redirect
 from django.views.decorators.cache import cache_page
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
+from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings
 from replica.pulse.models import Entry, Draft, Media, Topic, Channel, MenuPosition, MenuItem, EntryLink, SiteSettings
-from replica.pulse.mixins import PulseViewMixin
-
-from replica.cms.forms import SiteModelForm
+from replica.cms.forms import SiteModelForm, MenuPositionModelForm, MenuItemModelForm
 
 #Replica Editor homepage
 def Index(request):
@@ -27,7 +26,7 @@ def Settings(request, siteID=None):
 		if f.is_valid():
 			f.save()
 			messages.add_message(request, messages.INFO, 'Settings saved.')
-			return redirect('Replica:SiteSettings')
+			return redirect('ReplicaAdmin:SiteSettings')
 	else:
 		f = SiteModelForm(instance=current_site)
 	template = 'replica/cms/site_Settings.html'
@@ -62,3 +61,100 @@ class UserEntriesList(ListView):
 		context = super(UserEntriesList, self).get_context_data(**kwargs)
 		context.update({'user_obj': self.u, 'is_list':True, 'title':'User Entries', })
 		return context
+
+def MenuEdit(request, menuID=None):
+	menus = MenuPosition.objects.all()
+	if menuID:
+		menu = get_object_or_404(MenuPosition, pk=menuID)
+		menu_items = MenuItem.objects.filter(position=menu)
+		instance = menu
+		menu_items_count = menu_items.count(),
+		edit = True
+		msg = 'Menu updated.'
+		obj_title = "Editing: {}".format(menu.title)
+	else:
+		menu = ''
+		menu_items = ''
+		menu_items_count = ''
+		instance = MenuPosition()
+		edit = False
+		msg = 'New menu created.'
+		obj_title = 'New Menu'
+	if request.method == 'POST':
+		f = MenuPositionModelForm(request.POST or None, request.FILES, instance=instance)
+		if f.is_valid():
+			f.save()
+			messages.info(request, msg)
+			return redirect('ReplicaAdmin:MenuEdit', menuID=instance.id)
+	else:
+		f = MenuPositionModelForm(instance=instance)
+	variables = {
+		'form': f,
+		'obj': menu,
+		'obj_items': menu_items,
+		'obj_items_count': menu_items_count,
+		'object_list': menus,
+		'content_type': 'Menu',
+		'edit':edit,
+		'obj_title':obj_title,
+	}
+	template = 'replica/cms/Menu_Edit.html'
+	return render(request, template, variables)
+
+def MenuDelete(request, menuID):
+	menu = get_object_or_404(MenuPosition, pk=menuID)
+	if request.method == 'POST':
+		msg = 'Menu deleted.'
+		messages.warning(request, msg)
+		menu.delete()
+		return redirect('ReplicaAdmin:MenuEdit')
+	template = 'replica/cms/delete-confirm.html'
+	variables = {'obj': menu, 'content_type': 'Menu'}
+	return render(request, template, variables)
+
+def MenuItemEdit(request, menuID, itemID=None):
+	menu = get_object_or_404(MenuPosition, pk=menuID)
+	menu_items = MenuItem.objects.filter(position=menu)
+
+	if itemID:
+		menu_item = get_object_or_404(MenuItem, pk=itemID)
+		instance = menu_item
+		edit = True
+		obj_title = "Editing: {}".format(menu_item.title)
+		msg = 'Menu item updated.'
+	else:
+		menu_item = ''
+		instance = MenuItem(position=menu)
+		edit = False
+		obj_title = 'Adding menu item'
+		msg = 'New menu item added'
+	if request.method == 'POST':
+		f = MenuItemModelForm(request.POST or None, request.FILES, instance=instance)
+		if f.is_valid():
+			f.save()
+			messages.info(request, msg)
+			return redirect('ReplicaAdmin:MenuItemEdit', menuID=menu.id, itemID=instance.id)
+	else:
+		f = MenuItemModelForm(instance=instance)
+	variables = {
+		'form': f,
+		'menu_obj': menu,
+		'edit':edit,
+		'object_list': menu_items,
+		'content_type': 'Menu Item',
+		'obj_title':obj_title,
+	}
+	template = 'replica/cms/Menuitem_Edit.html'
+	return render(request, template, variables)
+
+def MenuItemDelete(request, menuID, itemID):
+	menu = get_object_or_404(MenuPosition, pk=menuID)
+	menuitem = get_object_or_404(MenuItem, pk=menuID)
+	if request.method == 'POST':
+		msg = 'Menu item deleted.'
+		messages.warning(request, msg)
+		menuitem.delete()
+		return redirect('ReplicaAdmin:MenuEdit', menuID=menu.pk)
+	template = 'replica/cms/delete-confirm.html'
+	variables = {'obj': menuitem, 'content_type': 'Menu Item'}
+	return render(request, template, variables)

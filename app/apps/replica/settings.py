@@ -20,3 +20,19 @@ PLUGIN_PUBLISHER = getattr(settings, 'REPLICA_ENABLE_PUBLISHER', True)
 SITE_THEME = getattr(settings, 'THEME_NAME', 'Exiled')
 
 MAX_LENGTH = 510
+CONTENT_FORMAT_CHOICES = ((u'markdown', u'Markdown'), (u'html', u'Raw HTML'),)
+IS_ACTIVE_CHOICES = ((True, 'Published'), (False, 'Draft'))
+CAN_SUBMIT_CHOICES = ((True, 'Everyone'), (False, 'Only users I allow.'))
+IS_PUBLIC_CHOICES = ((True, 'Everyone'), (False, 'No one'))
+MEDIA_TYPE_CHOICES = ((0, 'embed'), (1, 'image'), (2, 'url'), (3, 'Instagram'))
+IS_SITE_CHOICES = ((True, 'Enabled'), (False, 'Disabled'))
+
+ICON_CHOICES = (
+    ('fa fa-home', 'Home'),
+    ('fa fa-pencil-square-o', 'Posts'),
+    ('fa fa-book', 'Notes'),
+    ('fa fa-tags', 'Topics'),
+    ('fa fa-code-fork', 'Channels'),
+    ('fa fa-file-image-o', 'Media'),
+    ('fa fa-cogs', 'Gears'),
+)

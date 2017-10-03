@@ -1,0 +1,59 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Site Menus{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">
+        <h4 class="card-title">{{menu_obj.title}}</small></h4>
+      </div>
+    </div>
+
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">
+        <h4 class="card-title">{{obj_title}}</small></h4>
+      </div>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" action="">
+      {% csrf_token %}
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+        <div class="card-body">
+          <div class="form-group">
+            {{form.icon}}
+          </div>
+          <div class="form-group">
+            {{form.title}}
+          </div>
+          <div class="form-group">
+            {{form.slug}}
+          </div>
+          <div class="form-group">
+            {{form.description}}
+          </div>
+          <div class="form-group">
+            {{form.url}}
+          </div>
+          <div class="form-group">
+            {{form.page}}
+          </div>
+          <div class="form-group">
+            {{form.weight}}
+          </div>
+        </div>
+      </div>
+      {% if edit %}
+      <input type="submit" class="btn btn-primary btn-block mb-3" value="Edit {{ob.title}}">
+  		{% else %}
+  		<input type="submit" class="btn btn-primary btn-block mb-3" value="Save">
+  		{% endif %}
+
+    </form>
+  </div>
+  <div class="col-md-6">
+    {% render_menu_card %}
+  </div>
+</div>
+{% endblock %}

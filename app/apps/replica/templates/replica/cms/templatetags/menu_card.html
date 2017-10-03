@@ -5,7 +5,7 @@
   <ul class="list-group list-group-flush">
     {% for object in object_list %}
     <li class="list-group-item" id="{{ object.slug }}">
-      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:EditEntry' object.id %}">{{ object.title }}</a></h6>
+      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:MenuEdit' object.id %}">{{ object.title }}</a></h6>
       <small class="text-muted">{{object.menu_count}} items</small>
     </li>
     {% empty %}

@@ -5,10 +5,9 @@
 {% block content %}
 <div class="row mb-3">
   <div class="col-md-6">
-
     <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
       <div class="card-header">
-        <h4 class="card-title">{% if edit %}{{obj_title}}: {{obj.title}}{% else %}{{obj_title}}{% endif %}</h4>
+        <h4 class="card-title">{% if edit %}{{obj_title}}{% else %}{{obj_title}}{% endif %}</h4>
       </div>
     </div>
     <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:TopicEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:TopicList' %}{% endif %}">
@@ -33,9 +32,15 @@
             </div>
             {% endfor %}
           </div>
-
         </div>
       </div>
+
+      {% if edit %}
+      <input type="submit" class="btn btn-primary" value="Edit">
+  		{% else %}
+  		<input type="submit" class="btn btn-primary" value="Save">
+  		{% endif %}
+
     </form>
   </div>
   <div class="col-md-6">

@@ -1,3 +1,4 @@
+{% load replica_components %}
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 <nav class="page-sidebar">
   <div class="sidebar-header">
@@ -31,7 +32,7 @@
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </span>
           <span class="title">Posts</span>
-          <span class="details">{{total_counts.published}} items</span>
+          <span class="details">{% render_counts 'published' %} items</span>
         </a>
       </li>
       <li class="mb-3">
@@ -40,27 +41,26 @@
             <i class="fa fa-book" aria-hidden="true"></i>
           </span>
           <span class="title">Notes</span>
-          <span class="details">{{total_counts.notes}} items</span>
+          <span class="details"> items</span>
         </a>
       </li>
       <li class="mb-3">
-        <a href="#" class="detailed">
+        <a href="{% url 'ReplicaAdmin:TopicList' %}" class="detailed">
           <span class="icon-thumbnail replica-clickable pull-right">
             <i class="fa fa-tags" aria-hidden="true"></i>
           </span>
           <span class="title">Topics</span>
-          <span class="details">{{total_counts.topics}} items</span>
+          <span class="details">{% render_counts 'topic' %} items</span>
         </a>
       </li>
       <li class="mb-3">
-        <a href="{name:'ChannelList'}"  class="detailed">
+        <a href="{% url 'ReplicaAdmin:ChannelList' %}"  class="detailed">
           <span class="icon-thumbnail pull-right">
             <i class="fa fa-code-fork" aria-hidden="true"></i>
           </span>
           <span class="title">Channels</span>
-          <span class="details">{{total_counts.channels}} items</span>
+          <span class="details">{% render_counts 'channel' %} items</span>
         </a>
-
       </li>
       <li class="mb-3">
         <a href="{% url 'ReplicaAdmin:MediaList' %}"  class="detailed">
@@ -68,9 +68,8 @@
             <i class="fa fa-file-image-o" aria-hidden="true"></i>
           </span>
           <span class="title">Media</span>
-          <span class="details">{{total_counts.media}} items</span>
+          <span class="details">{% render_counts 'media' %} items</span>
         </a>
-
       </li>
       <li class="mb-3">
         <a href="{% url 'ReplicaAdmin:SiteSettings' %}"  class="detailed">

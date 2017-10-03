@@ -10731,6 +10731,8 @@ h1, h2, h3, h4, h5, h6 {
         opacity: .4;
         display: block;
         line-height: 18px; }
+      .page-sidebar .menu-items > li > a:hover {
+        color: #fff; }
   .page-sidebar .icon-thumbnail {
     display: inline-block;
     background: #1c1d1f;

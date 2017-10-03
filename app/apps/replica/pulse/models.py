@@ -19,14 +19,6 @@ from replica import settings as replicaSettings
 from replica.pulse.managers import TopicManager, EntryManager, MediaManager
 from replica.pulse.utils import create_thumbnail
 
-CONTENT_FORMAT_CHOICES = ((u'markdown', u'Markdown'), (u'html', u'Raw HTML'),)
-IS_ACTIVE_CHOICES = ((True, 'Published'), (False, 'Draft'))
-CAN_SUBMIT_CHOICES = ((True, 'Everyone'), (False, 'Only users I allow.'))
-IS_PUBLIC_CHOICES = ((True, 'Everyone'), (False, 'No one'))
-MEDIA_TYPE_CHOICES = ((0, 'embed'), (1, 'image'), (2, 'url'), (3, 'Instagram'))
-IS_SITE_CHOICES = ((True, 'Enabled'), (False, 'Disabled'))
-MAX_LENGTH = 510
-
 def upload_media(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (instance.slug, ext)
@@ -56,7 +48,7 @@ def upload_media_sm(instance, filename):
 
 class Media(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    content_type = models.PositiveSmallIntegerField(choices=MEDIA_TYPE_CHOICES, default=1)
+    content_type = models.PositiveSmallIntegerField(choices=replicaSettings.MEDIA_TYPE_CHOICES, default=1)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH)
@@ -118,7 +110,7 @@ class Topic(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='topics')
-    is_public = models.BooleanField(help_text=_("Can everyone see this Topic?"), choices=IS_PUBLIC_CHOICES, default=True)
+    is_public = models.BooleanField(help_text=_("Can everyone see this Topic?"), choices=replicaSettings.IS_PUBLIC_CHOICES, default=True)
     image = models.ForeignKey(Media, blank=True, null=True)
     objects = TopicManager()
 
@@ -213,9 +205,9 @@ class Entry(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     pub_date = models.DateTimeField(verbose_name=_("Publication date"), default=datetime.datetime.now, blank=True)
-    is_active = models.BooleanField(help_text=_("This should be checked for live entries"), choices=IS_ACTIVE_CHOICES, default=False)
+    is_active = models.BooleanField(help_text=_("This should be checked for live entries"), choices=replicaSettings.IS_ACTIVE_CHOICES, default=False)
     channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
-    content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
+    content_format = models.CharField(choices=replicaSettings.CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('deck'), blank=True)
     deck_html = models.TextField(blank=True)
     body = models.TextField(_('body'), blank=True, null=True)
@@ -291,7 +283,7 @@ class Draft(models.Model):
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique_for_date='pub_date')
     channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
-    content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
+    content_format = models.CharField(choices=replicaSettings.CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('summary'), blank=True)
     deck_html = models.TextField(blank=True, editable=False)
     body = models.TextField(_('body'), blank=True)
@@ -383,7 +375,10 @@ class MenuPosition(models.Model):
 
 class MenuItem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    icon = models.SlugField(max_length=replicaSettings.MAX_LENGTH, choices=replicaSettings.ICON_CHOICES, blank=True)
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH, default='Untitled')
+    description = models.CharField(help_text=_("Optional subtitle"), max_length=replicaSettings.MAX_LENGTH, blank=True)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     page = models.ForeignKey(Entry, blank=True, null=True, default=DefaultEntry)
     url = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     position = models.ForeignKey(MenuPosition)
@@ -412,10 +407,12 @@ class MenuItem(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(MenuItem, self).save(*args, **kwargs)
 
 class SiteSettings(Site):
-    is_enabled = models.BooleanField(help_text="Is site enabled?", choices=IS_SITE_CHOICES, default=True)
+    is_enabled = models.BooleanField(help_text="Is site enabled?", choices=replicaSettings.IS_SITE_CHOICES, default=True)
     password = models.CharField(blank=True, max_length=128)
     secret_token = models.CharField(max_length=12, blank=True)
     view_settings = models.TextField(default="{}")
