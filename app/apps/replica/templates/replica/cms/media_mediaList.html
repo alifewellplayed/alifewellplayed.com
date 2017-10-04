@@ -4,6 +4,15 @@
 
 {% block content %}
 <div class="row mb-3">
+
+  <div class="col-md-12 mb-2">
+    <div class="card replica-card card-{{object_slug}} replica-list-card">
+      <div class="card-header">
+        <h4 class="card-title">Media List</h4>
+      </div>
+    </div>
+  </div>
+
   {% for obj in object_list %}
   <div class="col-md-3 mb-2">
     <a class="replica-thumbnail" href="{% url 'ReplicaAdmin:MediaEdit' obj.id %}">

@@ -40,4 +40,19 @@
         background-color: rgba($white, .25);
       }
     }
+
+    .form-group {
+      label {
+        font-size: .65rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 0;
+        opacity: .65;
+      }
+      .form-control {
+        position: relative;
+        border-width: 0 0 1px 0;
+      }
+    }
 }

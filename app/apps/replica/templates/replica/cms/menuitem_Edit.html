@@ -22,24 +22,35 @@
       <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
         <div class="card-body">
           <div class="form-group">
+            <label for="{{ form.icon.id_for_label }}">Icon:</label>
             {{form.icon}}
           </div>
           <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Menu Title:</label>
             {{form.title}}
           </div>
           <div class="form-group">
+            <label for="{{ form.slug.id_for_label }}">Slug (optionsl):</label>
             {{form.slug}}
           </div>
           <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Optional Description:</label>
             {{form.description}}
           </div>
           <div class="form-group">
-            {{form.url}}
+            <label for="{{ form.icon.id_for_label }}">URL or Page:</label>
+            <div class="form-row">
+              <div class="col">
+                {{form.url}}
+              </div>
+              <div class="col">
+                {{form.page}}
+              </div>
+            </div>
+
           </div>
           <div class="form-group">
-            {{form.page}}
-          </div>
-          <div class="form-group">
+            <label for="{{ form.weight.id_for_label }}">Menu position (weight):</label>
             {{form.weight}}
           </div>
         </div>

@@ -69,8 +69,8 @@ class TopicModelForm(forms.ModelForm):
         exclude = ('id', 'user', 'date_created', 'date_updated', 'slug')
         widgets = {
             'image': forms.Select(attrs={'class':'form-control',}),
-            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Site Name', 'value':''}),
-            'description': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Description', 'rows':'2'}),
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Topic Name', 'value':''}),
+            'description': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Description', 'rows':'1'}),
             'is_public': forms.RadioSelect(attrs={'class':'form-check-input'}),
         }
 

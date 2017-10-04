@@ -15,13 +15,15 @@
       <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
         <div class="card-body">
           <div class="form-group">
-            <label for="id_image">Featured Image</label>
+            <label for="{{ form.image.id_for_label }}">Featured Image</label>
             {{form.image}}
           </div>
           <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Topic Name</label>
             {{form.title}}
           </div>
           <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description</label>
             {{form.description}}
           </div>
           <div class="form-group">

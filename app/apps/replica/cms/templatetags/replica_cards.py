@@ -69,7 +69,7 @@ def render_topics_card(num=25, username=None, title=None, show_desc=True):
     return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/channels_card.html')
-def render_channel_card(num=100, username=None, show_desc=True):
+def render_channel_card(num=100, username=None, show_new_btn=True, show_all=False):
     if not username:
         channel = Channel.objects.all().order_by('title')[:num]
     else:
@@ -80,7 +80,8 @@ def render_channel_card(num=100, username=None, show_desc=True):
         'object_count': count,
         'object_title': 'Channels',
         'object_slug': 'channel',
-        'show_desc': show_desc,
+        'show_new_btn': show_new_btn,
+        'show_all': show_all,
         'object_empty': 'No channels created yet!'
     }
     return ctx

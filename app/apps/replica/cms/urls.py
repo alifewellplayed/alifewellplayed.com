@@ -24,7 +24,6 @@ SITE_URLS = [
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/$', login_required(siteView.MenuItemEdit), name = "MenuItemNew"),
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/(?P<itemID>[\w-]+)/$', login_required(siteView.MenuItemEdit), name = "MenuItemEdit"),
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/(?P<itemID>[\w-]+)/delete/$', login_required(siteView.MenuItemDelete), name = "MenuItemDelete"),
-
 	url(r'^site/users/$', login_required(siteView.UserList.as_view()), name = "UserList"),
 	url(r'^site/users/(?P<slug>[\w-]+)/$', login_required(siteView.UserDetail), name = "UserDetail"),
 	url(r'^site/users/(?P<slug>[\w-]+)/entries/$', login_required(siteView.UserEntriesList.as_view()), name = "UserEntriesList"),
