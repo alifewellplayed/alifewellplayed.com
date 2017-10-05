@@ -12,7 +12,7 @@ from replica.pulse.models import Entry, Draft, EntryLink, EntryTemplate
 from replica.pulse.mixins import PulseViewMixin
 from replica.cms.forms import EntryModelForm
 
-def Editor(request, entryID=None):
+def EntryEditor(request, entryID=None):
     if entryID:
         edit = True
         entry = get_object_or_404(Entry, user=request.user, pk=entryID)
@@ -98,34 +98,3 @@ def EntryDraft(request, entryID, draftID):
     template = 'replica/cms/entry_EntryDraft.html'
     variables = {'obj_e': entry, obj_d:'draft', 'content_type': 'Entry'}
     return render(request, template, variables)
-
-def EntryTemplateEdit(request, templateID=None):
-	if templateID:
-		template = get_object_or_404(EntryTemplate, pk=templateID)
-		instance = template
-		edit = True
-		msg = 'Template updated.'
-		obj_title = "Editing template: {}".format(template.title)
-	else:
-		template = None
-		instance = EntryTemplate(user=request.user)
-		edit = False
-		msg = 'New template created.'
-		obj_title = 'New Template'
-	if request.method == 'POST':
-		f = EntryTemplateModelForm(request.POST or None, request.FILES, instance=instance)
-		if f.is_valid():
-			f.save()
-			messages.add_message(msg)
-			return redirect('Replica:EditTemplate', templateID=instance.id)
-	else:
-		f = EntryTemplateModelForm(instance=instance)
-	variables = {
-		'form': f,
-		'obj': template,
-		'content_type': 'Template',
-		'edit':edit,
-		'obj_title':obj_title,
-	}
-	template = 'replica/cms/template_Edit.html'
-	return render(request, template, variables)

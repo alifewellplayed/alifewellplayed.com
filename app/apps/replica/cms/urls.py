@@ -44,7 +44,7 @@ TEMPLATE_URLS = [
 ]
 
 ENTRY_URLS = [
-	url(r'^edit/$', login_required(entryView.Editor), name = "Editor"),
+	url(r'^edit/$', login_required(entryView.EntryEditor), name = "EntryEditor"),
 	url(r'^edit/entry/(?P<entryID>[\w-]+)/$', login_required(entryView.Editor), name = "EntryEdit"),
 	url(r'^entries/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
 	url(r'^entries/pages/$', login_required(entryView.PageList.as_view()), name = "PageList"),
