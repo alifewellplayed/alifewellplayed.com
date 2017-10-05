@@ -16,7 +16,7 @@ from replica.cms.forms import MediaModelForm
 #Get list of all entries
 class MediaList(ListView):
 	paginate_by = ReplicaSettings.PAGINATE
-	template_name = 'replica/cms/media_mediaList.html'
+	template_name = 'replica/cms/media_List.html'
 	def get_queryset(self):
 		return Media.objects.order_by('-date_updated')
 	def get_context_data(self, **kwargs):
@@ -30,7 +30,7 @@ def MediaEdit(request, mediaID=None):
 		instance = media
 		edit = True
 	else:
-		media = ''
+		media = None
 		instance = Topic(user=request.user)
 		edit = False
 	if request.method == 'POST':

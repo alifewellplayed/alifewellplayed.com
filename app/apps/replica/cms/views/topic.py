@@ -22,7 +22,7 @@ def TopicEdit(request, topicID=None):
 		msg = 'Topic updated.'
 		obj_title = "Editing topic: {}".format(topic.title)
 	else:
-		topic = ''
+		topic = None
 		instance = Topic(user=request.user)
 		edit = False
 		msg = 'New topic created.'

@@ -73,9 +73,9 @@ def MenuEdit(request, menuID=None):
 		msg = 'Menu updated.'
 		obj_title = "Editing: {}".format(menu.title)
 	else:
-		menu = ''
-		menu_items = ''
-		menu_items_count = ''
+		menu = None
+		menu_items = None
+		menu_items_count = None
 		instance = MenuPosition()
 		edit = False
 		msg = 'New menu created.'

@@ -5,6 +5,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import routers
 
 from .views import site as siteView
+from .views import user as userView
 from .views import entry as entryView
 from .views import channel as channelView
 from .views import topic as topicView
@@ -24,9 +25,14 @@ SITE_URLS = [
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/$', login_required(siteView.MenuItemEdit), name = "MenuItemNew"),
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/(?P<itemID>[\w-]+)/$', login_required(siteView.MenuItemEdit), name = "MenuItemEdit"),
 	url(r'^site/menu/(?P<menuID>[\w-]+)/item/(?P<itemID>[\w-]+)/delete/$', login_required(siteView.MenuItemDelete), name = "MenuItemDelete"),
-	url(r'^site/users/$', login_required(siteView.UserList.as_view()), name = "UserList"),
-	url(r'^site/users/(?P<slug>[\w-]+)/$', login_required(siteView.UserDetail), name = "UserDetail"),
-	url(r'^site/users/(?P<slug>[\w-]+)/entries/$', login_required(siteView.UserEntriesList.as_view()), name = "UserEntriesList"),
+]
+
+USER_URLS = [
+	url(r'^site/users/$', login_required(userView.UserList.as_view()), name = "UserList"),
+	url(r'^site/users/create/$', login_required(userView.UserEdit), name = "UserCreate"),
+	url(r'^site/users/(?P<userID>[\w-]+)/$', login_required(userView.UserEdit), name = "UserEdit"),
+	url(r'^site/users/(?P<userID>[\w-]+)/delete/$', login_required(userView.UserEdit), name = "UserDelete"),
+	url(r'^site/users/(?P<userID>[\w-]+)/entries/$', login_required(userView.UserEntriesList.as_view()), name = "UserEntriesList"),
 ]
 
 ENTRY_URLS = [
@@ -62,6 +68,7 @@ urlpatterns = [
 	url(r'^beta/', include(APP_URLS)),
 	url(r'', include(ENTRY_URLS)),
 	url(r'', include(SITE_URLS)),
+	url(r'', include(USER_URLS)),
 	url(r'', include(CHANNEL_URLS)),
 	url(r'', include(TOPIC_URLS)),
 	url(r'', include(MEDIA_URLS)),
