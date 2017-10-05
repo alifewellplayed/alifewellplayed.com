@@ -8,7 +8,7 @@ from django.db.models import Q
 from pagedown.widgets import AdminPagedownWidget
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel, SiteSettings, MenuPosition, MenuItem
+from replica.pulse.models import *
 from replica.widgets import CustomSplitDateTimeWidget
 
 class EntryModelForm(forms.ModelForm):
@@ -115,4 +115,14 @@ class MenuItemModelForm(forms.ModelForm):
             'url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'http://', 'value':''}),
             'page': forms.Select(attrs={'class':'form-control',}),
             'weight': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Order position', 'value':''}),
+        }
+
+class EntryTemplateModelForm(forms.ModelForm):
+    class Meta:
+        model = EntryTemplate
+        exclude = ('id', 'date_created', 'date_updated', 'user',)
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Template Title', 'value':''}),
+            'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Description', 'value':''}),
+            'template_html': forms.TextInput(attrs={'class':'html-editor sr-only', 'value':''}),
         }

@@ -32,7 +32,7 @@ def TopicEdit(request, topicID=None):
 		if f.is_valid():
 			f.save()
 			messages.add_message(msg)
-			return redirect('Replica:EditTopic', TopicID=instance.id)
+			return redirect('Replica:EditTopic', topicID=instance.id)
 	else:
 		f = TopicModelForm(instance=instance)
 	variables = {
@@ -50,7 +50,7 @@ def TopicDelete(request, topicID):
 	t = get_object_or_404(Topic, pk=topicID)
 	if request.method == 'POST':
 		t.delete()
-		return redirect('Replica:Index')
+		return redirect('ReplicaAdmin:TopicList')
 	template = 'replica/cms/shared/delete-confirm.html'
 	variables = {'obj': t, 'content_type': 'Topic'}
 	return render(request, template, variables)

@@ -10,6 +10,7 @@ from .views import entry as entryView
 from .views import channel as channelView
 from .views import topic as topicView
 from .views import media as mediaView
+from .views import templete as templateView
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -35,9 +36,16 @@ USER_URLS = [
 	url(r'^site/users/(?P<userID>[\w-]+)/entries/$', login_required(userView.UserEntriesList.as_view()), name = "UserEntriesList"),
 ]
 
+TEMPLATE_URLS = [
+	url(r'^templates/$', login_required(templateView.EntryTemplateList.as_view()), name = "TemplateList"),
+	url(r'^templates/new/$', login_required(templateView.EntryTemplateEdit), name = "TemplateCreate"),
+	url(r'^templates/(?P<templateID>[\w-]+)/$', login_required(templateView.EntryTemplateEdit), name = "TemplateEdit"),
+	url(r'^templates/(?P<templateID>[\w-]+)/delete/$', login_required(templateView.EntryTemplateDelete), name = "TemplateDelete"),
+]
+
 ENTRY_URLS = [
 	url(r'^edit/$', login_required(entryView.Editor), name = "Editor"),
-	url(r'^edit/entry/(?P<entryID>[\w-]+)/$', login_required(entryView.Editor), name = "EditEntry"),
+	url(r'^edit/entry/(?P<entryID>[\w-]+)/$', login_required(entryView.Editor), name = "EntryEdit"),
 	url(r'^entries/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
 	url(r'^entries/pages/$', login_required(entryView.PageList.as_view()), name = "PageList"),
 	url(r'^entries/tree/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryDetail.as_view()), name = "EntryDetails"),

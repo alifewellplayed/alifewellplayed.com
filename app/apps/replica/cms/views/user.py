@@ -8,7 +8,7 @@ from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedi
 from django.contrib import messages
 
 from coreExtend.models import Account
-from replica.cms.forms import AccountModelForm
+from coreExtend.forms import AccountForm
 from replica import settings as ReplicaSettings
 
 class UserList(ListView):
@@ -60,3 +60,15 @@ def UserDelete(request, userID):
 	template = 'replica/cms/shared/delete-confirm.html'
 	variables = {'obj': u, 'content_type': 'Media'}
 	return render(request, template, variables)
+
+#Entry Detailed page
+class UserEntriesList(ListView):
+    paginate_by = ReplicaSettings.PAGINATE
+    template_name = 'replica/cms/entry_EntryDetail.html'
+    def get_queryset(self):
+        self.u = get_object_or_404(Account, pk=self.kwargs.pop('userID'))
+        return Entry.objects.filter(user=self.u)
+    def get_context_data(self, **kwargs):
+        context = super(UserEntriesList, self).get_context_data(**kwargs)
+        context.update({'is_list':True, 'title':'Entries', })
+        return context
