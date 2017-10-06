@@ -32,7 +32,7 @@ def TopicEdit(request, topicID=None):
 		if f.is_valid():
 			f.save()
 			messages.add_message(msg)
-			return redirect('Replica:EditTopic', topicID=instance.id)
+			return redirect('ReplicaAdmin:EditTopic', topicID=instance.id)
 	else:
 		f = TopicModelForm(instance=instance)
 	variables = {

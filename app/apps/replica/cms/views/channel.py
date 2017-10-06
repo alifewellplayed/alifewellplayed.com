@@ -33,7 +33,7 @@ def ChannelEdit(request, channelID=None):
 		if f.is_valid():
 			f.save()
 			messages.add_message(msg)
-			return redirect('Replica:EditChannel', channelID=instance.id)
+			return redirect('ReplicaAdmin:EditChannel', channelID=instance.id)
 	else:
 		f = ChannelModelForm(instance=instance)
 	variables = {
@@ -51,7 +51,7 @@ def ChannelDelete(request, channelID):
 	c = get_object_or_404(Channel, pk=channelID)
 	if request.method == 'POST':
 		c.delete()
-		return redirect('Replica:Index')
+		return redirect('ReplicaAdmin:ChannelList')
 	template = 'replica/cms/shared/delete-confirm.html'
 	variables = {'obj': c, 'content_type': 'Channel'}
 	return render(request, template, variables)

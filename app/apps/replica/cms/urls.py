@@ -10,7 +10,7 @@ from .views import entry as entryView
 from .views import channel as channelView
 from .views import topic as topicView
 from .views import media as mediaView
-from .views import templete as templateView
+from .views import template as templateView
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -44,9 +44,11 @@ TEMPLATE_URLS = [
 ]
 
 ENTRY_URLS = [
-	url(r'^edit/$', login_required(entryView.EntryEditor), name = "EntryEditor"),
-	url(r'^edit/entry/(?P<entryID>[\w-]+)/$', login_required(entryView.Editor), name = "EntryEdit"),
+	url(r'^entries/edit/$', login_required(entryView.EntryEditor), name = "EntryEditor"),
+	url(r'^entries/edit/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryEditor), name = "EntryEdit"),
 	url(r'^entries/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
+	url(r'^entries/topic/(?P<topicFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
+	url(r'^entries/status/(?P<statusFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
 	url(r'^entries/pages/$', login_required(entryView.PageList.as_view()), name = "PageList"),
 	url(r'^entries/tree/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryDetail.as_view()), name = "EntryDetails"),
 	url(r'^entries/tree/(?P<entryID>[\w-]+)/delete/$', login_required(entryView.EntryDelete), name = "EntryDelete"),
@@ -74,11 +76,13 @@ MEDIA_URLS = [
 
 urlpatterns = [
 	url(r'^beta/', include(APP_URLS)),
-	url(r'', include(ENTRY_URLS)),
+
 	url(r'', include(SITE_URLS)),
+	url(r'', include(TEMPLATE_URLS)),
 	url(r'', include(USER_URLS)),
 	url(r'', include(CHANNEL_URLS)),
 	url(r'', include(TOPIC_URLS)),
 	url(r'', include(MEDIA_URLS)),
+	url(r'', include(ENTRY_URLS)),
 
 ]

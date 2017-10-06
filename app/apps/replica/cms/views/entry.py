@@ -22,7 +22,7 @@ def EntryEditor(request, entryID=None):
             if f.is_valid():
                 f.save()
                 messages.add_message(request, messages.INFO, 'Entry Saved.')
-                return redirect('Replica:EditEntry', entryID=entryID)
+                return redirect('ReplicaAdmin:EntryEdit', entryID=entryID)
         else:
             f = EntryModelForm(instance=entry)
     else:
@@ -34,7 +34,7 @@ def EntryEditor(request, entryID=None):
             if f.is_valid():
                 f.save()
                 messages.add_message(request, messages.INFO, 'Entry Saved.')
-                return redirect('Replica:EditEntry', entryID=instance.id)
+                return redirect('ReplicaAdmin:EntryEdit', entryID=instance.id)
         else:
             initial = {}
             if "url" in request.GET:
@@ -52,7 +52,7 @@ def EntryEditor(request, entryID=None):
 #Get list of all entries
 class EntryList(ListView):
     paginate_by = ReplicaSettings.PAGINATE
-    template_name = 'replica/cms/entry_EntryList.html'
+    template_name = 'replica/cms/entry_List.html'
     def get_queryset(self):
         return Entry.objects.posts()
     def get_context_data(self, **kwargs):
@@ -87,7 +87,7 @@ def EntryDelete(request, entryID):
     entry = get_object_or_404(Entry, pk=entryID)
     if request.method == 'POST':
         entry.delete()
-        return redirect('Replica:Index')
+        return redirect('ReplicaAdmin:Index')
     template = 'replica/cms/delete_confirm.html'
     variables = {'obj': entry, 'content_type': 'Entry'}
     return render(request, template, variables)

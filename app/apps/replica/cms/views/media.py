@@ -38,7 +38,7 @@ def MediaEdit(request, mediaID=None):
 		if f.is_valid():
 			f.save()
 			messages.add_message('New media created.')
-			return redirect('Replica:EditMedia', mediaID=instance.id)
+			return redirect('ReplicaAdmin:EditMedia', mediaID=instance.id)
 	else:
 		f = MediaModelForm(instance=instance)
 	variables = {'form': f, 'obj': media, 'content_type': 'Media', 'editing':edit }
@@ -49,7 +49,7 @@ def MediaDelete(request, mediaID):
 	c = get_object_or_404(Media, pk=mediaID)
 	if request.method == 'POST':
 		c.delete()
-		return redirect('Replica:Index')
+		return redirect('ReplicaAdmin:MediaList')
 	template = 'replica/cms/shared/delete-confirm.html'
 	variables = {'obj': c, 'content_type': 'Media'}
 	return render(request, template, variables)

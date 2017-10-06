@@ -56,7 +56,7 @@ def UserDelete(request, userID):
 	u = get_object_or_404(Account, pk=userID)
 	if request.method == 'POST':
 		u.delete()
-		return redirect('Replica:Index')
+		return redirect('ReplicaAdmin:UserList')
 	template = 'replica/cms/shared/delete-confirm.html'
 	variables = {'obj': u, 'content_type': 'Media'}
 	return render(request, template, variables)

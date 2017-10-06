@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, render, get_object_or_404
 from django.views.decorators.cache import cache_page
 from django.views.generic.list import ListView
 
+from replica import settings as ReplicaSettings
 from replica.pulse.models import EntryTemplate
 from replica.cms.forms import EntryTemplateModelForm
 

@@ -3,7 +3,7 @@
 {% block bodyClass %}rEditor{% endblock %}
 
 {% block content %}
-<form method="post" id="entryEditor" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:EditEntry' entry.id %}">{% csrf_token %}
+<form method="post" id="entryEditor" enctype="multipart/form-data" action="">{% csrf_token %}
 <div class="row">
   <div class="col-md-8">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
