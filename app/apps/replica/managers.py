@@ -4,7 +4,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 class TopicManager(models.Manager):
-
     def public(self):
         return super(TopicManager, self).get_queryset().filter(is_public=True)
 
@@ -37,6 +36,12 @@ class EntryManager(models.Manager):
         return super(EntryManager, self).get_queryset().filter(channel__slug='sticky')
 
 class MediaManager(models.Manager):
-
     def images(self):
         return super(MediaManager, self).get_queryset().filter(content_type=1)
+
+class CodeManager(models.Manager):
+    def partial(self):
+        return super(CodeManager, self).get_queryset().filter(type=1)
+
+    def template(self):
+        return super(CodeManager, self).get_queryset().filter(type=2)

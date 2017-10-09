@@ -1,15 +1,23 @@
 <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">{% load humanize %}
   <div class="card-header">
+    <span class="pull-right">
+      <a class="card-header-btn" href="{% url 'ReplicaAdmin:TemplateCreate' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> New</a>
+    </span>
     <h4 class="card-title">{{object_title}} <small>({{object_count}})</small></h4>
   </div>
   <ul class="list-group list-group-flush">
     {% for object in object_list %}
     <li class="list-group-item" id="{{ object.slug }}">
-      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:EntryEdit' object.id %}">{{ object.title }}</a></h6>
+      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:TemplateEdit' object.id %}">{{ object.title }}</a></h6>
       <small class="text-muted">{{ object.description }}</small>
     </li>
     {% empty %}
     <li class="list-group-item">{{object_empty}}</li>
     {% endfor %}
   </ul>
+  {% if show_all %}
+  <div class="card-footer text-muted">
+    <small><a href="{% url 'ReplicaAdmin:TemplateList' %}">View all Templates</a></small>
+  </div>
+  {% endif %}
 </div>

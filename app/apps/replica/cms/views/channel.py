@@ -5,6 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
+from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings
@@ -32,7 +33,7 @@ def ChannelEdit(request, channelID=None):
 		f = ChannelModelForm(request.POST or None, request.FILES, instance=instance)
 		if f.is_valid():
 			f.save()
-			messages.add_message(msg)
+			messages.info(request, msg)
 			return redirect('ReplicaAdmin:EditChannel', channelID=instance.id)
 	else:
 		f = ChannelModelForm(instance=instance)
@@ -50,6 +51,8 @@ def ChannelEdit(request, channelID=None):
 def ChannelDelete(request, channelID):
 	c = get_object_or_404(Channel, pk=channelID)
 	if request.method == 'POST':
+		msg = 'Channel has been deleted.'
+		messages.warning(request, msg)
 		c.delete()
 		return redirect('ReplicaAdmin:ChannelList')
 	template = 'replica/cms/shared/delete-confirm.html'

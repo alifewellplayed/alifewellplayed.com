@@ -146,15 +146,8 @@ gulp.task('admin-webpack-vue', function(){
 gulp.task('admin-concat-js', function() {
     return gulp.src([
         'node_modules/jquery/dist/jquery.js',
-        //'node_modules/codemirror/lib/codemirror.js',
-        //'node_modules/codemirror/mode/markdown/markdown.js',
-        //'node_modules/codemirror/addon/edit/continuelist.js',
-        //'node_modules/marked/lib/marked.js',
-        //'app/static_source/js/lib/markdownify/lib/jquery.markdownify.js',
-        //'app/static_source/js/admin/jquery.markdownify.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        //'app/static_source/js/admin/affix.js',
         'node_modules/simplemde/dist/simplemde.min.js',
         'node_modules/autosize/dist/autosize.js',
         'node_modules/pace-progress/pace.js',
@@ -165,6 +158,23 @@ gulp.task('admin-concat-js', function() {
     ])
     .pipe(sourcemaps.init())
         .pipe(concat('global.js'))
+        .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest('dist/admin/js'));
+});
+
+// Concat codemirror HTML editor files
+gulp.task('concat-codemirror', function() {
+    return gulp.src([
+        'node_modules/codemirror/lib/codemirror.js',
+        'node_modules/codemirror/addon/selection/selection-pointer.js',
+        'node_modules/codemirror/mode/xml/xml.js',
+        'node_modules/codemirror/mode/css/css.js',
+        'node_modules/codemirror/mode/javascript/javascript.js',
+        'node_modules/codemirror/mode/vbscript/vbscript.js',
+        'node_modules/codemirror/mode/htmlmixed/htmlmixed.js',
+    ])
+    .pipe(sourcemaps.init())
+        .pipe(concat('codemirror.js'))
         .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('dist/admin/js'));
 });
@@ -206,7 +216,7 @@ gulp.task('build-js', function(callback) {
 
 // Javascript build task for admin
 gulp.task('admin-build-js', function(callback) {
-    runSequence('admin-webpack-vue', 'admin-concat-js', callback);
+    runSequence('admin-webpack-vue', 'admin-concat-js', 'concat-codemirror', callback);
     // 'admin-shrink-js'
 });
 

@@ -1,10 +1,24 @@
 from django import template
 from django.contrib.admin.models import LogEntry
+from django.template import RequestContext, Context, Template
+from django.utils.safestring import mark_safe
 
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, CodeBlock
 from replica import settings as ReplicaSettings
 
 register = template.Library()
+
+class RenderNode(template.Node):
+    def __init__(self, content):
+        self.content = content
+
+    def render(self, context):
+        try:
+            self.content = template.resolve_variable(self.content, context)
+            return template.Template(self.content).render(template.Context(context, autoescape=False))
+        except (template.TemplateSyntaxError, e):
+            return mark_safe("<strong>Template error: There is an error one of this page's template tags: <code>%s</code></small>" % e.message)
+
 
 @register.inclusion_tag('replica/cms/components/_header.html', takes_context=True)
 def componentHeader(context, user=None):
@@ -38,3 +52,16 @@ def render_counts(obj_type):
 	else:
 		obj_count = '0'
 	return obj_count
+
+@register.simple_tag
+def codeblock(slug):
+	code = get_object_or_404(CodeBlock, type=2, slug=slug)
+	template = Template(code.template_html)
+	return template
+
+@register.tag(name='render')
+def render_django(parser, token):
+    #Example: {% render flatpage.content %}
+    content = token.split_contents()[-1]
+    return RenderNode(content)
+render_django.is_safe = True

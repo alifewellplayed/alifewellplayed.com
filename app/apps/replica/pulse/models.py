@@ -1,10 +1,10 @@
 import os
-from PIL import Image
 import markdown
 import datetime
+import uuid
+from PIL import Image
 from time import strftime
 from hashlib import md5
-import uuid
 from io import StringIO, BytesIO
 
 from django.db import models
@@ -16,35 +16,9 @@ from django.utils.encoding import iri_to_uri
 from django.contrib.sites.models import Site
 
 from replica import settings as replicaSettings
-from replica.pulse.managers import TopicManager, EntryManager, MediaManager
+from replica.uploads import *
+from replica.managers import TopicManager, EntryManager, MediaManager, CodeManager
 from replica.pulse.utils import create_thumbnail
-
-def upload_media(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s.%s" % (instance.slug, ext)
-    date = instance.date_created
-    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
-    #overwrite_existing(path)
-    return path
-
-def upload_media_md(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s_md.%s" % (instance.slug, ext)
-    date = instance.date_created
-    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
-    #overwrite_existing(path)
-    return path
-
-def upload_media_sm(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s_sm.%s" % (instance.slug, ext)
-    date = instance.date_created
-    datepath_path = datetime.date.today().strftime("%Y/%m/%d")
-    path = 'media/%s/%s/%s' % (datepath_path, instance.id, filename)
-    #overwrite_existing(path)
-    return path
 
 class Media(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -101,6 +75,38 @@ class Media(models.Model):
                 md_filename, md_image = create_thumbnail(image_name, img, content_type, replicaSettings.THUMBNAIL_LARGE, replicaSettings.THUMBNAIL_LARGE)
                 self.thumbnail_medium.save(md_filename, md_image, save=False)
         super(Media, self).save(*args, **kwargs)
+
+class CodeBlock(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
+    slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique=True)
+    description = models.TextField(_('description'), blank=True)
+    type = models.IntegerField(choices=replicaSettings.CODE_TYPE_CHOICES, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates')
+    css_upload = models.FileField(upload_to=upload_css, blank=True)
+    template_html = models.TextField(blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    objects = CodeManager()
+
+    class Meta:
+        db_table = 'r_CodeBlock'
+        verbose_name = _('HTML Template')
+        verbose_name_plural = 'HTML Templates'
+        ordering = ('-date_updated',)
+        get_latest_by = 'date_updated'
+
+    def __unicode__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)
+
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)
 
 class Topic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -165,35 +171,10 @@ class Channel(models.Model):
 
 def DefaultChannel():
     channel = Channel.objects.filter(slug='post').first()
-    return channel.id
-
-class EntryTemplate(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
-    description = models.TextField(_('description'), blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates')
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    template_html = models.TextField(blank=True)
-
-    class Meta:
-        db_table = 'r_EntryTemplate'
-        verbose_name = _('HTML Template')
-        verbose_name_plural = 'HTML Templates'
-        ordering = ('-date_updated',)
-        get_latest_by = 'date_updated'
-
-    def __unicode__(self):
-        if self.title:
-            return self.title
-        else:
-            return str(self.id)
-
-    def __str__(self):
-        if self.title:
-            return self.title
-        else:
-            return str(self.id)
+    if channel:
+        return channel.id
+    else:
+        return "927586a4-3258-4aff-a22f-0136c6e9e503"
 
 class Entry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -213,8 +194,7 @@ class Entry(models.Model):
     body = models.TextField(_('body'), blank=True, null=True)
     body_html = models.TextField(blank=True)
     featured_image = models.ForeignKey(Media, blank=True, null=True)
-    template = models.ForeignKey(EntryTemplate, blank=True, null=True)
-
+    template = models.ForeignKey(CodeBlock, blank=True, null=True)
     objects = EntryManager()
 
     class Meta:

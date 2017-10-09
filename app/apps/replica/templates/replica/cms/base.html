@@ -18,13 +18,22 @@
 <div class="page-container">
   {% include "replica/cms/components/_header.html" %}
   <div class="page-container-inner">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-primary {{ message.tags }}" role="alert">
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+          {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     {% block content %}{% endblock %}
   </div>
 </div>
 
-
-
-{% block javascript %}{% endblock %}
 <script src="{{STATIC_URL}}admin/js/global.js" type="text/javascript"></script>
+{% block javascript %}{% endblock %}
 </body>
 </html>

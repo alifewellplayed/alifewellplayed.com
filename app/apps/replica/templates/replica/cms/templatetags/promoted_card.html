@@ -1,5 +1,6 @@
-{% if obj %}{% load humanize %}
+{% load humanize %}
 <div class="card replica-card replica-card-promoted mb-3">
+{% if obj %}
   <div class="fsr-holder">
     <img class="sr-only image-full" src="{{obj.image.image.url}}">
   </div>
@@ -11,5 +12,10 @@
       <small class="text-muted">Last updated {{obj.pub_date|naturaltime}}</small>
     </p>
   </div>
-</div>
+{% else %}
+  <div class="card-body">
+    <h6 class="header-subtitle">No currently promoted stories</h6>
+    <small class="text-muted d-block"><a href="">Promote one now?</a></small>
+  </div>
 {% endif %}
+</div>

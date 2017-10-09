@@ -5,6 +5,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
+from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings

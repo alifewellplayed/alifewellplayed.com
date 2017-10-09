@@ -29,7 +29,7 @@ def render_promoted_heading(format_string=None):
             promoted = Promoted.objects.latest('pub_date')
         return { 'obj': promoted }
     except ObjectDoesNotExist:
-        return ''
+        return None
 
 @register.inclusion_tag('replica/contrib/publisher/templatetags/render_collections.html')
 def render_collections(num=255):

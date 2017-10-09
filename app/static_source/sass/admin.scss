@@ -4,18 +4,20 @@
 @import '_shared/animations';
 @import '_shared/font-awesome/font-awesome';
 @import '_shared/bootstrap/bootstrap';
+@import '_shared/codemirror/codemirror';
+@import '_shared/codemirror/spell-checker';
+@import "_shared/simplemde";
+@import '_shared/codemirror/monokai';
 
 @import "admin/pace";
-@import "admin/simplemde";
 @import "admin/datepicker";
 @import "admin/timepicker";
-
 @import "admin/coreExtend";
 @import "admin/replica";
 @import "admin/header";
 @import "admin/sidebar";
 @import "admin/pages";
+@import "admin/forms";
 @import "admin/card";
 @import "admin/media";
-
 @import "admin/editor";

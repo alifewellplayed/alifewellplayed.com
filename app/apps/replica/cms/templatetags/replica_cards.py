@@ -1,9 +1,10 @@
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.shortcuts import redirect, render, get_object_or_404
+from django.core.exceptions import ObjectDoesNotExist
 from django import template
 
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, EntryTemplate
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, CodeBlock
 from replica.contrib.publisher.models import Promoted, Collection
 
 register = template.Library()
@@ -17,7 +18,7 @@ def render_promoted_card(format_string=None):
             promoted = Promoted.objects.latest('pub_date')
         return { 'obj': promoted }
     except ObjectDoesNotExist:
-        return ''
+        return None
 
 @register.inclusion_tag('replica/cms/templatetags/lists_card.html')
 def render_ideas_card(num=9999, username=None):
@@ -36,7 +37,7 @@ def render_ideas_card(num=9999, username=None):
     return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/lists_card.html')
-def render_published_card(num=9999, username=None, title=None):
+def render_published_card(num=9999, username=None, title=None, show_all=False):
     if not username:
         entries = Entry.objects.published()[:num]
     else:
@@ -46,6 +47,7 @@ def render_published_card(num=9999, username=None, title=None):
         'object_list': entries,
         'object_count': count,
         'object_title': 'Recently Published',
+        'show_all': show_all,
         'object_slug': 'published',
         'object_empty': 'No entries published yet!'
     }
@@ -117,14 +119,15 @@ def render_menu_card(num=9999):
     return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/templates_card.html')
-def render_templates_card(num=9999):
-    templates = EntryTemplate.objects.all()[:num]
+def render_templates_card(num=9999, show_all=False):
+    templates = CodeBlock.objects.all()[:num]
     count = templates.count()
     ctx = {
         'object_list': templates,
         'object_count': count,
         'object_title': 'Templates',
         'object_slug': 'template',
+        'show_all': show_all,
         'object_empty': 'No templates.'
     }
     return ctx

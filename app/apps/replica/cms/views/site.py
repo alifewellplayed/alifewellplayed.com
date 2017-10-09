@@ -19,13 +19,13 @@ def Index(request):
 	return render(request, template, variables)
 
 #Site Settings
-def Settings(request, siteID=None):
+def Settings(request):
 	current_site =  get_object_or_404(SiteSettings, id=settings.SITE_ID)
 	if request.method == 'POST':
 		f = SiteModelForm(request.POST or None, request.FILES, instance=current_site)
 		if f.is_valid():
 			f.save()
-			messages.add_message(request, messages.INFO, 'Settings saved.')
+			messages.add_message(request, messages.INFO, 'Settings have been updated.')
 			return redirect('ReplicaAdmin:SiteSettings')
 	else:
 		f = SiteModelForm(instance=current_site)

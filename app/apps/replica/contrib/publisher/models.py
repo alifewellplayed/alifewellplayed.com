@@ -15,8 +15,8 @@ from django.core.urlresolvers import get_script_prefix
 from django.contrib.sites.models import Site
 
 from replica import settings as replicaSettings
+from replica.managers import TopicManager, EntryManager, MediaManager
 from replica.pulse.models import Entry, Media
-from replica.pulse.managers import TopicManager, EntryManager, MediaManager
 
 class Promoted(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -48,7 +48,6 @@ class Promoted(models.Model):
         if self.deck:
             self.deck_html = markdown.markdown(self.deck)
         super(Promoted, self).save(*args, **kwargs)
-
 
 class Collection(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

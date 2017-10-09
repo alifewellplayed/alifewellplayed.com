@@ -26,6 +26,7 @@ CAN_SUBMIT_CHOICES = ((True, 'Everyone'), (False, 'Only users I allow.'))
 IS_PUBLIC_CHOICES = ((True, 'Everyone'), (False, 'No one'))
 MEDIA_TYPE_CHOICES = ((0, 'embed'), (1, 'image'), (2, 'url'), (3, 'Instagram'))
 IS_SITE_CHOICES = ((True, 'Enabled'), (False, 'Disabled'))
+CODE_TYPE_CHOICES = ((1, 'Partial'),(2, 'Page Template'),)
 
 ICON_CHOICES = (
     ('fa fa-home', 'Home'),

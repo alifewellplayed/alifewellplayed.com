@@ -6,9 +6,8 @@ from django.forms.fields import DateField
 from django.db.models import Q
 
 from pagedown.widgets import AdminPagedownWidget
-
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Media, Draft, Topic, Channel, SiteSettings
+from replica.pulse.models import Entry, SiteSettings
 
 
 class AdminEntryForm(forms.ModelForm):
@@ -17,7 +16,7 @@ class AdminEntryForm(forms.ModelForm):
 
     class Meta:
         model = Entry
-        fields = ['title', 'deck', 'body', 'slug', 'url', 'user', 'topic', 'pub_date', 'is_active', 'channel', 'content_format', 'featured_image', ]
+        fields = ['title', 'deck', 'body', 'slug', 'url', 'user', 'topic', 'pub_date', 'is_active', 'channel', 'content_format', 'featured_image', 'template']
 
 
 class AdminSiteSettingsForm(forms.ModelForm):

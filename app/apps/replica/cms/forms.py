@@ -12,9 +12,6 @@ from replica.pulse.models import *
 from replica.widgets import CustomSplitDateTimeWidget
 
 class EntryModelForm(forms.ModelForm):
-    #deck = forms.CharField(widget=AdminPagedownWidget())
-    #body = forms.CharField(widget=AdminPagedownWidget(), required=False)
-
     pub_date = forms.SplitDateTimeField(
         input_time_formats=['%I:%M%p'],
         widget=CustomSplitDateTimeWidget(
@@ -24,28 +21,14 @@ class EntryModelForm(forms.ModelForm):
     )
     class Meta:
         model = Entry
-        fields = [
-            'title',
-            'deck',
-            'body',
-            'slug',
-            'url',
-            'user',
-            'topic',
-            'pub_date',
-            'is_active',
-            'channel',
-            'content_format',
-            'featured_image',
-            'template'
-        ]
+        fields = [ 'title', 'deck', 'body', 'slug', 'url', 'user', 'topic', 'pub_date', 'is_active', 'channel', 'content_format', 'featured_image', 'template', ]
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Title', 'value':''}),
             'deck': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
             'body': forms.Textarea(attrs={'class':'form-control replica-form-control autosize markdown', 'placeholder':'Start typing...', 'rows':'3'}),
             'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
             'url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'http://', 'value':''}),
-            'topic': forms.CheckboxSelectMultiple(),
+            'topic': forms.CheckboxSelectMultiple(attrs={'class':'form-check-input'}),
             'is_active': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'content_format': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'channel': forms.Select(attrs={'class':'form-control',}),
@@ -92,6 +75,8 @@ class SiteModelForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site author', 'value':''}),
             'is_enabled': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'summary': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
+            'secret_token': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Secret token', 'value':''}),
+            'view_settings': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Additional Site settings', 'rows':'1'}),
         }
 
 class MenuPositionModelForm(forms.ModelForm):
@@ -117,12 +102,14 @@ class MenuItemModelForm(forms.ModelForm):
             'weight': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Order position', 'value':''}),
         }
 
-class EntryTemplateModelForm(forms.ModelForm):
+class CodeBlockModelForm(forms.ModelForm):
     class Meta:
-        model = EntryTemplate
+        model = CodeBlock
         exclude = ('id', 'date_created', 'date_updated', 'user',)
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Template Title', 'value':''}),
+            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'slug', 'value':''}),
             'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Description', 'value':''}),
-            'template_html': forms.TextInput(attrs={'class':'html-editor sr-only', 'value':''}),
+            'template_html': forms.Textarea(attrs={'class':'html-editor sr-only', 'value':''}),
+            'type': forms.RadioSelect(attrs={'class':'form-check-input'}),
         }

@@ -1,3 +1,7 @@
+### 3.0.0 (10/07/2017)
+* Added Codeblocks model for custom templates
+* Rewrite of migrations were needed for support of code blocks. As a result, Replica is not backwards compatible with older versions.
+
 ### 2.2.1 (09/04/2017)
 * Updated Packages
 * Started moving CMS to render HTML in django instead of vue.js for prototyping purposes

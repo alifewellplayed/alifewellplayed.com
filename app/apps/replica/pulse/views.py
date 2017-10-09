@@ -1,7 +1,9 @@
 from django.conf import settings
-from django.template import RequestContext
+from django.template import RequestContext, Context, Template
 from django.shortcuts import render_to_response, render, get_object_or_404
+from django.utils.safestring import mark_safe
 from django.views.decorators.cache import cache_page
+from django.core.exceptions import PermissionDenied
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
@@ -26,15 +28,21 @@ class MonthArchiveView(PulseViewMixin, MonthArchiveView):
 class DayArchiveView(PulseViewMixin, DayArchiveView):
     pass
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def EntryDetail(request, year, month, slug):
     entry = get_object_or_404(Entry, pub_date__year=year, pub_date__month=month, slug=slug,)
-    if request.user.is_staff or entry.is_published:
-        template = ['replica/pulse/entries/%s.html' % entry.slug, 'replica/pulse/entry_detail.html']
-    else:
-        template = ['replica/error.html', '404.html',]
     variables = {'object': entry, 'detailed': True,}
-    return render(request, template, variables)
+    if request.user.is_staff or entry.is_published:
+        if entry.template:
+            template = Template(entry.template.template_html)
+            context = RequestContext(request, variables)
+            return HttpResponse(template.render(context))
+        else:
+            template = ['replica/pulse/entries/%s.html' % entry.slug, 'replica/pulse/entry_detail.html']
+            return render(request, template, variables)
+    else:
+        raise PermissionDenied
+
 
 #Entries for topic
 class EntriesForTopic(ListView):
@@ -78,6 +86,10 @@ def EntryPage(request, url):
             page = get_object_or_404(Entry.objects.pages(), url=url)
         else:
             page = get_object_or_404(Entry.objects.pages_published(), url=url)
+        if page.template:
+            template = Template(page.template.template_html)
+        else:
+            template = 'replica/pulse/entry_page.html'
     except Http404:
         if not url.endswith('/') and settings.APPEND_SLASH:
             url += '/'
@@ -85,6 +97,5 @@ def EntryPage(request, url):
             return HttpResponsePermanentRedirect('%s/' % request.path)
         else:
             raise
-    template = 'replica/pulse/entry_page.html'
     variables = {'object': page, 'detailed': True,}
     return render(request, template, variables)

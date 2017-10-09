@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.db import models
 
 from .forms import AdminEntryForm, AdminSiteSettingsForm
-from .models import Topic, Media, Channel, Entry, Draft, SiteSettings, EntryLink, MenuPosition, MenuItem
+from .models import *
 
 def force_save(modeladmin, request, queryset):
     for item in queryset.iterator():
@@ -23,9 +23,13 @@ class ChannelAdmin(admin.ModelAdmin):
     list_display = ('title', 'user',)
     list_filter = ('user',)
 
+class CodeBlockAdmin(admin.ModelAdmin):
+    list_display = ('title', 'type', 'description',)
+    list_filter = ('user', 'type')
+
 class EntryAdmin(admin.ModelAdmin):
     form = AdminEntryForm
-    list_display = ('title', 'pub_date', 'is_active', 'channel', 'user')
+    list_display = ('title', 'pub_date', 'is_active', 'channel', 'user', 'template')
     list_filter = ('is_active', 'channel', 'topic')
     exclude = ('deck_html', 'body_html',)
     prepopulated_fields = {"slug": ("title",)}
@@ -58,6 +62,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     list_filter = ('position',)
 
 admin.site.register(EntryLink, EntryLinkAdmin)
+admin.site.register(CodeBlock, CodeBlockAdmin)
 admin.site.register(MenuPosition, MenuPositionAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Topic, TopicAdmin)

@@ -10,29 +10,45 @@
         <h4 class="card-title">Site Settings</small></h4>
       </div>
     </div>
-    <form method="post" id="siteSettings" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:SiteSettings' %}">{% csrf_token %}
-    <div class="card replica-card replica-card-settings mb-3">
+    <form method="post" id="siteSettings" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:SiteSettings' %}">
+    {% csrf_token %}
+    <div class="card replica-card replica-card-settings mb-1">
       <div class="card-body">
         <div class="form-group">
+          <label for="{{ form.logo.id_for_label }}">Site Logo</label>
           {{form.logo}}
         </div>
         <div class="form-group">
+          <label for="{{ form.name.id_for_label }}">Site Name</label>
           {{form.name}}
         </div>
         <div class="form-group">
+          <label for="{{ form.domain.id_for_label }}">Domain</label>
           {{form.domain}}
         </div>
         <div class="form-group">
+          <label for="{{ form.author.id_for_label }}">Site Author/Admin</label>
           {{form.author}}
         </div>
         <div class="form-group">
+          <label for="{{ form.password.id_for_label }}">Password protect website</label>
           {{form.password}}
         </div>
         <div class="form-group">
+          <label for="{{ form.secret_token.id_for_label }}">Site token (falls back to settings.py if none entered)</label>
+          {{form.secret_token}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.description.id_for_label }}">Site Description (for SEO)</label>
           {{form.description}}
         </div>
         <div class="form-group">
+          <label for="{{ form.summary.id_for_label }}">Website Summary</label>
           {{form.summary}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.view_settings.id_for_label }}">Additional Site settings</label>
+          {{form.view_settings}}
         </div>
         <div class="form-group">
           <h4 class="header-subtitle"><label for="id_content_format">Enable Site?</label></h4>
@@ -44,19 +60,14 @@
         </div>
       </div>
     </div>
-
-    <input class="btn btn-primary" type="submit" value="Save">
-
+    <input class="btn btn-primary btn-block" type="submit" value="Save">
     </form>
   </div>
   <div class="col-md-6">
-    {% render_menu_card %}
-
-    <div class="card replica-card replica-card-settings mb-1">
+    <div class="card replica-card replica-card-settings mb-3">
       <div class="card-header">
         <h4 class="card-title">User Settings</small></h4>
       </div>
-
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><a href="{% url 'ReplicaAdmin:UserList' %}">
           <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>Create New User</a>
@@ -66,6 +77,8 @@
         </li>
       </ul>
     </div>
+    {% render_menu_card %}
+    {% render_templates_card %}
   </div>
 </div>
 

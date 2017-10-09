@@ -1,10 +1,11 @@
 from django.conf import settings
 from django.template import RequestContext
-from django.shortcuts import render_to_response, render, get_object_or_404
+from django.shortcuts import render_to_response, render, get_object_or_404, redirect
 from django.views.decorators.cache import cache_page
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
+from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings
@@ -31,8 +32,8 @@ def TopicEdit(request, topicID=None):
 		f = TopicModelForm(request.POST or None, request.FILES, instance=instance)
 		if f.is_valid():
 			f.save()
-			messages.add_message(msg)
-			return redirect('ReplicaAdmin:EditTopic', topicID=instance.id)
+			messages.info(request, msg)
+			return redirect('ReplicaAdmin:TopicEdit', topicID=instance.id)
 	else:
 		f = TopicModelForm(instance=instance)
 	variables = {
