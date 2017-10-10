@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django import template
 
 from coreExtend.models import Account
-from replica.contrib.publisher.models import Promoted, Collection
+from replica.contrib.zine.models import Promoted, Collection
 from replica.pulse.models import Entry
 
 register = template.Library()
@@ -18,9 +18,9 @@ def promoted_image(format_string=None):
             promoted = Promoted.objects.latest('pub_date')
         return promoted.image.image.url
     except ObjectDoesNotExist:
-        return ''
+        return None
 
-@register.inclusion_tag('replica/contrib/publisher/templatetags/render_promoted_block.html')
+@register.inclusion_tag('replica/contrib/zine/templatetags/render_promoted_block.html')
 def render_promoted_heading(format_string=None):
     try:
         if format_string:
@@ -31,14 +31,13 @@ def render_promoted_heading(format_string=None):
     except ObjectDoesNotExist:
         return None
 
-@register.inclusion_tag('replica/contrib/publisher/templatetags/render_collections.html')
+@register.inclusion_tag('replica/contrib/zine/templatetags/render_collections.html')
 def render_collections(num=255):
     request = context['request']
     collections = Collection.objects.order_by('-pub_date')[:num]
     return { 'object_list': collections, }
 
-
-@register.inclusion_tag('replica/contrib/publisher/templatetags/render_sticky.html')
+@register.inclusion_tag('replica/contrib/zine/templatetags/render_sticky.html')
 def render_sticky(num=5):
     entries = Entry.objects.sticky()[:num]
     return { 'object_list': entries, }

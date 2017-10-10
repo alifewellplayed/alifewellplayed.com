@@ -22,4 +22,4 @@
 
 __version__ = '2.0.0'
 
-default_app_config = 'replica.contrib.publisher.apps.ReplicaConfig'
+default_app_config = 'replica.contrib.zine.app.ReplicaConfig'

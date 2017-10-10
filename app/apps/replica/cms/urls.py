@@ -13,7 +13,7 @@ from .views import media as mediaView
 from .views import template as templateView
 
 #Contrib modules
-from replica.contrib.publisher.urls import PUBLISHER_URLS
+from replica.contrib.zine.urls import ZINE_CMS_URLS
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -89,5 +89,6 @@ urlpatterns = [
 	url(r'', include(ENTRY_URLS)),
 	url(r'', include(TEMPLATE_URLS)),
 
-	url(r'', include(PUBLISHER_URLS)),
+	#Include contrib urls
+	url(r'zine/', include(ZINE_CMS_URLS)),
 ]

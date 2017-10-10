@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
         <div class="card-body">
           <div class="form-group mb-0">
             <h4 class="header-subtitle"><label for="id_content_format">Who can see this topic?</label></h4>
@@ -43,9 +43,9 @@
       </div>
 
       {% if edit %}
-      <input type="submit" class="btn btn-primary" value="Edit">
+      <input type="submit" class="btn btn-primary btn-block" value="Edit">
   		{% else %}
-  		<input type="submit" class="btn btn-primary" value="Save">
+  		<input type="submit" class="btn btn-primary btn-block" value="Save">
   		{% endif %}
 
     </form>

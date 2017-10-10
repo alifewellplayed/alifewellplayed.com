@@ -240,7 +240,7 @@ INSTALLED_APPS = (
     'replica.api',
     'replica.contrib.micro',
     'replica.contrib.redirection',
-    'replica.contrib.publisher',
+    'replica.contrib.zine',
     'replica.contrib.insta',
 )
 

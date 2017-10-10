@@ -5,15 +5,10 @@
 {% block content %}
 <div class="row">
   <div class="col-md-6">
-    {% render_promoted_card %}
-    {% render_sticky_card %}
-    {% render_ideas_card 50 user %}
-    {% render_published_card 50 user %}
+    {% render_promoted_cards %}
   </div>
   <div class="col-md-6">
-    {% render_topics_card 50 %}
-    {% render_channel_card 50 %}
-
+    {% render_collections_card 50 %}
   </div>
 </div>
 {% endblock %}

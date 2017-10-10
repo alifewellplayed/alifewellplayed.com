@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django import template
 
 from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, CodeBlock
-from replica.contrib.publisher.models import Promoted, Collection
+from replica.contrib.zine.models import Promoted, Collection
 
 register = template.Library()
 
@@ -19,6 +19,33 @@ def render_promoted_card(format_string=None):
         return { 'obj': promoted }
     except ObjectDoesNotExist:
         return None
+
+@register.inclusion_tag('replica/cms/templatetags/promoted_cards.html')
+def render_promoted_cards(num=9999):
+    promoted_entries =  Promoted.objects.all().order_by('pub_date')[:num]
+    promoted_count = promoted_entries.count()
+    ctx = {
+        'object_list': promoted_entries,
+        'object_count': promoted_count,
+        'object_title': 'Promoted Entries',
+        'object_slug': 'promoted',
+        'object_empty': 'No promoted yet.',
+    }
+    return ctx
+
+@register.inclusion_tag('replica/cms/templatetags/collections_card.html')
+def render_collections_card(num=9999):
+    collections = Collection.objects.all().order_by('pub_date')[:num]
+    collection_count = collections.count()
+    ctx = {
+        'object_list': collections,
+        'object_count': collection_count,
+        'object_slug': 'collections',
+        'object_title': 'Collections',
+        'object_slug': 'collections',
+        'object_empty': 'No collections yet.',
+    }
+    return ctx
 
 @register.inclusion_tag('replica/cms/templatetags/lists_card.html')
 def render_ideas_card(num=9999, username=None):
