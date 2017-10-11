@@ -21,7 +21,7 @@ class PromotedModelForm(forms.ModelForm):
         model = Promoted
         exclude = ('id', 'user', 'date_created', 'date_updated', 'slug', 'deck_html')
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Topic Name', 'value':''}),
+            'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Promotion Title', 'value':''}),
             'deck': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Description', 'rows':'1'}),
             'image': forms.Select(attrs={'class':'form-control',}),
             'entry': forms.Select(attrs={'class':'form-control',}),

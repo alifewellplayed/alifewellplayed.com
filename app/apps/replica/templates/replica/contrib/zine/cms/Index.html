@@ -6,6 +6,7 @@
 <div class="row">
   <div class="col-md-6">
     {% render_promoted_cards %}
+    <a class="btn btn-primary btn-block mb-3" href="{% url 'ReplicaAdmin:PromotedNew' %}">Create a new promotion</a>
   </div>
   <div class="col-md-6">
     {% render_collections_card 50 %}
