@@ -13,7 +13,7 @@
 {% if user.is_authenticated %}
 <p class="logged-in">Already Logged in. <a href="{% url 'CoreExtend:Logout' %}">Logout?</a></p>
 {% else %}
-<h2 class="heading text-center">Login</h2>
+<h2 class="heading">Login</h2>
 <form class="form-signin" method="post" action="{% url 'CoreExtend:login' %}">{% csrf_token %}
 
     <div class="form-group {% if form.username.errors %}has-error{% endif %}">
@@ -36,7 +36,7 @@
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p><a href="{% url 'CoreExtend:password_reset' %}">Forgot</a> your password?</p>
+<p><a href="{% url 'CoreExtend:password_reset' %}">Forgot your password?</a></p>
 {% if site_register %}<p><a href="{% url 'CoreExtend:register' %}">Need an account</a>?</p>{% endif %}
 {% endif %}
 {% endblock %}

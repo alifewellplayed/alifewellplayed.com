@@ -4,15 +4,8 @@
 {% block page %}core password-reset{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{site_url}}">Home</a></li>
-    <li class="active">Password Reset</li>
-</ol>
-
-<div class="NarrowWrap">
-    <h2>{% trans "Password Reset" %}</h2>
-
-    <p>{% trans "Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one." %}</p>
+<h2>{% trans "Password Reset" %}</h2>
+<p>{% trans "Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one." %}</p>
 
     <form action="" method="post">{% csrf_token %}
 
@@ -23,9 +16,6 @@
             <span class="help-block">{{ form.email.errors }}</span>
             {% endif %}
         </div>
-
-        <input class="btn btn-primary" type="submit" value="{% trans 'Reset my password' %}" />
+        <input class="btn btn-primary btn-block" type="submit" value="{% trans 'Reset my password' %}" />
     </form>
-
-</div>
 {% endblock %}

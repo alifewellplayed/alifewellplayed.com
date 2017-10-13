@@ -20,4 +20,6 @@ def currentSite(request):
         'site_created': current_site.date_created,
         'site_updated': current_site.date_updated,
         'site_logo': current_site.logo.image.url,
+        'site_featured_image': current_site.featured.image.url,
+
     }

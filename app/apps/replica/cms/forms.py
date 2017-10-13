@@ -68,6 +68,7 @@ class SiteModelForm(forms.ModelForm):
         exclude = ('id', 'date_created', 'date_updated',)
         widgets = {
             'logo': forms.Select(attrs={'class':'form-control',}),
+            'featured': forms.Select(attrs={'class':'form-control',}),
             'name': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Site Name', 'value':''}),
             'domain': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Site description', 'value':''}),
             'password': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Password', 'value':''}),

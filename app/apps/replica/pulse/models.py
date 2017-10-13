@@ -402,7 +402,8 @@ class SiteSettings(Site):
     summary_html = models.TextField(blank=True, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    logo = models.ForeignKey(Media, blank=True, null=True)
+    logo = models.ForeignKey(Media, blank=True, null=True, related_name='logo',)
+    featured = models.ForeignKey(Media, help_text="Featured Image", related_name='featured', blank=True, null=True)
 
     class Meta:
         db_table = 'r_SiteSettings'
