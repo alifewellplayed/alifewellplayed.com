@@ -10,6 +10,9 @@ from coreExtend import views as core_views
 from replica.pulse.sitemaps import PulseSitemap
 from replica import settings as r_settings
 
+from replica.contrib.micro.urls import MICRO_PULSE_URLS
+from replica.contrib.redirection.urls import REDIRECTION_PULSE_URLS
+
 admin.autodiscover()
 admin.site.site_header = r_settings.SITE_NAME
 sitemaps = {'news': PulseSitemap(),}
@@ -32,8 +35,8 @@ urlpatterns = [
 
     # Apps
     url(r'^replica/', include('replica.cms.urls', namespace='ReplicaAdmin')),
-    url(r'^r/', include('replica.contrib.redirection.urls', namespace='ReplicaRedirection')),
-    url(r'^notes/', include('replica.contrib.micro.urls', namespace='ReplicaMicro')),
+    url(r'notes/', include(MICRO_PULSE_URLS, namespace='ReplicaMicro')),
+    url(r'^r/', include(REDIRECTION_PULSE_URLS, namespace='ReplicaRedirection')),
     url(r'^', include('coreExtend.urls', namespace='CoreExtend')),
     url(r'^', include('replica.pulse.urls', namespace='ReplicaPulse')),
 

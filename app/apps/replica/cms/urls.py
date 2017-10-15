@@ -14,6 +14,8 @@ from .views import template as templateView
 
 #Contrib modules
 from replica.contrib.zine.urls import ZINE_CMS_URLS
+from replica.contrib.micro.urls import MICRO_CMS_URLS
+from replica.contrib.redirection.urls import REDIRECTION_CMS_URLS
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -80,7 +82,7 @@ MEDIA_URLS = [
 urlpatterns = [
 	url(r'^beta/', include(APP_URLS)),
 
-	#core urls
+	#core cms urls
 	url(r'', include(SITE_URLS)),
 	url(r'', include(USER_URLS)),
 	url(r'', include(CHANNEL_URLS)),
@@ -91,4 +93,6 @@ urlpatterns = [
 
 	#Include contrib urls
 	url(r'zine/', include(ZINE_CMS_URLS)),
+	url(r'notes/', include(MICRO_CMS_URLS)),
+	url(r'redirect/', include(REDIRECTION_CMS_URLS)),
 ]

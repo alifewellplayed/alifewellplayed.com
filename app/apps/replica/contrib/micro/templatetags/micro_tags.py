@@ -18,7 +18,7 @@ def render_lists(user, num):
     return {'objects': objects,}
 
 @register.inclusion_tag('micro/templatetags/render_notes.html')
-def render_latest_notes(num):
+def render_latest_notes(num=100, user=None):
     objects = Note.objects.filter(timeline=num)
     return { 'objects': objects, }
 

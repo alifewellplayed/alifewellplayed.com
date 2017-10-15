@@ -6,7 +6,7 @@
 
 // grab our packages
 var gulp   = require('gulp'),
-    webpack = require('webpack');
+    webpack = require('webpack-stream');
     jshint = require('gulp-jshint');
     sass = require('gulp-sass');
     sourcemaps = require('gulp-sourcemaps');
@@ -136,10 +136,16 @@ gulp.task('concat-js', function() {
     .pipe(gulp.dest('dist/site/js'));
 });
 
-gulp.task('admin-webpack-vue', function(){
-    return gulp.src('app/static_source/js/admin/app.js')
-        .pipe(gulpWebpack(require('./webpack.config.js'), webpack))
-        .pipe(gulp.dest('dist/admin/js'));
+//gulp.task('admin-webpack-vue', function(){
+//    return gulp.src('app/static_source/js/admin/app.js')
+//        .pipe(gulpWebpack(require('./webpack.config.js'), webpack))
+//        .pipe(gulp.dest('dist/admin/js'));
+//});
+
+gulp.task('admin-webpack-vue', function() {
+  return gulp.src('app/static_source/js/admin/app.js')
+    .pipe(webpack( require('./webpack.config.js') ))
+    .pipe(gulp.dest('dist/admin/js'));
 });
 
 // Concat admin JS into unminified single file
@@ -201,9 +207,9 @@ gulp.task('shrink-js', function() {
     .pipe(gulp.dest('dist/js/site'))
 });
 
-// Shrinks all the admin js
+// Shrinks admin js
 gulp.task('admin-shrink-js', function() {
-    return gulp.src('dist/admin/js/*.js')
+    return gulp.src('dist/admin/js/global.js')
     .pipe(uglify())
     .pipe(rename('global.min.js'))
     .pipe(gulp.dest('dist/admin/js'))
@@ -216,7 +222,7 @@ gulp.task('build-js', function(callback) {
 
 // Javascript build task for admin
 gulp.task('admin-build-js', function(callback) {
-    runSequence('admin-webpack-vue', 'admin-concat-js', 'concat-codemirror', callback);
+    runSequence('admin-webpack-vue', 'admin-concat-js', 'admin-shrink-js', 'concat-codemirror', callback);
     // 'admin-shrink-js'
 });
 

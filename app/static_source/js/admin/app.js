@@ -75,7 +75,7 @@ const router = new VueRouter({
     routes, // short for routes: routes
     mode: 'history',
     linkActiveClass: 'active',
-    base: '/replica/',
+    base: '/replica/beta/',
 });
 
 const app = new Vue({

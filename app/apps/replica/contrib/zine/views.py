@@ -10,7 +10,6 @@ from replica import settings as ReplicaSettings
 from replica.contrib.zine.models import Promoted, Collection
 from replica.contrib.zine.forms import PromotedModelForm
 
-#Replica Editor homepage
 def Index(request):
 	template = 'replica/contrib/zine/cms/Index.html'
 	variables = {}
