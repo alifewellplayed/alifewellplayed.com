@@ -21,7 +21,7 @@ def TimelineEdit(request, timelineID=None):
         instance = timeline_obj
         edit = True
         msg = 'Timeline updated.'
-        obj_title = "Editing Timeline: {}".format(timeline_obj.title)
+        obj_title = "Editing Timeline: {}".format(timeline_obj.name)
     else:
         timeline_obj = None
         instance = Timeline(user=request.user)

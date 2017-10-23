@@ -6,6 +6,7 @@ from django import template
 
 from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, CodeBlock
 from replica.contrib.zine.models import Promoted, Collection
+from replica.contrib.micro.models import Timeline, Note
 
 register = template.Library()
 
@@ -156,5 +157,33 @@ def render_templates_card(num=9999, show_all=False):
         'object_slug': 'template',
         'show_all': show_all,
         'object_empty': 'No templates.'
+    }
+    return ctx
+
+@register.inclusion_tag('replica/cms/templatetags/timelines_card.html')
+def render_timelines_card(num=9999, user=None):
+    timelines = Timeline.objects.all().order_by('date_updated')[:num]
+    timeline_count = timelines.count()
+    ctx = {
+        'object_list': timelines,
+        'object_count': timeline_count,
+        'object_slug': 'timelines',
+        'object_title': 'Timelines',
+        'object_slug': 'timelines',
+        'object_empty': 'No Timelines yet.',
+    }
+    return ctx
+
+@register.inclusion_tag('replica/cms/templatetags/notes_recent_card.html')
+def render_notes_recent_card(num=25, user=None):
+    notes = Note.objects.all().order_by('pub_date')[:num]
+    note_count = notes.count()
+    ctx = {
+        'object_list': notes,
+        'object_count': note_count,
+        'object_slug': 'notes',
+        'object_title': 'Notes',
+        'object_slug': 'notess',
+        'object_empty': 'No notes yet.',
     }
     return ctx

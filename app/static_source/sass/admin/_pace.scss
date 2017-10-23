@@ -1,4 +1,4 @@
-$pace-color: theme-color("primary");
+$pace-color: theme-color("secondary");
 
 .pace {
   -webkit-pointer-events: none;
@@ -56,7 +56,8 @@ $pace-color: theme-color("primary");
   animation: pace-spinner 400ms linear infinite;
 }
 
-body > :not(.pace),body:before,body:after {
+body > :not(.pace) .page-container,
+body:before,body:after .page-container{
   -webkit-transition:opacity .4s ease-in-out;
   -moz-transition:opacity .4s ease-in-out;
   -o-transition:opacity .4s ease-in-out;
@@ -64,8 +65,9 @@ body > :not(.pace),body:before,body:after {
   transition:opacity .4s ease-in-out
 }
 
-body:not(.pace-done):not(.frl-livestream-event) > :not(.pace),body:not(.pace-done):before,body:not(.pace-done):after {
-  opacity:0
+body:not(.pace-done):before .page-container,
+body:not(.pace-done):after .page-container {
+  opacity:0;
 }
 
 @-webkit-keyframes pace-spinner {

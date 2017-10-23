@@ -7,8 +7,6 @@
     .nav-link.active { background-color: $white; }
   }
   .card-editor {
-    border-top: 0;
-
     .input-slug {
       letter-spacing: 1px;
       .input-group-addon {
@@ -16,13 +14,20 @@
         border-width: 0px;
         padding-left: 0px;
         padding-right: 0px;
+        font-size: 11px;
       }
-      .form-control { padding-left: 0px; border-bottom: 1px solid transparent; letter-spacing: 1px;}
+      .form-control {
+        padding-left: 0px;
+        border-bottom: 1px solid transparent;
+        letter-spacing: 1px;
+        font-size: 11px;
+      }
     }
   }
 
   .replica-form-control {
-    border-width: 0;
+    border-width: 0 !important;
+    padding: 0;
     &.underline:focus {
       border-bottom: 1px solid;
     }

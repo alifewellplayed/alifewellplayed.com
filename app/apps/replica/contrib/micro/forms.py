@@ -10,8 +10,8 @@ class TimelineModelForm(forms.ModelForm):
 		widgets = {
 			'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Timeline title'}),
 			'deck': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
-			'is_public': forms.RadioSelect(attrs={'class':'form-check-input'}),
-			'rev_order': forms.RadioSelect(attrs={'class':'form-check-input'}),
+			'is_public': forms.CheckboxInput(attrs={'class':'form-check-input'}),
+			'rev_order': forms.CheckboxInput(attrs={'class':'form-check-input'}),
 		}
 
 class NoteModelForm(forms.ModelForm):

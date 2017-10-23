@@ -2,8 +2,6 @@
     height: auto;
     min-height: 300px;
     border: 1px solid #ddd;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
     padding: 10px;
     font: inherit;
     z-index: 1;
@@ -21,7 +19,7 @@
     right: 0;
     bottom: 0;
     height: auto;
-    z-index: 9;
+    z-index: 1000;
 }
 
 .CodeMirror-sided {
@@ -40,8 +38,7 @@
     border-top: 1px solid #bbb;
     border-left: 1px solid #bbb;
     border-right: 1px solid #bbb;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    background-color: $white;
 }
 
 .editor-toolbar:after,
@@ -80,7 +77,7 @@
     top: 0;
     left: 0;
     opacity: 1;
-    z-index: 9;
+    z-index: 1000;
 }
 
 .editor-toolbar.fullscreen::before {

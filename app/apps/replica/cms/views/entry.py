@@ -68,7 +68,7 @@ class PageList(ListView):
     def get_queryset(self):
         return Entry.objects.pages()
     def get_context_data(self, **kwargs):
-        context = super(PagesList, self).get_context_data(**kwargs)
+        context = super(PageList, self).get_context_data(**kwargs)
         context.update({'is_list':True, 'title':'All Pages', })
         return context
 

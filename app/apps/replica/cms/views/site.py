@@ -17,6 +17,12 @@ def Index(request):
 	variables = {'is_home':True, 'is_list':False,}
 	return render(request, template, variables)
 
+#Replica Editor homepage
+def ModulesList(request):
+	template = 'replica/cms/site_Modules.html'
+	variables = {'is_home':False, 'is_list':False,}
+	return render(request, template, variables)
+
 #Site Settings
 def Settings(request):
 	current_site =  get_object_or_404(SiteSettings, id=settings.SITE_ID)

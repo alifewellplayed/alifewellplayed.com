@@ -1,0 +1,10 @@
+<div class="dropdown">
+  <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" id="dropdownTopicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Topics
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownTopicButton">
+    {% for obj in object_list %}
+    <a class="dropdown-item" href="{% url 'ReplicaAdmin:EntryTopicList' obj.id %}">{{obj.title}}</a>
+    {% endfor %}
+  </div>
+</div>

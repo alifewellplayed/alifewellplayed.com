@@ -1,3 +1,4 @@
+{% load replica_components %}
 <article class="{{ object.channel.slug }} {% if not object.is_active %}draft{% endif %} entry layout-single-column" id="entry-{{ object.id }}">
 	<header class="entry-head">
 		<div class="entry-meta">
@@ -20,9 +21,9 @@
 		<span class="deck">{{ object.deck_html|safe }}</span>
 	{% elif detailed  %}
 		<span class="deck">{{ object.deck_html|safe }}</span>
-		{{ object.body_html|safe }}
+    {% render_as_template object.body_html %}
 	{% else %}
-		{{ object.body_html|safe }}
+    {% render_as_template object.body_html %}
 	{% endif %}
 	</section>
 	<footer class="entry-footer">

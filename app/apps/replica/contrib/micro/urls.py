@@ -7,7 +7,7 @@ from replica.contrib.micro.views import pulse as pulseViews
 from replica.contrib.micro.views import cms as cmsViews
 
 MICRO_CMS_URLS = [
-    url(r'^/$', login_required(cmsViews.Index), name="MicroIndex"),
+    url(r'^$', login_required(cmsViews.Index), name="MicroIndex"),
     url(r'^timelines/$', login_required(cmsViews.TimelineEdit), name="TimelineNew"),
     url(r'^timelines/edit/(?P<timelineID>[\w-]+)/$', login_required(cmsViews.TimelineEdit), name = "TimelineEdit"),
     url(r'^timelines/edit/(?P<timelineID>[\w-]+)/delete/$', login_required(cmsViews.TimelineDelete), name = "TimelineDelete"),

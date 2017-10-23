@@ -24,6 +24,7 @@ APP_URLS = [
 
 SITE_URLS = [
 	url(r'^$', login_required(siteView.Index), name = "Home"),
+    url(r'^modules/$', login_required(siteView.ModulesList), name = "SiteModules"),
 	url(r'^site/$', login_required(siteView.Settings), name = "SiteSettings"),
 	url(r'^site/menu/$', login_required(siteView.MenuEdit), name = "MenuList"),
 	url(r'^site/menu/(?P<menuID>[\w-]+)/$', login_required(siteView.MenuEdit), name = "MenuEdit"),
@@ -52,8 +53,8 @@ ENTRY_URLS = [
 	url(r'^entries/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
 	url(r'^entries/edit/$', login_required(entryView.EntryEditor), name = "EntryEditor"),
 	url(r'^entries/edit/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryEditor), name = "EntryEdit"),
-	url(r'^entries/topic/(?P<topicFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
-	url(r'^entries/status/(?P<statusFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryList"),
+	url(r'^entries/topic/(?P<topicFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryTopicList"),
+	url(r'^entries/status/(?P<statusFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryStatusList"),
 	url(r'^entries/pages/$', login_required(entryView.PageList.as_view()), name = "PageList"),
 	url(r'^entries/tree/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryDetail.as_view()), name = "EntryDetails"),
 	url(r'^entries/tree/(?P<entryID>[\w-]+)/delete/$', login_required(entryView.EntryDelete), name = "EntryDelete"),
@@ -92,7 +93,7 @@ urlpatterns = [
 	url(r'', include(TEMPLATE_URLS)),
 
 	#Include contrib urls
-	url(r'zine/', include(ZINE_CMS_URLS)),
-	url(r'notes/', include(MICRO_CMS_URLS)),
-	url(r'redirect/', include(REDIRECTION_CMS_URLS)),
+	url(r'^zine/', include(ZINE_CMS_URLS)),
+	url(r'^micro/', include(MICRO_CMS_URLS)),
+	url(r'^redirect/', include(REDIRECTION_CMS_URLS)),
 ]

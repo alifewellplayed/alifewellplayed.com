@@ -9,6 +9,7 @@ from pagedown.widgets import AdminPagedownWidget
 
 from coreExtend.models import Account
 from replica.pulse.models import *
+from replica.cms.models import *
 from replica.widgets import CustomSplitDateTimeWidget
 
 class EntryModelForm(forms.ModelForm):
@@ -113,4 +114,13 @@ class CodeBlockModelForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Description', 'value':''}),
             'template_html': forms.Textarea(attrs={'class':'html-editor sr-only', 'value':''}),
             'type': forms.RadioSelect(attrs={'class':'form-check-input'}),
+        }
+
+class PluginModelForm(forms.ModelForm):
+    class Meta:
+        model = Plugin
+        exclude = ('id', 'date_created', 'date_updated')
+        widgets = {
+            'is_enabled': forms.RadioSelect(attrs={'class':'form-check-input'}),
+            'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
         }

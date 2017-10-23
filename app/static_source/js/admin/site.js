@@ -23,7 +23,7 @@
           autofocus: true,
         	autosave: {
         		enabled: true,
-        		uniqueId: "MyUniqueID",
+        		uniqueId: EntryID,
         		delay: 1000,
         	},
           blockStyles: {

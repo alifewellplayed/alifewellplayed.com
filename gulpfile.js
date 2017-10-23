@@ -158,8 +158,8 @@ gulp.task('admin-concat-js', function() {
         'node_modules/autosize/dist/autosize.js',
         'node_modules/pace-progress/pace.js',
         'app/static_source/js/admin/jquery.appear.js',
-        'app/static_source/js/admin/bootstrap-datepicker.js',
-        'app/static_source/js/admin/jquery.timepicker.js',
+        'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js',
+        'node_modules/timepicker/jquery.timepicker.js',
         'app/static_source/js/admin/site.js',
     ])
     .pipe(sourcemaps.init())

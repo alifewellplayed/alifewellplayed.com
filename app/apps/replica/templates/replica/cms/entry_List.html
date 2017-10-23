@@ -1,6 +1,6 @@
 {% extends 'replica/cms/base.html' %}
 {% block title %}Entries{% endblock %}
-{% load replica_cards %}
+{% load replica_cards %}{% load replica_components %}
 {% load replica_entry_filters %}
 
 {% block content %}
@@ -8,7 +8,17 @@
   <div class="col-md-8">
     <div class="card replica-card replica-card-settings mb-1">
       <div class="card-header">
-        <h4 class="card-title">Entries</small></h4>
+        <div class="pull-right">
+          {% render_nav_topic_list %}
+        </div>
+        <ul class="nav card-header-nav">
+          <li class="nav-item">
+            <h4 class="card-title mb-0"><a class="nav-link active" href="{% url 'ReplicaAdmin:EntryList' %}">Entries</a></h4>
+          </li>
+          <li class="nav-item">
+            <h4 class="card-title mb-0"><a class="nav-link" href="{% url 'ReplicaAdmin:PageList' %}">Pages</a></h4>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
@@ -33,7 +43,6 @@
   </div>
   <div class="col-md-4">
     {% render_entry_status_filters %}
-    {% render_entry_topic_filters %}
     {% render_templates_card num=3 show_all=True %}
   </div>
 </div>

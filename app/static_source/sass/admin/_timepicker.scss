@@ -1,9 +1,9 @@
 .ui-timepicker-wrapper {
 	overflow-y: auto;
 	max-height: 150px;
-	width: 220px;
-	background: $gray-900;
-	//border: 1px solid #ddd;
+	width: 6.5em;
+	background: #fff;
+	border: 1px solid #ddd;
 	-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
 	-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
 	box-shadow:0 5px 10px rgba(0,0,0,0.2);
@@ -39,19 +39,19 @@
 	padding: 3px 0 3px 5px;
 	cursor: pointer;
 	white-space: nowrap;
-	color: $body-color;
+	color: #000;
 	list-style: none;
 	margin: 0;
 }
 
 .ui-timepicker-list:hover .ui-timepicker-selected {
-	background: $brand-primary; color: $gray-900;
+	background: #fff; color: #000;
 }
 
 li.ui-timepicker-selected,
 .ui-timepicker-list li:hover,
 .ui-timepicker-list .ui-timepicker-selected:hover {
-	background: $brand-primary; color: $gray-900;
+	background: #1980EC; color: #fff;
 }
 
 li.ui-timepicker-selected .ui-timepicker-duration,
