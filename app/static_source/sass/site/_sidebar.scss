@@ -1,9 +1,6 @@
 $r-featured-background: lighten($body-bg, 5%);
 
 .site-sidebar {
-    position: fixed;
-    width: $sidebar-width;
-    height: 100%;
     z-index: 5;
     //background: $header-background;
     text-align: center;
@@ -20,7 +17,7 @@ $r-featured-background: lighten($body-bg, 5%);
     }
 
     &:before {
-        display: block;
+        display: none;
         content: ' ';
         height: 20px;
         width: 100%;
@@ -37,9 +34,9 @@ $r-featured-background: lighten($body-bg, 5%);
     }
 
     .site-sidebar-inner {
-        display: table-cell;
+        //display: table-cell;
         vertical-align: middle;
-        position: relative;
+        //position: relative;
         z-index: 10;
         overflow: hidden;
     }
@@ -49,6 +46,7 @@ $r-featured-background: lighten($body-bg, 5%);
         font-family: $font-family-sans-serif-header;
         position: relative;
         z-index: 15;
+        display: none;
         .list-menu.primary {
             &>li {
                 padding-right: 15px;
@@ -78,4 +76,15 @@ $r-featured-background: lighten($body-bg, 5%);
             color: #f2f2f2;
         }
     }
+}
+
+@media only screen and (min-width: 980px) {
+  .site-sidebar {
+    position: fixed;
+    width: $sidebar-width;
+    height: 100%;
+    &:before { display: block; }
+    .site-sidebar-inner { display: table-cell; position: relative; }
+    .site-nav { display: block; }
+  }
 }

@@ -20,7 +20,7 @@
 		<meta name="twitter:site" content="@alifewellplayed" />
 		<meta name="twitter:creator" content="@underlost" />
 		{% block meta %}{% endblock %}
-		
+
 		{% block css %}{% endblock %}
 		{% include "_includes/icons.html" %}
 		<!-- Typekit -->
@@ -46,22 +46,10 @@
 				{% render_promoted_heading %}
 
 				<div class="site-header-inner">
-						<a href="{{ site_url }}">
-						<svg viewBox="0 0 500 20">
-								<symbol id="s-text">
-										<text text-anchor="left" x="0" y="50%" dy=".35em">{{site_name}}</text>
-								</symbol>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"></use>
-						</svg>
-						</a>
-						<h6 class="site-author">By <span>{{site_author}}</span></h6>
+						<a href="{{ site_url }}">{% include "_includes/logo.svg" %}</a>
+            <h1 class="sr-only">{{site_name}}</h1>
+						<h6 class="sr-only site-author">By <span>{{site_author}}</span></h6>
 				</div>
-
-
 		</header>
 		<div id="river" class="site-content">
 				<div id="content" class="fadeIn">

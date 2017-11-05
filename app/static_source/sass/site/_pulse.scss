@@ -94,6 +94,16 @@
 .pulse-header {
     position: absolute;
     right: 20px;
-    bottom: 35px;
+    top: 10px;
     z-index: 100;
+}
+
+@media only screen and (min-width: 980px) {
+  .pulse-header {
+      position: absolute;
+      right: 20px;
+      bottom: 35px;
+      z-index: 100;
+      top: inherit;
+  }
 }

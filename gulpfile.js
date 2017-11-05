@@ -125,6 +125,7 @@ gulp.task('concat-js', function() {
         'node_modules/fullpage.js/dist/jquery.fullpage.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery.easing/js/jquery.easing.js',
+        //'node_modules/animejs/anime.js',
         'node_modules/pace-progress/pace.js',
         'app/static_source/js/site/vline.jquery.js',
         'app/static_source/js/site/site.js',

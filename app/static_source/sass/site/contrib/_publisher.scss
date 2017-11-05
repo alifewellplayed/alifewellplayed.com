@@ -1,7 +1,7 @@
 .site-promoted-story {
     position: relative;
     width: 100%;
-    padding: 20px 40px;
+    padding: 20px 15px;
     text-align: left;
     background-color: $featured-background;
 
@@ -59,4 +59,10 @@
         color: lighten($featured-background, 45%);
         text-shadow: 1px 1px 1px darken($featured-background, 5%);
     }
+}
+
+@media only screen and (min-width: 980px) {
+  .site-promoted-story {
+    padding: 20px 40px;
+  }
 }

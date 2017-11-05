@@ -10079,7 +10079,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .layout-single-column {
   max-width: 600px;
-  margin: 0 40px 75px;
+  margin: 0 15px 45px;
   position: relative; }
 
 #wrap {
@@ -10092,8 +10092,7 @@ h1, h2, h3, h4, h5, h6 {
   backface-visibility: visible;
   position: relative;
   z-index: 10;
-  padding-top: 60px;
-  margin-left: 150px; }
+  padding-top: 60px; }
   .site-content .datetime {
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -10101,10 +10100,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 75%;
     color: #4f4f69; }
 
+@media only screen and (min-width: 980px) {
+  .site-content {
+    margin-left: 150px; }
+  .layout-single-column {
+    margin: 0 40px 75px; } }
+
 .site-sidebar {
-  position: fixed;
-  width: 150px;
-  height: 100%;
   z-index: 5;
   text-align: center;
   display: table;
@@ -10116,7 +10118,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     top: -600px; }
   .site-sidebar:before {
-    display: block;
+    display: none;
     content: ' ';
     height: 20px;
     width: 100%;
@@ -10132,16 +10134,15 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(to right, rgba(255, 0, 0, 0), #23232f);
     /* Standard syntax (must be last) */ }
   .site-sidebar .site-sidebar-inner {
-    display: table-cell;
     vertical-align: middle;
-    position: relative;
     z-index: 10;
     overflow: hidden; }
   .site-sidebar .site-nav {
     text-shadow: 1px 1px 1px #181820;
     font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     position: relative;
-    z-index: 15; }
+    z-index: 15;
+    display: none; }
     .site-sidebar .site-nav .list-menu.primary > li {
       padding-right: 15px;
       margin-top: 3px;
@@ -10168,42 +10169,73 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 20px;
       color: #f2f2f2; }
 
+@media only screen and (min-width: 980px) {
+  .site-sidebar {
+    position: fixed;
+    width: 150px;
+    height: 100%; }
+    .site-sidebar:before {
+      display: block; }
+    .site-sidebar .site-sidebar-inner {
+      display: table-cell;
+      position: relative; }
+    .site-sidebar .site-nav {
+      display: block; } }
+
 .site-header {
   position: relative;
-  z-index: 5;
-  margin-left: 150px; }
+  z-index: 5; }
   .site-header .site-header-inner {
     padding-top: 60px;
-    margin-left: 40px; }
+    margin-left: 15px; }
+    .site-header .site-header-inner #logo {
+      width: 100%;
+      height: 45px; }
     .site-header .site-header-inner svg text {
-      fill: #4f4f69;
       font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
       letter-spacing: 1.5px;
-      text-transform: uppercase;
       font-weight: 100; }
     .site-header .site-header-inner .text {
-      fill: none;
+      fill: #8787ff;
+      text-transform: uppercase;
       font-size: 30px;
-      stroke-width: 1;
       stroke-linejoin: round;
       stroke-dasharray: 40 500;
-      stroke-dashoffset: 0; }
+      stroke-dashoffset: 0;
+      stroke: #8787ff; }
       .site-header .site-header-inner .text:nth-child(5n+1) {
-        stroke: #8787ff;
+        stroke: #4f4f69;
         stroke-dashoffset: 30; }
       .site-header .site-header-inner .text:nth-child(5n+2) {
-        stroke: #8787ff;
+        stroke: #4f4f69;
         stroke-dashoffset: -20; }
-    .site-header .site-header-inner .site-author {
-      margin-top: 5px;
-      letter-spacing: 1px;
-      font-weight: normal;
+    .site-header .site-header-inner .text-sm {
       font-size: 13px;
-      color: #8d8daa; }
-      .site-header .site-header-inner .site-author span {
-        text-transform: uppercase; }
+      stroke: #8d8daa;
+      font-weight: normal;
+      letter-spacing: 1px;
+      stroke-width: .25;
+      text-transform: capitalize; }
     .site-header .site-header-inner a:hover {
       text-shadow: 0 0 4px #181820; }
+
+.square {
+  width: 1px;
+  height: 1px;
+  background-color: #84a90e; }
+
+.LogoShape {
+  fill: none;
+  font-size: 30px;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  stroke: #8787ff; }
+
+@media only screen and (min-width: 980px) {
+  .site-header {
+    margin-left: 150px; }
+    .site-header .site-header-inner {
+      margin-left: 40px; } }
 
 .replica-media-list .media {
   padding-bottom: 8px;
@@ -10481,7 +10513,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-footer {
   position: relative;
-  margin-left: 150px;
   font-size: .95rem;
   letter-spacing: 1.5px;
   font-weight: 100;
@@ -10491,11 +10522,17 @@ h1, h2, h3, h4, h5, h6 {
   .site-footer:before {
     content: ' ';
     display: block;
-    margin-left: 40px;
+    margin-left: 15px;
     width: 25px;
     height: 3px;
     background-color: #39394c;
     margin-bottom: 10px; }
+
+@media only screen and (min-width: 980px) {
+  .site-footer {
+    margin-left: 150px; }
+    .site-footer:before {
+      margin-left: 40px; } }
 
 .PulseMarker {
   text-align: center;
@@ -10601,8 +10638,16 @@ h1, h2, h3, h4, h5, h6 {
 .pulse-header {
   position: absolute;
   right: 20px;
-  bottom: 35px;
+  top: 10px;
   z-index: 100; }
+
+@media only screen and (min-width: 980px) {
+  .pulse-header {
+    position: absolute;
+    right: 20px;
+    bottom: 35px;
+    z-index: 100;
+    top: inherit; } }
 
 .modal.modalDark .modal-header {
   border-bottom-width: 0; }
@@ -10620,7 +10665,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-promoted-story {
   position: relative;
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px 15px;
   text-align: left;
   background-color: #23232f; }
   .site-promoted-story:after {
@@ -10675,6 +10720,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 95%;
     color: #8d8daa;
     text-shadow: 1px 1px 1px #181820; }
+
+@media only screen and (min-width: 980px) {
+  .site-promoted-story {
+    padding: 20px 40px; } }
 
 .replicaMicro .timelines .datetime {
   margin: 20px 0; }

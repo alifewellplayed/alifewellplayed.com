@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .layout-single-column {
     max-width: 600px;
-    margin: 0 40px 75px;
+    margin: 0 15px 45px;
     position: relative;
 }
 
@@ -53,12 +53,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-content {
-    backface-visibility: visible;
+  backface-visibility: visible;
 	position: relative;
 	z-index: 10;
 	padding-top: 60px;
-	margin-left: 150px;
-
     .datetime {
         margin-bottom: 10px;
         text-transform: uppercase;
@@ -66,4 +64,13 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 75%;
         color: lighten($body-bg, 25%);
     }
+}
+
+@media only screen and (min-width: 980px) {
+  .site-content {
+    margin-left: 150px;
+  }
+  .layout-single-column {
+    margin: 0 40px 75px;
+  }
 }
