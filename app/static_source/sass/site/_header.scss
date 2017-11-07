@@ -62,7 +62,7 @@ $header-background: #050505;
   stroke: $link-color;
 }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: $mobile-collapse) {
   .site-header {
     margin-left: $sidebar-width;
     .site-header-inner { margin-left: 40px; }

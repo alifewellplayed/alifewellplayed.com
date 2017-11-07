@@ -10100,7 +10100,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 75%;
     color: #4f4f69; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .site-content {
     margin-left: 150px; }
   .layout-single-column {
@@ -10169,7 +10169,7 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 20px;
       color: #f2f2f2; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .site-sidebar {
     position: fixed;
     width: 150px;
@@ -10231,7 +10231,7 @@ h1, h2, h3, h4, h5, h6 {
   stroke-linejoin: round;
   stroke: #8787ff; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .site-header {
     margin-left: 150px; }
     .site-header .site-header-inner {
@@ -10528,7 +10528,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #39394c;
     margin-bottom: 10px; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .site-footer {
     margin-left: 150px; }
     .site-footer:before {
@@ -10641,7 +10641,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 10px;
   z-index: 100; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .pulse-header {
     position: absolute;
     right: 20px;
@@ -10721,7 +10721,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #8d8daa;
     text-shadow: 1px 1px 1px #181820; }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 768px) {
   .site-promoted-story {
     padding: 20px 40px; } }
 

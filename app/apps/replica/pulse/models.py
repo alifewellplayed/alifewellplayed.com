@@ -87,6 +87,7 @@ class CodeBlock(models.Model):
     template_html = models.TextField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    context = models.TextField(_('Context'), blank=True, default="{}")
     objects = CodeManager()
 
     class Meta:

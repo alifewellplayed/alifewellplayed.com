@@ -22,7 +22,7 @@ class EntryModelForm(forms.ModelForm):
     )
     class Meta:
         model = Entry
-        fields = [ 'title', 'deck', 'body', 'slug', 'url', 'user', 'topic', 'pub_date', 'is_active', 'channel', 'content_format', 'featured_image', 'template', ]
+        exclude = ['id', 'user', 'date_created', 'date_updated', 'deck_html', 'body_html']
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Title', 'value':''}),
             'deck': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),
@@ -113,6 +113,7 @@ class CodeBlockModelForm(forms.ModelForm):
             'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder':'slug', 'value':''}),
             'description': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Description', 'value':''}),
             'template_html': forms.Textarea(attrs={'class':'html-editor sr-only', 'value':''}),
+            'context': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Context', 'value':'', 'rows':'1'}),
             'type': forms.RadioSelect(attrs={'class':'form-check-input'}),
         }
 

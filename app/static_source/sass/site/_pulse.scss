@@ -98,7 +98,7 @@
     z-index: 100;
 }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: $mobile-collapse) {
   .pulse-header {
       position: absolute;
       right: 20px;

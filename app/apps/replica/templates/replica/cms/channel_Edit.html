@@ -12,7 +12,7 @@
     </div>
     <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:ChannelEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:ChannelList' %}{% endif %}">
       {% csrf_token %}
-      <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
         <div class="card-body">
           <div class="form-group">
             <label for="{{ form.title.id_for_label }}">Channel Name</label>
@@ -25,9 +25,9 @@
         </div>
       </div>
       {% if edit %}
-      <input type="submit" class="btn btn-primary" value="Edit">
+      <input type="submit" class="btn btn-primary btn-block mb-2" value="Edit">
   		{% else %}
-  		<input type="submit" class="btn btn-primary" value="Save">
+  		<input type="submit" class="btn btn-primary btn-block mb-2" value="Save">
   		{% endif %}
 
     </form>

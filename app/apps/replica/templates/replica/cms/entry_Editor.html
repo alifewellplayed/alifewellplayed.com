@@ -1,10 +1,11 @@
-{% extends 'replica/cms/base.html' %}{% load replica_cards %}{% load humanize %}
+{% extends 'replica/cms/base.html' %}{% load replica_cards %}{% load humanize %}{% load replica_components %}
 {% block title %}Dashboard{% endblock %}
 {% block bodyClass %}rEditor{% endblock %}
 
 {% block content %}
-<script>var EntryID = '{% if obj.id %}{{obj.id}}{% else %}NewEntry{% endif %}';</script>
-<form method="post" id="entryEditor" enctype="multipart/form-data" action="">{% csrf_token %}
+<script>var EntryID = '{% if obj.id %}{{obj.id|timestamp_unique}}{% else %}NewEntry{% endif %}';</script>
+
+<form method="post" id="entryEditor" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:EntryEdit' obj.id %}">{% csrf_token %}
 <div class="row">
   <div class="col-md-12">
     <div class="card replica-card card-editor mb-3">

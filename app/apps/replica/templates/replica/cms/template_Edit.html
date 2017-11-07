@@ -19,12 +19,26 @@
               <label for="{{ form.title.id_for_label }}">Decription</label>
               {{form.description}}
             </div>
+            <div class="form-group">
+              <h4 class="header-subtitle mt-2">Template Type</h4>
+              {% for radio in form.type %}
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio }}</label>
+              </div>
+              {% if forloop.counter|divisibleby:2 %}<br />{% endif %}
+              {% endfor %}
+            </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="{{ form.slug.id_for_label }}">Template slug</label>
               {{form.slug}}
             </div>
+            <div class="form-group">
+              <label for="{{ form.title.id_for_label }}">Optional Context</label>
+              {{form.context}}
+            </div>
+
             <div class="form-group">
               <label for="{{ form.css_upload.id_for_label }}">Upload CSS File</label><br />
               {{form.css_upload}}
@@ -38,17 +52,6 @@
 {{form.template_html }}
 
 <div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <h4 class="header-subtitle mt-2">Template Type</h4>
-      {% for radio in form.type %}
-      <div class="form-check form-check-inline">
-        <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio }}</label>
-      </div>
-      {% if forloop.counter|divisibleby:2 %}<br />{% endif %}
-      {% endfor %}
-    </div>
-  </div>
   <div class="col-md-6">
     {% if edit %}
     <input type="submit" class="btn btn-primary btn-block mb-3 mt-1" value="Edit Template">

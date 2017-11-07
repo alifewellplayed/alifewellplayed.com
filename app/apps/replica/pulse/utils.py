@@ -32,11 +32,13 @@ def create_thumbnail(name, image, content_type, thumb_size_x=250, thumb_size_y=2
     return ('%s_thumbnail.%s'%(os.path.splitext(suf.name)[0], FILE_EXTENSION), suf)
 
 
-def guid_generator(user_id=None, length=32):
-    if user_id:
-        guid_base = "%s" % (user_id)
+def guid_generator(base_id=None, length=24):
+    if base_id:
+        obj = get_object_or_404(Entry, pk=base_id)
+        obj_time = obj.date_updated
+        guid_base = "%s %s" % (base_id, obj_time)
         guid_encode = guid_base.encode('ascii', 'ignore')
-        guid = md5(guid_encode).hexdigest()[:12]
+        guid = md5(guid_encode).hexdigest()[:length]
     else:
         guid_base = str(uuid.uuid4())
         guid_encoded = guid_base.encode('ascii', 'ignore')

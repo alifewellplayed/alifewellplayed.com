@@ -1,3 +1,6 @@
+from hashlib import md5
+import uuid
+
 from django import template
 from django.contrib.admin.models import LogEntry
 from django.template import RequestContext, Context, Variable, Template, TemplateSyntaxError
@@ -58,10 +61,11 @@ def render_counts(obj_type):
 		obj_count = '0'
 	return obj_count
 
-@register.simple_tag
+@register.simple_tag(name='partial')
 def render_codeblock(slug=None):
+    # Only allow partial codeblock types.
     code = get_object_or_404(CodeBlock, type=1, slug=slug)
-    context = Context({"title": code.title })
+    context = Context(code.context)
     template = Template(code.template_html)
     return template.render(context)
 
@@ -71,3 +75,12 @@ def render_as_template(parser, token):
     if len(bits) !=2:
         raise TemplateSyntaxError("'%s' takes only one argument (a variable representing a template to render)" % bits[0])
     return RenderAsTemplateNode(bits[1])
+
+@register.filter
+def timestamp_unique(value):
+    obj = get_object_or_404(Entry, pk=value)
+    obj_time = obj.date_updated
+    guid_base = "%s %s" % (value, obj_time)
+    guid_encode = guid_base.encode('ascii', 'ignore')
+    guid = md5(guid_encode).hexdigest()
+    return guid

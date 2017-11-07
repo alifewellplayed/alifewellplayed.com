@@ -78,7 +78,7 @@ $r-featured-background: lighten($body-bg, 5%);
     }
 }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: $mobile-collapse) {
   .site-sidebar {
     position: fixed;
     width: $sidebar-width;
