@@ -19,7 +19,7 @@ PLUGIN_INSTA = getattr(settings, 'REPLICA_ENABLE_INSTA', True)
 PLUGIN_REDIRECTION = getattr(settings, 'REPLICA_ENABLE_REDIRECTION', True)
 
 #THEME SETTINGS
-SITE_THEME = getattr(settings, 'THEME_NAME', 'Exiled')
+SITE_THEME = getattr(settings, 'THEME_NAME', 'exile')
 
 MAX_LENGTH = 510
 CONTENT_FORMAT_CHOICES = ((u'markdown', u'Markdown'), (u'html', u'Raw HTML'),)

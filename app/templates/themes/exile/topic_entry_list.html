@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load replica_blog_tags %}
+{% extends 'themes/exile/base.html' %}{% load replica_blog_tags %}
 
 {% block title %}{{ topic.title }} | {% endblock %}
 {% block page %}news entries topics {{ topic.slug }}{% endblock %}
@@ -22,14 +22,14 @@
     </div>
     {% for object in object_list %}
         {% ifchanged object.pub_date.day %}
-        {% include "replica/_includes/_datetime.html" %}
+        {% include "themes/exile/_includes/_datetime.html" %}
         {% endifchanged %}
-        {% include "replica/_includes/_entry.html" %}
+        {% include "themes/exile/_includes/_entry.html" %}
     {% empty %}
         <p class="lead layout-single-column">No Entries to display.</p>
     {% endfor %}
 
     {% if is_paginated %}
-        {% include "replica/_includes/_pagination.html" %}
+        {% include "themes/exile/_includes/_pagination.html" %}
     {% endif %}
 {% endblock %}

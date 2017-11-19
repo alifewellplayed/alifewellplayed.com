@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, render, get_object_or_404
 from django.utils.safestring import mark_safe
 from django.views.decorators.cache import cache_page
 from django.core.exceptions import PermissionDenied
+from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 from django.http import Http404, HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
@@ -16,17 +17,24 @@ from replica.pulse.mixins import PulseViewMixin
 THEME = replicaSettings.SITE_THEME
 
 #Default views
-class ArchiveIndexView(PulseViewMixin, ArchiveIndexView):
+class IndexView(PulseViewMixin, ArchiveIndexView):
+    template_name='themes/{0}/entry_archive.html'.format(THEME)
     pass
 
 class YearArchiveView(PulseViewMixin, YearArchiveView):
+    template_name='themes/{0}/entry_archive_year.html'.format(THEME)
     pass
 
 class MonthArchiveView(PulseViewMixin, MonthArchiveView):
+    template_name='themes/{0}/entry_archive_month.html'.format(THEME)
     pass
 
 class DayArchiveView(PulseViewMixin, DayArchiveView):
+    template_name='themes/{0}/entry_archive_day.html'.format(THEME)
     pass
+
+class ArchiveView(TemplateView):
+    template_name='themes/{0}/archive.html'.format(THEME)
 
 #@cache_page(60 * 15)
 def EntryDetail(request, year, month, slug):
@@ -38,7 +46,12 @@ def EntryDetail(request, year, month, slug):
             context = RequestContext(request, variables)
             return HttpResponse(template.render(context))
         else:
-            template = ['replica/pulse/entries/%s.html' % entry.slug, 'replica/pulse/entry_detail.html']
+            template = [
+                'themes/{0}/entry/{1}.html'.format(THEME, entry.slug),
+                'themes/{0}/entry_detail.html'.format(THEME),
+                'replica/pulse/entries/%s.html' % entry.slug,
+                'replica/pulse/entry_detail.html'
+            ]
             return render(request, template, variables)
     else:
         raise PermissionDenied
@@ -47,7 +60,7 @@ def EntryDetail(request, year, month, slug):
 #Entries for topic
 class EntriesForTopic(ListView):
     paginate_by = replicaSettings.PAGINATE
-    template_name = 'replica/pulse/topic_entry_list.html'
+    template_name='themes/{0}/topic_entry_list.html'.format(THEME)
 
     def get_queryset(self):
         self.topic = get_object_or_404(Topic, slug=self.kwargs.pop('topic_slug'))
@@ -61,7 +74,7 @@ class EntriesForTopic(ListView):
 #List of public topics
 class TopicsList(ListView):
     paginate_by = replicaSettings.PAGINATE_TOPICS
-    template_name = 'replica/pulse/topic_list.html'
+    template_name='themes/{0}/topic_list.html'.format(THEME)
 
     def get_queryset(self):
         return Topic.objects.public().order_by('title')
@@ -89,7 +102,12 @@ def EntryPage(request, url):
         if page.template:
             template = Template(page.template.template_html)
         else:
-            template = 'replica/pulse/entry_page.html'
+            template = [
+                'themes/{0}/page/{1}.html'.format(THEME, page.slug),
+                'themes/{0}/entry_page.html'.format(THEME),
+                'replica/pulse/pages/%s.html' % page.slug,
+                'replica/pulse/entry_page.html'
+            ]
     except Http404:
         if not url.endswith('/') and settings.APPEND_SLASH:
             url += '/'

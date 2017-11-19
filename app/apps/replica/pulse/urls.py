@@ -10,13 +10,13 @@ urlpatterns = [
 
     #Blog
     url(r'^(?P<year>\d{4})/(?P<month>\w{1,2})/(?P<slug>[\w-]+)/$', cache_page(900)(views.EntryDetail), name="entry_detail"),
-    url(r'^(?P<year>\d{4})/(?P<month>\w{1,2})/(?P<day>\w{1,2})/$', cache_page(900)(views.DayArchiveView.as_view(template_name='replica/pulse/entry_archive_day.html',)), name="entry_day"),
-    url(r'^(?P<year>\d{4})/(?P<month>\w{1,2})/$', cache_page(900)(views.MonthArchiveView.as_view(template_name='replica/pulse/entry_archive_month.html',)), name="entry_month"),
-    url(r'^(?P<year>\d{4})/$', cache_page(900)(views.YearArchiveView.as_view(template_name='replica/pulse/entry_archive_year.html',)), name="entry_year"),
-    url(r'^$', views.ArchiveIndexView.as_view(template_name='replica/pulse/entry_archive.html',), name="Index"),
+    url(r'^(?P<year>\d{4})/(?P<month>\w{1,2})/(?P<day>\w{1,2})/$', cache_page(900)(views.DayArchiveView.as_view()), name="entry_day"),
+    url(r'^(?P<year>\d{4})/(?P<month>\w{1,2})/$', cache_page(900)(views.MonthArchiveView.as_view()), name="entry_month"),
+    url(r'^(?P<year>\d{4})/$', cache_page(900)(views.YearArchiveView.as_view()), name="entry_year"),
+    url(r'^$', views.IndexView.as_view(), name="Index"),
 
     #Archive
-    url(r'^archive/$', TemplateView.as_view(template_name="replica/pulse/archive.html"), name="Archive"),
+    url(r'^archive/$', views.ArchiveView.as_view(), name="Archive"),
 
     #RSS Feeds
     url(r'^feeds/$', TemplateView.as_view(template_name="replica/pulse/feeds.html"), name="Feeds"),

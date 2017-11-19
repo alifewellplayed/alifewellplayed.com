@@ -20,12 +20,8 @@
 		<meta name="twitter:site" content="@alifewellplayed" />
 		<meta name="twitter:creator" content="@underlost" />
 		{% block meta %}{% endblock %}
-
 		{% block css %}{% endblock %}
-		{% include "_includes/icons.html" %}
-		<!-- Typekit -->
-		<script type="text/javascript" src="//use.typekit.net/ict0izq.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		{% include "themes/exile/_includes/icons.html" %}
 		{% block extra %}{% endblock %}
 	</head>
 
@@ -38,7 +34,7 @@
 						</nav>
 
 						<div class="pulse-header">
-								{% include "replica/_includes/_pulsemarker.html" %}
+								{% include "themes/exile/_includes/_pulsemarker.html" %}
 						</div>
 				</div>
 		</div>
@@ -46,7 +42,7 @@
 				{% render_promoted_heading %}
 
 				<div class="site-header-inner">
-						<a href="{{ site_url }}">{% include "_includes/logo.svg" %}</a>
+						<a href="{{ site_url }}">{% include "themes/exile/_includes/logo.svg" %}</a>
             <h1 class="sr-only">{{site_name}}</h1>
 						<h6 class="sr-only site-author">By <span>{{site_author}}</span></h6>
 				</div>
@@ -68,7 +64,7 @@
 		</footer>
 </div>
 
-{% include "replica/_includes/_infoModal.html" %}
+{% include "themes/exile/_includes/_infoModal.html" %}
 <script type="text/javascript" src="{{STATIC_URL}}site/js/global.js"></script>
 {% block javascript %}{% endblock %}
 </body>

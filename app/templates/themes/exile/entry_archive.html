@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'themes/exile/base.html' %}
 {% load core_tags %}{% load replica_publisher_tags %}
 
 {% block title %}{% endblock %}
@@ -17,12 +17,12 @@
     {% render_sticky %}
 	{% for object in latest %}
 		{% ifchanged object.pub_date.day %}
-		{% include "replica/_includes/_datetime.html" %}
+		{% include "themes/exile/_includes/_datetime.html" %}
 		{% endifchanged %}
-	    {% include "replica/_includes/_entry.html" %}
+	    {% include "themes/exile/_includes/_entry.html" %}
 	{% endfor %}
 
 	{% if is_paginated %}
-  	{% include "replica/_includes/_pagination.html" %}
+  	{% include "themes/exile/_includes/_pagination.html" %}
 	{% endif %}
 {% endblock %}

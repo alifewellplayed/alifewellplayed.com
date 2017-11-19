@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://use.typekit.net/ict0izq.css");
 /*
 ==============================================
 fadeIn
@@ -10190,7 +10191,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 15px; }
     .site-header .site-header-inner #logo {
       width: 100%;
-      height: 45px; }
+      height: 50px; }
     .site-header .site-header-inner svg text {
       font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
       letter-spacing: 1.5px;
@@ -10457,9 +10458,9 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   font-weight: 500; }
   .media.topic .mb-1 a {
-    color: #0086bf; }
+    color: #84a90e; }
     .media.topic .mb-1 a:hover {
-      text-shadow: 0 0 4px #00b3ff; }
+      text-shadow: 0 0 4px #c7ff15; }
   .media.topic .mb-1 small {
     font-size: .75rem;
     color: #4f4f69;
@@ -10477,11 +10478,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 8px; }
 
 #topic-head .topic {
-  border-top: 1px solid #262626;
-  background-color: #0d0d0d; }
+  border-top: 1px solid #292937; }
 
 #topic-head .media-body {
-  padding: 10px 12px 0; }
+  padding: 10px 0 0; }
 
 .entries-archived {
   margin: 0 0 40px; }
