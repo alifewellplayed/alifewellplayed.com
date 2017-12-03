@@ -11,7 +11,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify, wordcount
 from django.conf import settings
-from django.core.urlresolvers import get_script_prefix
+from django.urls import get_script_prefix
 from django.utils.encoding import iri_to_uri
 from django.contrib.sites.models import Site
 

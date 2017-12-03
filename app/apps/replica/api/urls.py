@@ -55,6 +55,7 @@ current_api = [
     url(r'^settings/$', pulse.CurrentSiteSettings.as_view(), name='site-current-settings'),
 ]
 
+app_name="replica.api"
 urlpatterns = [
     url(r'', include(router.urls)),
     url(r'', include(pulse_api)),

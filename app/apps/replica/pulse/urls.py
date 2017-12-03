@@ -6,6 +6,7 @@ from django.views.decorators.cache import cache_page
 from . import views
 from . import feeds
 
+app_name="replica.pulse"
 urlpatterns = [
 
     #Blog

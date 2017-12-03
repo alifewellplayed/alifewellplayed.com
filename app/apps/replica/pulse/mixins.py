@@ -2,7 +2,7 @@ from coreExtend.models import Account
 from replica import settings as replicaSettings
 from .models import Topic, Entry
 
-class PulseViewMixin(object):
+class PulseViewMixin:
     date_field = 'pub_date'
     paginate_by = replicaSettings.PAGINATE
     month_format = "%m"
@@ -15,3 +15,7 @@ class PulseViewMixin(object):
             return Entry.objects.posts()
         else:
             return Entry.objects.published()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

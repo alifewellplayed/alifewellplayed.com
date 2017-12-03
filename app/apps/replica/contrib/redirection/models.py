@@ -12,11 +12,15 @@ from coreExtend.models import Account
 from replica.pulse.utils import guid_generator
 from .managers import BlockedManager
 
+def DefaultUser():
+    user = Account.objects.first()
+    return user.id
+
 BLOCKED_IPS_LIST = 'Pithy:blocked-ips'
 
 class SiteLink(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_DEFAULT, default=DefaultUser)
     link = models.URLField(max_length=512)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -48,7 +52,7 @@ class SiteLink(models.Model):
 
 class ClickLink(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    link = models.ForeignKey(SiteLink, null=True)
+    link = models.ForeignKey(SiteLink, null=True, on_delete=models.CASCADE)
     referer = models.CharField(max_length=512, null=True)
     user_agent = models.CharField(max_length=1024, null=True)
     ip_addr = models.GenericIPAddressField(null=True)

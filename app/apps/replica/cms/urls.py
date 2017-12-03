@@ -13,9 +13,9 @@ from .views import media as mediaView
 from .views import template as templateView
 
 #Contrib modules
-from replica.contrib.zine.urls import ZINE_CMS_URLS
-from replica.contrib.micro.urls import MICRO_CMS_URLS
-from replica.contrib.redirection.urls import REDIRECTION_CMS_URLS
+from replica.contrib.zine.urls import cms as ZINE_CMS_URLS
+from replica.contrib.micro.urls import cms as MICRO_CMS_URLS
+from replica.contrib.redirection.urls import cms as REDIRECTION_CMS_URLS
 
 APP_URLS = [
 	url(r'^app/$',login_required(ensure_csrf_cookie(TemplateView.as_view(template_name="replica/cms/app.html"))), name="App" ),
@@ -80,6 +80,7 @@ MEDIA_URLS = [
 	url(r'^edit/media/(?P<mediaID>[\w-]+)/delete/$', login_required(mediaView.MediaDelete), name="MediaDelete"),
 ]
 
+app_name="replica.cms"
 urlpatterns = [
 	url(r'^beta/', include(APP_URLS)),
 

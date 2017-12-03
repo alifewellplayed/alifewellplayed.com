@@ -9,6 +9,11 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
+def DefaultUser():
+    Account = settings.AUTH_USER_MODEL
+    user = Account.objects.first()
+    return user.id
+
 class NoteManager(models.Manager):
 
     def published(self):
@@ -26,7 +31,7 @@ class Timeline(models.Model):
     deck_html = models.TextField(blank=True)
     is_public = models.BooleanField(help_text=_("Should be checked you want anyone to see"), default=True)
     rev_order = models.BooleanField(help_text=_("Reverse order of list displayed? (Newest on top)"), default=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='timelines')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='timelines', on_delete=models.SET_DEFAULT, default=DefaultUser)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -63,8 +68,8 @@ class Note(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     is_private = models.BooleanField(help_text=_("Should be checked if no one else should see this."), default=False)
-    timeline = models.ForeignKey(Timeline, blank=True, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notes')
+    timeline = models.ForeignKey(Timeline, blank=True, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='notes', on_delete=models.SET_DEFAULT, default=DefaultUser)
     objects = NoteManager()
 
     def __unicode__(self):

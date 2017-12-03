@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.generic.list import ListView
 
 from replica.contrib.micro.models import Timeline, Note

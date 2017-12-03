@@ -11,7 +11,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify, wordcount
 from django.conf import settings
-from django.core.urlresolvers import get_script_prefix
+from django.urls import get_script_prefix
 from django.utils.encoding import iri_to_uri
 from django.contrib.sites.models import Site
 
@@ -19,6 +19,11 @@ from replica import settings as replicaSettings
 from replica.uploads import *
 from replica.managers import TopicManager, EntryManager, MediaManager, CodeManager
 from replica.pulse.utils import create_thumbnail
+
+def DefaultUser():
+    Account = settings.AUTH_USER_MODEL
+    user = Account.objects.first()
+    return user.id
 
 class Media(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -33,7 +38,7 @@ class Media(models.Model):
     image = models.ImageField(help_text="Support for PNG, JPG, GIF only", upload_to=upload_media, blank=True, max_length=replicaSettings.MAX_LENGTH)
     thumbnail_small = models.ImageField(upload_to=upload_media_sm, blank=True, max_length=replicaSettings.MAX_LENGTH)
     thumbnail_medium = models.ImageField(upload_to=upload_media_md, blank=True, max_length=replicaSettings.MAX_LENGTH)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='media')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='media', on_delete=models.SET_DEFAULT, default=DefaultUser)
     objects = MediaManager()
 
     class Meta:
@@ -82,7 +87,7 @@ class CodeBlock(models.Model):
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique=True)
     description = models.TextField(_('description'), blank=True)
     type = models.IntegerField(choices=replicaSettings.CODE_TYPE_CHOICES, default=1)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='templates', on_delete=models.SET_DEFAULT, default=DefaultUser)
     css_upload = models.FileField(upload_to=upload_css, blank=True)
     template_html = models.TextField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -116,9 +121,9 @@ class Topic(models.Model):
     description = models.TextField(max_length=1020, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='topics')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='topics', on_delete=models.SET_DEFAULT, default=DefaultUser)
     is_public = models.BooleanField(help_text=_("Can everyone see this Topic?"), choices=replicaSettings.IS_PUBLIC_CHOICES, default=True)
-    image = models.ForeignKey(Media, blank=True, null=True)
+    image = models.ForeignKey(Media, blank=True, null=True, on_delete=models.SET_NULL)
     objects = TopicManager()
 
     class Meta:
@@ -146,7 +151,7 @@ class Channel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='channels')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='channels', on_delete=models.SET_DEFAULT, default=DefaultUser)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -182,20 +187,20 @@ class Entry(models.Model):
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique_for_date='pub_date')
     url = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='entries')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='entries', on_delete=models.SET_DEFAULT, default=DefaultUser)
     topic = models.ManyToManyField(Topic, db_table='r_Entry_Topics', blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     pub_date = models.DateTimeField(verbose_name=_("Publication date"), default=datetime.datetime.now, blank=True)
     is_active = models.BooleanField(help_text=_("This should be checked for live entries"), choices=replicaSettings.IS_ACTIVE_CHOICES, default=False)
-    channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
+    channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel, on_delete=models.SET_DEFAULT)
     content_format = models.CharField(choices=replicaSettings.CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('deck'), blank=True)
     deck_html = models.TextField(blank=True)
     body = models.TextField(_('body'), blank=True, null=True)
     body_html = models.TextField(blank=True)
-    featured_image = models.ForeignKey(Media, blank=True, null=True)
-    template = models.ForeignKey(CodeBlock, blank=True, null=True)
+    featured_image = models.ForeignKey(Media, blank=True, null=True, on_delete=models.SET_DEFAULT, default=DefaultUser)
+    template = models.ForeignKey(CodeBlock, blank=True, null=True, on_delete=models.SET_DEFAULT, default=DefaultUser)
     objects = EntryManager()
 
     class Meta:
@@ -260,16 +265,16 @@ def DefaultEntry():
 
 class Draft(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    entry = models.ForeignKey(Entry)
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, unique_for_date='pub_date')
-    channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel)
+    channel = models.ForeignKey(Channel, verbose_name=_("Entry Type"), default=DefaultChannel, on_delete=models.SET_DEFAULT)
     content_format = models.CharField(choices=replicaSettings.CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
     deck = models.TextField(_('summary'), blank=True)
     deck_html = models.TextField(blank=True, editable=False)
     body = models.TextField(_('body'), blank=True)
     body_html = models.TextField(blank=True, editable=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='drafts')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='drafts', on_delete=models.SET_DEFAULT, default=DefaultUser)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -303,8 +308,8 @@ class Draft(models.Model):
 # Optional links for entries. Useful for footer notes or additional reading.
 class EntryLink(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    entry = models.ForeignKey(Entry)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    entry = models.ForeignKey(Entry, on_delete=models.SET_DEFAULT, default=DefaultEntry)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_DEFAULT, default=DefaultUser)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     url = models.URLField(max_length=replicaSettings.MAX_LENGTH)
@@ -360,9 +365,9 @@ class MenuItem(models.Model):
     title = models.CharField(max_length=replicaSettings.MAX_LENGTH, default='Untitled')
     description = models.CharField(help_text=_("Optional subtitle"), max_length=replicaSettings.MAX_LENGTH, blank=True)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH, blank=True)
-    page = models.ForeignKey(Entry, blank=True, null=True, default=DefaultEntry)
+    page = models.ForeignKey(Entry, blank=True, null=True, default=DefaultEntry, on_delete=models.SET_DEFAULT)
     url = models.CharField(max_length=replicaSettings.MAX_LENGTH, blank=True)
-    position = models.ForeignKey(MenuPosition)
+    position = models.ForeignKey(MenuPosition, on_delete=models.CASCADE)
     weight = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -403,8 +408,8 @@ class SiteSettings(Site):
     summary_html = models.TextField(blank=True, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    logo = models.ForeignKey(Media, blank=True, null=True, related_name='logo',)
-    featured = models.ForeignKey(Media, help_text="Featured Image", related_name='featured', blank=True, null=True)
+    logo = models.ForeignKey(Media, blank=True, null=True, related_name='logo', on_delete=models.SET_NULL)
+    featured = models.ForeignKey(Media, help_text="Featured Image", related_name='featured', blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = 'r_SiteSettings'

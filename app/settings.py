@@ -51,7 +51,7 @@ MANAGERS = ADMINS
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DATABASE_NAME', ''),
         'USER': os.environ.get('DATABASE_USER', ''),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', ''),
@@ -175,12 +175,12 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
-                'django.template.context_processors.request',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-            	'coreExtend.context_processors.template_settings',
+                'coreExtend.context_processors.template_settings',
                 'coreExtend.context_processors.template_times',
                 'replica.context_processors.currentSite',
+                'django.template.context_processors.request',
             ],
             'debug': DEBUG,
         },
@@ -188,13 +188,15 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE_CLASSES = (
-    'coreExtend.middleware.SubdomainURLRoutingMiddleware',
-	'coreExtend.middleware.MultipleProxyMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'coreExtend.middleware.SubdomainURLRoutingMiddleware',
+    'coreExtend.middleware.MultipleProxyMiddleware',
 )
 
 AUTH_PASSWORD_VALIDATORS = [

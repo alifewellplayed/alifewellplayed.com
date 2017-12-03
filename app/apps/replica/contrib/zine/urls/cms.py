@@ -3,9 +3,10 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from rest_framework import routers
 
-from . import views
+from replica.contrib.zine import views
 
-ZINE_CMS_URLS = [
+app_name="replica.zine"
+urlpatterns = [
     url(r'^$', login_required(views.Index), name="ZineIndex"),
     url(r'^promoted/$', login_required(views.PromotedEdit), name="PromotedNew"),
     url(r'^promoted/edit/(?P<promotedID>[\w-]+)/$', login_required(views.PromotedEdit), name = "PromotedEdit"),

@@ -7,6 +7,8 @@ from django.contrib.auth import views as auth_views
 from .forms import PasswordResetForm
 from . import views
 
+app_name="coreExtend"
+
 urlpatterns = [
     url(r'^login/$', auth_views.login, {
         'template_name': 'CoreExtend/login.html',

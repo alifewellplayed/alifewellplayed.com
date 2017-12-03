@@ -11,12 +11,17 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify, wordcount
 from django.conf import settings
-from django.core.urlresolvers import get_script_prefix
+from django.urls import get_script_prefix
 from django.contrib.sites.models import Site
 
 from replica import settings as replicaSettings
 from replica.managers import TopicManager, EntryManager, MediaManager
 from replica.pulse.models import Entry, Media
+
+def DefaultUser():
+    Account = settings.AUTH_USER_MODEL
+    user = Account.objects.first()
+    return user.id
 
 class Promoted(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -27,9 +32,9 @@ class Promoted(models.Model):
     deck = models.TextField(max_length=1020, blank=True)
     deck_html = models.TextField(blank=True, editable=False)
     pub_date = models.DateTimeField(verbose_name=_("Publication date"), default=datetime.datetime.now, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='promoted_entries')
-    image = models.ForeignKey(Media, blank=True, null=True)
-    entry = models.ForeignKey(Entry)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='promoted_entries', on_delete=models.SET_DEFAULT, default=DefaultUser)
+    image = models.ForeignKey(Media, blank=True, null=True, on_delete=models.SET_NULL)
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'r_Promoted'
@@ -53,8 +58,8 @@ class Collection(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='collections')
-    image = models.ForeignKey(Media, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='collections', on_delete=models.SET_DEFAULT, default=DefaultUser)
+    image = models.ForeignKey(Media, blank=True, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, editable=False)
     deck = models.TextField(max_length=1020, blank=True)

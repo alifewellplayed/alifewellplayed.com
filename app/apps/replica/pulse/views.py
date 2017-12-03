@@ -23,6 +23,7 @@ class IndexView(PulseViewMixin, ArchiveIndexView):
 
 class YearArchiveView(PulseViewMixin, YearArchiveView):
     template_name='themes/{0}/entry_archive_year.html'.format(THEME)
+    make_object_list = True
     pass
 
 class MonthArchiveView(PulseViewMixin, MonthArchiveView):
