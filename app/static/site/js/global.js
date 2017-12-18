@@ -10255,11 +10255,11 @@ return jQuery;
 /*
  Copyright (C) Federico Zivolo 2017
  Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
- */(function(e,t){'object'==typeof exports&&'undefined'!=typeof module?module.exports=t():'function'==typeof define&&define.amd?define(t):e.Popper=t()})(this,function(){'use strict';function e(e){return e&&'[object Function]'==={}.toString.call(e)}function t(e,t){if(1!==e.nodeType)return[];var o=window.getComputedStyle(e,null);return t?o[t]:o}function o(e){return'HTML'===e.nodeName?e:e.parentNode||e.host}function n(e){if(!e)return window.document.body;switch(e.nodeName){case'HTML':case'BODY':return e.ownerDocument.body;case'#document':return e.body;}var i=t(e),r=i.overflow,p=i.overflowX,s=i.overflowY;return /(auto|scroll)/.test(r+s+p)?e:n(o(e))}function r(e){var o=e&&e.offsetParent,i=o&&o.nodeName;return i&&'BODY'!==i&&'HTML'!==i?-1!==['TD','TABLE'].indexOf(o.nodeName)&&'static'===t(o,'position')?r(o):o:e?e.ownerDocument.documentElement:window.document.documentElement}function p(e){var t=e.nodeName;return'BODY'!==t&&('HTML'===t||r(e.firstElementChild)===e)}function s(e){return null===e.parentNode?e:s(e.parentNode)}function d(e,t){if(!e||!e.nodeType||!t||!t.nodeType)return window.document.documentElement;var o=e.compareDocumentPosition(t)&Node.DOCUMENT_POSITION_FOLLOWING,i=o?e:t,n=o?t:e,a=document.createRange();a.setStart(i,0),a.setEnd(n,0);var l=a.commonAncestorContainer;if(e!==l&&t!==l||i.contains(n))return p(l)?l:r(l);var f=s(e);return f.host?d(f.host,t):d(e,s(t).host)}function a(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:'top',o='top'===t?'scrollTop':'scrollLeft',i=e.nodeName;if('BODY'===i||'HTML'===i){var n=e.ownerDocument.documentElement,r=e.ownerDocument.scrollingElement||n;return r[o]}return e[o]}function l(e,t){var o=2<arguments.length&&void 0!==arguments[2]&&arguments[2],i=a(t,'top'),n=a(t,'left'),r=o?-1:1;return e.top+=i*r,e.bottom+=i*r,e.left+=n*r,e.right+=n*r,e}function f(e,t){var o='x'===t?'Left':'Top',i='Left'==o?'Right':'Bottom';return+e['border'+o+'Width'].split('px')[0]+ +e['border'+i+'Width'].split('px')[0]}function m(e,t,o,i){return J(t['offset'+e],t['scroll'+e],o['client'+e],o['offset'+e],o['scroll'+e],ie()?o['offset'+e]+i['margin'+('Height'===e?'Top':'Left')]+i['margin'+('Height'===e?'Bottom':'Right')]:0)}function c(){var e=window.document.body,t=window.document.documentElement,o=ie()&&window.getComputedStyle(t);return{height:m('Height',e,t,o),width:m('Width',e,t,o)}}function h(e){return se({},e,{right:e.left+e.width,bottom:e.top+e.height})}function u(e){var o={};if(ie())try{o=e.getBoundingClientRect();var i=a(e,'top'),n=a(e,'left');o.top+=i,o.left+=n,o.bottom+=i,o.right+=n}catch(e){}else o=e.getBoundingClientRect();var r={left:o.left,top:o.top,width:o.right-o.left,height:o.bottom-o.top},p='HTML'===e.nodeName?c():{},s=p.width||e.clientWidth||r.right-r.left,d=p.height||e.clientHeight||r.bottom-r.top,l=e.offsetWidth-s,m=e.offsetHeight-d;if(l||m){var u=t(e);l-=f(u,'x'),m-=f(u,'y'),r.width-=l,r.height-=m}return h(r)}function g(e,o){var i=ie(),r='HTML'===o.nodeName,p=u(e),s=u(o),d=n(e),a=t(o),f=+a.borderTopWidth.split('px')[0],m=+a.borderLeftWidth.split('px')[0],c=h({top:p.top-s.top-f,left:p.left-s.left-m,width:p.width,height:p.height});if(c.marginTop=0,c.marginLeft=0,!i&&r){var g=+a.marginTop.split('px')[0],b=+a.marginLeft.split('px')[0];c.top-=f-g,c.bottom-=f-g,c.left-=m-b,c.right-=m-b,c.marginTop=g,c.marginLeft=b}return(i?o.contains(d):o===d&&'BODY'!==d.nodeName)&&(c=l(c,o)),c}function b(e){var t=e.ownerDocument.documentElement,o=g(e,t),i=J(t.clientWidth,window.innerWidth||0),n=J(t.clientHeight,window.innerHeight||0),r=a(t),p=a(t,'left'),s={top:r-o.top+o.marginTop,left:p-o.left+o.marginLeft,width:i,height:n};return h(s)}function y(e){var i=e.nodeName;return'BODY'===i||'HTML'===i?!1:'fixed'===t(e,'position')||y(o(e))}function w(e,t,i,r){var p={top:0,left:0},s=d(e,t);if('viewport'===r)p=b(s);else{var a;'scrollParent'===r?(a=n(o(e)),'BODY'===a.nodeName&&(a=e.ownerDocument.documentElement)):'window'===r?a=e.ownerDocument.documentElement:a=r;var l=g(a,s);if('HTML'===a.nodeName&&!y(s)){var f=c(),m=f.height,h=f.width;p.top+=l.top-l.marginTop,p.bottom=m+l.top,p.left+=l.left-l.marginLeft,p.right=h+l.left}else p=l}return p.left+=i,p.top+=i,p.right-=i,p.bottom-=i,p}function E(e){var t=e.width,o=e.height;return t*o}function v(e,t,o,i,n){var r=5<arguments.length&&void 0!==arguments[5]?arguments[5]:0;if(-1===e.indexOf('auto'))return e;var p=w(o,i,r,n),s={top:{width:p.width,height:t.top-p.top},right:{width:p.right-t.right,height:p.height},bottom:{width:p.width,height:p.bottom-t.bottom},left:{width:t.left-p.left,height:p.height}},d=Object.keys(s).map(function(e){return se({key:e},s[e],{area:E(s[e])})}).sort(function(e,t){return t.area-e.area}),a=d.filter(function(e){var t=e.width,i=e.height;return t>=o.clientWidth&&i>=o.clientHeight}),l=0<a.length?a[0].key:d[0].key,f=e.split('-')[1];return l+(f?'-'+f:'')}function x(e,t,o){var i=d(t,o);return g(o,i)}function O(e){var t=window.getComputedStyle(e),o=parseFloat(t.marginTop)+parseFloat(t.marginBottom),i=parseFloat(t.marginLeft)+parseFloat(t.marginRight),n={width:e.offsetWidth+i,height:e.offsetHeight+o};return n}function L(e){var t={left:'right',right:'left',bottom:'top',top:'bottom'};return e.replace(/left|right|bottom|top/g,function(e){return t[e]})}function S(e,t,o){o=o.split('-')[0];var i=O(e),n={width:i.width,height:i.height},r=-1!==['right','left'].indexOf(o),p=r?'top':'left',s=r?'left':'top',d=r?'height':'width',a=r?'width':'height';return n[p]=t[p]+t[d]/2-i[d]/2,n[s]=o===s?t[s]-i[a]:t[L(s)],n}function T(e,t){return Array.prototype.find?e.find(t):e.filter(t)[0]}function C(e,t,o){if(Array.prototype.findIndex)return e.findIndex(function(e){return e[t]===o});var i=T(e,function(e){return e[t]===o});return e.indexOf(i)}function D(t,o,i){var n=void 0===i?t:t.slice(0,C(t,'name',i));return n.forEach(function(t){t['function']&&console.warn('`modifier.function` is deprecated, use `modifier.fn`!');var i=t['function']||t.fn;t.enabled&&e(i)&&(o.offsets.popper=h(o.offsets.popper),o.offsets.reference=h(o.offsets.reference),o=i(o,t))}),o}function N(){if(!this.state.isDestroyed){var e={instance:this,styles:{},arrowStyles:{},attributes:{},flipped:!1,offsets:{}};e.offsets.reference=x(this.state,this.popper,this.reference),e.placement=v(this.options.placement,e.offsets.reference,this.popper,this.reference,this.options.modifiers.flip.boundariesElement,this.options.modifiers.flip.padding),e.originalPlacement=e.placement,e.offsets.popper=S(this.popper,e.offsets.reference,e.placement),e.offsets.popper.position='absolute',e=D(this.modifiers,e),this.state.isCreated?this.options.onUpdate(e):(this.state.isCreated=!0,this.options.onCreate(e))}}function k(e,t){return e.some(function(e){var o=e.name,i=e.enabled;return i&&o===t})}function W(e){for(var t=[!1,'ms','Webkit','Moz','O'],o=e.charAt(0).toUpperCase()+e.slice(1),n=0;n<t.length-1;n++){var i=t[n],r=i?''+i+o:e;if('undefined'!=typeof window.document.body.style[r])return r}return null}function P(){return this.state.isDestroyed=!0,k(this.modifiers,'applyStyle')&&(this.popper.removeAttribute('x-placement'),this.popper.style.left='',this.popper.style.position='',this.popper.style.top='',this.popper.style[W('transform')]=''),this.disableEventListeners(),this.options.removeOnDestroy&&this.popper.parentNode.removeChild(this.popper),this}function B(e){var t=e.ownerDocument;return t?t.defaultView:window}function H(e,t,o,i){var r='BODY'===e.nodeName,p=r?e.ownerDocument.defaultView:e;p.addEventListener(t,o,{passive:!0}),r||H(n(p.parentNode),t,o,i),i.push(p)}function A(e,t,o,i){o.updateBound=i,B(e).addEventListener('resize',o.updateBound,{passive:!0});var r=n(e);return H(r,'scroll',o.updateBound,o.scrollParents),o.scrollElement=r,o.eventsEnabled=!0,o}function I(){this.state.eventsEnabled||(this.state=A(this.reference,this.options,this.state,this.scheduleUpdate))}function M(e,t){return B(e).removeEventListener('resize',t.updateBound),t.scrollParents.forEach(function(e){e.removeEventListener('scroll',t.updateBound)}),t.updateBound=null,t.scrollParents=[],t.scrollElement=null,t.eventsEnabled=!1,t}function R(){this.state.eventsEnabled&&(window.cancelAnimationFrame(this.scheduleUpdate),this.state=M(this.reference,this.state))}function U(e){return''!==e&&!isNaN(parseFloat(e))&&isFinite(e)}function Y(e,t){Object.keys(t).forEach(function(o){var i='';-1!==['width','height','top','right','bottom','left'].indexOf(o)&&U(t[o])&&(i='px'),e.style[o]=t[o]+i})}function F(e,t){Object.keys(t).forEach(function(o){var i=t[o];!1===i?e.removeAttribute(o):e.setAttribute(o,t[o])})}function j(e,t,o){var i=T(e,function(e){var o=e.name;return o===t}),n=!!i&&e.some(function(e){return e.name===o&&e.enabled&&e.order<i.order});if(!n){var r='`'+t+'`';console.warn('`'+o+'`'+' modifier is required by '+r+' modifier in order to work, be sure to include it before '+r+'!')}return n}function K(e){return'end'===e?'start':'start'===e?'end':e}function q(e){var t=1<arguments.length&&void 0!==arguments[1]&&arguments[1],o=ae.indexOf(e),i=ae.slice(o+1).concat(ae.slice(0,o));return t?i.reverse():i}function V(e,t,o,i){var n=e.match(/((?:\-|\+)?\d*\.?\d*)(.*)/),r=+n[1],p=n[2];if(!r)return e;if(0===p.indexOf('%')){var s;switch(p){case'%p':s=o;break;case'%':case'%r':default:s=i;}var d=h(s);return d[t]/100*r}if('vh'===p||'vw'===p){var a;return a='vh'===p?J(document.documentElement.clientHeight,window.innerHeight||0):J(document.documentElement.clientWidth,window.innerWidth||0),a/100*r}return r}function z(e,t,o,i){var n=[0,0],r=-1!==['right','left'].indexOf(i),p=e.split(/(\+|\-)/).map(function(e){return e.trim()}),s=p.indexOf(T(p,function(e){return-1!==e.search(/,|\s/)}));p[s]&&-1===p[s].indexOf(',')&&console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');var d=/\s*,\s*|\s+/,a=-1===s?[p]:[p.slice(0,s).concat([p[s].split(d)[0]]),[p[s].split(d)[1]].concat(p.slice(s+1))];return a=a.map(function(e,i){var n=(1===i?!r:r)?'height':'width',p=!1;return e.reduce(function(e,t){return''===e[e.length-1]&&-1!==['+','-'].indexOf(t)?(e[e.length-1]=t,p=!0,e):p?(e[e.length-1]+=t,p=!1,e):e.concat(t)},[]).map(function(e){return V(e,n,t,o)})}),a.forEach(function(e,t){e.forEach(function(o,i){U(o)&&(n[t]+=o*('-'===e[i-1]?-1:1))})}),n}function G(e,t){var o,i=t.offset,n=e.placement,r=e.offsets,p=r.popper,s=r.reference,d=n.split('-')[0];return o=U(+i)?[+i,0]:z(i,p,s,d),'left'===d?(p.top+=o[0],p.left-=o[1]):'right'===d?(p.top+=o[0],p.left+=o[1]):'top'===d?(p.left+=o[0],p.top-=o[1]):'bottom'===d&&(p.left+=o[0],p.top+=o[1]),e.popper=p,e}for(var _=Math.min,X=Math.floor,J=Math.max,Q='undefined'!=typeof window&&'undefined'!=typeof window.document,Z=['Edge','Trident','Firefox'],$=0,ee=0;ee<Z.length;ee+=1)if(Q&&0<=navigator.userAgent.indexOf(Z[ee])){$=1;break}var i,te=Q&&window.Promise,oe=te?function(e){var t=!1;return function(){t||(t=!0,Promise.resolve().then(function(){t=!1,e()}))}}:function(e){var t=!1;return function(){t||(t=!0,setTimeout(function(){t=!1,e()},$))}},ie=function(){return void 0==i&&(i=-1!==navigator.appVersion.indexOf('MSIE 10')),i},ne=function(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')},re=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,i){return o&&e(t.prototype,o),i&&e(t,i),t}}(),pe=function(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e},se=Object.assign||function(e){for(var t,o=1;o<arguments.length;o++)for(var i in t=arguments[o],t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e},de=['auto-start','auto','auto-end','top-start','top','top-end','right-start','right','right-end','bottom-end','bottom','bottom-start','left-end','left','left-start'],ae=de.slice(3),le={FLIP:'flip',CLOCKWISE:'clockwise',COUNTERCLOCKWISE:'counterclockwise'},fe=function(){function t(o,i){var n=this,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};ne(this,t),this.scheduleUpdate=function(){return requestAnimationFrame(n.update)},this.update=oe(this.update.bind(this)),this.options=se({},t.Defaults,r),this.state={isDestroyed:!1,isCreated:!1,scrollParents:[]},this.reference=o&&o.jquery?o[0]:o,this.popper=i&&i.jquery?i[0]:i,this.options.modifiers={},Object.keys(se({},t.Defaults.modifiers,r.modifiers)).forEach(function(e){n.options.modifiers[e]=se({},t.Defaults.modifiers[e]||{},r.modifiers?r.modifiers[e]:{})}),this.modifiers=Object.keys(this.options.modifiers).map(function(e){return se({name:e},n.options.modifiers[e])}).sort(function(e,t){return e.order-t.order}),this.modifiers.forEach(function(t){t.enabled&&e(t.onLoad)&&t.onLoad(n.reference,n.popper,n.options,t,n.state)}),this.update();var p=this.options.eventsEnabled;p&&this.enableEventListeners(),this.state.eventsEnabled=p}return re(t,[{key:'update',value:function(){return N.call(this)}},{key:'destroy',value:function(){return P.call(this)}},{key:'enableEventListeners',value:function(){return I.call(this)}},{key:'disableEventListeners',value:function(){return R.call(this)}}]),t}();return fe.Utils=('undefined'==typeof window?global:window).PopperUtils,fe.placements=de,fe.Defaults={placement:'bottom',eventsEnabled:!0,removeOnDestroy:!1,onCreate:function(){},onUpdate:function(){},modifiers:{shift:{order:100,enabled:!0,fn:function(e){var t=e.placement,o=t.split('-')[0],i=t.split('-')[1];if(i){var n=e.offsets,r=n.reference,p=n.popper,s=-1!==['bottom','top'].indexOf(o),d=s?'left':'top',a=s?'width':'height',l={start:pe({},d,r[d]),end:pe({},d,r[d]+r[a]-p[a])};e.offsets.popper=se({},p,l[i])}return e}},offset:{order:200,enabled:!0,fn:G,offset:0},preventOverflow:{order:300,enabled:!0,fn:function(e,t){var o=t.boundariesElement||r(e.instance.popper);e.instance.reference===o&&(o=r(o));var i=w(e.instance.popper,e.instance.reference,t.padding,o);t.boundaries=i;var n=t.priority,p=e.offsets.popper,s={primary:function(e){var o=p[e];return p[e]<i[e]&&!t.escapeWithReference&&(o=J(p[e],i[e])),pe({},e,o)},secondary:function(e){var o='right'===e?'left':'top',n=p[o];return p[e]>i[e]&&!t.escapeWithReference&&(n=_(p[o],i[e]-('right'===e?p.width:p.height))),pe({},o,n)}};return n.forEach(function(e){var t=-1===['left','top'].indexOf(e)?'secondary':'primary';p=se({},p,s[t](e))}),e.offsets.popper=p,e},priority:['left','right','top','bottom'],padding:5,boundariesElement:'scrollParent'},keepTogether:{order:400,enabled:!0,fn:function(e){var t=e.offsets,o=t.popper,i=t.reference,n=e.placement.split('-')[0],r=X,p=-1!==['top','bottom'].indexOf(n),s=p?'right':'bottom',d=p?'left':'top',a=p?'width':'height';return o[s]<r(i[d])&&(e.offsets.popper[d]=r(i[d])-o[a]),o[d]>r(i[s])&&(e.offsets.popper[d]=r(i[s])),e}},arrow:{order:500,enabled:!0,fn:function(e,o){if(!j(e.instance.modifiers,'arrow','keepTogether'))return e;var i=o.element;if('string'==typeof i){if(i=e.instance.popper.querySelector(i),!i)return e;}else if(!e.instance.popper.contains(i))return console.warn('WARNING: `arrow.element` must be child of its popper element!'),e;var n=e.placement.split('-')[0],r=e.offsets,p=r.popper,s=r.reference,d=-1!==['left','right'].indexOf(n),a=d?'height':'width',l=d?'Top':'Left',f=l.toLowerCase(),m=d?'left':'top',c=d?'bottom':'right',u=O(i)[a];s[c]-u<p[f]&&(e.offsets.popper[f]-=p[f]-(s[c]-u)),s[f]+u>p[c]&&(e.offsets.popper[f]+=s[f]+u-p[c]);var g=s[f]+s[a]/2-u/2,b=t(e.instance.popper,'margin'+l).replace('px',''),y=g-h(e.offsets.popper)[f]-b;return y=J(_(p[a]-u,y),0),e.arrowElement=i,e.offsets.arrow={},e.offsets.arrow[f]=Math.round(y),e.offsets.arrow[m]='',e},element:'[x-arrow]'},flip:{order:600,enabled:!0,fn:function(e,t){if(k(e.instance.modifiers,'inner'))return e;if(e.flipped&&e.placement===e.originalPlacement)return e;var o=w(e.instance.popper,e.instance.reference,t.padding,t.boundariesElement),i=e.placement.split('-')[0],n=L(i),r=e.placement.split('-')[1]||'',p=[];switch(t.behavior){case le.FLIP:p=[i,n];break;case le.CLOCKWISE:p=q(i);break;case le.COUNTERCLOCKWISE:p=q(i,!0);break;default:p=t.behavior;}return p.forEach(function(s,d){if(i!==s||p.length===d+1)return e;i=e.placement.split('-')[0],n=L(i);var a=e.offsets.popper,l=e.offsets.reference,f=X,m='left'===i&&f(a.right)>f(l.left)||'right'===i&&f(a.left)<f(l.right)||'top'===i&&f(a.bottom)>f(l.top)||'bottom'===i&&f(a.top)<f(l.bottom),c=f(a.left)<f(o.left),h=f(a.right)>f(o.right),u=f(a.top)<f(o.top),g=f(a.bottom)>f(o.bottom),b='left'===i&&c||'right'===i&&h||'top'===i&&u||'bottom'===i&&g,y=-1!==['top','bottom'].indexOf(i),w=!!t.flipVariations&&(y&&'start'===r&&c||y&&'end'===r&&h||!y&&'start'===r&&u||!y&&'end'===r&&g);(m||b||w)&&(e.flipped=!0,(m||b)&&(i=p[d+1]),w&&(r=K(r)),e.placement=i+(r?'-'+r:''),e.offsets.popper=se({},e.offsets.popper,S(e.instance.popper,e.offsets.reference,e.placement)),e=D(e.instance.modifiers,e,'flip'))}),e},behavior:'flip',padding:5,boundariesElement:'viewport'},inner:{order:700,enabled:!1,fn:function(e){var t=e.placement,o=t.split('-')[0],i=e.offsets,n=i.popper,r=i.reference,p=-1!==['left','right'].indexOf(o),s=-1===['top','left'].indexOf(o);return n[p?'left':'top']=r[o]-(s?n[p?'width':'height']:0),e.placement=L(t),e.offsets.popper=h(n),e}},hide:{order:800,enabled:!0,fn:function(e){if(!j(e.instance.modifiers,'hide','preventOverflow'))return e;var t=e.offsets.reference,o=T(e.instance.modifiers,function(e){return'preventOverflow'===e.name}).boundaries;if(t.bottom<o.top||t.left>o.right||t.top>o.bottom||t.right<o.left){if(!0===e.hide)return e;e.hide=!0,e.attributes['x-out-of-boundaries']=''}else{if(!1===e.hide)return e;e.hide=!1,e.attributes['x-out-of-boundaries']=!1}return e}},computeStyle:{order:850,enabled:!0,fn:function(e,t){var o=t.x,i=t.y,n=e.offsets.popper,p=T(e.instance.modifiers,function(e){return'applyStyle'===e.name}).gpuAcceleration;void 0!==p&&console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!');var s,d,a=void 0===p?t.gpuAcceleration:p,l=r(e.instance.popper),f=u(l),m={position:n.position},c={left:X(n.left),top:X(n.top),bottom:X(n.bottom),right:X(n.right)},h='bottom'===o?'top':'bottom',g='right'===i?'left':'right',b=W('transform');if(d='bottom'==h?-f.height+c.bottom:c.top,s='right'==g?-f.width+c.right:c.left,a&&b)m[b]='translate3d('+s+'px, '+d+'px, 0)',m[h]=0,m[g]=0,m.willChange='transform';else{var y='bottom'==h?-1:1,w='right'==g?-1:1;m[h]=d*y,m[g]=s*w,m.willChange=h+', '+g}var E={"x-placement":e.placement};return e.attributes=se({},E,e.attributes),e.styles=se({},m,e.styles),e.arrowStyles=se({},e.offsets.arrow,e.arrowStyles),e},gpuAcceleration:!0,x:'bottom',y:'right'},applyStyle:{order:900,enabled:!0,fn:function(e){return Y(e.instance.popper,e.styles),F(e.instance.popper,e.attributes),e.arrowElement&&Object.keys(e.arrowStyles).length&&Y(e.arrowElement,e.arrowStyles),e},onLoad:function(e,t,o,i,n){var r=x(n,t,e),p=v(o.placement,r,t,e,o.modifiers.flip.boundariesElement,o.modifiers.flip.padding);return t.setAttribute('x-placement',p),Y(t,{position:'absolute'}),o},gpuAcceleration:void 0}}},fe});
+ */(function(e,t){'object'==typeof exports&&'undefined'!=typeof module?module.exports=t():'function'==typeof define&&define.amd?define(t):e.Popper=t()})(this,function(){'use strict';function e(e){return e&&'[object Function]'==={}.toString.call(e)}function t(e,t){if(1!==e.nodeType)return[];var o=getComputedStyle(e,null);return t?o[t]:o}function o(e){return'HTML'===e.nodeName?e:e.parentNode||e.host}function n(e){if(!e)return document.body;switch(e.nodeName){case'HTML':case'BODY':return e.ownerDocument.body;case'#document':return e.body;}var i=t(e),r=i.overflow,p=i.overflowX,s=i.overflowY;return /(auto|scroll)/.test(r+s+p)?e:n(o(e))}function r(e){var o=e&&e.offsetParent,i=o&&o.nodeName;return i&&'BODY'!==i&&'HTML'!==i?-1!==['TD','TABLE'].indexOf(o.nodeName)&&'static'===t(o,'position')?r(o):o:e?e.ownerDocument.documentElement:document.documentElement}function p(e){var t=e.nodeName;return'BODY'!==t&&('HTML'===t||r(e.firstElementChild)===e)}function s(e){return null===e.parentNode?e:s(e.parentNode)}function d(e,t){if(!e||!e.nodeType||!t||!t.nodeType)return document.documentElement;var o=e.compareDocumentPosition(t)&Node.DOCUMENT_POSITION_FOLLOWING,i=o?e:t,n=o?t:e,a=document.createRange();a.setStart(i,0),a.setEnd(n,0);var l=a.commonAncestorContainer;if(e!==l&&t!==l||i.contains(n))return p(l)?l:r(l);var f=s(e);return f.host?d(f.host,t):d(e,s(t).host)}function a(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:'top',o='top'===t?'scrollTop':'scrollLeft',i=e.nodeName;if('BODY'===i||'HTML'===i){var n=e.ownerDocument.documentElement,r=e.ownerDocument.scrollingElement||n;return r[o]}return e[o]}function l(e,t){var o=2<arguments.length&&void 0!==arguments[2]&&arguments[2],i=a(t,'top'),n=a(t,'left'),r=o?-1:1;return e.top+=i*r,e.bottom+=i*r,e.left+=n*r,e.right+=n*r,e}function f(e,t){var o='x'===t?'Left':'Top',i='Left'==o?'Right':'Bottom';return parseFloat(e['border'+o+'Width'],10)+parseFloat(e['border'+i+'Width'],10)}function m(e,t,o,i){return J(t['offset'+e],t['scroll'+e],o['client'+e],o['offset'+e],o['scroll'+e],ie()?o['offset'+e]+i['margin'+('Height'===e?'Top':'Left')]+i['margin'+('Height'===e?'Bottom':'Right')]:0)}function h(){var e=document.body,t=document.documentElement,o=ie()&&getComputedStyle(t);return{height:m('Height',e,t,o),width:m('Width',e,t,o)}}function c(e){return se({},e,{right:e.left+e.width,bottom:e.top+e.height})}function g(e){var o={};if(ie())try{o=e.getBoundingClientRect();var i=a(e,'top'),n=a(e,'left');o.top+=i,o.left+=n,o.bottom+=i,o.right+=n}catch(e){}else o=e.getBoundingClientRect();var r={left:o.left,top:o.top,width:o.right-o.left,height:o.bottom-o.top},p='HTML'===e.nodeName?h():{},s=p.width||e.clientWidth||r.right-r.left,d=p.height||e.clientHeight||r.bottom-r.top,l=e.offsetWidth-s,m=e.offsetHeight-d;if(l||m){var g=t(e);l-=f(g,'x'),m-=f(g,'y'),r.width-=l,r.height-=m}return c(r)}function u(e,o){var i=ie(),r='HTML'===o.nodeName,p=g(e),s=g(o),d=n(e),a=t(o),f=parseFloat(a.borderTopWidth,10),m=parseFloat(a.borderLeftWidth,10),h=c({top:p.top-s.top-f,left:p.left-s.left-m,width:p.width,height:p.height});if(h.marginTop=0,h.marginLeft=0,!i&&r){var u=parseFloat(a.marginTop,10),b=parseFloat(a.marginLeft,10);h.top-=f-u,h.bottom-=f-u,h.left-=m-b,h.right-=m-b,h.marginTop=u,h.marginLeft=b}return(i?o.contains(d):o===d&&'BODY'!==d.nodeName)&&(h=l(h,o)),h}function b(e){var t=e.ownerDocument.documentElement,o=u(e,t),i=J(t.clientWidth,window.innerWidth||0),n=J(t.clientHeight,window.innerHeight||0),r=a(t),p=a(t,'left'),s={top:r-o.top+o.marginTop,left:p-o.left+o.marginLeft,width:i,height:n};return c(s)}function w(e){var i=e.nodeName;return'BODY'===i||'HTML'===i?!1:'fixed'===t(e,'position')||w(o(e))}function y(e,t,i,r){var p={top:0,left:0},s=d(e,t);if('viewport'===r)p=b(s);else{var a;'scrollParent'===r?(a=n(o(t)),'BODY'===a.nodeName&&(a=e.ownerDocument.documentElement)):'window'===r?a=e.ownerDocument.documentElement:a=r;var l=u(a,s);if('HTML'===a.nodeName&&!w(s)){var f=h(),m=f.height,c=f.width;p.top+=l.top-l.marginTop,p.bottom=m+l.top,p.left+=l.left-l.marginLeft,p.right=c+l.left}else p=l}return p.left+=i,p.top+=i,p.right-=i,p.bottom-=i,p}function E(e){var t=e.width,o=e.height;return t*o}function v(e,t,o,i,n){var r=5<arguments.length&&void 0!==arguments[5]?arguments[5]:0;if(-1===e.indexOf('auto'))return e;var p=y(o,i,r,n),s={top:{width:p.width,height:t.top-p.top},right:{width:p.right-t.right,height:p.height},bottom:{width:p.width,height:p.bottom-t.bottom},left:{width:t.left-p.left,height:p.height}},d=Object.keys(s).map(function(e){return se({key:e},s[e],{area:E(s[e])})}).sort(function(e,t){return t.area-e.area}),a=d.filter(function(e){var t=e.width,i=e.height;return t>=o.clientWidth&&i>=o.clientHeight}),l=0<a.length?a[0].key:d[0].key,f=e.split('-')[1];return l+(f?'-'+f:'')}function O(e,t,o){var i=d(t,o);return u(o,i)}function L(e){var t=getComputedStyle(e),o=parseFloat(t.marginTop)+parseFloat(t.marginBottom),i=parseFloat(t.marginLeft)+parseFloat(t.marginRight),n={width:e.offsetWidth+i,height:e.offsetHeight+o};return n}function x(e){var t={left:'right',right:'left',bottom:'top',top:'bottom'};return e.replace(/left|right|bottom|top/g,function(e){return t[e]})}function S(e,t,o){o=o.split('-')[0];var i=L(e),n={width:i.width,height:i.height},r=-1!==['right','left'].indexOf(o),p=r?'top':'left',s=r?'left':'top',d=r?'height':'width',a=r?'width':'height';return n[p]=t[p]+t[d]/2-i[d]/2,n[s]=o===s?t[s]-i[a]:t[x(s)],n}function T(e,t){return Array.prototype.find?e.find(t):e.filter(t)[0]}function D(e,t,o){if(Array.prototype.findIndex)return e.findIndex(function(e){return e[t]===o});var i=T(e,function(e){return e[t]===o});return e.indexOf(i)}function C(t,o,i){var n=void 0===i?t:t.slice(0,D(t,'name',i));return n.forEach(function(t){t['function']&&console.warn('`modifier.function` is deprecated, use `modifier.fn`!');var i=t['function']||t.fn;t.enabled&&e(i)&&(o.offsets.popper=c(o.offsets.popper),o.offsets.reference=c(o.offsets.reference),o=i(o,t))}),o}function N(){if(!this.state.isDestroyed){var e={instance:this,styles:{},arrowStyles:{},attributes:{},flipped:!1,offsets:{}};e.offsets.reference=O(this.state,this.popper,this.reference),e.placement=v(this.options.placement,e.offsets.reference,this.popper,this.reference,this.options.modifiers.flip.boundariesElement,this.options.modifiers.flip.padding),e.originalPlacement=e.placement,e.offsets.popper=S(this.popper,e.offsets.reference,e.placement),e.offsets.popper.position='absolute',e=C(this.modifiers,e),this.state.isCreated?this.options.onUpdate(e):(this.state.isCreated=!0,this.options.onCreate(e))}}function k(e,t){return e.some(function(e){var o=e.name,i=e.enabled;return i&&o===t})}function W(e){for(var t=[!1,'ms','Webkit','Moz','O'],o=e.charAt(0).toUpperCase()+e.slice(1),n=0;n<t.length-1;n++){var i=t[n],r=i?''+i+o:e;if('undefined'!=typeof document.body.style[r])return r}return null}function P(){return this.state.isDestroyed=!0,k(this.modifiers,'applyStyle')&&(this.popper.removeAttribute('x-placement'),this.popper.style.left='',this.popper.style.position='',this.popper.style.top='',this.popper.style[W('transform')]=''),this.disableEventListeners(),this.options.removeOnDestroy&&this.popper.parentNode.removeChild(this.popper),this}function B(e){var t=e.ownerDocument;return t?t.defaultView:window}function H(e,t,o,i){var r='BODY'===e.nodeName,p=r?e.ownerDocument.defaultView:e;p.addEventListener(t,o,{passive:!0}),r||H(n(p.parentNode),t,o,i),i.push(p)}function A(e,t,o,i){o.updateBound=i,B(e).addEventListener('resize',o.updateBound,{passive:!0});var r=n(e);return H(r,'scroll',o.updateBound,o.scrollParents),o.scrollElement=r,o.eventsEnabled=!0,o}function I(){this.state.eventsEnabled||(this.state=A(this.reference,this.options,this.state,this.scheduleUpdate))}function M(e,t){return B(e).removeEventListener('resize',t.updateBound),t.scrollParents.forEach(function(e){e.removeEventListener('scroll',t.updateBound)}),t.updateBound=null,t.scrollParents=[],t.scrollElement=null,t.eventsEnabled=!1,t}function R(){this.state.eventsEnabled&&(cancelAnimationFrame(this.scheduleUpdate),this.state=M(this.reference,this.state))}function U(e){return''!==e&&!isNaN(parseFloat(e))&&isFinite(e)}function Y(e,t){Object.keys(t).forEach(function(o){var i='';-1!==['width','height','top','right','bottom','left'].indexOf(o)&&U(t[o])&&(i='px'),e.style[o]=t[o]+i})}function j(e,t){Object.keys(t).forEach(function(o){var i=t[o];!1===i?e.removeAttribute(o):e.setAttribute(o,t[o])})}function F(e,t,o){var i=T(e,function(e){var o=e.name;return o===t}),n=!!i&&e.some(function(e){return e.name===o&&e.enabled&&e.order<i.order});if(!n){var r='`'+t+'`';console.warn('`'+o+'`'+' modifier is required by '+r+' modifier in order to work, be sure to include it before '+r+'!')}return n}function K(e){return'end'===e?'start':'start'===e?'end':e}function q(e){var t=1<arguments.length&&void 0!==arguments[1]&&arguments[1],o=ae.indexOf(e),i=ae.slice(o+1).concat(ae.slice(0,o));return t?i.reverse():i}function V(e,t,o,i){var n=e.match(/((?:\-|\+)?\d*\.?\d*)(.*)/),r=+n[1],p=n[2];if(!r)return e;if(0===p.indexOf('%')){var s;switch(p){case'%p':s=o;break;case'%':case'%r':default:s=i;}var d=c(s);return d[t]/100*r}if('vh'===p||'vw'===p){var a;return a='vh'===p?J(document.documentElement.clientHeight,window.innerHeight||0):J(document.documentElement.clientWidth,window.innerWidth||0),a/100*r}return r}function z(e,t,o,i){var n=[0,0],r=-1!==['right','left'].indexOf(i),p=e.split(/(\+|\-)/).map(function(e){return e.trim()}),s=p.indexOf(T(p,function(e){return-1!==e.search(/,|\s/)}));p[s]&&-1===p[s].indexOf(',')&&console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');var d=/\s*,\s*|\s+/,a=-1===s?[p]:[p.slice(0,s).concat([p[s].split(d)[0]]),[p[s].split(d)[1]].concat(p.slice(s+1))];return a=a.map(function(e,i){var n=(1===i?!r:r)?'height':'width',p=!1;return e.reduce(function(e,t){return''===e[e.length-1]&&-1!==['+','-'].indexOf(t)?(e[e.length-1]=t,p=!0,e):p?(e[e.length-1]+=t,p=!1,e):e.concat(t)},[]).map(function(e){return V(e,n,t,o)})}),a.forEach(function(e,t){e.forEach(function(o,i){U(o)&&(n[t]+=o*('-'===e[i-1]?-1:1))})}),n}function G(e,t){var o,i=t.offset,n=e.placement,r=e.offsets,p=r.popper,s=r.reference,d=n.split('-')[0];return o=U(+i)?[+i,0]:z(i,p,s,d),'left'===d?(p.top+=o[0],p.left-=o[1]):'right'===d?(p.top+=o[0],p.left+=o[1]):'top'===d?(p.left+=o[0],p.top-=o[1]):'bottom'===d&&(p.left+=o[0],p.top+=o[1]),e.popper=p,e}for(var _=Math.min,X=Math.floor,J=Math.max,Q='undefined'!=typeof window&&'undefined'!=typeof document,Z=['Edge','Trident','Firefox'],$=0,ee=0;ee<Z.length;ee+=1)if(Q&&0<=navigator.userAgent.indexOf(Z[ee])){$=1;break}var i,te=Q&&window.Promise,oe=te?function(e){var t=!1;return function(){t||(t=!0,window.Promise.resolve().then(function(){t=!1,e()}))}}:function(e){var t=!1;return function(){t||(t=!0,setTimeout(function(){t=!1,e()},$))}},ie=function(){return void 0==i&&(i=-1!==navigator.appVersion.indexOf('MSIE 10')),i},ne=function(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')},re=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,i){return o&&e(t.prototype,o),i&&e(t,i),t}}(),pe=function(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e},se=Object.assign||function(e){for(var t,o=1;o<arguments.length;o++)for(var i in t=arguments[o],t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e},de=['auto-start','auto','auto-end','top-start','top','top-end','right-start','right','right-end','bottom-end','bottom','bottom-start','left-end','left','left-start'],ae=de.slice(3),le={FLIP:'flip',CLOCKWISE:'clockwise',COUNTERCLOCKWISE:'counterclockwise'},fe=function(){function t(o,i){var n=this,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};ne(this,t),this.scheduleUpdate=function(){return requestAnimationFrame(n.update)},this.update=oe(this.update.bind(this)),this.options=se({},t.Defaults,r),this.state={isDestroyed:!1,isCreated:!1,scrollParents:[]},this.reference=o&&o.jquery?o[0]:o,this.popper=i&&i.jquery?i[0]:i,this.options.modifiers={},Object.keys(se({},t.Defaults.modifiers,r.modifiers)).forEach(function(e){n.options.modifiers[e]=se({},t.Defaults.modifiers[e]||{},r.modifiers?r.modifiers[e]:{})}),this.modifiers=Object.keys(this.options.modifiers).map(function(e){return se({name:e},n.options.modifiers[e])}).sort(function(e,t){return e.order-t.order}),this.modifiers.forEach(function(t){t.enabled&&e(t.onLoad)&&t.onLoad(n.reference,n.popper,n.options,t,n.state)}),this.update();var p=this.options.eventsEnabled;p&&this.enableEventListeners(),this.state.eventsEnabled=p}return re(t,[{key:'update',value:function(){return N.call(this)}},{key:'destroy',value:function(){return P.call(this)}},{key:'enableEventListeners',value:function(){return I.call(this)}},{key:'disableEventListeners',value:function(){return R.call(this)}}]),t}();return fe.Utils=('undefined'==typeof window?global:window).PopperUtils,fe.placements=de,fe.Defaults={placement:'bottom',eventsEnabled:!0,removeOnDestroy:!1,onCreate:function(){},onUpdate:function(){},modifiers:{shift:{order:100,enabled:!0,fn:function(e){var t=e.placement,o=t.split('-')[0],i=t.split('-')[1];if(i){var n=e.offsets,r=n.reference,p=n.popper,s=-1!==['bottom','top'].indexOf(o),d=s?'left':'top',a=s?'width':'height',l={start:pe({},d,r[d]),end:pe({},d,r[d]+r[a]-p[a])};e.offsets.popper=se({},p,l[i])}return e}},offset:{order:200,enabled:!0,fn:G,offset:0},preventOverflow:{order:300,enabled:!0,fn:function(e,t){var o=t.boundariesElement||r(e.instance.popper);e.instance.reference===o&&(o=r(o));var i=y(e.instance.popper,e.instance.reference,t.padding,o);t.boundaries=i;var n=t.priority,p=e.offsets.popper,s={primary:function(e){var o=p[e];return p[e]<i[e]&&!t.escapeWithReference&&(o=J(p[e],i[e])),pe({},e,o)},secondary:function(e){var o='right'===e?'left':'top',n=p[o];return p[e]>i[e]&&!t.escapeWithReference&&(n=_(p[o],i[e]-('right'===e?p.width:p.height))),pe({},o,n)}};return n.forEach(function(e){var t=-1===['left','top'].indexOf(e)?'secondary':'primary';p=se({},p,s[t](e))}),e.offsets.popper=p,e},priority:['left','right','top','bottom'],padding:5,boundariesElement:'scrollParent'},keepTogether:{order:400,enabled:!0,fn:function(e){var t=e.offsets,o=t.popper,i=t.reference,n=e.placement.split('-')[0],r=X,p=-1!==['top','bottom'].indexOf(n),s=p?'right':'bottom',d=p?'left':'top',a=p?'width':'height';return o[s]<r(i[d])&&(e.offsets.popper[d]=r(i[d])-o[a]),o[d]>r(i[s])&&(e.offsets.popper[d]=r(i[s])),e}},arrow:{order:500,enabled:!0,fn:function(e,o){var i;if(!F(e.instance.modifiers,'arrow','keepTogether'))return e;var n=o.element;if('string'==typeof n){if(n=e.instance.popper.querySelector(n),!n)return e;}else if(!e.instance.popper.contains(n))return console.warn('WARNING: `arrow.element` must be child of its popper element!'),e;var r=e.placement.split('-')[0],p=e.offsets,s=p.popper,d=p.reference,a=-1!==['left','right'].indexOf(r),l=a?'height':'width',f=a?'Top':'Left',m=f.toLowerCase(),h=a?'left':'top',g=a?'bottom':'right',u=L(n)[l];d[g]-u<s[m]&&(e.offsets.popper[m]-=s[m]-(d[g]-u)),d[m]+u>s[g]&&(e.offsets.popper[m]+=d[m]+u-s[g]),e.offsets.popper=c(e.offsets.popper);var b=d[m]+d[l]/2-u/2,w=t(e.instance.popper),y=parseFloat(w['margin'+f],10),E=parseFloat(w['border'+f+'Width'],10),v=b-e.offsets.popper[m]-y-E;return v=J(_(s[l]-u,v),0),e.arrowElement=n,e.offsets.arrow=(i={},pe(i,m,Math.round(v)),pe(i,h,''),i),e},element:'[x-arrow]'},flip:{order:600,enabled:!0,fn:function(e,t){if(k(e.instance.modifiers,'inner'))return e;if(e.flipped&&e.placement===e.originalPlacement)return e;var o=y(e.instance.popper,e.instance.reference,t.padding,t.boundariesElement),i=e.placement.split('-')[0],n=x(i),r=e.placement.split('-')[1]||'',p=[];switch(t.behavior){case le.FLIP:p=[i,n];break;case le.CLOCKWISE:p=q(i);break;case le.COUNTERCLOCKWISE:p=q(i,!0);break;default:p=t.behavior;}return p.forEach(function(s,d){if(i!==s||p.length===d+1)return e;i=e.placement.split('-')[0],n=x(i);var a=e.offsets.popper,l=e.offsets.reference,f=X,m='left'===i&&f(a.right)>f(l.left)||'right'===i&&f(a.left)<f(l.right)||'top'===i&&f(a.bottom)>f(l.top)||'bottom'===i&&f(a.top)<f(l.bottom),h=f(a.left)<f(o.left),c=f(a.right)>f(o.right),g=f(a.top)<f(o.top),u=f(a.bottom)>f(o.bottom),b='left'===i&&h||'right'===i&&c||'top'===i&&g||'bottom'===i&&u,w=-1!==['top','bottom'].indexOf(i),y=!!t.flipVariations&&(w&&'start'===r&&h||w&&'end'===r&&c||!w&&'start'===r&&g||!w&&'end'===r&&u);(m||b||y)&&(e.flipped=!0,(m||b)&&(i=p[d+1]),y&&(r=K(r)),e.placement=i+(r?'-'+r:''),e.offsets.popper=se({},e.offsets.popper,S(e.instance.popper,e.offsets.reference,e.placement)),e=C(e.instance.modifiers,e,'flip'))}),e},behavior:'flip',padding:5,boundariesElement:'viewport'},inner:{order:700,enabled:!1,fn:function(e){var t=e.placement,o=t.split('-')[0],i=e.offsets,n=i.popper,r=i.reference,p=-1!==['left','right'].indexOf(o),s=-1===['top','left'].indexOf(o);return n[p?'left':'top']=r[o]-(s?n[p?'width':'height']:0),e.placement=x(t),e.offsets.popper=c(n),e}},hide:{order:800,enabled:!0,fn:function(e){if(!F(e.instance.modifiers,'hide','preventOverflow'))return e;var t=e.offsets.reference,o=T(e.instance.modifiers,function(e){return'preventOverflow'===e.name}).boundaries;if(t.bottom<o.top||t.left>o.right||t.top>o.bottom||t.right<o.left){if(!0===e.hide)return e;e.hide=!0,e.attributes['x-out-of-boundaries']=''}else{if(!1===e.hide)return e;e.hide=!1,e.attributes['x-out-of-boundaries']=!1}return e}},computeStyle:{order:850,enabled:!0,fn:function(e,t){var o=t.x,i=t.y,n=e.offsets.popper,p=T(e.instance.modifiers,function(e){return'applyStyle'===e.name}).gpuAcceleration;void 0!==p&&console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!');var s,d,a=void 0===p?t.gpuAcceleration:p,l=r(e.instance.popper),f=g(l),m={position:n.position},h={left:X(n.left),top:X(n.top),bottom:X(n.bottom),right:X(n.right)},c='bottom'===o?'top':'bottom',u='right'===i?'left':'right',b=W('transform');if(d='bottom'==c?-f.height+h.bottom:h.top,s='right'==u?-f.width+h.right:h.left,a&&b)m[b]='translate3d('+s+'px, '+d+'px, 0)',m[c]=0,m[u]=0,m.willChange='transform';else{var w='bottom'==c?-1:1,y='right'==u?-1:1;m[c]=d*w,m[u]=s*y,m.willChange=c+', '+u}var E={"x-placement":e.placement};return e.attributes=se({},E,e.attributes),e.styles=se({},m,e.styles),e.arrowStyles=se({},e.offsets.arrow,e.arrowStyles),e},gpuAcceleration:!0,x:'bottom',y:'right'},applyStyle:{order:900,enabled:!0,fn:function(e){return Y(e.instance.popper,e.styles),j(e.instance.popper,e.attributes),e.arrowElement&&Object.keys(e.arrowStyles).length&&Y(e.arrowElement,e.arrowStyles),e},onLoad:function(e,t,o,i,n){var r=O(n,t,e),p=v(o.placement,r,t,e,o.modifiers.flip.boundariesElement,o.modifiers.flip.padding);return t.setAttribute('x-placement',p),Y(t,{position:'absolute'}),o},gpuAcceleration:void 0}}},fe});
 //# sourceMappingURL=popper.min.js.map
 
 /*!
- * fullPage 2.9.4
+ * fullPage 2.9.5
  * https://github.com/alvarotrigo/fullPage.js
  * @license MIT licensed
  *
@@ -10348,16 +10348,6 @@ return jQuery;
     var $window = $(window);
     var $document = $(document);
 
-    // Default options for iScroll.js used when using scrollOverflow
-    var iscrollOptions = {
-        scrollbars: true,
-        mouseWheel: true,
-        hideScrollbars: false,
-        fadeScrollbars: false,
-        disableMouse: true,
-        interactiveScrollbars: true
-    };
-
     $.fn.fullpage = function(options) {
         //only once my friend!
         if($('html').hasClass(ENABLED)){ displayWarnings(); return; }
@@ -10405,7 +10395,7 @@ return jQuery;
             normalScrollElements: null,
             scrollOverflow: false,
             scrollOverflowReset: false,
-            scrollOverflowHandler: iscrollHandler,
+            scrollOverflowHandler: $.fn.fp_scrolloverflow ? $.fn.fp_scrolloverflow.iscrollHandler : null,
             scrollOverflowOptions: null,
             touchSensitivity: 5,
             normalScrollElementTouchThreshold: 5,
@@ -10475,6 +10465,7 @@ return jQuery;
             touchmove: 'ontouchmove' in window ? 'touchmove' :  MSPointer.move,
             touchstart: 'ontouchstart' in window ? 'touchstart' :  MSPointer.down
         };
+        var scrollBarHandler;
 
         //timeouts
         var resizeId;
@@ -10486,12 +10477,6 @@ return jQuery;
         var originals = $.extend(true, {}, options); //deep copy
 
         displayWarnings();
-
-        //fixing bug in iScroll with links: https://github.com/cubiq/iscroll/issues/783
-        iscrollOptions.click = isTouch; // see #2035
-
-        //extending iScroll options with the user custom ones
-        iscrollOptions = $.extend(iscrollOptions, options.scrollOverflowOptions);
 
         //easeInOutCubic animation included in the plugin
         $.extend($.easing,{ easeInOutCubic: function (x, t, b, c, d) {if ((t/=d/2) < 1) return c/2*t*t*t + b;return c/2*((t-=2)*t*t + 2) + b;}});
@@ -10579,7 +10564,7 @@ return jQuery;
         }
 
         /**
-        * Adds or remove the possiblity of scrolling through sections by using the mouse wheel or the trackpad.
+        * Adds or remove the possibility of scrolling through sections by using the mouse wheel or the trackpad.
         */
         function setMouseWheelScrolling(value){
             if(value){
@@ -10605,12 +10590,16 @@ return jQuery;
                     setIsScrollAllowed(value, direction, 'm');
                 });
             }
-            else if(value){
-                setMouseWheelScrolling(true);
-                addTouchHandler();
-            }else{
-                setMouseWheelScrolling(false);
-                removeTouchHandler();
+            else{
+                setIsScrollAllowed(value, 'all', 'm');
+
+                if(value){
+                    setMouseWheelScrolling(true);
+                    addTouchHandler();
+                }else{
+                    setMouseWheelScrolling(false);
+                    removeTouchHandler();
+                }
             }
         }
 
@@ -10625,6 +10614,7 @@ return jQuery;
                     setIsScrollAllowed(value, direction, 'k');
                 });
             }else{
+                setIsScrollAllowed(value, 'all', 'k');
                 options.keyboardScrolling = value;
             }
         }
@@ -10723,22 +10713,15 @@ return jQuery;
 
                 $(this).css('height', windowsHeight + 'px');
 
-                //resizing the scrolling divs
-                if(options.scrollOverflow){
-                    if(slides.length){
-                        slides.each(function(){
-                            createScrollBar($(this));
-                        });
-                    }else{
-                        createScrollBar($(this));
-                    }
-                }
-
                 //adjusting the position fo the FULL WIDTH slides...
                 if (slides.length > 1) {
                     landscapeScroll(slidesWrap, slidesWrap.find(SLIDE_ACTIVE_SEL));
                 }
             });
+
+            if(options.scrollOverflow){
+                scrollBarHandler.createScrollBarForAll();
+            }
 
             var activeSection = $(SECTION_ACTIVE_SEL);
             var sectionIndex = activeSection.index(SECTION_SEL);
@@ -10781,6 +10764,7 @@ return jQuery;
 
         if($(this).length){
             //public functions
+            FP.version = '2.9.5';
             FP.setAutoScrolling = setAutoScrolling;
             FP.setRecordHistory = setRecordHistory;
             FP.setScrollingSpeed = setScrollingSpeed;
@@ -10799,6 +10783,12 @@ return jQuery;
             FP.reBuild = reBuild;
             FP.setResponsive = setResponsive;
             FP.destroy = destroy;
+
+            //functions we want to share across files but which are not
+            //mean to be used on their own by developers
+            FP.shared ={
+                afterRenderActions: afterRenderActions
+            };
 
             init();
 
@@ -10866,12 +10856,12 @@ return jQuery;
             * Ignoring the scrolls over the specified selectors.
             */
             if(options.normalScrollElements){
-                $document.on('mouseenter', options.normalScrollElements, function () {
-                    setMouseWheelScrolling(false);
+                $document.on('mouseenter touchstart', options.normalScrollElements, function () {
+                    setAllowScrolling(false);
                 });
 
-                $document.on('mouseleave', options.normalScrollElements, function(){
-                    setMouseWheelScrolling(true);
+                $document.on('mouseleave touchend', options.normalScrollElements, function(){
+                    setAllowScrolling(true);
                 });
             }
         }
@@ -10949,11 +10939,7 @@ return jQuery;
             enableYoutubeAPI();
 
             if(options.scrollOverflow){
-                if(document.readyState === 'complete'){
-                    createScrollBarHandler();
-                }
-                //after DOM and images are loaded
-                $window.on('load', createScrollBarHandler);
+                scrollBarHandler = options.scrollOverflowHandler.init(options);
             }else{
                 afterRenderActions();
             }
@@ -11109,25 +11095,6 @@ return jQuery;
             $(SECTION_NAV_SEL).find('li').eq($(SECTION_ACTIVE_SEL).index(SECTION_SEL)).find('a').addClass(ACTIVE);
         }
 
-        /**
-        * Creates the slim scroll scrollbar for the sections and slides inside them.
-        */
-        function createScrollBarHandler(){
-            $(SECTION_SEL).each(function(){
-                var slides = $(this).find(SLIDE_SEL);
-
-                if(slides.length){
-                    slides.each(function(){
-                        createScrollBar($(this));
-                    });
-                }else{
-                    createScrollBar($(this));
-                }
-
-            });
-            afterRenderActions();
-        }
-
         /*
         * Enables the Youtube videos API so we can control their flow if necessary.
         */
@@ -11162,13 +11129,13 @@ return jQuery;
 
             section.addClass(COMPLETELY);
 
-            if(options.scrollOverflowHandler.afterRender){
-                options.scrollOverflowHandler.afterRender(section);
-            }
             lazyLoad(section);
             playMedia(section);
-            options.scrollOverflowHandler.afterLoad();
-            
+
+            if(options.scrollOverflow){
+                options.scrollOverflowHandler.afterLoad();
+            }
+
             if(isDestinyTheStartingSection()){
                 $.isFunction( options.afterLoad ) && options.afterLoad.call(section, section.data('anchor'), (section.index(SECTION_SEL) + 1));
             }
@@ -11180,9 +11147,8 @@ return jQuery;
         * Determines if the URL anchor destiny is the starting section (the one using 'active' class before initialization)
         */
         function isDestinyTheStartingSection(){
-            var anchors =  window.location.hash.replace('#', '').split('/');
-            var destinationSection = getSectionByAnchor(decodeURIComponent(anchors[0]));
-    
+            var destinationSection = getSectionByAnchor(getAnchorsURL().section);
+
             return !destinationSection.length || destinationSection.length && destinationSection.index() === startingSection.index();
         }
 
@@ -11283,7 +11249,11 @@ return jQuery;
 
                     scrollId2 = setTimeout(function(){
                         //checking it again in case it changed during the delay
-                        if(options.fitToSection){
+                        if(options.fitToSection &&
+
+                            //is the destination element bigger than the viewport?
+                            $(SECTION_ACTIVE_SEL).outerHeight() <= windowsHeight
+                        ){
                             fitToSection();
                         }
                     }, options.fitToSectionDelay);
@@ -11337,19 +11307,27 @@ return jQuery;
         * Determines the way of scrolling up or down:
         * by 'automatically' scrolling a section or by using the default and normal scrolling.
         */
-        function scrolling(type, scrollable){
+        function scrolling(type){
             if (!isScrollAllowed.m[type]){
                 return;
             }
-            var check = (type === 'down') ? 'bottom' : 'top';
+
             var scrollSection = (type === 'down') ? moveSectionDown : moveSectionUp;
 
-            if(scrollable.length > 0 ){
-                //is the scrollbar at the start/end of the scroll?
-                if(options.scrollOverflowHandler.isScrolled(check, scrollable)){
-                    scrollSection();
+            if(options.scrollOverflow){
+                var scrollable = options.scrollOverflowHandler.scrollable($(SECTION_ACTIVE_SEL));
+                var check = (type === 'down') ? 'bottom' : 'top';
+
+                if(scrollable.length > 0 ){
+                    //is the scrollbar at the start/end of the scroll?
+                    if(options.scrollOverflowHandler.isScrolled(check, scrollable)){
+                        scrollSection();
+                    }else{
+                        return true;
+                    }
                 }else{
-                    return true;
+                    // moved up/down
+                    scrollSection();
                 }
             }else{
                 // moved up/down
@@ -11362,7 +11340,7 @@ return jQuery;
         */
         function preventBouncing(event){
             var e = event.originalEvent;
-            if(!checkParentForNormalScrollElement(event.target) && options.autoScrolling && isReallyTouch(e)){
+            if(options.autoScrolling && isReallyTouch(e)){
                 //preventing the easing on iOS devices
                 event.preventDefault();
             }
@@ -11384,14 +11362,13 @@ return jQuery;
             var activeSection = $(e.target).closest(SECTION_SEL);
 
             // additional: if one of the normalScrollElements isn't within options.normalScrollElementTouchThreshold hops up the DOM chain
-            if (!checkParentForNormalScrollElement(event.target) && isReallyTouch(e) ) {
+            if (isReallyTouch(e) ) {
 
                 if(options.autoScrolling){
                     //preventing the easing on iOS devices
                     event.preventDefault();
                 }
 
-                var scrollable = options.scrollOverflowHandler.scrollable(activeSection);
                 var touchEvents = getEventsPage(e);
 
                 touchEndY = touchEvents.y;
@@ -11420,33 +11397,12 @@ return jQuery;
                     //is the movement greater than the minimum resistance to scroll?
                     if (Math.abs(touchStartY - touchEndY) > ($window.height() / 100 * options.touchSensitivity)) {
                         if (touchStartY > touchEndY) {
-                            scrolling('down', scrollable);
+                            scrolling('down');
                         } else if (touchEndY > touchStartY) {
-                            scrolling('up', scrollable);
+                            scrolling('up');
                         }
                     }
                 }
-            }
-        }
-
-        /**
-         * recursive function to loop up the parent nodes to check if one of them exists in options.normalScrollElements
-         * Currently works well for iOS - Android might need some testing
-         * @param  {Element} el  target element / jquery selector (in subsequent nodes)
-         * @param  {int}     hop current hop compared to options.normalScrollElementTouchThreshold
-         * @return {boolean} true if there is a match to options.normalScrollElements
-         */
-        function checkParentForNormalScrollElement (el, hop) {
-            hop = hop || 0;
-            var parent = $(el).parent();
-
-            if (hop < options.normalScrollElementTouchThreshold &&
-                parent.is(options.normalScrollElements) ) {
-                return true;
-            } else if (hop == options.normalScrollElementTouchThreshold) {
-                return false;
-            } else {
-                return checkParentForNormalScrollElement(parent, ++hop);
             }
         }
 
@@ -11528,9 +11484,6 @@ return jQuery;
                     e.preventDefault ? e.preventDefault() : e.returnValue = false;
                 }
 
-                var activeSection = $(SECTION_ACTIVE_SEL);
-                var scrollable = options.scrollOverflowHandler.scrollable(activeSection);
-
                 //time difference between the last scroll and the current one
                 var timeDiff = curTime-prevTime;
                 prevTime = curTime;
@@ -11551,11 +11504,11 @@ return jQuery;
                     if(isAccelerating && isScrollingVertically){
                         //scrolling down?
                         if (delta < 0) {
-                            scrolling('down', scrollable);
+                            scrolling('down');
 
                         //scrolling up?
                         }else {
-                            scrolling('up', scrollable);
+                            scrolling('up');
                         }
                     }
                 }
@@ -11693,6 +11646,13 @@ return jQuery;
                 slideIndex = v.activeSlide.index();
             }
 
+            //callback (onLeave) if the site is not just resizing and readjusting the slides
+            if($.isFunction(options.onLeave) && !v.localIsResizing){
+                if(options.onLeave.call(v.activeSection, v.leavingSection, (v.sectionIndex + 1), v.yMovement) === false){
+                    return;
+                }
+            }
+
             // If continuousVertical && we need to wrap around
             if (options.autoScrolling && options.continuousVertical && typeof (v.isMovementUp) !== "undefined" &&
                 ((!v.isMovementUp && v.yMovement == 'up') || // Intending to scroll down but about to go up or
@@ -11701,23 +11661,21 @@ return jQuery;
                 v = createInfiniteSections(v);
             }
 
-            //callback (onLeave) if the site is not just resizing and readjusting the slides
-            if($.isFunction(options.onLeave) && !v.localIsResizing){
-                if(options.onLeave.call(v.activeSection, v.leavingSection, (v.sectionIndex + 1), v.yMovement) === false){
-                    return;
-                }
-            }
-
             //pausing media of the leaving section (if we are not just resizing, as destinatino will be the same one)
             if(!v.localIsResizing){
                 stopMedia(v.activeSection);
             }
 
-            options.scrollOverflowHandler.beforeLeave();
+            if(options.scrollOverflow){
+                options.scrollOverflowHandler.beforeLeave();
+            }
+
             element.addClass(ACTIVE).siblings().removeClass(ACTIVE);
             lazyLoad(element);
-            options.scrollOverflowHandler.onLeave();
 
+            if(options.scrollOverflow){
+                options.scrollOverflowHandler.onLeave();
+            }
 
             //preventing from activating the MouseWheelHandler event
             //more than once if the page is scrolling
@@ -11827,6 +11785,11 @@ return jQuery;
             v.dtop = v.element.position().top;
             v.yMovement = getYmovement(v.element);
 
+            //sections will temporally have another position in the DOM
+            //updating this values in case we need them
+            v.leavingSection = v.activeSection.index(SECTION_SEL) + 1;
+            v.sectionIndex = v.element.index(SECTION_SEL);
+
             return v;
         }
 
@@ -11862,7 +11825,10 @@ return jQuery;
 
             //callback (afterLoad) if the site is not just resizing and readjusting the slides
             $.isFunction(options.afterLoad) && !v.localIsResizing && options.afterLoad.call(v.element, v.anchorLink, (v.sectionIndex + 1));
-            options.scrollOverflowHandler.afterLoad();
+
+            if(options.scrollOverflow){
+                options.scrollOverflowHandler.afterLoad();
+            }
 
             if(!v.localIsResizing){
                 playMedia(v.element);
@@ -11895,8 +11861,8 @@ return jQuery;
 
             var panel = getSlideOrSection(destiny);
             var element;
-            
-            panel.find('img[data-src], img[data-srcset], source[data-src], audio[data-src], iframe[data-src]').each(function(){
+
+            panel.find('img[data-src], img[data-srcset], source[data-src], video[data-src], audio[data-src], iframe[data-src]').each(function(){
                 element = $(this);
 
                 $.each(['src', 'srcset'], function(index, type){
@@ -11907,7 +11873,8 @@ return jQuery;
                 });
 
                 if(element.is('source')){
-                    element.closest('video').get(0).load();
+                    var typeToPlay = element.closest('video').length ? 'video' : 'audio';
+                    element.closest(typeToPlay).get(0).load();
                 }
             });
         }
@@ -11992,10 +11959,9 @@ return jQuery;
         * Scrolls to the anchor in the URL when loading the site
         */
         function scrollToAnchor(){
-            //getting the anchor link in the URL and deleting the `#`
-            var value =  window.location.hash.replace('#', '').split('/');
-            var sectionAnchor = decodeURIComponent(value[0]);
-            var slideAnchor = decodeURIComponent(value[1]);
+            var anchors =  getAnchorsURL();
+            var sectionAnchor = anchors.section;
+            var slideAnchor = anchors.slide;
 
             if(sectionAnchor){  //if theres any #
                 if(options.animateAnchor){
@@ -12012,14 +11978,13 @@ return jQuery;
         */
         function hashChangeHandler(){
             if(!isScrolling && !options.lockAnchors){
-                var value =  window.location.hash.replace('#', '').split('/');
-                var sectionAnchor = decodeURIComponent(value[0]);
-                var slideAnchor = decodeURIComponent(value[1]);
+                var anchors = getAnchorsURL();
+                var sectionAnchor = anchors.section;
+                var slideAnchor = anchors.slide;
 
-                    //when moving to a slide in the first section for the first time (first time to add an anchor to the URL)
-                    var isFirstSlideMove =  (typeof lastScrolledDestiny === 'undefined');
-                    var isFirstScrollMove = (typeof lastScrolledDestiny === 'undefined' && typeof slideAnchor === 'undefined' && !slideMoving);
-
+                //when moving to a slide in the first section for the first time (first time to add an anchor to the URL)
+                var isFirstSlideMove =  (typeof lastScrolledDestiny === 'undefined');
+                var isFirstScrollMove = (typeof lastScrolledDestiny === 'undefined' && typeof slideAnchor === 'undefined' && !slideMoving);
 
                 if(sectionAnchor.length){
                     /*in order to call scrollpage() only once for each destination at a time
@@ -12029,6 +11994,21 @@ return jQuery;
                         scrollPageAndSlide(sectionAnchor, slideAnchor);
                     }
                 }
+            }
+        }
+
+        //gets the URL anchors (section and slide)
+        function getAnchorsURL(){
+            //getting the anchor link in the URL and deleting the `#`
+            var hash = window.location.hash;
+            var anchorsParts =  hash.replace('#', '').split('/');
+
+            //using / for visual reasons and not as a section/slide separator #2803
+            var isFunkyAnchor = hash.indexOf('#/') > -1;
+
+            return {
+                section: isFunkyAnchor ? '/' + anchorsParts[1] : decodeURIComponent(anchorsParts[0]),
+                slide: isFunkyAnchor ? decodeURIComponent(anchorsParts[2]) : decodeURIComponent(anchorsParts[1])
             }
         }
 
@@ -12246,7 +12226,7 @@ return jQuery;
                 //if the site is not just resizing and readjusting the slides
                 if(!v.localIsResizing && v.xMovement!=='none'){
                     if($.isFunction( options.onSlideLeave )){
-                        if(options.onSlideLeave.call( v.prevSlide, v.anchorLink, (v.sectionIndex + 1), v.prevSlideIndex, v.xMovement, v.slideIndex ) === false){
+                        if(options.onSlideLeave.call( v.prevSlide, v.anchorLink, (v.sectionIndex + 1), v.prevSlideIndex, v.direction, v.slideIndex ) === false){
                             slideMoving = false;
                             return;
                         }
@@ -12465,63 +12445,6 @@ return jQuery;
                 return 'left';
             }
             return 'right';
-        }
-
-        /**
-        * Checks if the element needs scrollbar and if the user wants to apply it.
-        * If so it creates it.
-        *
-        * @param {Object} element   jQuery object of the section or slide
-        */
-        function createScrollBar(element){
-            //User doesn't want scrollbar here? Sayonara baby!
-            if(element.hasClass('fp-noscroll')) return;
-
-            //needed to make `scrollHeight` work under Opera 12
-            element.css('overflow', 'hidden');
-
-            var scrollOverflowHandler = options.scrollOverflowHandler;
-            var wrap = scrollOverflowHandler.wrapContent();
-            //in case element is a slide
-            var section = element.closest(SECTION_SEL);
-            var scrollable = scrollOverflowHandler.scrollable(element);
-            var contentHeight;
-
-            //if there was scroll, the contentHeight will be the one in the scrollable section
-            if(scrollable.length){
-                contentHeight = scrollOverflowHandler.scrollHeight(element);
-            }else{
-                contentHeight = element.get(0).scrollHeight;
-                if(options.verticalCentered){
-                    contentHeight = element.find(TABLE_CELL_SEL).get(0).scrollHeight;
-                }
-            }
-
-            var scrollHeight = windowsHeight - parseInt(section.css('padding-bottom')) - parseInt(section.css('padding-top'));
-
-            //needs scroll?
-            if ( contentHeight > scrollHeight) {
-                //did we already have an scrollbar ? Updating it
-                if(scrollable.length){
-                    scrollOverflowHandler.update(element, scrollHeight);
-                }
-                //creating the scrolling
-                else{
-                    if(options.verticalCentered){
-                        element.find(TABLE_CELL_SEL).wrapInner(wrap);
-                    }else{
-                        element.wrapInner(wrap);
-                    }
-                    scrollOverflowHandler.create(element, scrollHeight);
-                }
-            }
-            //removing the scrolling when it is not necessary anymore
-            else{
-                scrollOverflowHandler.remove(element);
-            }
-
-            //undo
-            element.css('overflow', '');
         }
 
         function addTableClass(element){
@@ -12866,6 +12789,10 @@ return jQuery;
         */
         function removeTouchHandler(){
             if(isTouchDevice || isTouch){
+                if(options.autoScrolling){
+                    $body.off(events.touchmove);
+                }
+
                 $(WRAPPER_SEL)
                     .off(events.touchstart)
                     .off(events.touchmove);
@@ -12969,17 +12896,16 @@ return jQuery;
         * @type  m (mouse) or k (keyboard)
         */
         function setIsScrollAllowed(value, direction, type){
-            switch (direction){
-                case 'up': isScrollAllowed[type].up = value; break;
-                case 'down': isScrollAllowed[type].down = value; break;
-                case 'left': isScrollAllowed[type].left = value; break;
-                case 'right': isScrollAllowed[type].right = value; break;
-                case 'all':
-                    if(type == 'm'){
-                        setAllowScrolling(value);
-                    }else{
-                        setKeyboardScrolling(value);
-                    }
+            //up, down, left, right
+            if(direction !== 'all'){
+                isScrollAllowed[type][direction] = value;
+            }
+
+            //all directions?
+            else{
+                $.each(Object.keys(isScrollAllowed[type]), function(index, key){
+                    isScrollAllowed[type][key] = value;
+                });
             }
         }
 
@@ -13079,7 +13005,9 @@ return jQuery;
 
             //removing added classes
             $(SECTION_SEL + ', ' + SLIDE_SEL).each(function(){
-                options.scrollOverflowHandler.remove($(this));
+                if(options.scrollOverflowHandler){
+                    options.scrollOverflowHandler.remove($(this));
+                }
                 $(this).removeClass(TABLE + ' ' + ACTIVE);
             });
 
@@ -13146,6 +13074,11 @@ return jQuery;
                 showError('warn', 'Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled');
             }
 
+            if(options.scrollOverflow && !options.scrollOverflowHandler){
+                options.scrollOverflow = false;
+                showError('error', 'The option `scrollOverflow:true` requires the file `scrolloverflow.min.js`. Please include it before fullPage.js.');
+            }
+
             //using extensions? Wrong file!
             $.each(extensions, function(index, extension){
                 //is the option set to true?
@@ -13182,206 +13115,6 @@ return jQuery;
         }
 
     }; //end of $.fn.fullpage
-
-    if(typeof IScroll !== 'undefined'){
-        /*
-        * Turns iScroll `mousewheel` option off dynamically
-        * https://github.com/cubiq/iscroll/issues/1036
-        */
-        IScroll.prototype.wheelOn = function () {
-            this.wrapper.addEventListener('wheel', this);
-            this.wrapper.addEventListener('mousewheel', this);
-            this.wrapper.addEventListener('DOMMouseScroll', this);
-        };
-
-        /*
-        * Turns iScroll `mousewheel` option on dynamically
-        * https://github.com/cubiq/iscroll/issues/1036
-        */
-        IScroll.prototype.wheelOff = function () {
-            this.wrapper.removeEventListener('wheel', this);
-            this.wrapper.removeEventListener('mousewheel', this);
-            this.wrapper.removeEventListener('DOMMouseScroll', this);
-        };
-    }
-
-    /**
-     * An object to handle overflow scrolling.
-     * This uses jquery.slimScroll to accomplish overflow scrolling.
-     * It is possible to pass in an alternate scrollOverflowHandler
-     * to the fullpage.js option that implements the same functions
-     * as this handler.
-     *
-     * @type {Object}
-     */
-    var iscrollHandler = {
-        refreshId: null,
-        iScrollInstances: [],
-
-        // Enables or disables the mouse wheel for the active section or all slides in it
-        toggleWheel: function(value){
-            var scrollable = $(SECTION_ACTIVE_SEL).find(SCROLLABLE_SEL);
-            scrollable.each(function(){
-                var iScrollInstance = $(this).data('iscrollInstance');
-                if(typeof iScrollInstance !== 'undefined' && iScrollInstance){
-                    if(value){
-                        iScrollInstance.wheelOn();
-                    }
-                    else{
-                        iScrollInstance.wheelOff();
-                    }
-                }
-            });
-        },
-
-        /**
-        * Turns off iScroll for the destination section.
-        * When scrolling very fast on some trackpads (and Apple laptops) the inertial scrolling would
-        * scroll the destination section/slide before the sections animations ends.
-        */
-        onLeave: function(){
-            iscrollHandler.toggleWheel(false);
-        },
-
-        // Turns off iScroll for the leaving section
-        beforeLeave: function(){
-            iscrollHandler.onLeave()
-        },
-
-        // Turns on iScroll on section load
-        afterLoad: function(){
-            iscrollHandler.toggleWheel(true);
-        },
-
-        /**
-         * Called when overflow scrolling is needed for a section.
-         *
-         * @param  {Object} element      jQuery object containing current section
-         * @param  {Number} scrollHeight Current window height in pixels
-         */
-        create: function(element, scrollHeight) {
-            var scrollable = element.find(SCROLLABLE_SEL);
-
-            scrollable.height(scrollHeight);
-            scrollable.each(function() {
-                var $this = $(this);
-                var iScrollInstance = $this.data('iscrollInstance');
-                if (iScrollInstance) {
-                    $.each(iscrollHandler.iScrollInstances, function(){
-                        $(this).destroy();
-                    });
-                }
-
-                iScrollInstance = new IScroll($this.get(0), iscrollOptions);
-                iscrollHandler.iScrollInstances.push(iScrollInstance);
-
-                //off by default until the section gets active
-                iScrollInstance.wheelOff();
-
-                $this.data('iscrollInstance', iScrollInstance);
-            });
-        },
-
-        /**
-         * Return a boolean depending on whether the scrollable element is a
-         * the end or at the start of the scrolling depending on the given type.
-         *
-         * @param  {String}  type       Either 'top' or 'bottom'
-         * @param  {Object}  scrollable jQuery object for the scrollable element
-         * @return {Boolean}
-         */
-        isScrolled: function(type, scrollable) {
-            var scroller = scrollable.data('iscrollInstance');
-
-            //no scroller?
-            if (!scroller) {
-                return true;
-            }
-
-            if (type === 'top') {
-                return scroller.y >= 0 && !scrollable.scrollTop();
-            } else if (type === 'bottom') {
-                return (0 - scroller.y) + scrollable.scrollTop() + 1 + scrollable.innerHeight() >= scrollable[0].scrollHeight;
-            }
-        },
-
-        /**
-         * Returns the scrollable element for the given section.
-         * If there are landscape slides, will only return a scrollable element
-         * if it is in the active slide.
-         *
-         * @param  {Object}  activeSection jQuery object containing current section
-         * @return {Boolean}
-         */
-        scrollable: function(activeSection){
-            // if there are landscape slides, we check if the scrolling bar is in the current one or not
-            if (activeSection.find(SLIDES_WRAPPER_SEL).length) {
-                return activeSection.find(SLIDE_ACTIVE_SEL).find(SCROLLABLE_SEL);
-            }
-            return activeSection.find(SCROLLABLE_SEL);
-        },
-
-        /**
-         * Returns the scroll height of the wrapped content.
-         * If this is larger than the window height minus section padding,
-         * overflow scrolling is needed.
-         *
-         * @param  {Object} element jQuery object containing current section
-         * @return {Number}
-         */
-        scrollHeight: function(element) {
-            return element.find(SCROLLABLE_SEL).children().first().get(0).scrollHeight;
-        },
-
-        /**
-         * Called when overflow scrolling is no longer needed for a section.
-         *
-         * @param  {Object} element      jQuery object containing current section
-         */
-        remove: function(element) {
-            var scrollable = element.find(SCROLLABLE_SEL);
-            if (scrollable.length) {
-                var iScrollInstance = scrollable.data('iscrollInstance');
-                iScrollInstance.destroy();
-
-                scrollable.data('iscrollInstance', null);
-            }
-            element.find(SCROLLABLE_SEL).children().first().children().first().unwrap().unwrap();
-        },
-
-        /**
-         * Called when overflow scrolling has already been setup but the
-         * window height has potentially changed.
-         *
-         * @param  {Object} element      jQuery object containing current section
-         * @param  {Number} scrollHeight Current window height in pixels
-         */
-        update: function(element, scrollHeight) {
-            //using a timeout in order to execute the refresh function only once when `update` is called multiple times in a
-            //short period of time.
-            //it also comes on handy because iScroll requires the use of timeout when using `refresh`.
-            clearTimeout(iscrollHandler.refreshId);
-            iscrollHandler.refreshId = setTimeout(function(){
-                $.each(iscrollHandler.iScrollInstances, function(){
-                    $(this).get(0).refresh();
-                });
-            }, 150);
-
-            //updating the wrappers height
-            element.find(SCROLLABLE_SEL).css('height', scrollHeight + 'px').parent().css('height', scrollHeight + 'px');
-        },
-
-        /**
-         * Called to get any additional elements needed to wrap the section
-         * content in order to facilitate overflow scrolling.
-         *
-         * @return {String|Object} Can be a string containing HTML,
-         *                         a DOM element, or jQuery object.
-         */
-        wrapContent: function() {
-            return '<div class="' + SCROLLABLE + '"><div class="fp-scroller"></div></div>';
-        }
-    };
 });
 
 /*!

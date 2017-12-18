@@ -5,13 +5,14 @@ import re
 from django.conf import settings
 from django.utils.cache import patch_vary_headers
 from .utils import get_domain
+from django.utils.deprecation import MiddlewareMixin
 
 logger = logging.getLogger(__name__)
 lower = operator.methodcaller('lower')
 
 UNSET = object()
 
-class MultipleProxyMiddleware(object):
+class MultipleProxyMiddleware(MiddlewareMixin):
     FORWARDED_FOR_FIELDS = [
         'HTTP_X_FORWARDED_FOR',
         'HTTP_X_FORWARDED_HOST',
@@ -30,7 +31,7 @@ class MultipleProxyMiddleware(object):
                     request.META[field] = parts[-1].strip()
 
 
-class SubdomainMiddleware(object):
+class SubdomainMiddleware(MiddlewareMixin):
     """
     A middleware class that adds a ``subdomain`` attribute to the current request.
     """
