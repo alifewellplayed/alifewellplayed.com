@@ -1,0 +1,38 @@
+html,
+body {
+  overflow-x: hidden;
+  font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.padding-sm-form {
+    padding: 20px 0;
+}
+
+.replica-clickable {
+    cursor: pointer;
+}
+
+.pace-done {
+    .replica-panel {
+        height: inherit;
+        overflow: visible;
+        opacity: 1;
+    }
+}
+
+.fsr-holder {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-subtitle {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}

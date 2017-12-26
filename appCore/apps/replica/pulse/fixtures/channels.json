@@ -1,0 +1,68 @@
+[
+{
+  "model": "pulse.channel",
+  "pk": "1950633f-8d36-4713-ab2f-608d9fd70094",
+  "fields": {
+    "title": "Sticky",
+    "slug": "sticky",
+    "user": 1,
+    "date_created": "2017-06-03T12:40:12.200",
+    "date_updated": "2017-06-03T12:40:12.200"
+  }
+},
+{
+  "model": "pulse.channel",
+  "pk": "363532ac-85ce-4ee4-8adf-e1b89531c678",
+  "fields": {
+    "title": "Page",
+    "slug": "page",
+    "user": 1,
+    "date_created": "2017-01-27T22:50:33.878",
+    "date_updated": "2017-01-27T22:50:33.878"
+  }
+},
+{
+  "model": "pulse.channel",
+  "pk": "927586a4-3258-4aff-a22f-0136c6e9e503",
+  "fields": {
+    "title": "Post",
+    "slug": "post",
+    "user": 1,
+    "date_created": "2017-01-27T22:50:16.885",
+    "date_updated": "2017-01-27T22:50:16.885"
+  }
+},
+{
+  "model": "pulse.channel",
+  "pk": "95460e2e-1f6f-45b3-a0ed-af13cb04d72f",
+  "fields": {
+    "title": "Aside",
+    "slug": "aside",
+    "user": 1,
+    "date_created": "2017-06-03T12:40:21.393",
+    "date_updated": "2017-06-03T12:40:21.393"
+  }
+},
+{
+  "model": "pulse.channel",
+  "pk": "c77387b9-c308-49c8-b4a4-cdaa813f363f",
+  "fields": {
+    "title": "Archived",
+    "slug": "archived",
+    "user": 1,
+    "date_created": "2017-06-03T16:47:37.594",
+    "date_updated": "2017-06-03T16:47:37.594"
+  }
+},
+{
+  "model": "pulse.channel",
+  "pk": "eac48462-cab9-472d-848b-066c3cbdc4dc",
+  "fields": {
+    "title": "Media",
+    "slug": "media",
+    "user": 1,
+    "date_created": "2017-06-06T00:31:31.443",
+    "date_updated": "2017-06-06T00:31:31.443"
+  }
+}
+]

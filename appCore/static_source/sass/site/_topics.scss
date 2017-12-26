@@ -1,0 +1,36 @@
+.media.topic {
+    .media-body {padding-top: 10px;}
+    .mb-1 {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 500;
+        a { color: $green;
+            &:hover { text-shadow: 0 0 4px $green-light; }
+        }
+        small {
+            font-size: .75rem;
+            color: lighten($body-bg, 25%);
+            padding-left: 10px;
+        }
+    }
+    .topic-description {
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: .85rem;
+    }
+}
+
+.replica-topic-list {
+    .media {
+        padding-bottom: 8px;
+        border-bottom: 1px solid lighten($body-bg, 8%);
+        margin-bottom: 8px;
+    }
+}
+
+#topic-head {
+    .topic { border-top: 1px solid lighten($body-bg, 8%); }
+    .media-body { padding: 10px 0 0; }
+}

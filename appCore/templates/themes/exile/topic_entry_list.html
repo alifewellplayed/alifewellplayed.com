@@ -1,0 +1,35 @@
+{% extends 'themes/exile/base.html' %}{% load replica_blog_tags %}
+
+{% block title %}{{ topic.title }} | {% endblock %}
+{% block page %}news entries topics {{ topic.slug }}{% endblock %}
+
+{% block content %}
+    <div id="topic-head">
+        <div class="media topic layout-single-column">
+            {% if topic.image %}
+            <img class="d-flex {{topic.slug}}" src="{{topic.image.thumbnail_small}}" alt="{{topic.title}}" />
+            {% endif %}
+            <div class="media-body">
+                <h4 class="mt-0 mb-1">
+                    <a href="{% url 'ReplicaPulse:EntriesByTopic' topic.slug %}">{{topic.title}}</a>
+                    <small>{{ topic.entry_count }} posts</small>
+                </h4>
+                <div class="topic-description">
+                    {{ topic.description|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for object in object_list %}
+        {% ifchanged object.pub_date.day %}
+        {% include "themes/exile/_includes/_datetime.html" %}
+        {% endifchanged %}
+        {% include "themes/exile/_includes/_entry.html" %}
+    {% empty %}
+        <p class="lead layout-single-column">No Entries to display.</p>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% include "themes/exile/_includes/_pagination.html" %}
+    {% endif %}
+{% endblock %}

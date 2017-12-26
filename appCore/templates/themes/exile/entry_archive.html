@@ -1,0 +1,28 @@
+{% extends 'themes/exile/base.html' %}
+{% load core_tags %}{% load replica_publisher_tags %}
+
+{% block title %}{% endblock %}
+
+{% block meta %}
+<meta property="og:url" content="{{ site_domain }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ site_name }}" />
+<meta property="og:description" content="{{ site_description }}" />
+<meta property="og:image" content="{{ site_featured_image }}" />
+{% endblock %}
+
+{% block page %}home default archive{% endblock %}
+
+{% block content %}
+    {% render_sticky %}
+	{% for object in latest %}
+		{% ifchanged object.pub_date.day %}
+		{% include "themes/exile/_includes/_datetime.html" %}
+		{% endifchanged %}
+	    {% include "themes/exile/_includes/_entry.html" %}
+	{% endfor %}
+
+	{% if is_paginated %}
+  	{% include "themes/exile/_includes/_pagination.html" %}
+	{% endif %}
+{% endblock %}

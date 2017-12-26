@@ -1,0 +1,24 @@
+{% extends 'themes/exile/base.html' %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Notes | {% endblock %}
+{% block page %}page replicaMicro{% endblock %}
+
+{% block content %}
+<div id="blips" class="page layout-single-column">
+	<h2 class="heading">Notes</h2>
+
+	<div class="timelines">
+	{% for object in object_list %}
+		{% ifchanged object.date_updated.month %}
+		<div class="datetime">{{ object.date_updated|date:"F Y" }}</div>
+		{% endifchanged %}
+
+		<div id="{{ object.slug }}" class="timeline">
+			<h4><a class="timeline-url" href="{% url 'ReplicaMicro:Timeline' object.slug %}">{{ object.name|safe }}</a></h4>
+            {{object.deck_html|safe }}
+			<small class="sr-only">{{ object.date_updated|date:"l, F j, Y" }}</small>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

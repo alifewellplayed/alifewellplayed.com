@@ -1,0 +1,9 @@
+<div class="blips-latest">
+{% for object in objects %}
+{% ifchanged object.pub_date.day %}<p class="last-posted">Last posted {{ object.pub_date|date:"l, F j, Y" }}.</p>{% endifchanged %}
+<div class="blip" id="blip-{{ object.id }}">
+	<div class="note-body">{{ object.body_html|safe }}</div>
+	<span class="date datetime"><i class="icon-time icon-white"></i> <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time></span>
+</div>
+{% endfor %}
+</div>

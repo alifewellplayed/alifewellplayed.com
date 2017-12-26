@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi --max-requests 250
+web: gunicorn appCore.wsgi --max-requests 250

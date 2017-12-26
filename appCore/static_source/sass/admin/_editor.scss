@@ -1,0 +1,46 @@
+// Editor styling
+.rEditor {
+  .form-control { font-weight: 300; }
+
+  .nav-tabs {
+    .nav-item { margin-bottom: -2px;}
+    .nav-link.active { background-color: $white; }
+  }
+  .card-editor {
+    .input-slug {
+      letter-spacing: 1px;
+      .input-group-addon {
+        background-color: transparent;
+        border-width: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        font-size: 11px;
+      }
+      .form-control {
+        padding-left: 0px;
+        border-bottom: 1px solid transparent;
+        letter-spacing: 1px;
+        font-size: 11px;
+      }
+    }
+  }
+
+  .replica-form-control {
+    border-width: 0 !important;
+    padding: 0;
+    &.underline:focus {
+      border-bottom: 1px solid;
+    }
+  }
+
+  .form-control-title {
+    font-weight: 100;
+    font-size: 1.75rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+#editorTabContent {
+  .card-header { padding-bottom: 0; }
+  //.card-body {padding-top: 0;}
+}

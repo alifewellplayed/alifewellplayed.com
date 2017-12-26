@@ -1,0 +1,95 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Site Settings{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">
+        <h4 class="card-title">Site Settings</small></h4>
+      </div>
+    </div>
+    <form method="post" id="siteSettings" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:SiteSettings' %}">
+    {% csrf_token %}
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="{{ form.logo.id_for_label }}">Site Logo</label>
+          {{form.logo}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.featured.id_for_label }}">Featured Image</label>
+          {{form.featured}}
+          <small id="featuredImageHelpInline" class="text-muted">
+              Primarily used for Open Graph/meta tags.
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="{{ form.name.id_for_label }}">Site Name</label>
+          {{form.name}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.domain.id_for_label }}">Domain</label>
+          {{form.domain}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.author.id_for_label }}">Site Author/Admin</label>
+          {{form.author}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}">Password protect website</label>
+          {{form.password}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.secret_token.id_for_label }}">Site token (falls back to settings.py if none entered)</label>
+          {{form.secret_token}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.description.id_for_label }}">Site Description (for SEO)</label>
+          {{form.description}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.summary.id_for_label }}">Website Summary</label>
+          {{form.summary}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.view_settings.id_for_label }}">Additional Site settings</label>
+          {{form.view_settings}}
+        </div>
+        <div class="form-group">
+          <h4 class="header-subtitle"><label for="id_content_format">Enable Site?</label></h4>
+          {% for radio in form.is_enabled %}
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio }}</label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary btn-block" type="submit" value="Save">
+    </form>
+  </div>
+  <div class="col-md-6">
+    <div class="card replica-card replica-card-settings mb-3">
+      <div class="card-header">
+        <h4 class="card-title">User Settings</small></h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="{% url 'ReplicaAdmin:UserList' %}">
+          <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>Create New User</a>
+        </li>
+        <li class="list-group-item"><a href="{% url 'ReplicaAdmin:UserList' %}">
+          <i class="fa fa-users fa-fw" aria-hidden="true"></i> List all users</a>
+        </li>
+      </ul>
+    </div>
+    {% render_menu_card %}
+    {% render_templates_card %}
+  </div>
+</div>
+
+{% include "replica/cms/components/_pagination.html" %}
+{% endblock %}
+
+{% block javascript %}{% endblock %}

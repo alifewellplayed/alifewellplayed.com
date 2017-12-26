@@ -1,0 +1,46 @@
+.replica-media-list {
+    .media {
+        padding-bottom: 8px;
+        border-bottom: 1px solid lighten($body-bg, 8%);
+        margin-bottom: 8px;
+        .media-body {
+            h5 {
+                font: 13px/27px $font-family-sans-serif;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                a {
+                    color: $white;
+                    position: relative;
+                    span {
+                        position: relative;
+                        z-index: 10;
+                    }
+                    &:before{
+                        content: ' ';
+                        display: block;
+                        position: absolute;
+                        z-index: 5;
+                        bottom: -5px; left: 0; right: 0;
+                        height: 1px;
+                        width: 100%;
+                        background-color: $green;
+                    }
+                    &:hover {
+                        &:before {
+                            background-color: $green-light;
+                        }
+                    }
+                }
+                .glyph:before { display: none; }
+            }
+            p {
+                margin-bottom: 0;
+                font-weight: 100;
+                letter-spacing: 1px;
+                font-size: .85rem;
+                text-shadow: 1px 1px 1px #000;
+            }
+        }
+
+    }
+}

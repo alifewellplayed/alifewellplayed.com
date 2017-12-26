@@ -1,0 +1,25 @@
+<div class="card replica-card card-{{object_slug}} replica-list-card mb-3">{% load humanize %}
+  <div class="card-header">
+    {% if show_new_btn %}
+    <span class="pull-right"><a class="card-header-btn" href="{% url 'ReplicaAdmin:ChannelList' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> New</a></span>
+    {% endif %}
+    <h4 class="card-title">{{object_title}} <small>({{object_count}})</small></h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    {% for object in object_list %}
+    <li class="list-group-item" id="{{ object.slug }}">
+      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:ChannelEdit' object.id %}">
+          {{ object.title }} <small class="text-muted">({{ object.entry_count }} entries)</small>
+      </a></h6>
+      {% if show_desc %}<span class="entry-meta">{{ object.description }}</span>{% endif %}
+    </li>
+    {% empty %}
+    <li class="list-group-item">{{object_empty}}</li>
+    {% endfor %}
+  </ul>
+  {% if show_all %}
+  <div class="card-footer text-muted">
+    <a href="{% url 'ReplicaAdmin:ChannelList' %}">View All Channels</a>
+  </div>
+  {% endif %}
+</div>

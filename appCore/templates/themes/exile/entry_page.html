@@ -1,0 +1,23 @@
+{% extends 'themes/exile/base.html' %}{% load core_tags %}
+
+{% block title %}{{ object.title|escape }} | {% endblock %}
+{% block page %}replica {{ object.post_type|safe }} {{ object.slug|safe }} detail{% endblock %}
+
+{% block content %}
+<div class="page layout-single-column">
+    <div class="page-inner">
+        <header class="entry-head">
+            <div class="sr-only">{% include "themes/exile/_includes/_datetime.html" %}</div>
+            <h2 class="heading">{{ object.title }}</h2>
+        </header>
+        <section class="entry-body {{ object.post_type.slug }}">
+            {% if object.image %}
+        		<div class="imgWrap">
+        			<figure><img src="{{object.image.image.url}}" class="img-responsive" alt="{{object.image.title}}" /></figure>
+        		</div>
+        	{% endif %}
+            {{ object.body_html|safe }}
+        </section>
+    </div>
+</div>
+{% endblock %}

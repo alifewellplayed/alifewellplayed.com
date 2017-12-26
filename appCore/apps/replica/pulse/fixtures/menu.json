@@ -1,0 +1,22 @@
+[
+{
+  "model": "pulse.menuposition",
+  "pk": "9f82fa87-f788-4515-8e92-55446b0741ac",
+  "fields": {
+    "title": "Primary Menu",
+    "slug": "primary",
+    "date_created": "2017-04-02T19:53:54.418",
+    "date_updated": "2017-10-02T19:49:29.549"
+  }
+},
+{
+  "model": "pulse.menuposition",
+  "pk": "de1376db-559c-4b03-8756-2ff5960f27ce",
+  "fields": {
+    "title": "Footer Menu",
+    "slug": "footer",
+    "date_created": "2017-04-09T21:14:44.927",
+    "date_updated": "2017-04-09T21:14:48.420"
+  }
+}
+]

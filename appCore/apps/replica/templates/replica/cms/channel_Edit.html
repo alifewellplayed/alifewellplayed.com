@@ -1,0 +1,39 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Channels{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+      <div class="card-header">
+        <h4 class="card-title">{% if edit %}{{obj_title}}{% else %}{{obj_title}}{% endif %}</h4>
+      </div>
+    </div>
+    <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:ChannelEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:ChannelList' %}{% endif %}">
+      {% csrf_token %}
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Channel Name</label>
+            {{form.title}}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.slug.id_for_label }}">Slug</label>
+            {{form.slug}}
+          </div>
+        </div>
+      </div>
+      {% if edit %}
+      <input type="submit" class="btn btn-primary btn-block mb-2" value="Edit">
+  		{% else %}
+  		<input type="submit" class="btn btn-primary btn-block mb-2" value="Save">
+  		{% endif %}
+
+    </form>
+  </div>
+  <div class="col-md-6">
+    {% render_channel_card num=50 show_new_btn=False %}
+  </div>
+</div>
+{% endblock %}

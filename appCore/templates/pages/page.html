@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% load core_tags %}
+
+{% block title %}{{ flatpage.title }} | {% endblock %}
+{% block page %}news pages{% endblock %}
+
+{% block content %}
+<div class="page layout-single-column">
+    <h2 class="heading">{{ flatpage.title }}</h2>
+    <div class="page-inner">
+        {{ flatpage.content|safe }}
+    </div>
+</div>
+{% endblock %}

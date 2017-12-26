@@ -1,0 +1,8 @@
+{% for object in objects %}{% load humanize %}
+<li class="table-view-cell">
+	<a class="push-right" href="#" data-transition="slide-in" data-selector=".device-content">
+		{% if show_collection %}{{object.timeline}} - {% endif %}{{ object.pub_date|naturaltime }}
+		{{object.body_html|safe}}
+	</a>
+</li>
+{% endfor %}

@@ -1,0 +1,57 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Topics{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+      <div class="card-header">
+        <h4 class="card-title">{% if edit %}{{obj_title}}{% else %}{{obj_title}}{% endif %}</h4>
+      </div>
+    </div>
+    <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:TopicEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:TopicList' %}{% endif %}">
+      {% csrf_token %}
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Featured Image</label>
+            {{form.image}}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Topic Name</label>
+            {{form.title}}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{form.description}}
+          </div>
+        </div>
+      </div>
+
+      <div class="card replica-card card-{{object_slug}} replica-list-card mb-1">
+        <div class="card-body">
+          <div class="form-group mb-0">
+            <h4 class="header-subtitle"><label for="id_content_format">Who can see this topic?</label></h4>
+            {% for radio in form.is_public %}
+            <div class="form-check form-check-inline mb-0">
+              <label class="form-check-label" for="{{ radio.id_for_label }}">{{ radio }}</label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% if edit %}
+      <input type="submit" class="btn btn-primary btn-block" value="Edit">
+  		{% else %}
+  		<input type="submit" class="btn btn-primary btn-block" value="Save">
+  		{% endif %}
+
+    </form>
+  </div>
+  <div class="col-md-6">
+    {% render_topics_card 50 %}
+  </div>
+</div>
+{% endblock %}

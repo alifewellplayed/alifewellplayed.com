@@ -1,0 +1,18 @@
+<div class="card replica-card card-{{object_slug}} replica-list-card mb-3">{% load humanize %}
+  <div class="card-header">
+    <h4 class="card-title">{{object_title}} <small>({{object_count}})</small></h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    {% for object in object_list %}
+    <li class="list-group-item" id="{{ object.slug }}">
+      <h6 class="entry-title"><a href="{% url 'ReplicaAdmin:EntryEdit' object.id %}">{{ object.title }}</a></h6>
+      {% if object_slug == 'published' %}
+        <small class="text-muted">Published {{ object.pub_date|naturaltime}}</small>
+      {% endif %}
+      <small class="text-muted">({{ object.body_html|wordcount}} words)</small>
+    </li>
+    {% empty %}
+    <li class="list-group-item">{{object_empty}}</li>
+    {% endfor %}
+  </ul>
+</div>

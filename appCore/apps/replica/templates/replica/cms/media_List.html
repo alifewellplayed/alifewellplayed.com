@@ -1,0 +1,34 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Media Gallery{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+
+  <div class="col-md-12 mb-2">
+    <div class="card replica-card card-{{object_slug}} replica-list-card">
+      <div class="card-header">
+        <h4 class="card-title">Media List</h4>
+      </div>
+    </div>
+  </div>
+
+  {% for obj in object_list %}
+  <div class="col-md-3 mb-2">
+    <a class="replica-thumbnail" href="{% url 'ReplicaAdmin:MediaEdit' obj.id %}">
+      <div class="fsr-holder">
+        <div class="media-title">
+          <h4>{{obj.title}}</h4>
+          <h6 class="mt-2">{{obj.date_updated}}</h6>
+        </div>
+        <img class="img-fluid img-thumbnail image-full" src="{{ obj.get_absolute_url }}" />
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% include "replica/cms/components/_pagination.html" %}
+{% endblock %}
+
+{% block javascript %}{% endblock %}

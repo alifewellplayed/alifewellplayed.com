@@ -1,0 +1,22 @@
+{% load humanize %}
+
+<ul class="list-unstyled replica-media-list layout-single-column">
+    {% for obj in object_list %}
+    <li class="media">
+        {% if obj.featured_image %}
+        <img class="d-flex {{obj.slug}}" src="{{obj.featured_image.thumbnail_small}}" alt="{{obj.title}}" />
+        {% endif %}
+        <div class="media-body">
+            <time datetime="{{ obj.pub_date|date:"Y-m-d" }}" class="sr-only">{{ obj.pub_date|date:"l, F jS Y" }}</time>
+
+            </datetime>
+            <h5 class="mt-0 mb-1">
+                <a href="{{obj.url}}"><span>{{obj.title}}</span></a>
+                <small class="datetime">{{ obj.pub_date|naturaltime }}</small>
+                <span class="linked-list-permalink"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
+            </h5>
+            {{obj.deck_html|safe}}
+        </div>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,63 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">
+        <h4 class="card-title">{{obj_title}}</small></h4>
+      </div>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:PromotedEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:PromotedNew' %}{% endif %}">
+      {% csrf_token %}
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-body">
+
+        <div class="form-group">
+          <label for="{{ form.title.id_for_label }}">Featured Image</label>
+          {{form.image}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.entry.id_for_label }}">Promoted Entry</label>
+          {{form.entry}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.title.id_for_label }}">Promoted Title</label>
+          {{form.title}}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.deck.id_for_label }}">Description</label>
+          {{form.deck}}
+        </div>
+
+        <div class="form-group datepicker-wrapper">
+          <label for="{{ form.pub_date.id_for_label }}">Publish On</label><br />
+          <div class="row">
+            {{form.pub_date}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {% if edit %}
+    <input type="submit" class="btn btn-primary btn-block mb-3" value="Edit {{ob.title}}">
+    {% else %}
+    <input type="submit" class="btn btn-primary btn-block mb-3" value="Save">
+    {% endif %}
+    </form>
+
+  </div>
+  <div class="col-md-6">
+    {% render_promoted_cards %}
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

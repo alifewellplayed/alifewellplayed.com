@@ -1,0 +1,7 @@
+<ul class="list-unstyled list-menu {{ menu.slug }}">
+    {% for obj in objects %}
+    <li class="list-menu-item {% if request.get_full_path == obj.menu_url %}active{% endif %}">
+        <a href="{{ obj.menu_url }}" data-content="{{obj.title}}">{{obj.title}}</a>
+    </li>
+    {% endfor %}
+</ul>

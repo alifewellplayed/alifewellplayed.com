@@ -28,6 +28,7 @@ nbproject
 *.sublime-workspace
 .idea
 .env
+zappa_settings.json
 
 # Komodo
 *.komodoproject
@@ -38,8 +39,10 @@ nbproject
 node_modules
 dist
 venv
+handler_venv
 tests
 test
 bower_components
 staticfiles
 __pycache__
+cloudflare.*

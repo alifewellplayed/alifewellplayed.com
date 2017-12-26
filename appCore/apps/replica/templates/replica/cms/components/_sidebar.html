@@ -1,0 +1,94 @@
+{% load replica_components %}
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<nav class="page-sidebar">
+  <div class="sidebar-header">
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <a href="{ name: 'Home' }">
+      <img src="/static/admin/img/replica_logo.png" alt="logo" class="brand replica-clickable" ata-src-retina="/static/admin/img/replica_logo.png" width="22" height="22" />
+    </a>
+    <div class="sidebar-header-controls pull-right">
+      <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar">
+        <i class="fa fs-12"></i>
+      </button>
+    </div>
+  </div>
+  <div class="scroll-wrapper menu-items">
+    <ul class="menu-items list-unstyled">
+      <li class="mt-3 mb-2">
+        <a href="{% url 'ReplicaAdmin:Home' %}" class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </span>
+
+          <span class="title">Dashboard</span>
+          <span class="details">User Metrics</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:EntryList' %}" class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </span>
+          <span class="title">Entries</span>
+          <span class="details">{% render_counts 'published' %} items</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="#" class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </span>
+          <span class="title">Notes</span>
+          <span class="details"> items</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:TopicList' %}" class="detailed">
+          <span class="icon-thumbnail replica-clickable pull-right">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+          </span>
+          <span class="title">Topics</span>
+          <span class="details">{% render_counts 'topic' %} items</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:ChannelList' %}"  class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-code-fork" aria-hidden="true"></i>
+          </span>
+          <span class="title">Channels</span>
+          <span class="details">{% render_counts 'channel' %} items</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:MediaList' %}"  class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+          </span>
+          <span class="title">Media</span>
+          <span class="details">{% render_counts 'media' %} items</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:SiteModules' %}"  class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </span>
+          <span class="title">Modules</span>
+          <span class="details">Site tools and plugins</span>
+        </a>
+      </li>
+      <li class="mb-2">
+        <a href="{% url 'ReplicaAdmin:SiteSettings' %}"  class="detailed">
+          <span class="icon-thumbnail pull-right">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+          </span>
+          <span class="title">Settings</span>
+          <span class="details">Site controls</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

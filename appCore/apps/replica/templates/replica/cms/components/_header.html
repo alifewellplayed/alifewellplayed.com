@@ -1,0 +1,39 @@
+<header class="site-header navbar navbar-expand-lg mb-3">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown site-brand">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="site-logo" width="24" height="24" src="{{site_logo}}" />{{site_name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'ReplicaAdmin:Home' %}">Home</a>
+                    <a class="dropdown-item" href="{{site_domain}}">View Site</a>
+                    <a class="dropdown-item" href="{% url 'ReplicaAdmin:SiteSettings' %}">Site Settings</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="rounded-circle avatar" width="24" height="24" src="https://secure.gravatar.com/avatar/{{ user.hash }}?s=32&amp;d={{STATIC_URL}}img/gravatar.png">
+                  {{ user.username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'CoreExtend:AccountSettings' %}">Account Settings</a>
+                    <a class="dropdown-item" href="{% url 'CoreExtend:password_change' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'CoreExtend:Logout' %}">Logout</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ReplicaAdmin:EntryEditor' %}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'CoreExtend:Logout' %}">Logout</a>
+          </li>
+        </ul>
+    </div>
+</header>

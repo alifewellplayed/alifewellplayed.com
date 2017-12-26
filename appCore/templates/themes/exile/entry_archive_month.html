@@ -1,0 +1,18 @@
+{% extends 'themes/exile/base.html' %}{% load replica_blog_tags %}
+
+{% block title %}Archive | {% endblock %}
+{% block page %}default archive month{% endblock %}
+
+{% block content %}
+	{% for object in object_list %}
+		{% ifchanged object.pub_date.day %}
+		{% include "themes/exile/_includes/_datetime.html" %}
+		{% endifchanged %}
+		{% include "themes/exile/_includes/_entry.html" %}
+	{% endfor %}
+
+	{% if is_paginated %}
+	{% include "themes/exile/_includes/_pagination.html" %}
+	{% endif %}
+
+{% endblock %}
