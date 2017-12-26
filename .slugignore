@@ -1,5 +1,5 @@
 node_modules
-wellplayed/static_source
+coreApp/static_source
 staticfiles
 dist
 package.json

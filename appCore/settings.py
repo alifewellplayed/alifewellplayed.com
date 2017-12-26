@@ -19,7 +19,7 @@ sys.path.append(os.path.join(BASE_DIR, 'appCore/vendor'))
 
 DEBUG = True
 ENABLE_CACHE = False
-ENABLE_S3 = False
+ENABLE_S3 = True
 
 ALLOWED_HOSTS = [
     'localhost',
