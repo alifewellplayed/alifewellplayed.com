@@ -217,7 +217,6 @@ INSTALLED_APPS = (
     #external
     'storages',
     'rest_framework',
-    'rest_framework_swagger',
     'pagedown',
 
     #Internal
