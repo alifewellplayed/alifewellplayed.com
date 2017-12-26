@@ -25,7 +25,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
 	'alifewellplayed.com', 'www.alifewellplayed.com',
-	'alifewellplayed.herokuappCore.com',
+	'alifewellplayed.herokuapp.com',
     '05yn89bs8h.execute-api.us-east-1.amazonaws.com',
 ]
 
