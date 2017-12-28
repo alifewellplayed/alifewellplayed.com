@@ -1,5 +1,5 @@
 {% load humanize %}
-
+{% spaceless %}
 <ul class="list-unstyled replica-media-list layout-single-column">
     {% for obj in object_list %}
     <li class="media">
@@ -12,11 +12,12 @@
             </datetime>
             <h5 class="mt-0 mb-1">
                 <a href="{{obj.url}}"><span>{{obj.title}}</span></a>
-                <small class="datetime">{{ obj.pub_date|naturaltime }}</small>
-                <span class="linked-list-permalink"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
+                <small class="datetime pl-2">{{ obj.pub_date|naturaltime }}</small>
+                <span class="linked-list-permalink pl-2"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
             </h5>
             {{obj.deck_html|safe}}
         </div>
     </li>
     {% endfor %}
 </ul>
+{% endspaceless %}

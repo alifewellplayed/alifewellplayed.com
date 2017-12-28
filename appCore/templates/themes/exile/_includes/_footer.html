@@ -1,0 +1,11 @@
+{% load replica_blog_tags %}{% load replica_publisher_tags %}{% spaceless %}
+<footer id="bottom" class="site-footer" role="footer">
+    <div class="layout-single-column">
+        <nav class="footer-links sr-only">
+            {% render_menu 'footer' %}
+        </nav>
+        <p>{{site_name}}, copyright &copy; 2018<Br />
+            By <a href="https://underlost.net/">{{ site_author }}</a>.</p>
+    </div>
+</footer>
+{% endspaceless %}

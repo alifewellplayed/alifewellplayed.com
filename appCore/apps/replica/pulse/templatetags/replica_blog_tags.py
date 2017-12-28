@@ -38,10 +38,15 @@ def render_month_links(context, channel_type=None,):
 @register.inclusion_tag('replica/pulse/templatetags/render_menu.html', takes_context=True)
 def render_menu(context, menu_name=None, num=25):
     request = context['request']
+    blank_menu = 'No menu items yet.'
     if menu_name:
-        menu = MenuPosition.objects.get(slug=menu_name)
-        menu_items = MenuItem.objects.filter(position=menu).order_by('weight')[:num]
+        try:
+            menu = MenuPosition.objects.get(slug=menu_name)
+            menu_items = MenuItem.objects.filter(position=menu).order_by('weight')[:num]
+        except MenuPosition.DoesNotExist:
+            menu = None
+            menu_items = None
     else:
-        menu = ''
-        menu_items = MenuItem.objects.all()[:num]
-    return { 'menu': menu, 'objects': menu_items, 'request':request }
+        menu = None
+        menu_items = None
+    return { 'menu': menu, 'objects': menu_items, 'blank_menu':blank_menu, 'request':request }

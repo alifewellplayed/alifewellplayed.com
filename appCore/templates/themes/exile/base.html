@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load replica_blog_tags %}{% load replica_publisher_tags %}
+<!DOCTYPE html>{% load replica_blog_tags %}{% load replica_publisher_tags %}{% spaceless %}
 <html lang="en">
 	<head>
 		<title>{% block title %}{% endblock %}{{site_name}}</title>
@@ -18,13 +18,11 @@
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@alifewellplayed" />
 		<meta name="twitter:creator" content="@underlost" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111594796-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-111594796-1');
     </script>
 		{% block meta %}{% endblock %}
@@ -60,20 +58,12 @@
 						{% block content %}{% endblock %}
 				</div>
 		</div>
+    {% include "themes/exile/_includes/_footer.html" %}
 
-		<footer id="bottom" class="site-footer" role="footer">
-				<div class="layout-single-column">
-						<nav class="footer-links sr-only">
-								{% render_menu 'footer' %}
-						</nav>
-						<p>{{site_name}}, copyright &copy; 2017<Br />
-								Written and produced by <a href="http://underlost.net/">{{ site_author }}</a>.</p>
-				</div>
-		</footer>
 </div>
 
 {% include "themes/exile/_includes/_infoModal.html" %}
 <script type="text/javascript" src="{{STATIC_URL}}site/js/site.min.js"></script>
 {% block javascript %}{% endblock %}
 </body>
-</html>
+</html>{% endspaceless %}

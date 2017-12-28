@@ -1,7 +1,13 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html>{% spaceless %}
+<html lang="en">
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
+  <link type="text/plain" rel="author" href="/humans.txt" />
+  <link rel="stylesheet" href="{{STATIC_URL}}site/css/site.min.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <link rel="canonical" href="{{site_url}}" />
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -10,9 +16,15 @@
     gtag('config', 'UA-111594796-1');
   </script>
 </head>
-
 <body>
-    <h2>404</h2>
-	<p>The page you were looking for doesn't exist.</p>
+  <div class="error-page mt-4">
+    <div class="layout-single-column">
+      <h2>404</h2>
+  	  <p>The page you were looking for doesn't exist.</p>
+    </div>
+  </div>
+
+  {% include "themes/exile/_includes/_footer.html" %}
 </body>
 </html>
+{% endspaceless %}

@@ -1,4 +1,4 @@
-<!-- Modal -->
+{% spaceless %}{% load replica_blog_tags %}
 <div class="modal modalDark fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +10,9 @@
       </div>
       <div class="modal-body">
         {{ site_summary|safe }}
+        {% render_menu 'secondary' %}
       </div>
     </div>
   </div>
 </div>
+{% endspaceless %}

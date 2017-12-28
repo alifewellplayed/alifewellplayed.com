@@ -17,7 +17,7 @@ sys.path.append(os.path.join(BASE_DIR, 'appCore/apps'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/util'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/vendor'))
 
-DEBUG = True
+DEBUG = False
 ENABLE_CACHE = False
 ENABLE_S3 = True
 
@@ -107,7 +107,7 @@ if ENABLE_S3:
     STATIC_URL = os.environ.get('LIVE_STATIC_URL', 'https://static.example.com/')
     MEDIA_URL = os.environ.get('LIVE_MEDIA_URL', 'https://static.example.com/media/')
 else:
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'coreExtend.storage.StaticFilesStorage'
     STATIC_URL = '/static/'
     MEDIA_URL = '/static/media/'
 

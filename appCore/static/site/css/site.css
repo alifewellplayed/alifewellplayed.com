@@ -9822,7 +9822,7 @@ h1, h2, h3, h4, h5, h6 {
         stroke-dashoffset: -20; }
     .site-header .site-header-inner .text-sm {
       font-size: 13px;
-      stroke: #8d8daa;
+      fill: #8d8daa;
       font-weight: normal;
       letter-spacing: 1px;
       stroke-width: .25;
@@ -10123,7 +10123,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-footer {
   position: relative;
-  font-size: .95rem;
+  font-size: .75rem;
   letter-spacing: 1.5px;
   font-weight: 100;
   font-family: "futura-pt", "effra", -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -10143,6 +10143,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 150px; }
     .site-footer:before {
       margin-left: 40px; } }
+
+.error-page h2 {
+  font-size: 3rem;
+  color: #8787ff; }
+
+.error-page p {
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+@media only screen and (min-width: 768px) {
+  .error-page {
+    margin-left: 150px; } }
 
 .PulseMarker {
   text-align: center;

@@ -36,7 +36,7 @@ $header-background: #050505;
         }
         .text-sm {
           font-size: 13px;
-          stroke: lighten($body-bg, 50%);
+          fill: lighten($body-bg, 50%);
           font-weight: normal;
           letter-spacing: 1px;
           stroke-width: .25;
