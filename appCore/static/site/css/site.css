@@ -10054,10 +10054,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px; }
 
 .page .page-inner .entry-body a {
-  padding-bottom: 4px;
-  border-bottom: 1px solid #f0d700; }
+  padding-bottom: 1px;
+  border-bottom: 1px solid #8787ff; }
   .page .page-inner .entry-body a:hover {
-    border-bottom-color: #ffe929; }
+    border-bottom-color: #c7ff15; }
 
 .media.topic .media-body {
   padding-top: 10px; }

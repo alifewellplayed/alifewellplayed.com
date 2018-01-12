@@ -19,11 +19,14 @@ from replica import settings as replicaSettings
 from replica.uploads import *
 from replica.managers import TopicManager, EntryManager, MediaManager, CodeManager
 from replica.pulse.utils import create_thumbnail
+from coreExtend.models import Account
 
 def DefaultUser():
-    Account = settings.AUTH_USER_MODEL
     user = Account.objects.first()
-    return user.id
+    if user:
+        return user.id
+    else:
+        return "1"
 
 class Media(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

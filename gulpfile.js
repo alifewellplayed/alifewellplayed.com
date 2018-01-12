@@ -22,7 +22,6 @@ var gulp = require('gulp'),
     gutil = require('gulp-util');
     imagemin = require('gulp-imagemin');
     git = require('gulp-deploy-git');
-    browserSync = require('browser-sync');
     gulpWebpack = require('webpack-stream');
 
 // Cleans the web dist folder

@@ -8,9 +8,9 @@
                 letter-spacing: 1px;
             }
             a {
-                padding-bottom: 4px;
-                border-bottom: 1px solid $yellow;
-                &:hover {border-bottom-color: $yellow-light;}
+                padding-bottom: 1px;
+                border-bottom: 1px solid $link-color;
+                &:hover {border-bottom-color: $green-light;}
             }
         }
     }
