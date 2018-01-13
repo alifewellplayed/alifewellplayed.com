@@ -39,7 +39,8 @@ class ArchiveView(TemplateView):
 
 #@cache_page(60 * 15)
 def EntryDetail(request, year, month, slug):
-    entry = get_object_or_404(Entry, pub_date__year=year, pub_date__month=month, slug=slug,)
+    #entry = get_object_or_404(Entry, pub_date__year=year, pub_date__month=month, slug=slug,).first()
+    entry = Entry.objects.filter(pub_date__year=year, pub_date__month=month, slug=slug).first()
     variables = {'object': entry, 'detailed': True,}
     if request.user.is_staff or entry.is_published:
         if entry.template:

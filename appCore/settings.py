@@ -17,7 +17,7 @@ sys.path.append(os.path.join(BASE_DIR, 'appCore/apps'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/util'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/vendor'))
 
-DEBUG = False
+DEBUG = True
 ENABLE_CACHE = False
 ENABLE_S3 = True
 

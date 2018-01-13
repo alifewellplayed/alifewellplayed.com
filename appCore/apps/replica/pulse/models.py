@@ -18,7 +18,7 @@ from django.contrib.sites.models import Site
 from replica import settings as replicaSettings
 from replica.uploads import *
 from replica.managers import TopicManager, EntryManager, MediaManager, CodeManager
-from replica.pulse.utils import create_thumbnail
+from replica.pulse.utils import create_thumbnail, unique_slugify
 from coreExtend.models import Account
 
 def DefaultUser():
@@ -257,7 +257,7 @@ class Entry(models.Model):
             self.body_html = self.body
             self.deck_html = self.deck
         if self.title:
-            self.slug = slugify(self.title)
+            unique_slugify(self, self.title)
         else:
             self.slug = self.id
         super(Entry, self).save(*args, **kwargs)
