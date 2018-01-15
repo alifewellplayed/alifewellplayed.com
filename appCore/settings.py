@@ -114,7 +114,7 @@ else:
 #Site Settings
 SITE_NAME = os.environ.get('SITE_NAME', 'A Life Well Played')
 SITE_DESC =  os.environ.get('SITE_DESC', 'Just a copy of another content publishing platform.')
-SITE_URL =  os.environ.get('SITE_URL', 'http://localhost')
+SITE_URL =  os.environ.get('SITE_URL', '/')
 SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')
 
 #Amazon S3
