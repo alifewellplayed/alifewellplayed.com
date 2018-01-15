@@ -13,7 +13,7 @@
             <h5 class="mt-0 mb-1">
                 <a href="{{obj.url}}"><span>{{obj.title}}</span></a>
                 <small class="datetime pl-2">{{ obj.pub_date|naturaltime }}</small>
-                <span class="linked-list-permalink pl-2"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
+                <span class="linked-list-permalink pl-2 sr-only"><a href="{{ obj.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span>
             </h5>
             {{obj.deck_html|safe}}
         </div>
