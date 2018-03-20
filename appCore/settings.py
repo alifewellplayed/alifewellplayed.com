@@ -17,7 +17,7 @@ sys.path.append(os.path.join(BASE_DIR, 'appCore/apps'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/util'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/vendor'))
 
-DEBUG = True
+DEBUG = False
 ENABLE_CACHE = False
 ENABLE_S3 = True
 
@@ -26,7 +26,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 	'alifewellplayed.com', 'www.alifewellplayed.com',
 	'alifewellplayed.herokuapp.com',
-    '05yn89bs8h.execute-api.us-east-1.amazonaws.com',
+    '8po2lakic6.execute-api.us-east-1.amazonaws.com',
 ]
 
 ADMINS = (('Tyler Rilling', 'tyler@alifewellplayed.com'))
