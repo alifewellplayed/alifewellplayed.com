@@ -4,7 +4,8 @@ from django.conf import settings
 from django.shortcuts import render_to_response, render, get_object_or_404, redirect
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Media, Channel, Topic, Draft, MenuPosition, MenuItem, SiteSettings
+from replica.cms.models import MenuPosition, MenuItem, SiteSettings
+from replica.pulse.models import Entry, Media, Channel, Topic, Draft
 
 def currentSite(request):
     current_site_id = settings.SITE_ID

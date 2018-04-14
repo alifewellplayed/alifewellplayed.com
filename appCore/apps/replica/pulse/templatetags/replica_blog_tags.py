@@ -3,7 +3,8 @@ from django.shortcuts import render_to_response, render, get_object_or_404, redi
 from django import template
 
 from coreExtend.models import Account
-from replica.pulse.models import Entry, Media, Channel, Topic, Draft, MenuPosition, MenuItem
+from replica.cms.models import MenuPosition, MenuItem
+from replica.pulse.models import Entry, Media, Channel, Topic, Draft
 
 register = template.Library()
 

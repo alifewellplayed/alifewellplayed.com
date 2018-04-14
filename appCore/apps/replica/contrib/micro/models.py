@@ -8,11 +8,14 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from coreExtend.models import Account
 
 def DefaultUser():
-    Account = settings.AUTH_USER_MODEL
     user = Account.objects.first()
-    return user.id
+    if user:
+        return user.id
+    else:
+        return "1"
 
 class NoteManager(models.Manager):
 

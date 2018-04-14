@@ -22,4 +22,4 @@
 
 __version__ = '2.0.0'
 
-default_app_config = 'replica.contrib.micro.apps.ReplicaConfig'
+default_app_config = 'replica.apps.MicroConfig'

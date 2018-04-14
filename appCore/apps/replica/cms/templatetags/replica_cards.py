@@ -4,7 +4,8 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django import template
 
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, CodeBlock
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, CodeBlock
+from replica.cms.models import MenuPosition
 from replica.contrib.zine.models import Promoted, Collection
 from replica.contrib.micro.models import Timeline, Note
 

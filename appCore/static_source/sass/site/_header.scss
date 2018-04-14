@@ -26,17 +26,17 @@ $header-background: #050505;
             stroke-dashoffset: 0;
             stroke: $link-color;
             &:nth-child(5n+1) {
-               stroke: lighten($body-bg, 25%);
+               stroke: $body-bg;
                stroke-dashoffset: 30;
             }
             &:nth-child(5n+2) {
-               stroke: lighten($body-bg, 25%);
+               stroke: $body-bg;
                stroke-dashoffset: -20;
             }
         }
         .text-sm {
           font-size: 13px;
-          fill: lighten($body-bg, 50%);
+          fill: $text-color;
           font-weight: normal;
           letter-spacing: 1px;
           stroke-width: .25;
@@ -51,7 +51,7 @@ $header-background: #050505;
 .square {
   width: 1px;
   height: 1px;
-  background-color: $brand-secondary;
+  background-color: $secondary;
 }
 
 .LogoShape{

@@ -30,9 +30,6 @@
         .navbar-nav .nav-link {
             padding-right: 1rem;
             padding-left: 1rem;
-            &:focus {
-              background-color: $blue;
-            }
         }
         .site-brand {
           .nav-link { padding-left: 0; }

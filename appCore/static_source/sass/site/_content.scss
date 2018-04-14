@@ -37,7 +37,7 @@ a:hover { text-shadow: 0 0 4px $link-hover-color; }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
-    color: $white;
+    color: $primary;
 }
 
 .layout-single-column {
@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 75%;
-        color: lighten($body-bg, 25%);
+        color: darken($body-bg, 33%);
     }
 }
 

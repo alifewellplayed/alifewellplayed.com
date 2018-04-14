@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.conf import settings
-from replica.pulse.models import Entry, Draft, Media, Topic, Channel, MenuPosition, MenuItem, EntryLink, SiteSettings
+from replica.pulse.models import Entry, Draft, Media, Topic, Channel, EntryLink
+from replica.cms.models import MenuPosition, MenuItem, SiteSettings
 from coreExtend.models import Account as User
 
 class MediaSerializer(serializers.ModelSerializer):

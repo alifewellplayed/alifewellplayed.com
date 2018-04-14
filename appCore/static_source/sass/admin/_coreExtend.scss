@@ -5,16 +5,8 @@
 }
 
 .coreExtend-Wrap {
-    margin: 0 auto;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-    .form-signin { padding-top: 10px; }
-    .heading { letter-spacing: 3px; }
+  .form-signin { padding-top: 10px; }
+  .heading { letter-spacing: 3px; }
 }
 
 .sm-container {

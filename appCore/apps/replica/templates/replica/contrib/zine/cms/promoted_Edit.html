@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'ReplicaAdmin:PromotedEdit' obj.id %}{% else %}{% url 'ReplicaAdmin:PromotedNew' %}{% endif %}">
+    <form method="post" enctype="multipart/form-data" action="{% if edit %}{% url 'replica.cms:replica.zine:PromotedEdit' obj.id %}{% else %}{% url 'replica.cms:replica.zine:PromotedNew' %}{% endif %}">
       {% csrf_token %}
     <div class="card replica-card replica-card-settings mb-1">
       <div class="card-body">

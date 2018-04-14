@@ -8,7 +8,8 @@ from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings
-from replica.pulse.models import Entry, Draft, Media, Topic, Channel, MenuPosition, MenuItem, EntryLink, SiteSettings
+from replica.pulse.models import Entry, Draft, Media, Topic, Channel, EntryLink 
+from replica.cms.models import MenuPosition, MenuItem, SiteSettings
 from replica.cms.forms import SiteModelForm, MenuPositionModelForm, MenuItemModelForm
 
 #Replica Editor homepage
@@ -17,9 +18,9 @@ def Index(request):
 	variables = {'is_home':True, 'is_list':False,}
 	return render(request, template, variables)
 
-#Replica Editor homepage
-def ModulesList(request):
-	template = 'replica/cms/site_Modules.html'
+#List of Site Plugins
+def PluginList(request):
+	template = 'replica/cms/site_PluginList.html'
 	variables = {'is_home':False, 'is_list':False,}
 	return render(request, template, variables)
 

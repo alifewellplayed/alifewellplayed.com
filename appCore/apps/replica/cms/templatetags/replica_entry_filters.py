@@ -3,7 +3,8 @@ from django.contrib.sites.models import Site
 from django.shortcuts import redirect, render, get_object_or_404
 from django import template
 
-from replica.pulse.models import Entry, Draft, Topic, Media, Channel, MenuPosition, CodeBlock
+from replica.cms.models import MenuPosition
+from replica.pulse.models import Entry, Draft, Topic, Media, Channel, CodeBlock
 
 register = template.Library()
 

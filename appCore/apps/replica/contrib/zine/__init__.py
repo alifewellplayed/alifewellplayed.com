@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 #
-# Copyright (c) 2017 Tyler Rilling and contributors
+# Copyright (c) 2018 Tyler Rilling and contributors
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,4 +22,4 @@
 
 __version__ = '2.0.0'
 
-default_app_config = 'replica.contrib.zine.app.ReplicaConfig'
+default_app_config = 'replica.apps.ZineConfig'

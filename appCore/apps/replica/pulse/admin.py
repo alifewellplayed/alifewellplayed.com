@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from django.contrib import admin
 from django.db import models
 
-from .forms import AdminEntryForm, AdminSiteSettingsForm
+from .forms import AdminEntryForm
 from .models import *
 
 def force_save(modeladmin, request, queryset):
@@ -47,27 +47,13 @@ class DraftAdmin(admin.ModelAdmin):
     list_display = ('entry', 'title', 'date_updated',)
     list_filter = ('user',)
 
-class SiteSettingsAdmin(admin.ModelAdmin):
-    form = AdminSiteSettingsForm
-    list_display = ('name', 'domain', 'id')
-
 class EntryLinkAdmin(admin.ModelAdmin):
     list_display = ('url', 'user', 'entry')
 
-class MenuPositionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'date_updated')
-
-class MenuItemAdmin(admin.ModelAdmin):
-    list_display = ('title', 'menu_url', 'position', 'weight')
-    list_filter = ('position',)
-
 admin.site.register(EntryLink, EntryLinkAdmin)
 admin.site.register(CodeBlock, CodeBlockAdmin)
-admin.site.register(MenuPosition, MenuPositionAdmin)
-admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(Media, MediaAdmin)
 admin.site.register(Channel, ChannelAdmin)
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(Draft, DraftAdmin)
-admin.site.register(SiteSettings, SiteSettingsAdmin)

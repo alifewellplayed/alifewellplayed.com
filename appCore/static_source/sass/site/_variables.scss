@@ -12,14 +12,15 @@ $purple:           #763096;
 $purple-light:     #a41be3;
 $white: #fff;
 
-$brand-primary: #8787ff;
-$brand-secondary: $green;
+$primary: #ff0099;
+$secondary: $green;
 
-$body-bg:          #181820;
-$body-color:       lighten(#6f6f7e, 10%);
-$text-color:       lighten(#6f6f7e, 10%);
-$link-color:       #8787ff !default;
-$link-hover-color:      $white !default;
+$body-bg:          #f2f2f2;
+$body-color:       #181820;
+$text-color:       #181820;
+$link-color:       #181820 !default;
+$text-shadow: #fff;
+$link-hover-color:      $purple-light !default;
 $link-hover-decoration: underline !default;
 $grid-gutter-width: 0;
 

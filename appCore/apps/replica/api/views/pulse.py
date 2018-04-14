@@ -12,7 +12,8 @@ from django.urls import reverse
 from django.conf import settings
 
 from coreExtend.models import Account as User
-from replica.pulse.models import Entry, Draft, Media, Topic, Channel, MenuPosition, MenuItem, EntryLink, SiteSettings
+from replica.pulse.models import Entry, Draft, Media, Topic, Channel, EntryLink
+from replica.cms.models import MenuPosition, MenuItem, SiteSettings
 from replica.contrib.micro.models import Timeline, Note
 from replica.api.serializers import *
 from replica.api.permissions import IsOwner, IsOwnerOrReadOnly

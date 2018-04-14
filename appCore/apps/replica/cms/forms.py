@@ -12,6 +12,7 @@ from replica.pulse.models import *
 from replica.cms.models import *
 from replica.widgets import CustomSplitDateTimeWidget
 
+
 class EntryModelForm(forms.ModelForm):
     pub_date = forms.SplitDateTimeField(
         input_time_formats=['%I:%M%p'],
@@ -125,3 +126,10 @@ class PluginModelForm(forms.ModelForm):
             'is_enabled': forms.RadioSelect(attrs={'class':'form-check-input'}),
             'slug': forms.TextInput(attrs={'class':'form-control replica-form-control', 'placeholder':'Slug', 'value':''}),
         }
+
+class AdminSiteSettingsForm(forms.ModelForm):
+    summary = forms.CharField(widget=AdminPagedownWidget())
+
+    class Meta:
+        model = SiteSettings
+        fields = ['name', 'domain', 'author', 'description', 'logo', 'summary', 'is_enabled', 'password', 'secret_token', 'view_settings', ]

@@ -17,6 +17,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.files.base import ContentFile
 from django.template.defaultfilters import slugify
 
+from coreExtend.models import Account
+
 def create_thumbnail(name, image, content_type, thumb_size_x=250, thumb_size_y=2500):
     THUMBNAIL_SIZE = (thumb_size_x, thumb_size_y)
     if content_type == 'image/jpeg':
@@ -167,3 +169,11 @@ def _slug_strip(value, separator='-'):
             re_sep = re.escape(separator)
         value = re.sub(r'^%s+|%s+$' % (re_sep, re_sep), '', value)
     return value
+
+
+def DefaultUser():
+    user = Account.objects.first()
+    if user:
+        return user.id
+    else:
+        return "1"

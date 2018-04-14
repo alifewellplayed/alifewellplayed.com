@@ -6,7 +6,7 @@
 {% block content %}
 {% if form.errors %}
 <div class="alert alert-danger">
-    <p>Please fix the errors below before you can continue.</p>
+    <p class="my-0">Please fix the errors below before you can continue.</p>
 </div>
 {% endif %}
 
@@ -15,7 +15,6 @@
 {% else %}
 <h2 class="heading">Login</h2>
 <form class="form-signin" method="post" action="{% url 'CoreExtend:login' %}">{% csrf_token %}
-
     <div class="form-group {% if form.username.errors %}has-error{% endif %}">
         <label for="id_username" class="sr-only">{% trans 'Username' %}</label>
         <input id="id_username" class="form-control" placeholder="Username" type="text" name="username" maxlength="255" />
@@ -36,7 +35,7 @@
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p><a href="{% url 'CoreExtend:password_reset' %}">Forgot your password?</a></p>
+<p class="mt-3"><a href="{% url 'CoreExtend:password_reset' %}">Forgot your password?</a></p>
 {% if site_register %}<p><a href="{% url 'CoreExtend:register' %}">Need an account</a>?</p>{% endif %}
 {% endif %}
 {% endblock %}
