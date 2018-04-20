@@ -30,7 +30,7 @@
         &:before {
           content: ' ';
           display: block;
-          background-color: $purple;
+          background-color: $primary;
           height: 1px;
           width: 100%;
           position: absolute;
@@ -39,7 +39,7 @@
         }
         &:hover {
           &:before {
-            background-color: $purple-light;
+            background-color: $primary;
           }
         }
       }
@@ -87,13 +87,13 @@
   .entry-footer {
     .entry-topics {
       position: relative;
-      //border-top: 1px solid darken($text-color, 40%);
+      //border-top: 1px solid darken($body-color, 40%);
       padding-top: 5px;
-      color: darken($text-color, 20%);
+      color: darken($body-color, 20%);
       font-size: 90%;
       text-transform: uppercase;
-      a {color: darken($text-color, 5%);}
-      a:hover {color: darken($text-color, 20%); text-shadow: none;}
+      a {color: darken($body-color, 5%);}
+      a:hover {color: darken($body-color, 20%); text-shadow: none;}
       &:before {
         content: ' ';
         display: block;
@@ -178,7 +178,7 @@
       background-position: -2px 0;
       background: url(../svg/bg_tile_x.svg) top left repeat;
       background-size: 20px;
-      opacity: .25;
+      //opacity: .25;
       margin: 40px 0 80px;
     }
   }

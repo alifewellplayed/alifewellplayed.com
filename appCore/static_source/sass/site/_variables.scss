@@ -12,15 +12,14 @@ $purple:           #763096;
 $purple-light:     #a41be3;
 $white: #fff;
 
-$primary: #ff0099;
-$secondary: $green;
+$primary: #1fd9b7;
+$secondary: #ff0099;
 
-$body-bg:          #f2f2f2;
+$body-bg:          #f7f7f7;
 $body-color:       #181820;
-$text-color:       #181820;
 $link-color:       #181820 !default;
 $text-shadow: #fff;
-$link-hover-color:      $purple-light !default;
+$link-hover-color:      $primary !default;
 $link-hover-decoration: underline !default;
 $grid-gutter-width: 0;
 

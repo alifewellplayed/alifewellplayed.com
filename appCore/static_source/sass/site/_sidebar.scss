@@ -65,7 +65,7 @@ $r-featured-background: darken($body-bg, 5%);
           position: relative;
           opacity: .95;
           transition: text-shadow .3s, color .3s;
-          &:hover { color: $text-color; opacity: 1;}
+          &:hover { color: $body-color; opacity: 1;}
         }
       }
     }

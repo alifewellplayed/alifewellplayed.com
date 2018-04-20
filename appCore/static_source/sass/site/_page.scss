@@ -1,17 +1,17 @@
 .page {
-    .page-inner {
-        .entry-head {}
-        .entry-body {
-            p {
-                font-size: 1rem;
-                font-weight: 300;
-                letter-spacing: 1px;
-            }
-            a {
-                padding-bottom: 1px;
-                border-bottom: 1px solid $link-color;
-                &:hover {border-bottom-color: $green-light;}
-            }
-        }
+  .page-inner {
+    .entry-head {}
+    .entry-body {
+      p {
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+      a {
+        padding-bottom: 1px;
+        border-bottom: 1px solid $link-color;
+        &:hover {border-bottom-color: $primary;}
+      }
     }
+  }
 }

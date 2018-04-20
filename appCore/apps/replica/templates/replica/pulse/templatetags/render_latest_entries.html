@@ -6,7 +6,7 @@
 	<p class="{{ object.post_type.slug }} archived">
     <h3 class="mb-2">
       <a href="{{ object.get_absolute_url }}">{{ object.title|safe }}</a>
-  		<small class="pl-2">{{ object.pub_date|date:"F jS, Y" }}</small>
+  		<small class="d-block">{{ object.pub_date|date:"F jS, Y" }}</small>
     </h3>
 	</p>
 {% endfor %}
