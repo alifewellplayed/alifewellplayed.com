@@ -17,11 +17,7 @@ from django.contrib.sites.models import Site
 from replica import settings as replicaSettings
 from replica.managers import TopicManager, EntryManager, MediaManager
 from replica.pulse.models import Entry, Media
-
-def DefaultUser():
-    Account = settings.AUTH_USER_MODEL
-    user = Account.objects.first()
-    return user.id
+from replica.pulse.utils import DefaultUser
 
 class Promoted(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -32,7 +28,7 @@ class Promoted(models.Model):
     deck = models.TextField(max_length=1020, blank=True)
     deck_html = models.TextField(blank=True, editable=False)
     pub_date = models.DateTimeField(verbose_name=_("Publication date"), default=datetime.datetime.now, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='promoted_entries', on_delete=models.SET_DEFAULT, default=DefaultUser)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='promoted_entries', on_delete=models.SET_NULL, blank=True, null=True, default=DefaultUser)
     image = models.ForeignKey(Media, blank=True, null=True, on_delete=models.SET_NULL)
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
 

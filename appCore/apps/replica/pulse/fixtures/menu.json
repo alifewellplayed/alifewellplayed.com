@@ -1,6 +1,6 @@
 [
 {
-  "model": "pulse.menuposition",
+  "model": "cms.menuposition",
   "pk": "9f82fa87-f788-4515-8e92-55446b0741ac",
   "fields": {
     "title": "Primary Menu",
@@ -10,7 +10,7 @@
   }
 },
 {
-  "model": "pulse.menuposition",
+  "model": "cms.menuposition",
   "pk": "de1376db-559c-4b03-8756-2ff5960f27ce",
   "fields": {
     "title": "Footer Menu",

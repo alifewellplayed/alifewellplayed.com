@@ -6,14 +6,14 @@
 {% block content %}
 {% if form.errors %}
 <div class="alert alert-danger">
-    <p class="my-0">Please fix the errors below before you can continue.</p>
+    <p class="my-0">Login Error.</p>
 </div>
 {% endif %}
 
 {% if user.is_authenticated %}
 <p class="logged-in">Already Logged in. <a href="{% url 'CoreExtend:Logout' %}">Logout?</a></p>
 {% else %}
-<h2 class="heading">Login</h2>
+<h2 class="mb-2">Login</h2>
 <form class="form-signin" method="post" action="{% url 'CoreExtend:login' %}">{% csrf_token %}
     <div class="form-group {% if form.username.errors %}has-error{% endif %}">
         <label for="id_username" class="sr-only">{% trans 'Username' %}</label>

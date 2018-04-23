@@ -1,0 +1,36 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Site Plugins{% endblock %}
+{% load replica_cards %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-12">
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">
+        <h4 class="card-title">Plugins</small></h4>
+      </div>
+    </div>
+
+    <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
+      <ul class="list-group list-group-flush">
+        {% for object in object_list %}
+        <li class="list-group-item" id="{{ object.slug }}">
+          <h6 class="entry-title">
+            <a href="{% url 'ReplicaAdmin:EntryEdit' object.id %}">{{ object.title }}</a>
+              {% if object.is_published %}
+              <span class="badge badge-success">Published</span>
+              {% else %}
+              <span class="badge badge-warning">Draft</span>
+              {% endif %}
+          </h6>
+          <small class="text-muted">({{ object.body_html|wordcount}} words)</small>
+        </li>
+        {% empty %}
+        <li class="list-group-item">{{object_empty}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

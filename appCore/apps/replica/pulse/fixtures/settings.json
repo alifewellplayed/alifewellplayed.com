@@ -7,7 +7,7 @@
     }
   },
   {
-    "model": "pulse.sitesettings",
+    "model": "cms.sitesettings",
     "pk": 1,
     "fields": {
       "is_enabled": true,

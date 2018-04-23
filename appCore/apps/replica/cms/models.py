@@ -111,7 +111,9 @@ class SiteSettings(Site):
 
 class Plugin(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=510, blank=True)
     slug = models.SlugField(max_length=replicaSettings.MAX_LENGTH)
+    author = models.CharField(max_length=510, blank=True)
     is_enabled = models.BooleanField(help_text=_("Check to enable plugin"), choices=replicaSettings.IS_SITE_CHOICES, default=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -120,4 +122,4 @@ class Plugin(models.Model):
         db_table = 'r_Plugin'
         verbose_name = "Plugin"
         verbose_name_plural = 'Plugins'
-        ordering = ('slug',)
+        ordering = ('slug', 'date_updated',)

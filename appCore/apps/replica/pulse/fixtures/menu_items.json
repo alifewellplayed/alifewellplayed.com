@@ -1,6 +1,6 @@
 [
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "17302d8c-02df-4108-af86-ce258ab1f489",
   "fields": {
     "icon": "",
@@ -16,7 +16,7 @@
   }
 },
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "1b7e3727-2807-4de0-bf8d-b856cfd924e2",
   "fields": {
     "icon": "",
@@ -32,7 +32,7 @@
   }
 },
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "400b2597-d22a-4f95-8787-f8c190b22337",
   "fields": {
     "icon": "",
@@ -48,7 +48,7 @@
   }
 },
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "a5732fcd-14c7-495c-bdb9-cc222616e745",
   "fields": {
     "icon": "",
@@ -64,7 +64,7 @@
   }
 },
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "c11117ec-e957-49df-9628-38f49ae95874",
   "fields": {
     "icon": "",
@@ -80,7 +80,7 @@
   }
 },
 {
-  "model": "pulse.menuitem",
+  "model": "cms.menuitem",
   "pk": "ede0fda3-2d58-48cd-8c17-2faa86250b4a",
   "fields": {
     "icon": "",

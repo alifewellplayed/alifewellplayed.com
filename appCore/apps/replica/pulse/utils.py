@@ -172,8 +172,4 @@ def _slug_strip(value, separator='-'):
 
 
 def DefaultUser():
-    user = Account.objects.first()
-    if user:
-        return user.id
-    else:
-        return "1"
+    return uuid.uuid4

@@ -11,3 +11,10 @@
   font-size: 0.5rem;
   line-height: 1.5;
 }
+
+.form-control {
+  letter-spacing: 1px;
+  &:focus {
+    box-shadow: none;
+  }
+}

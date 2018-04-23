@@ -2,16 +2,14 @@
 # The humans responsible & technology colophon
 
 # TEAM
-
-    Tyler Rilling -- @underlost
+  Tyler Rilling -- @underlost
 
 # TECHNOLOGY COLOPHON
-
-	Django
-    Gunicorn
-    Python 3.6
-    HTML5, CSS3 (SCSS)
-    jQuery
-    Pace
-    Bootstrap 4.1
-    Replica CMS
+  Django
+  Gunicorn
+  Python 3.6
+  HTML5, CSS3 (SCSS)
+  jQuery
+  Pace
+  Bootstrap 4.1
+  Replica CMS
