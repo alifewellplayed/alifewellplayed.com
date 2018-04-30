@@ -1,13 +1,16 @@
 import os
 import sys
 from pathlib import Path
+import json
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
-# Heroku Specific
-# Load in .env file if not in heroku
-heroku_env = os.environ.get('USE_HEROKU', 'false')
-if not heroku_env == 'true':
-    from dotenv import load_dotenv, find_dotenv
-    load_dotenv(find_dotenv())
+if 'SERVERTYPE' in os.environ and os.environ['SERVERTYPE'] == 'AWS Lambda':
+    DEBUG = False
+    ENABLE_S3 = True
+else:
+    DEBUG = True
+    ENABLE_S3 = False
 
 from django.contrib.messages import constants as messages
 
@@ -17,23 +20,20 @@ sys.path.append(os.path.join(BASE_DIR, 'appCore/apps'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/util'))
 sys.path.append(os.path.join(BASE_DIR, 'appCore/vendor'))
 
-DEBUG = True
 ENABLE_CACHE = False
-ENABLE_S3 = False
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
 	'alifewellplayed.com', 'www.alifewellplayed.com',
-	'alifewellplayed.herokuapp.com',
-    '8po2lakic6.execute-api.us-east-1.amazonaws.com',
+	'alifewellplayed.herokuapp.com', #Heroku
+    '8po2lakic6.execute-api.us-east-1.amazonaws.com', #AWS
 ]
 
 ADMINS = (('Tyler Rilling', 'tyler@alifewellplayed.com'))
 MANAGERS = ADMINS
 
 # Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -44,11 +44,9 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT', ''),
     }
 }
-#DB info injected by Heroku
-if heroku_env:
-    import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 #Cache
 if ENABLE_CACHE:
@@ -100,10 +98,11 @@ ALLOW_NEW_REGISTRATIONS = False
 WSGI_APPLICATION = 'appCore.wsgi.application'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'appCore/static'), )
 
 if ENABLE_S3:
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATIC_URL = os.environ.get('LIVE_STATIC_URL', 'https://static.example.com/')
     MEDIA_URL = os.environ.get('LIVE_MEDIA_URL', 'https://static.example.com/media/')
 else:
@@ -118,15 +117,15 @@ SITE_URL =  os.environ.get('SITE_URL', '/')
 SITE_AUTHOR = os.environ.get('SITE_AUTHOR', 'Tyler Rilling')
 
 #Amazon S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '123')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '123')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME', 'static.example.com')
 AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_BUCKET_DOMAIN', 'static.example.com')
 AWS_S3_SECURE_URLS = False
 
-from boto.s3.connection import OrdinaryCallingFormat
-AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+#from boto.s3.connection import OrdinaryCallingFormat
+#AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
 REST_FRAMEWORK = {
     'PAGINATE_BY': 25, # Default to 25
@@ -174,6 +173,7 @@ TEMPLATES = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

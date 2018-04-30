@@ -10518,7 +10518,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   top: 20px;
   background-position: -2px 0;
-  background: url(../svg/bg_tile_x.svg) top left repeat;
+  background: url("../svg/bg_tile_x.svg") top left repeat;
   background-size: 20px;
   margin: 40px 0 80px; }
 
