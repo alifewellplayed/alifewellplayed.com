@@ -15,18 +15,12 @@ class TimelineModelForm(forms.ModelForm):
 		}
 
 class NoteModelForm(forms.ModelForm):
-	pub_date = forms.SplitDateTimeField(
-        input_time_formats=['%I:%M%p'],
-        widget=CustomSplitDateTimeWidget(
-            date_attrs={'placeholder': 'Event Date', 'class': 'form-control datepicker' },
-            time_attrs={'placeholder': 'Event Time', 'class': 'form-control timepicker' }
-        )
-    )
-	class Meta:
-		model = Note
-		exclude = ('date_created', 'date_updated', 'user', 'body_html', 'id')
-		widgets = {
-			'body': forms.Textarea(attrs={'class':'form-control autosize', 'rows':'2', 'placeholder':'Start typing something...'}),
-			'is_private': forms.CheckboxInput(attrs={'class':'form-check-input'}),
-			'timeline': forms.Select(attrs={'class':'form-control',}),
-		}
+    class Meta:
+        model = Note
+        fields = ('timeline', 'body', 'is_private' )
+        exclude = ('date_created', 'date_updated', 'user', 'body_html', 'id' 'pub_date')
+        widgets = {
+            'timeline': forms.Select(attrs={'class':'form-control form-control-sm'}),
+            'body': forms.Textarea(attrs={'class':'form-control autosize', 'rows':'2', 'placeholder':'Start typing something...'}),
+            'is_private': forms.CheckboxInput(attrs={'class':'list-unstyled'}),
+        }

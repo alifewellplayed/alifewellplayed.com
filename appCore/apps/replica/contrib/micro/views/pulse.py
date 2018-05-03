@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic.list import ListView
+from django.views.generic import CreateView
 
 from replica import settings as replicaSettings
 from replica.contrib.micro.models import Timeline, Note
@@ -61,5 +62,40 @@ class LatestNoteListView(ListView):
 def SingleNote(request, note_id):
     #Shows a single note.
     note = get_object_or_404(Note, pk=note_id)
-    ctx = {'note': note}
-    return render(request, 'replica/contrib/micro/note.html', ctx)
+    ctx = {'object': note}
+    template_name = 'themes/{0}/contrib/micro/note.html'.format(THEME)
+    return render(request, template_name, ctx)
+
+
+def NoteCreate(request, timeline_slug):
+    timeline = get_object_or_404(Timeline, slug=timeline_slug)
+    if request.user.is_staff:
+        notes = Note.objects.filter(timeline=timeline)
+    else:
+        notes = Note.objects.filter(timeline=timeline, is_private=False)
+    if timeline.rev_order == True:
+        notes = notes.order_by('-date_updated')
+    else:
+        notes = notes.order_by('date_updated')
+
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = NoteModelForm(request.POST)
+            if form.is_valid():
+                note = form.save(commit=False)
+                note.user = request.user
+                note.is_private=False
+                note.timeline=timeline
+                note = form.save()
+                messages.add_message(request, messages.INFO, u'New note published'.format())
+                return redirect('replica.micro:Timeline', timeline_slug=timeline.slug)
+            else:
+                form = NoteModelForm()
+                messages.add_message(request, messages.INFO, u'Unable to publish note.')
+        else:
+            form = NoteModelForm()
+    else:
+        form = NoteModelForm()
+    ctx = {'timeline': timeline, 'object_list':notes, 'form': form}
+    template_name = 'themes/{0}/contrib/micro/noteUpdate.html'.format(THEME)
+    return render(request, template_name, ctx)

@@ -1,0 +1,7 @@
+<div class="note" id="note-{{ object.id }}">
+  <div class="note-body">{{ object.body_html|safe }}</div>
+  <a href="{% url 'replica.micro:Note' object.pk %}" class="date datetime">
+    <i class="fa fa-clock-o"></i>
+    <time datetime="{{ object.pub_date|date:"g:i:s A" }}">{{ object.pub_date|date:"g:i:s A" }}</time>
+  </a>
+</div>

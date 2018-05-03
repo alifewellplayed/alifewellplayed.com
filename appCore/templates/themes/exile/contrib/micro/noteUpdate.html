@@ -1,0 +1,26 @@
+{% extends 'themes/exile/base.html' %}{% load humanize %}{% load micro_tags %}
+
+{% block title %}Notes | {% endblock %}
+{% block page %}page replicaMicro{% endblock %}
+
+{% block content %}{% load humanize %}{% load micro_tags %}
+<div class="layout-single-column">
+  {% if user.is_authenticated %}
+  <form action="{% url 'replica.micro:Timeline' timeline.slug %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      {{form.body}}
+    </div>
+    <input class="btn btn-primary px-5" type="submit" value="Post" />
+    <hr />
+  </form>
+  {% endif %}
+  <h2 class="heading">{{ timeline.name }}</h2>
+
+  {% for object in object_list %}
+  {% ifchanged object.pub_date.day %}<p class="datetime last-posted">{% if forloop.first %}Last updated {% endif %}{{ object.pub_date|date:"l, F j, Y" }}.</p><hr />{% endifchanged %}
+  {% include "themes/exile/contrib/micro/_note.html" %}
+  {% endfor %}
+</div>
+
+{% endblock %}

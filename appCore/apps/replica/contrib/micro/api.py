@@ -17,7 +17,7 @@ class NoteList(generics.ListAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             request_user = self.request.user
             notes = Note.objects.filter(
                 Q(is_private=False) |
@@ -33,7 +33,7 @@ class TimelineList(generics.ListAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             request_user = self.request.user
             timelines = Timeline.objects.filter(
                 Q(is_public=True) |
@@ -75,7 +75,7 @@ class TimelineNoteList(generics.ListAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
 
     def get_queryset(self):
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             request_user = self.request.user
             notes = Note.objects.filter(
                 Q(is_private=False) |

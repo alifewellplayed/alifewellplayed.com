@@ -39,7 +39,10 @@
       font-weight: 100;
       p:last-child {margin-bottom: 0;}
     }
-    .manage-notes a {}
+    a.datetime:hover {
+      text-shadow: none;
+      color: $link-color;
+    }
   }
   .note + .last-posted {margin-top: $grid-gutter-width;}
 }

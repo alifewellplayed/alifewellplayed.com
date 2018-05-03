@@ -10858,6 +10858,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100; }
     .replicaMicro .note .note-body p:last-child {
       margin-bottom: 0; }
+  .replicaMicro .note a.datetime:hover {
+    text-shadow: none;
+    color: #181820; }
 
 .replicaMicro .note + .last-posted {
   margin-top: 0; }
