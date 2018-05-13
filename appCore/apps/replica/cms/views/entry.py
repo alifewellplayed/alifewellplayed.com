@@ -9,7 +9,7 @@ from django.contrib import messages
 
 from coreExtend.models import Account
 from replica import settings as ReplicaSettings
-from replica.pulse.models import Entry, Draft, EntryLink, CodeBlock
+from replica.pulse.models import Entry, Draft, EntryLink, CodeBlock, Channel, Topic
 from replica.pulse.mixins import PulseViewMixin
 from replica.cms.forms import EntryModelForm
 
@@ -53,13 +53,42 @@ def EntryEditor(request, entryID=None):
 
 #Get list of all entries
 class EntryList(ListView):
+    model = Entry
     paginate_by = ReplicaSettings.PAGINATE
     template_name = 'replica/cms/entry_List.html'
+    topics = Topic.objects.all()
+    channels = Channel.objects.all()
+
     def get_queryset(self):
-        return Entry.objects.posts()
+        entries = Entry.objects.all()
+        if self.request.GET.get('channel', ''):
+            channel = get_object_or_404(Channel, slug=self.request.GET.get('channel', ''))
+            entries = entries.filter(channel=channel)
+            url_suffix = ''
+        elif self.request.GET.get('topic', ''):
+            topic = get_object_or_404(Topic, slug=self.request.GET.get('topic', ''))
+            entries = entries.filter(topic=topic)
+        elif self.request.GET.get('type', '') and self.request.GET.get('topic', ''):
+            channel = get_object_or_404(Channel, slug=self.request.GET.get('channel', ''))
+            topic = get_object_or_404(Topic, slug=self.request.GET.get('topic', ''))
+            entries = entries.filter(channel=channel).filter(topic=topic)
+        else:
+            entries = Entry.objects.posts()
+        return entries
+
     def get_context_data(self, **kwargs):
         context = super(EntryList, self).get_context_data(**kwargs)
-        context.update({'title':'Post Entries', 'is_list':True,})
+        channel = self.request.GET.get('channel')
+        topic = self.request.GET.get('topic')
+
+        context.update({
+            'title':'Posts',
+            'is_list':True,
+            'channel': channel,
+            'channels': self.channels,
+            'topic': topic,
+            'topics': self.topics,
+        })
         return context
 
 #Get list of all pages

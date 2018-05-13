@@ -6,13 +6,9 @@
 {% block content %}
 <div class="row mb-3">
   <div class="col-md-8">
-    <div class="card replica-card replica-card-settings mb-1">
-      <div class="card-header">
-        <div class="float-right">{% render_nav_topic_list %}</div>
-        <div class="float-right">{% render_nav_channel_list %}</div>
-          <h4 class="card-title">{{title}}</h4>
-      </div>
-    </div>
+
+    {% include "replica/cms/components/_entry_filter_bar.html" %}
+
     <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
       <ul class="list-group list-group-flush">
         {% for object in object_list %}

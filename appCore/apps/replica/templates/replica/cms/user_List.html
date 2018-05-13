@@ -1,0 +1,27 @@
+{% extends 'replica/cms/base.html' %}
+{% block title %}Entries{% endblock %}
+{% load replica_cards %}{% load replica_components %}
+{% load replica_entry_filters %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-md-8">
+    <div class="card replica-card replica-card-settings mb-1">
+      <div class="card-header">All users</div>
+    </div>
+
+    <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">
+      <ul class="list-group list-group-flush">
+        {% for object in object_list %}
+        <li class="list-group-item" id="{{ object.user }}">
+          <h6 class="entry-title">
+            <a href="{% url 'ReplicaAdmin:UserEdit' object.username %}">{{ object.username }}</a>
+          </h6>
+          <small class="text-muted">{{object.first_name}} {{object.last_name}}</small>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

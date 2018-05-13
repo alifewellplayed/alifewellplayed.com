@@ -43,9 +43,10 @@ USER_URLS = [
 ]
 
 TEMPLATE_URLS = [
+    url(r'^templates/new/$', login_required(templateView.CodeBlockEdit), name = "TemplateCreate"),
     url(r'^templates/(?P<templateID>[\w-]+)/delete/$', login_required(templateView.CodeBlockDelete), name = "TemplateDelete"),
     url(r'^templates/(?P<templateID>[\w-]+)/$', login_required(templateView.CodeBlockEdit), name = "TemplateEdit"),
-    url(r'^templates/new/$', login_required(templateView.CodeBlockEdit), name = "TemplateCreate"),
+
     url(r'^templates/$', login_required(templateView.CodeBlockList.as_view()), name = "TemplateList"),
 ]
 
@@ -54,13 +55,7 @@ ENTRY_URLS = [
     url(r'^entries/tree/(?P<entryID>[\w-]+)/delete/$', login_required(entryView.EntryDelete), name = "EntryDelete"),
     url(r'^entries/tree/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryDetail.as_view()), name = "EntryDetails"),
     url(r'^entries/pages/$', login_required(entryView.PageList.as_view()), name = "PageList"),
-
-    #url(r'^entries/(?P<channelFilter>[\w-]+)/$', login_required(entryView.PageList.as_view()), name = "EntriesbyTypeList"),
-    #url(r'^entries/(?P<channelFilter>[\w-]+)/topic/(?P<topicFilter>[\w-]+)/$', login_required(entryView.PageList.as_view()), name = "EntryTopicList"),
-    #url(r'^entries/(?P<channelFilter>[\w-]+)/status/(?P<statusFilter>[\w-]+)/$', login_required(entryView.PageList.as_view()), name = "EntryStatusList"),
-
     url(r'^entries/status/(?P<statusFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryStatusList"),
-
     url(r'^entries/topic/(?P<topicFilter>[\w-]+)/$', login_required(entryView.EntryList.as_view()), name = "EntryTopicList"),
     url(r'^entries/edit/(?P<entryID>[\w-]+)/$', login_required(entryView.EntryEditor), name = "EntryEdit"),
     url(r'^entries/edit/$', login_required(entryView.EntryEditor), name = "EntryEditor"),

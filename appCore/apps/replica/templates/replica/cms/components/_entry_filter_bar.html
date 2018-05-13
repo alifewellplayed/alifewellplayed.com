@@ -1,0 +1,31 @@
+
+<div class="card replica-card replica-card-settings mb-1">
+  <div class="card-header">
+    <div class="float-right">
+
+      <div class="dropdown mx-2 d-inline-block">
+        <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" id="dropdownTopicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Topics
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownTopicButton">
+          {% for obj in topics %}
+          <a class="dropdown-item" href="?topic={{obj.slug}}&?channel={{channel}}">{{obj.title}}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="dropdown mx-2 d-inline-block">
+        <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" id="dropdownTopicButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Channels
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownTopicButton">
+          {% for obj in channels %}
+          <a class="dropdown-item" href="?channel={{obj.slug}}&?topic={{topic}}">{{obj.title}}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+      <h4 class="card-title">{{channel}} Entries</h4>
+  </div>
+</div>
