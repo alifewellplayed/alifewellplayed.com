@@ -48,13 +48,13 @@ gulp.task('copy-dist', function() {
 gulp.task('copy-fonts', function() {
   gulp.src('appCore/static_source/fonts/site/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
   .pipe(gulp.dest('dist/site/fonts'));
-  gulp.src('node_modules/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
+  gulp.src('node_modules/components-font-awesome/webfonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
   .pipe(gulp.dest('dist/site/fonts'));
 });
 gulp.task('admin-fonts', function() {
   gulp.src('appCore/static_source/fonts/admin/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
   .pipe(gulp.dest('dist/admin/fonts'));
-  gulp.src('node_modules/components-font-awesome/fonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
+  gulp.src('node_modules/components-font-awesome/webfonts/**/*.{ttf,woff,eof,svg,eot,woff2,otf}')
   .pipe(gulp.dest('dist/admin/fonts'));
 });
 
@@ -71,7 +71,7 @@ gulp.task('admin-imagemin', function() {
 });
 
 // Copy component assets
-gulp.task('copy-assets', function() {
+gulp.task('install', function() {
   gulp.src('node_modules/components-font-awesome/scss/**/*.*')
   .pipe(gulp.dest('appCore/static_source/sass/_shared/font-awesome'));
 
@@ -160,6 +160,7 @@ gulp.task('admin-concat-js', function() {
     'appCore/static_source/js/admin/jquery.appear.js',
     'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js',
     'node_modules/timepicker/jquery.timepicker.js',
+    'appCore/static_source/js/admin/clipboard.js',
     'appCore/static_source/js/admin/site.js',
   ])
   .pipe(sourcemaps.init())

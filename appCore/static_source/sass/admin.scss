@@ -1,8 +1,10 @@
-@import '_shared/fonts/montserrat.scss';
+@import '_shared/fonts/lato.scss';
 @import 'admin/variables';
 
 @import '_shared/animations';
-@import '_shared/font-awesome/font-awesome';
+@import '_shared/font-awesome/fontawesome';
+@import '_shared/font-awesome/fa-solid';
+@import '_shared/font-awesome/fa-brands';
 @import '_shared/bootstrap/bootstrap';
 @import '_shared/codemirror/codemirror';
 @import '_shared/codemirror/spell-checker';
@@ -14,6 +16,7 @@
 @import "admin/timepicker";
 @import "admin/coreExtend";
 @import "admin/replica";
+@import "admin/badge";
 @import "admin/header";
 @import "admin/sidebar";
 @import "admin/pages";

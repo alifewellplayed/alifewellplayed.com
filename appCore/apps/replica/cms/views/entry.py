@@ -22,6 +22,7 @@ def EntryEditor(request, entryID=None):
             f = EntryModelForm(request.POST or None, request.FILES, instance=entry)
             if f.is_valid():
                 f.save()
+                entry.Create_Draft()
                 messages.add_message(request, messages.INFO, 'Entry Saved.')
                 return redirect('ReplicaAdmin:EntryEdit', entryID=entryID)
         else:
@@ -58,7 +59,7 @@ class EntryList(ListView):
         return Entry.objects.posts()
     def get_context_data(self, **kwargs):
         context = super(EntryList, self).get_context_data(**kwargs)
-        context.update({'title':'All Entries', 'is_list':True,})
+        context.update({'title':'Post Entries', 'is_list':True,})
         return context
 
 #Get list of all pages

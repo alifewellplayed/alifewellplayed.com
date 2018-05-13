@@ -35,9 +35,14 @@ def render_entry_months(username):
 	return { 'dates': dates, }
 
 @register.inclusion_tag('replica/cms/templatetags/nav_list_topics.html')
-def render_nav_topic_list(num=9999):
+def render_nav_topic_list(num=9999, channel=None):
     topics = Topic.objects.all().order_by('title')[:num]
     return { 'object_list': topics, }
+
+@register.inclusion_tag('replica/cms/templatetags/nav_list_channels.html')
+def render_nav_channel_list(num=9999, topic=None):
+    channels = Channel.objects.all().order_by('title')[:num]
+    return { 'object_list': channels, }
 
 @register.simple_tag
 def render_counts(obj_type):

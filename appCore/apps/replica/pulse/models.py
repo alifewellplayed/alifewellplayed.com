@@ -240,8 +240,6 @@ class Entry(models.Model):
         return words
 
     def save(self, *args, **kwargs):
-        if self.pk:
-            self.Create_Draft()
         if self.content_format == u'markdown':
             self.deck_html = markdown.markdown(self.deck)
             self.body_html = markdown.markdown(self.body)

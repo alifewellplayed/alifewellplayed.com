@@ -23,7 +23,7 @@ class EntryModelForm(forms.ModelForm):
     )
     class Meta:
         model = Entry
-        exclude = ['id', 'user', 'date_created', 'date_updated', 'deck_html', 'body_html']
+        fields = ['title', 'deck', 'body', 'slug', 'url', 'topic', 'is_active', 'content_format', 'channel', 'featured_image', 'template', 'pub_date']
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control replica-form-control form-control-title', 'placeholder':'Title', 'value':''}),
             'deck': forms.Textarea(attrs={'class':'form-control replica-form-control autosize', 'placeholder':'Optional Summary', 'rows':'1'}),

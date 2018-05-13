@@ -8,17 +8,9 @@
   <div class="col-md-8">
     <div class="card replica-card replica-card-settings mb-1">
       <div class="card-header">
-        <div class="pull-right">
-          {% render_nav_topic_list %}
-        </div>
-        <ul class="nav card-header-nav">
-          <li class="nav-item">
-            <h4 class="card-title mb-0"><a class="nav-link active" href="{% url 'ReplicaAdmin:EntryList' %}">Entries</a></h4>
-          </li>
-          <li class="nav-item">
-            <h4 class="card-title mb-0"><a class="nav-link" href="{% url 'ReplicaAdmin:PageList' %}">Pages</a></h4>
-          </li>
-        </ul>
+        <div class="float-right">{% render_nav_topic_list %}</div>
+        <div class="float-right">{% render_nav_channel_list %}</div>
+          <h4 class="card-title">{{title}}</h4>
       </div>
     </div>
     <div class="card replica-card card-{{object_slug}} replica-list-card mb-3">

@@ -2,14 +2,22 @@
   position: relative;
   display: block;
   transition: opacity 1s;
+  a {color: $white;}
 
-  .img-thumbnail {
-    opacity: 0;
-  }
+  .img-thumbnail,
+  .media-actions,
   .media-title {
     opacity: 0;
+  }
+  .media-actions {
     position: absolute;
-    top: 20px;
+    top: 10px;
+    right: 10px;
+    .btn { font-size: 9px; }
+  }
+  .media-title {
+    position: absolute;
+    bottom: 20px;
     left: 20px;
     color: $white;
     text-shadow: 2px 2px #333;
@@ -27,7 +35,8 @@
       width: 100%;
       background-color: rgba($black, .5);
     }
-    .media-title {
+    .media-title,
+    .media-actions {
       opacity: 1;
     }
   }

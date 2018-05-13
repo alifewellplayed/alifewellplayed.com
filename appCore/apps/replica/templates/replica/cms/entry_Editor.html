@@ -5,7 +5,7 @@
 {% block content %}
 <script>var EntryID = '{% if obj.id %}{{obj.id|timestamp_unique}}{% else %}NewEntry{% endif %}';</script>
 
-<form method="post" id="entryEditor" enctype="multipart/form-data" action="{% url 'ReplicaAdmin:EntryEdit' obj.id %}">{% csrf_token %}
+<form method="post" id="entryEditor" enctype="multipart/form-data" action="">{% csrf_token %}
 <div class="row">
   <div class="col-md-12">
     <div class="card replica-card card-editor mb-3">
