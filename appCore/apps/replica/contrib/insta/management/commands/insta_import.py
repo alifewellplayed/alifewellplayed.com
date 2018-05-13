@@ -24,7 +24,9 @@ def get_profile_media(profile, page = 0):
     :param page:
     :return:
     """
-    return profile['entry_data']['ProfilePage'][page]['user']['media']['nodes']
+    #return profile['entry_data']['ProfilePage'][page]['user']['media']['nodes']
+    edges = profile['entry_data']['ProfilePage'][page]['graphql']['user']['edge_owner_to_timeline_media']['edges']
+    return [edge['node'] for edge in edges]
 
 class Command(BaseCommand):
     help = 'Import instagram photos into media'
@@ -47,9 +49,9 @@ class Command(BaseCommand):
                     MediaInstance.caption = media_obj['caption']
                 except KeyError:
                     pass
-                MediaInstance.url = media_obj['display_src']
+                MediaInstance.url = media_obj['shortcode']
                 MediaInstance.content_type=3
-                img_url = media_obj['display_src']
+                img_url = media_obj['thumbnail_src']
                 name = urlparse(img_url).path.split('/')[-1]
                 response = requests.get(img_url)
                 if response.status_code == 200:
@@ -67,10 +69,11 @@ class Command(BaseCommand):
                     slug=slugify(media_obj['id']),
                     caption=insta_caption,
                     user=user_obj,
-                    url=media_obj['display_src'],
+                    #url=media_obj['shortcode'],
+                    url = 'https://instagram.com/p/'.format(media_obj['shortcode']),
                     content_type=3 #For Instagram
                 )
-                img_url = media_obj['display_src']
+                img_url = media_obj['thumbnail_src']
                 name = urlparse(img_url).path.split('/')[-1]
                 response = requests.get(img_url)
                 if response.status_code == 200:
